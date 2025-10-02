@@ -1,0 +1,78 @@
+@font-face {
+  font-family: "Titre";
+  src: url(../Fonts/DARKLINOS.ttf);
+}
+
+@font-face {
+  font-family: "Paragraphe";
+  src: url(../Fonts/Exo2-VariableFont_wght.ttf);
+}
+
+/*Variable des polices*/
+:root {
+  --title-font: "Titre", sans-serif; /*La police des titres*/
+
+  --general-font: "Paragraphe", sans-serif; /*La police du texte général*/
+
+
+}
+
+/*Variables couleurs globales du site*/
+:root {
+  --background-color: rgb(50, 50, 50); /*Couleur du background globale du site*/
+
+  --font-color: white; /*Couleur de la police du site*/
+
+  --header-backgounrd-color: white; /*Couleur du background du header*/
+
+  --title-color: white; /*Couleur des titres du site*/
+
+  --border-color: white; /*Couleur des border générale*/
+
+  --footer-background-color: white; /*Couleur du background du footer*/
+}
+
+/*Variables couleurs de la navigation du site*/
+:root {
+  --nav-background-color: white; /*Couleur du background de la navigation*/
+
+  --nav-burger-background-color: black; /*Couleur du background lorsque le menu burger est ouvert*/
+
+  --nav-burger-color: white; /*Couleur de l'icône burger*/
+
+  --nav-text-color: black; /*Couleur du texte de la navigation*/
+
+  --nav-burger-text-color: white; /*Couleur du texte de la navigation lorsque que le menu burger est ouvert*/
+
+  --nav-hover-size: 2em ; /*Couleur du texte de la navigation lorsqu'on hover*/
+
+  --nav--burger-hover-color: rgb(122, 50, 122); /*Couleur du texte de la navigation burger lorsqu'on hover*/
+}
+
+/*Variables couleurs du carrousel de la page d'accueil*/
+:root {
+  --carrousel-titre-color: white; /*La couleur du titre du carrousel*/
+
+  --carrousel-text-color: black; /*La couleur du texte du carrousel*/
+
+  --carrousel-bouton-background-color: rgb(64, 50, 255); /*La couleur des boutons du carrousel*/
+
+  --carrousel-text-bouton-color: black; /*La couleur du texte des boutons du carrousel*/
+
+
+}
+
+/*Variables des assets couleurs de chaque catégorie du site*/
+:root {
+  --bouton-projet-arcade-color: rgb(221,174,255); /*Couleur du bouton pour la catégorie arcade*/
+
+  --bouton-projet-jt-color: rgb(206,247,204);  /*Couleur du bouton pour la catégorie jour de la terre*/
+
+  --bouton-projet-finissant-color: rgb(218, 200, 101);  /*Couleur du bouton pour la catégorie des finissants*/
+
+  --sous-titre-arcade-color: rgb(221,174,255); /*Couleur du sous-titre pour la catégorie arcade*/
+
+  --sous-titre-jt-color: rgb(206,247,204); /*Couleur du sous-titre pour la catégorie jour de la terre*/
+
+  --sous-titre-finissant-color: rgb(218, 200, 101); /*Couleur du sous-titre pour la catégorie finissants*/
+}

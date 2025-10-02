@@ -1,0 +1,143 @@
+@media screen and (max-width: 440px) {
+  body {
+    background-color: var(--background-color);
+    background-image: url(../Images/Hexagon.png);
+    background-size: 10em;
+  }
+
+  p {
+    color: var(--font-color);
+  }
+
+  .Carroussel {
+    border: 1px solid white;
+    padding: 2em;
+  }
+
+  .ImageArcadeCarroussel {
+    display: block;
+    justify-self: center;
+    width: 410px;
+    height: 684px;
+    clip-path: polygon(75% 0, 100% 15%, 100% 100%, 19% 100%, 0 82%, 0 0);
+    opacity: 65%;
+    z-index: -1;
+  }
+
+  .ImageTitre {
+    width: 310px;
+    height: 43px;
+    margin-top: -35em;
+    margin-left: 1.5em;
+    position: absolute;
+    z-index: 1;
+  }
+
+  .ArcadeDetails {
+    position: absolute;
+    margin-top: -20em;
+    margin-left: 4em;
+    width: 300px;
+    font-family: var(--general-font);
+  }
+
+  .ArcadeDetails > .Sous-titre {
+    font-size: 30px;
+    font-family: var(--title-font);
+  }
+
+  .ArcadeDetails > .Plus {
+    border: 2px solid white;
+    padding: 0.5em;
+    width: 100px;
+    text-align: center;
+  }
+
+  .CarrousselChoix {
+    display: flex;
+    justify-content: center;
+  }
+
+  .CarrousselChoix > p {
+    padding: 1em;
+    border: 1px solid white;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    align-content: center;
+    font-family: var(--title-font);
+    font-size: 10px;
+  }
+
+  .CarrousselChoix > .Arcade {
+    clip-path: polygon(0 0, 75% 0, 100% 100%, 0% 100%);
+    background-color: var(--carrousel-bouton-background-color);
+  }
+
+  .CarrousselChoix > .JT {
+    clip-path: polygon(0 0, 74% 0, 100% 100%, 15% 100%);
+  }
+
+  .CarrousselChoix > .PF {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%);
+  }
+
+  .ArcadeDetails > .Plus:hover, .CarrousselChoix > .Arcade:hover, .CarrousselChoix > .JT:hover, .CarrousselChoix > .PF:hover {
+    cursor: pointer;
+  }
+
+  .APropos {
+    border: 1px solid white;
+  }
+
+  .APropos > .Sous-titre {
+    text-align: center;
+    font-family: var(--title-font);
+    font-size: xx-large;
+  }
+
+  .APropos > .ImageAPropos {
+    display: block;
+    width: 411px;
+    height: 144px;
+    justify-self: center;
+  }
+
+  .APropos > .Description {
+    font-family: var(--general-font);
+    justify-self: center;
+    font-size: 14px;
+    height: 153px;
+    width: 200px;
+  }
+
+  .Horaire {
+    border: 1px white solid;
+    text-align: center;
+  }
+
+  .Horaire > .Sous-titre {
+    font-family: var(--title-font);
+    font-size: xx-large;
+  }
+
+  .Horaire > .HoraireExposition, .Horaire > .ArcadeHoraire, .Horaire > .JTHoraire, .Horaire > .PFHoraire {
+    display: flex;
+    justify-content: center;
+  }
+
+  .HoraireExposition {
+    padding-bottom: -1em;
+  }
+
+  .HoraireExposition > p, .ArcadeHoraire > p, .JTHoraire > p, .PFHoraire > p {
+    padding-left: 1em;
+    border: 1px solid white;
+    align-content: center;
+    width: 10em;
+    height: 2.5em;
+    font-weight: bold;
+    font-family: var(--general-font);
+  }
+
+}
