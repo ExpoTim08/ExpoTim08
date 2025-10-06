@@ -13,7 +13,7 @@
 
   <main>
     <div class="Carroussel">
-      <img class="ImageArcadeCarroussel" src="Images/Arcade.jpg" alt="">
+      <img id="ImageCarroussel" class="ImageArcadeCarroussel" src="Images/Arcade.jpg" alt="">
       <img class="ImageTitre" src="Images/Texte.png" alt="">
       <div class="ArcadeDetails">
         <p class="Sous-titre">ARCADE</p>
@@ -22,8 +22,8 @@
       </div>
       <div class="CarrousselChoix">
         <p class="Arcade">ARCADE</p>
-        <p class="JT">JOUR DE LA TERRE</p>
-        <p class="PF">PROJETS DES FINISSANTS</p>
+        <p class="JT" onclick="changeImage('Images/Nature.jpeg')">JOUR DE LA TERRE</p>
+        <p class="PF" onclick="changeImage()">PROJETS DES FINISSANTS</p>
       </div>
     </div>
 
@@ -52,6 +52,22 @@
         <p>XX:XX</p>
       </div>
     </div>
+    <p>Arcade</p>
   </main>
+
+  <!-- <script src="accueil.js"></script> -->
+
+  <script>
+    const btnArcade = document.getElementById('Arcade');
+    btnArcade.addEventListener('click', test);
+
+    function test() {
+      console.log("Click");
+    }
+  // function changeImage(newSrc) {
+  // document.getElementById('ImageCarroussel').src = newSrc;
+  // console.log("Click");
+  // }
+  </script>
 </body>
 </html>

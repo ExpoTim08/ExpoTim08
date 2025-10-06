@@ -130,6 +130,10 @@
     padding-bottom: -1em;
   }
 
+  .HoraireExposition > p {
+    font-size: larger;
+  }
+
   .HoraireExposition > p, .ArcadeHoraire > p, .JTHoraire > p, .PFHoraire > p {
     padding-left: 1em;
     border: 1px solid white;
@@ -138,6 +142,21 @@
     height: 2.5em;
     font-weight: bold;
     font-family: var(--general-font);
+  }
+
+  .ArcadeHoraire {
+    background-color: var(--bouton-projet-arcade-color);
+    clip-path: polygon(0 0, 91% 0, 100% 100%, 10% 100%);
+  }
+
+  .JTHoraire {
+    background-color: var(--bouton-projet-jt-color);
+    clip-path: polygon(0 0, 91% 0, 100% 100%, 10% 100%);
+  }
+
+  .PFHoraire {
+    background-color: var(--bouton-projet-finissant-color);
+    clip-path: polygon(0 0, 91% 0, 100% 100%, 10% 100%);
   }
 
 }
