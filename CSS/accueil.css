@@ -14,7 +14,7 @@
     padding: 2em;
   }
 
-  .ImageArcadeCarroussel {
+  #ImageCarroussel {
     display: block;
     justify-self: center;
     width: 410px;
@@ -53,6 +53,11 @@
     text-align: center;
   }
 
+  .Sous-titreCarroussel {
+    margin-left: -2em;
+    text-align: center;
+  }
+
   .CarrousselChoix {
     display: flex;
     justify-content: center;
@@ -71,18 +76,29 @@
 
   .CarrousselChoix > .Arcade {
     clip-path: polygon(0 0, 75% 0, 100% 100%, 0% 100%);
+  }
+
+  .CarrousselChoix > .ArcadeClick {
     background-color: var(--carrousel-bouton-background-color);
   }
 
-  .CarrousselChoix > .JT {
+  .CarrousselChoix > .JourTerre {
     clip-path: polygon(0 0, 74% 0, 100% 100%, 15% 100%);
+  }
+
+  .CarrousselChoix > .JourTerreClick {
+    background-color: var(--bouton-projet-jt-color);
   }
 
   .CarrousselChoix > .PF {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%);
   }
 
-  .ArcadeDetails > .Plus:hover, .CarrousselChoix > .Arcade:hover, .CarrousselChoix > .JT:hover, .CarrousselChoix > .PF:hover {
+  .CarrousselChoix > .PFClick {
+    background-color: var(--bouton-projet-finissant-color);
+  }
+
+  .ArcadeDetails > .Plus:hover, .CarrousselChoix > .Arcade:hover, .CarrousselChoix > .JourTerre:hover, .CarrousselChoix > .PF:hover {
     cursor: pointer;
   }
 
@@ -121,7 +137,7 @@
     font-size: xx-large;
   }
 
-  .Horaire > .HoraireExposition, .Horaire > .ArcadeHoraire, .Horaire > .JTHoraire, .Horaire > .PFHoraire {
+  .Horaire > .HoraireExposition, .Horaire > .ArcadeHoraire, .Horaire > .JourTerreHoraire, .Horaire > .PFHoraire {
     display: flex;
     justify-content: center;
   }
@@ -134,7 +150,7 @@
     font-size: larger;
   }
 
-  .HoraireExposition > p, .ArcadeHoraire > p, .JTHoraire > p, .PFHoraire > p {
+  .HoraireExposition > p, .ArcadeHoraire > p, .JourTerreHoraire > p, .PFHoraire > p {
     padding-left: 1em;
     border: 1px solid white;
     align-content: center;
@@ -149,7 +165,7 @@
     clip-path: polygon(0 0, 91% 0, 100% 100%, 10% 100%);
   }
 
-  .JTHoraire {
+  .JourTerreHoraire {
     background-color: var(--bouton-projet-jt-color);
     clip-path: polygon(0 0, 91% 0, 100% 100%, 10% 100%);
   }
