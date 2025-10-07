@@ -1,11 +1,11 @@
 <?php
 /* 
- * Template principal du thème 
+ * Template principal du thème ThemeExpo
  */
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,9 +21,10 @@
   <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
+
   <header>     
   </header>
-    <script src="accueil.js"></script>
+
   <main>
     <div class="Carroussel">
       <img id="ImageCarroussel" src="<?php echo get_template_directory_uri(); ?>/Images/Arcade.jpg" alt="">
@@ -69,6 +70,10 @@
     </div>
   </main>
 
+  <!-- ✅ Script JS correctement lié depuis ton dossier de thème -->
+  <script src="<?php echo get_template_directory_uri(); ?>/accueil.js"></script>
+
+  <!-- Script interne pour le carrousel -->
   <script>
     function changeImage(newSrc) {
       document.getElementById('ImageCarroussel').src = newSrc;
