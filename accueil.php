@@ -21,7 +21,8 @@
   <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-
+  <div class="border left"></div>
+  <div class="border right"></div>
   <header>     
   </header>
 

@@ -5,12 +5,33 @@
     background-size: 10em;
   }
 
+  .border {
+    position: fixed;
+    background: white; /* couleur des bords */
+    z-index: 9999;
+  }
+
+  .border.left {
+    top: 0;
+    left: 1em;
+    width: 2px; /* épaisseur du bord gauche */
+    height: 100%;
+  }
+
+  .border.right {
+    top: 0;
+    right: 1em;
+    width: 2px; /* épaisseur du bord droit */
+    height: 100%;
+  }
+
   p {
     color: var(--font-color);
   }
 
   .Carroussel {
-    border: 1px solid white;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
     padding: 2em;
   }
 
@@ -51,7 +72,8 @@
   }
 
   .ArcadeDetails > .Plus {
-    border: 2px solid white;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
     padding: 0.5em;
     width: 100px;
     text-align: center;
@@ -107,7 +129,8 @@
   }
 
   .APropos {
-    border: 1px solid white;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
   }
 
   .APropos > .Sous-titre {
@@ -132,7 +155,8 @@
   }
 
   .Horaire {
-    border: 1px white solid;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
     text-align: center;
   }
 
