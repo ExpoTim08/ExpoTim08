@@ -5,20 +5,20 @@
     background-size: 10em;
   }
 
-  .border {
+  .Border {
     position: fixed;
     background: white; /* couleur des bords */
     z-index: 9999;
   }
 
-  .border.left {
+  .Border.Gauche {
     top: 0;
     left: 1em;
     width: 2px; /* épaisseur du bord gauche */
     height: 100%;
   }
 
-  .border.right {
+  .Border.Droite {
     top: 0;
     right: 1em;
     width: 2px; /* épaisseur du bord droit */
@@ -72,8 +72,7 @@
   }
 
   .ArcadeDetails > .Plus {
-    border-top: 2px solid white;
-    border-bottom: 2px solid white;
+    border: 2px solid white;
     padding: 0.5em;
     width: 100px;
     text-align: center;

@@ -21,8 +21,8 @@
   <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-  <div class="border left"></div>
-  <div class="border right"></div>
+  <div class="Border Gauche"></div>
+  <div class="Border Droite"></div>
   <header>     
   </header>
 
@@ -38,9 +38,9 @@
       </div>
 
       <div class="CarrousselChoix">
-        <p class="Arcade ArcadeClick" onclick="changeImage('<?php echo get_template_directory_uri(); ?>/Images/Arcade.jpg')">ARCADE</p> 
-        <p class="JourTerre" onclick="changeImage('<?php echo get_template_directory_uri(); ?>/Images/Nature.jpeg')">JOUR DE LA TERRE</p>
-        <p class="PF" onclick="changeImage('<?php echo get_template_directory_uri(); ?>/Images/Finissants.jpg')">PROJETS DES FINISSANTS</p>
+        <p class="Arcade ArcadeClick" onclick="ChangeImageManuel('<?php echo get_template_directory_uri(); ?>/Images/Arcade.jpg')">ARCADE</p> 
+        <p class="JourTerre" onclick="ChangeImageManuel('<?php echo get_template_directory_uri(); ?>/Images/Nature.jpeg')">JOUR DE LA TERRE</p>
+        <p class="PF" onclick="ChangeImageManuel('<?php echo get_template_directory_uri(); ?>/Images/Finissants.jpg')">PROJETS DES FINISSANTS</p>
       </div>
     </div>
 
@@ -72,35 +72,11 @@
   </main>
 
   <!-- ✅ Script JS correctement lié depuis ton dossier de thème -->
+   <script>
+    const themeUrl = "<?php echo get_template_directory_uri(); ?>";
+    </script>
+
   <script src="<?php echo get_template_directory_uri(); ?>/accueil.js"></script>
-
-  <!-- Script interne pour le carrousel -->
-  <script>
-    function changeImage(newSrc) {
-      document.getElementById('ImageCarroussel').src = newSrc;
-
-      if(newSrc.includes('Arcade')) {
-        document.querySelector('.Sous-titreCarroussel').innerText = "ARCADE";
-        document.querySelector('.Arcade').classList.add('ArcadeClick');
-        document.querySelector('.JourTerre').classList.remove('JourTerreClick');
-        document.querySelector('.PF').classList.remove('PFClick');
-      }
-
-      else if(newSrc.includes('Nature')) {
-        document.querySelector('.Sous-titreCarroussel').innerText = "JOUR DE LA TERRE";
-        document.querySelector('.JourTerre').classList.add('JourTerreClick');
-        document.querySelector('.Arcade').classList.remove('ArcadeClick');
-        document.querySelector('.PF').classList.remove('PFClick');
-      }
-
-      else if(newSrc.includes('Finissants')) {
-        document.querySelector('.Sous-titreCarroussel').innerText = "PROJETS DES FINISSANTS";
-        document.querySelector('.PF').classList.add('PFClick');
-        document.querySelector('.JourTerre').classList.remove('JourTerreClick');
-        document.querySelector('.Arcade').classList.remove('ArcadeClick');
-      }
-    }
-  </script>
 
   <?php wp_footer(); ?>
 </body>
