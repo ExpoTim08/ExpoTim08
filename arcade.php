@@ -1,7 +1,13 @@
 <?php
 /*
-Template Arcade
+Template Name: Arcade
 */
+
+
+?>
+
+<?php
+
 //get_header(); //appelle le header
 
 ?>
@@ -16,15 +22,11 @@ Template Arcade
   <p class="Filtre">Filtrer</p>
   <section>
     <h2 class="TitreProjetArcade">Nom du projet</h2>
-    <img class="ImageProjetArcade" src="" alt="ImageDuProjet">
-    <p class="DescriptionProjet">Description</p>
+    <img class="ImageProjetArcade" src="<?php echo get_template_directory_uri(); ?>/Images/Arcade.jpg" alt="">
+    <p class="DescriptionProjet">Ce projet illustre la fusion entre art visuel et interactivité numérique. Il invite les visiteurs à explorer un univers inspiré des jeux rétro modernisés.</p>
   </section>
-   
-  
-
 </main>
 
 <?php
 //get_footer(); //appelle le footer
 ?>
-

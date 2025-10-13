@@ -30,7 +30,7 @@
       <div class="ArcadeDetails">
         <p class="Sous-titre Sous-titreCarroussel">ARCADE</p>
         <p class="Description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate animi voluptate...</p>
-        <a href="<?php echo site_url('/wp-content/themes/themeExpo/arcade.php'); ?>" class="Plus">Voir Plus</a>
+        <a href="<?php echo get_permalink( get_page_by_path('arcade') ); ?>" class="Plus">Voir Plus</a>
 
       </div>
 
