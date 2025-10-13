@@ -8,27 +8,20 @@ Template Arcade
 
 <!-- CONTENU DE TA PAGE ARCADE -->
 <main class="page-arcade">
-    <section>
-        <h1 class="TitreArcade">Arcade</h1>
-        <p class="DescriptionTitre">Description</p>
-        <p class="DescriptionArcade">
-            Bienvenue sur notre page arcade. Découvrez nos projets !
-        </p>
-    </section>
+  <section>
+    <h1 class="TitreArcade">Arcade</h1>
+    <p class="DescriptionTitre">Description</p>
+    <p class="DescriptionArcade">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non fugit exercitationem praesentium deleniti accusamus dicta, sapiente perspiciatis facilis repudiandae, omnis veniam. Quidem omnis doloribus numquam, neque praesentium unde porro eaque!</p>
+  </section>
+  <p class="Filtre">Filtrer</p>
+  <section>
+    <h2 class="TitreProjetArcade">Nom du projet</h2>
+    <img class="ImageProjetArcade" src="" alt="ImageDuProjet">
+    <p class="DescriptionProjet">Description</p>
+  </section>
+   
+  
 
-    <p class="Filtre">Filtrer</p>
-
-    <?php if(!empty($projets)): ?>
-        <?php foreach($projets as $projet): ?>
-            <section>
-                <h2 class="TitreProjetArcade"><?php echo htmlspecialchars($projet['titre']); ?></h2>
-                <img class="ImageProjetArcade" src="<?php echo htmlspecialchars($projet['image']); ?>" alt="<?php echo htmlspecialchars($projet['titre']); ?>">
-                <p class="DescriptionProjet"><?php echo nl2br(htmlspecialchars($projet['description'])); ?></p>
-            </section>
-        <?php endforeach; ?>
-    <?php else: ?>
-        <p>Aucun projet disponible pour le moment.</p>
-    <?php endif; ?>
 </main>
 
 <?php
