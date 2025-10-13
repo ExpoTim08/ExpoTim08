@@ -126,6 +126,10 @@
   .ArcadeDetails > .Plus:hover, .CarrousselChoix > .Arcade:hover, .CarrousselChoix > .JourTerre:hover, .CarrousselChoix > .PF:hover {
     cursor: pointer;
   }
+  .Plus{
+    color: var(--font-color);
+    text-decoration: none;
+  }
 
   .APropos {
     border-top: 2px solid white;

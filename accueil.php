@@ -11,12 +11,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?php bloginfo('name'); ?></title>
 
-  <!-- Appeler automatiquement le style.css du thème -->
-  <link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>">
-
-  <!-- Appeler tes autres fichiers CSS -->
-  <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/CSS/accueil.css">
-  <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/CSS/main.css">
+    <!-- Appeler tes autres fichiers CSS -->
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/CSS/accueil.css">
   
   <?php wp_head(); ?>
 </head>
@@ -34,7 +30,8 @@
       <div class="ArcadeDetails">
         <p class="Sous-titre Sous-titreCarroussel">ARCADE</p>
         <p class="Description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate animi voluptate...</p>
-        <p class="Plus">Voir plus</p>
+        <a href="<?php echo site_url('/wp-content/themes/themeExpo/arcade.php'); ?>" class="Plus">Voir Plus</a>
+
       </div>
 
       <div class="CarrousselChoix">
