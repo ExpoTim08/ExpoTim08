@@ -30,6 +30,8 @@
   --border-color: white; /*Couleur des border générale*/
 
   --footer-background-color: white; /*Couleur du background du footer*/
+
+  --border-color-special: #F1E2CC;
 }
 
 /*Variables couleurs de la navigation du site*/

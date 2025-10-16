@@ -40,6 +40,8 @@
       </div>
     </div>
 
+    <p class="Accroche">Découvrez l’univers créatif des étudiants de la Technique d’intégration multimédia! </p>
+
     <div class="APropos">
       <p class="Sous-titre">À propos de l'expo TIM</p>
       <img class="ImageAPropos" src="<?php echo get_template_directory_uri(); ?>/Images/Arcade.jpg" alt="">
@@ -118,7 +120,51 @@
         <span class="Description">Description</span>
         <span class="Moins">[-]</span>
       </div>
-      
+    </div>
+
+    <div class="Partenaires">
+      <h1>Partenaires</h1>
+      <img src="<?php echo get_template_directory_uri(); ?>/Images/MaisonneuveLogo.png" alt="">
+      <img src="<?php echo get_template_directory_uri(); ?>/Images/MaisonneuveLogo.png" alt="">
+      <img src="<?php echo get_template_directory_uri(); ?>/Images/MaisonneuveLogo.png" alt="">
+    </div>
+
+    <div class="Equipe">
+      <h1>L'équipe</h1>
+      <div class="CarteEquipe">
+        <span class="Photo"></span>
+        <span class="Nom">Nom</span>
+        <span class="Role">Role</span>
+        <span class="PetitsCarre"></span>
+      </div>
+
+      <div class="CarteEquipe2">
+        <span class="Photo"></span>
+        <span class="Nom">Nom</span>
+        <span class="Role">Role</span>
+        <span class="PetitsCarre"></span>
+      </div>
+
+      <div class="CarteEquipe3">
+        <span class="Photo"></span>
+        <span class="Nom">Nom</span>
+        <span class="Role">Role</span>
+        <span class="PetitsCarre"></span>
+      </div>
+
+      <div class="CarteEquipe4">
+        <span class="Photo"></span>
+        <span class="Nom">Nom</span>
+        <span class="Role">Role</span>
+        <span class="PetitsCarre"></span>
+      </div>
+
+      <div class="CarteEquipe5">
+        <span class="Photo"></span>
+        <span class="Nom">Nom</span>
+        <span class="Role">Role</span>
+        <span class="PetitsCarre"></span>
+      </div>
     </div>
   </main>
 
