@@ -2,14 +2,7 @@
 /*
 Template Name: Arcade
 */
-
-
-?>
-
-<?php
-
-//get_header(); //appelle le header
-
+  get_header(); 
 ?>
 
 <!-- CONTENU DE TA PAGE ARCADE -->

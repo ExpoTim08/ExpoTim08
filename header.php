@@ -1,0 +1,35 @@
+<?php
+/* 
+ * Header
+ */
+?>
+
+<header class="site-header">
+  <h1 class="logo"><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
+
+  <div class="menu-burger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</header>
+
+<div class="menu-page">
+  <div class="menu-content">
+    <h2>Menu</h2>
+
+    <!-- Barre de recherche -->
+    <form role="search" method="get" class="search-form" action="<?php echo home_url('/'); ?>">
+      <input type="search" class="search-field" placeholder="Recherche..." value="<?php echo get_search_query(); ?>" name="s">
+      <button type="submit">Rechercher</button>
+    </form>
+
+    <?php
+      wp_nav_menu(array(
+        'theme_location' => 'main-menu',
+        'container' => false,
+        'menu_class' => 'menu',
+      ));
+    ?>
+  </div>
+</div>

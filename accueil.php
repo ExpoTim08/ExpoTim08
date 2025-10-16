@@ -19,8 +19,8 @@
 <body <?php body_class(); ?>>
   <div class="Border Gauche"></div>
   <div class="Border Droite"></div>
-  <header>     
-  </header>
+  <?php get_header(); ?>
+
 
   <main>
     <div class="Carroussel">

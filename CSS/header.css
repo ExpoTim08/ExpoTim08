@@ -1,0 +1,96 @@
+/* Header */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: #00000000;
+  color: #fff;
+  position: relative;
+  z-index: 1002;
+}
+
+.logo a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Burger */
+.menu-burger {
+  width: 30px;
+  height: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 1003;
+}
+
+.menu-burger span {
+  display: block;
+  height: 3px;
+  background: #fff; /* garde la couleur blanche */
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* Transform burger → X */
+.menu-burger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(8.3px, 8.3px);
+}
+.menu-burger.open span:nth-child(2) {
+  opacity: 0;
+}
+.menu-burger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Menu overlay complet */
+.menu-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #000;
+  color: #fff;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 1001;
+  overflow: hidden;
+}
+
+.menu-page.open {
+  display: flex;
+}
+
+.menu-page .menu-content {
+  padding: 20px;
+}
+
+.menu-page h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Menu items */
+.menu-page .menu li {
+}
+
+.menu-page .menu li a {
+  color: #fff;
+}
+
+/* Bloquer le scroll quand menu ouvert */
+body.menu-open {
+  overflow: hidden;
+}
+
+/* Enlever le background du header quand menu ouvert */
+body.menu-open .site-header {
+  background: transparent;
+}
+
