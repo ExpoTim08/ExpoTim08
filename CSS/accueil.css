@@ -5,6 +5,13 @@
     background-size: 10em;
   }
 
+  span {
+    font-family: var(--general-font);
+    color: var(--font-color);
+  }
+
+  p {color: var(--font-color);}
+
   .Border {
     position: fixed;
     background: white; /* couleur des bords */
@@ -25,14 +32,16 @@
     height: 100%;
   }
 
-  p {
-    color: var(--font-color);
-  }
-
   .Carroussel {
     border-top: 2px solid white;
     border-bottom: 2px solid white;
     padding: 2em;
+  }
+
+  .ImageWrap {
+    filter: drop-shadow(-9px 9px 0 var(--bouton-projet-arcade-color))
+            drop-shadow(-11px 12px 0 var(--bouton-projet-jt-color))
+            drop-shadow(-11px 13px 0 var(--bouton-projet-finissant-color));
   }
 
   #ImageCarroussel {
@@ -41,13 +50,10 @@
     width: 100%;
     height: 80vh; 
     clip-path: polygon(75% 0, 100% 15%, 100% 100%, 19% 100%, 0 82%, 0 0);
-    opacity: 65%;
+    opacity: 1;
     z-index: -1;
-    object-fit: cover; /*permet de recadrer l'image*/
-    
+    object-fit: cover; 
   }
-
-
 
   .ImageTitre {
     width: 310px;
@@ -67,8 +73,9 @@
   }
 
   .ArcadeDetails > .Sous-titre {
-    font-size: 30px;
+    font-size: 35px;
     font-family: var(--title-font);
+    -webkit-text-stroke: 2px black;
   }
 
   .ArcadeDetails > .Plus {
@@ -76,7 +83,10 @@
     padding: 0.5em;
     width: 100px;
     text-align: center;
+    font-weight: bolder;
   }
+
+  .ArcadeDetails > .Description {font-weight: bolder;}
 
   .Sous-titreCarroussel {
     margin-left: -2em;
@@ -99,31 +109,22 @@
     font-size: 10px;
   }
 
-  .CarrousselChoix > .Arcade {
-    clip-path: polygon(0 0, 75% 0, 100% 100%, 0% 100%);
-  }
+  .CarrousselChoix > .Arcade {clip-path: polygon(0 0, 75% 0, 100% 100%, 0% 100%);}
 
-  .CarrousselChoix > .ArcadeClick {
-    background-color: var(--carrousel-bouton-background-color);
-  }
+  .CarrousselChoix > .ArcadeClick {background-color: var(--carrousel-bouton-background-color);}
 
-  .CarrousselChoix > .JourTerre {
-    clip-path: polygon(0 0, 74% 0, 100% 100%, 15% 100%);
-  }
+  .CarrousselChoix > .JourTerre {clip-path: polygon(0 0, 74% 0, 100% 100%, 15% 100%);}
 
-  .CarrousselChoix > .JourTerreClick {
-    background-color: var(--bouton-projet-jt-color);
-  }
+  .CarrousselChoix > .JourTerreClick {background-color: var(--bouton-projet-jt-color);}
 
-  .CarrousselChoix > .PF {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%);
-  }
+  .CarrousselChoix > .Finissants {clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%);}
 
-  .CarrousselChoix > .PFClick {
-    background-color: var(--bouton-projet-finissant-color);
-  }
+  .CarrousselChoix > .FinissantsClick {background-color: var(--bouton-projet-finissant-color);}
 
-  .ArcadeDetails > .Plus:hover, .CarrousselChoix > .Arcade:hover, .CarrousselChoix > .JourTerre:hover, .CarrousselChoix > .PF:hover {
+  .ArcadeDetails > .Plus:hover,
+  .CarrousselChoix > .Arcade:hover,
+  .CarrousselChoix > .JourTerre:hover,
+  .CarrousselChoix > .Finissants:hover {
     cursor: pointer;
   }
   .Plus{
@@ -168,42 +169,195 @@
     font-size: xx-large;
   }
 
-  .Horaire > .HoraireExposition, .Horaire > .ArcadeHoraire, .Horaire > .JourTerreHoraire, .Horaire > .PFHoraire {
-    display: flex;
-    justify-content: center;
-  }
-
   .HoraireExposition {
-    padding-bottom: -1em;
+    border: 1px solid #F1E2CC;
+    width: 270px;
+    padding-bottom: 2em;
   }
 
-  .HoraireExposition > p {
-    font-size: larger;
-  }
-
-  .HoraireExposition > p, .ArcadeHoraire > p, .JourTerreHoraire > p, .PFHoraire > p {
+  .HoraireExposition > .Heure {
+    color: black;
+    background-color: #F1E2CC;
+    text-align: left;
+    padding: 0.4em;
     padding-left: 1em;
-    border: 1px solid white;
+  }
+
+  .Horaire > .HoraireExposition,
+  .Horaire > .ArcadeHoraire,
+  .Horaire > .JourTerreHoraire,
+  .Horaire > .FinissantsHoraire {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+  }
+
+  .HoraireExposition > .Heure, 
+  .ArcadeHoraire > span, 
+  .JourTerreHoraire > span, 
+  .FinissantsHoraire > span {
     align-content: center;
-    width: 10em;
     height: 2.5em;
     font-weight: bold;
-    font-family: var(--general-font);
   }
 
   .ArcadeHoraire {
-    background-color: var(--bouton-projet-arcade-color);
-    clip-path: polygon(0 0, 91% 0, 100% 100%, 10% 100%);
+    border: 1px solid var(--bouton-projet-arcade-color);
+    width: 170px;
+    color: var(--font-color);
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 1em;
   }
+
+  .ArcadeHoraire > .Sous-titre {background-color: var(--bouton-projet-arcade-color);}
 
   .JourTerreHoraire {
-    background-color: var(--bouton-projet-jt-color);
-    clip-path: polygon(0 0, 91% 0, 100% 100%, 10% 100%);
+    width: 170px;
+    border: 1px solid var(--bouton-projet-jt-color);
+    color: var(--font-color);
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 1em;
   }
 
-  .PFHoraire {
-    background-color: var(--bouton-projet-finissant-color);
-    clip-path: polygon(0 0, 91% 0, 100% 100%, 10% 100%);
+  .JourTerreHoraire > .Sous-titre {background-color: var(--bouton-projet-jt-color);}
+
+  .FinissantsHoraire {
+    width: 170px;
+    border: 1px solid var(--bouton-projet-finissant-color);
+    color: var(--font-color);
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 1em;
+  }
+
+  .FinissantsHoraire > .Sous-titre {background-color: var(--bouton-projet-finissant-color);}
+
+  .GrilleHoraire {
+    display: grid;
+	  grid-template-rows: repeat(2, 1fr);
+	  grid-template-columns: repeat(4, 1fr);
+	  gap: 0px;
+	  width: 100%;
+	  height: 100%;
+    border: #F1E2CC 1px solid;
+    width: 281px;
+    justify-self: center;
+    margin-top: 2em;
+    padding: 1em;
+  }
+
+  .GrilleHoraire > span {
+    border: 1px black solid;
+    background-color: #F1E2CC;
+    padding: 0.4em;
+    color: black;
+  }
+
+  .GrilleHoraire > .HeureClick {
+    background-color: #b39f84;
+  }
+
+  .ProjetsPopulaire > h1 {
+    font-family: var(--title-font);
+    color: var(--font-color);
+    text-align: center;
+  }
+
+  .ProjetsPopulaire > p {
+    font-family: var(--general-font);
+    width: 335px;
+    margin: auto;
+  }
+
+  .ProjetPopulaireArcade,
+  .ProjetPopulaireFinissant,
+  .ProjetPopulaireJourTerre {
+    display: grid;
+	  grid-template-columns: repeat(4, 1fr); /* first col = 1/4, second = 3/4 */
+    grid-template-rows: 1fr 1fr;
+	  height: 100%;
+    justify-self: center;
+    width: 335px;
+    margin-top: 1em;
+  }
+
+  .ProjetPopulaireArcade > span,
+  .ProjetPopulaireJourTerre > span,
+  .ProjetPopulaireFinissant > span {
+    border: 1px white solid;
+    padding: 0.4em;
+    text-align: center;
+  }
+
+  .ProjetPopulaireArcade > span {background-color: var(--bouton-projet-arcade-color);}
+  .ProjetPopulaireJourTerre > span {background-color: var(--bouton-projet-jt-color);}
+  .ProjetPopulaireFinissant > span {background-color: var(--bouton-projet-finissant-color);}
+
+  .ProjetPopulaireArcade > .Titre,
+  .ProjetPopulaireJourTerre > .Titre,
+  .ProjetPopulaireFinissant > .Titre {
+    grid-column: 1 / 4;
+    grid-row: 1;
+    font-size: x-large;
+  }
+
+  .ProjetPopulaireArcade > .Bouton,
+  .ProjetPopulaireJourTerre > .Bouton,
+  .ProjetPopulaireFinissant > .Bouton {
+    grid-column: 4 / 5;
+    grid-row: 1;
+    font-size: x-large;
+  }
+
+  .ProjetPopulaireArcade > .Categorie,
+  .ProjetPopulaireJourTerre > .Categorie,
+  .ProjetPopulaireFinissant > .Categorie {
+    grid-column: 1 / 2;
+    grid-row: 2;
+  }
+
+  .ProjetPopulaireArcade > .CategorieNom,
+  .ProjetPopulaireJourTerre > .CategorieNom,
+  .ProjetPopulaireFinissant > .CategorieNom {
+    grid-column: 2 / 5; 
+    grid-row: 2;
+  }
+
+  .ImagePopulaireArcade,
+  .ImagePopulaireJourTerre,
+  .ImagePopulaireFinissants {
+    display: block;
+    justify-self: center;
+  }
+
+  .DescriptionPopulaireArcade,
+  .DescriptionPopulaireJourTerre,
+  .DescriptionPopulaireFinissants {
+    display: grid;
+    grid-template-columns: 3fr 1fr; 
+    grid-template-rows: 1fr;       
+    width: 335px; 
+    margin: auto;
+    border: 1px solid white;
+  }
+
+  .DescriptionPopulaireArcade > span,
+  .DescriptionPopulaireJourTerre > span,
+  .DescriptionPopulaireFinissants > span {
+    padding: 0.4em;
+  }
+
+  .DescriptionPopulaireArcade > .Moins,
+  .DescriptionPopulaireJourTerre > .Moins,
+  .DescriptionPopulaireFinissants > .Moins {
+    width: 45px;
+    text-align: end;
+    border-left: 1px solid white;
   }
 
 }

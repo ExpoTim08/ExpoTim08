@@ -64,11 +64,11 @@
 
 /*Variables des assets couleurs de chaque catégorie du site*/
 :root {
-  --bouton-projet-arcade-color: rgba(64, 50, 255, 0.6); /*Couleur du bouton pour la catégorie arcade*/
+  --bouton-projet-arcade-color: rgba(64, 50, 255, 1); /*Couleur du bouton pour la catégorie arcade*/
 
-  --bouton-projet-jt-color: rgba(0, 151, 143, 0.6);  /*Couleur du bouton pour la catégorie jour de la terre*/
+  --bouton-projet-jt-color: rgba(0, 151, 143, 1);  /*Couleur du bouton pour la catégorie jour de la terre*/
 
-  --bouton-projet-finissant-color: rgba(208, 147, 8, 0.6);  /*Couleur du bouton pour la catégorie des finissants*/
+  --bouton-projet-finissant-color: rgba(208, 147, 8, 1);  /*Couleur du bouton pour la catégorie des finissants*/
 
   --sous-titre-arcade-color: rgb(221,174,255); /*Couleur du sous-titre pour la catégorie arcade*/
 

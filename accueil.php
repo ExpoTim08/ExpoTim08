@@ -24,20 +24,19 @@
 
   <main>
     <div class="Carroussel">
-      <img id="ImageCarroussel" src="<?php echo get_template_directory_uri(); ?>/Images/Arcade.jpg" alt="">
+      <div class="ImageWrap"><img id="ImageCarroussel" src="<?php echo get_template_directory_uri(); ?>/Images/Arcade.jpg" alt=""></div>
       <img class="ImageTitre" src="<?php echo get_template_directory_uri(); ?>/Images/Texte.png" alt="">
 
       <div class="ArcadeDetails">
         <p class="Sous-titre Sous-titreCarroussel">ARCADE</p>
         <p class="Description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate animi voluptate...</p>
         <a href="<?php echo get_permalink( get_page_by_path('arcade') ); ?>" class="Plus">Voir Plus</a>
-
       </div>
 
       <div class="CarrousselChoix">
         <p class="Arcade ArcadeClick" onclick="ChangeImageManuel('<?php echo get_template_directory_uri(); ?>/Images/Arcade.jpg')">ARCADE</p> 
         <p class="JourTerre" onclick="ChangeImageManuel('<?php echo get_template_directory_uri(); ?>/Images/Nature.jpeg')">JOUR DE LA TERRE</p>
-        <p class="PF" onclick="ChangeImageManuel('<?php echo get_template_directory_uri(); ?>/Images/Finissants.jpg')">PROJETS DES FINISSANTS</p>
+        <p class="Finissants" onclick="ChangeImageManuel('<?php echo get_template_directory_uri(); ?>/Images/Finissants.jpg')">PROJETS DES FINISSANTS</p>
       </div>
     </div>
 
@@ -49,31 +48,83 @@
 
     <div class="Horaire">
       <p class="Sous-titre">HORAIRE</p>
+
       <div class="HoraireExposition">
-        <p>Exposition</p>
-        <p>Heures</p>
+        <span class="Heure">13:00</span>
+        <div class="ArcadeHoraire">
+          <span class="Sous-titre">Arcade</span>
+          <span>Indisponible</span>
+        </div>
+        <div class="JourTerreHoraire">
+         <span class="Sous-titre">Jour de la Terre</span>
+         <span>Indisponible</span>
+        </div>
+        <div class="FinissantsHoraire">
+          <span class="Sous-titre">Projet de finissants</span>
+          <span>Indisponible</span>
+        </div> 
       </div>
-      <div class="ArcadeHoraire">
-        <p>Arcade</p>
-        <p>XX:XX</p>
+
+      <div class="GrilleHoraire">
+        <span class="HeureClick">13:00</span>
+        <span>14:00</span>
+        <span>15:00</span>
+        <span>16:00</span>
+        <span>17:00</span>
+        <span>18:00</span>
+        <span>19:00</span>
+        <span>20:00</span>
       </div>
-      <div class="JourTerreHoraire">
-        <p>Jour de la Terre</p>
-        <p>XX:XX</p>
+    </div>
+
+    <div class="ProjetsPopulaire">
+      <h1>PROJETS POPULAIRE</h1>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident minus sit exercitationem. Facere repudiandae error enim labore! Quibusdam, tempore? Necessitatibus magni illum, adipisci dicta nostrum sequi iure. Dolor, nulla dignissimos?</p>
+      <div class="ProjetPopulaireArcade">
+        <span class="Titre">TITRE</span>
+        <span class="Bouton">>></span>
+        <span class="Categorie">Catégorie</span>
+        <span class="CategorieNom">ARCADE</span>
       </div>
-      <div class="PFHoraire">
-        <p>Projet de finissants</p>
-        <p>XX:XX</p>
+      <img class="ImagePopulaireArcade" src="<?php echo get_template_directory_uri(); ?>/Images/EcotidienArcade.png" alt="">
+
+      <div class="DescriptionPopulaireArcade">
+        <span class="Description">Description</span>
+        <span class="Moins">[-]</span>
       </div>
+
+      <div class="ProjetPopulaireJourTerre">
+        <span class="Titre">TITRE</span>
+        <span class="Bouton">>></span>
+        <span class="Categorie">Catégorie</span>
+        <span class="CategorieNom">JOUR DE LA TERRE</span>
+      </div>
+      <img class="ImagePopulaireJourTerre" src="<?php echo get_template_directory_uri(); ?>/Images/EcotidienJourTerre.png" alt="">
+
+      <div class="DescriptionPopulaireJourTerre">
+        <span class="Description">Description</span>
+        <span class="Moins">[-]</span>
+      </div>
+
+      <div class="ProjetPopulaireFinissant">
+        <span class="Titre">TITRE</span>
+        <span class="Bouton">>></span>
+        <span class="Categorie">Catégorie</span>
+        <span class="CategorieNom">PROJETS DES FINISSANTS</span>
+      </div>
+      <img class="ImagePopulaireFinissants" src="<?php echo get_template_directory_uri(); ?>/Images/FinissantsPopulaire.png" alt="">
+
+      <div class="DescriptionPopulaireFinissants">
+        <span class="Description">Description</span>
+        <span class="Moins">[-]</span>
+      </div>
+      
     </div>
   </main>
 
-  <!-- ✅ Script JS correctement lié depuis ton dossier de thème -->
-   <script>
-    const themeUrl = "<?php echo get_template_directory_uri(); ?>";
-    </script>
-
-  <script src="<?php echo get_template_directory_uri(); ?>/accueil.js"></script>
+  <!-- Script JS correctement lié depuis le dossier de thème -->
+   <script>const themeUrl = "<?php echo get_template_directory_uri(); ?>";</script>
+   <script src="<?php echo get_template_directory_uri(); ?>/accueil.js"></script>
 
   <?php wp_footer(); ?>
 </body>

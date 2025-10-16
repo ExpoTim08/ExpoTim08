@@ -13,7 +13,7 @@
   {
     src: `${themeUrl}/Images/Finissants.jpg`,
     Titre: "PROJETS DES FINISSANTS",
-    ClassName: "PF"
+    ClassName: "Finissants"
   }
 ];
 
@@ -41,7 +41,7 @@ function ChangeImageAutomatique(index) {
 
   // Update class states
   document.querySelectorAll('.CarrousselChoix p').forEach(elm => {
-    elm.classList.remove('ArcadeClick', 'JourTerreClick', 'PFClick');
+    elm.classList.remove('ArcadeClick', 'JourTerreClick', 'FinissantsClick');
   });
 
   document.querySelector(`.${ClassName}`).classList.add(`${ClassName}Click`);
@@ -51,4 +51,4 @@ function ChangeImageAutomatique(index) {
 setInterval(() => {
   CurrentIndex = (CurrentIndex + 1) % Images.length;
   ChangeImageAutomatique(CurrentIndex);
-}, 3000);
+}, 5000);
