@@ -1,0 +1,27 @@
+@media screen and (max-width: 440px) {
+  body {
+    background-color: var(--background-color);
+    background-image: url(../Images/Hexagon.png);
+    background-size: 10em;
+  }
+
+  .page-arcade {
+    display: flex;
+    max-width: 1200px; /* optionnel : limite la largeur comme l’accueil */
+    margin: 0 auto; /* centre le conteneur principal */
+    padding: 20px; /* espace autour du contenu */
+  }
+  
+  .page-arcade section {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+  
+  .page-arcade img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto; /* centre les images */
+  }
+  
+}
