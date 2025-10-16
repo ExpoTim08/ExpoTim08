@@ -24,6 +24,7 @@
       <button type="submit">Rechercher</button>
     </form>
 
+    <!-- Menu affichage dynamique -->
     <?php
       wp_nav_menu(array(
         'theme_location' => 'main-menu',
