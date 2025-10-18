@@ -1,4 +1,7 @@
 <?php
+//charge le fichier customizer.php
+require get_template_directory() . '/customizer.php';
+
 // Charger les fichiers CSS globaux et le menu burger
 function expo_enqueue_assets() {
     // CSS principal du thème
