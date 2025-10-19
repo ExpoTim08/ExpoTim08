@@ -98,10 +98,22 @@
     flex-direction: column;
   }
 
+    /* Bloquer le scroll quand menu ouvert */
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  /* Enlever le background du header quand menu ouvert */
+  body.menu-open .site-header {
+    background: transparent;
+  }
+
+
   /* Menu items */
-  .menu-page .menu li {
+  .menu-page .menu li:not(.sub-menu > li) {
       background-color: #323232;
-      height: 72px;
+      padding-top: clamp(1rem, 20px, 25px);
+      padding-bottom: clamp(1rem, 20px, 25px);
       align-content: center;
       border-top: 1px solid #F1E2CC;
       border-bottom: 1px solid #F1E2CC;
@@ -117,6 +129,31 @@
       padding-left: 1em;
   }
 
+  /* Sous-menu */
+  .menu-page .menu li .sub-menu {
+    color: #F1E2CC;
+    font-family: var(--general-font);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+    padding-left: 1em;
+  }
+
+  .sub-menu li {
+    width: 40vw;
+  }
+
+  
+  /* Liens du menu */
+  .menu-page .menu li .sub-menu li a {
+    display: block;
+    padding: 8px 1em;
+    color: #F1E2CC;
+    text-decoration: none;
+  }
+
   /* Liens du menu */
   .menu-page .menu li a {
     color: #fff;
@@ -124,15 +161,34 @@
     padding-left: 1em;
   }
 
-  /* Bloquer le scroll quand menu ouvert */
-  body.menu-open {
+  /* ------------------------------ Sub-menu animation (mobile) */
+  .menu-page .menu li .sub-menu {
+    max-height: 0;                 
     overflow: hidden;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: max-height 320ms ease-out, opacity 100ms ease-out, transform 220ms ease-out;
   }
 
-  /* Enlever le background du header quand menu ouvert */
-  body.menu-open .site-header {
-    background: transparent;
+  
+  .menu-page .menu li.open > .sub-menu {
+    max-height: 400px; 
+    opacity: 1;
+    transform: translateY(0);
   }
+
+
+  .menu-page .menu li .sub-menu li {
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 260ms ease, transform 260ms ease;
+  }
+
+  .menu-page .menu li.open > .sub-menu li{
+    opacity: 1;
+    transform: translateY(0);
+  }
+  /* ------------------------------ Fin du sous-menu animation*/
 
 
   /* CSS de la barre de recherche */
@@ -145,7 +201,7 @@
     padding-right: 1em;
     display: flex;
     background-color: #323232;
-    margin-bottom: 38vw;
+    margin-bottom: 25vh;
   }
 
   input.search-field {
