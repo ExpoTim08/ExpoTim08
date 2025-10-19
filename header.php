@@ -16,13 +16,12 @@
 
 <div class="menu-page">
   <div class="menu-content">
-    <h2>Menu</h2>
 
     <!-- Barre de recherche -->
-    <form role="search" method="get" class="search-form" action="<?php echo home_url('/'); ?>">
-      <input type="search" class="search-field" placeholder="Recherche..." value="<?php echo get_search_query(); ?>" name="s">
-      <button type="submit">Rechercher</button>
-    </form>
+      <form role="search" method="get" class="search-form" action="<?php echo home_url('/'); ?>">
+        <input type="search" class="search-field" placeholder="Recherche..." value="<?php echo get_search_query(); ?>" name="s">
+        <button type="submit">Rechercher</button>
+      </form>
 
     <!-- Menu affichage dynamique -->
     <?php

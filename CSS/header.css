@@ -1,3 +1,4 @@
+/*------------- HEADER MOBILE --------------*/
 @media screen and (max-width: 440px) {
   /* Header */
   .site-header {
@@ -54,7 +55,11 @@
     left: 0;
     width: 100%;
     height: 100vh;
-    background: #000;
+    background-image: 
+    radial-gradient(rgb(10, 10, 10) 15%, transparent 10%);
+    background-position: 10px 10px;
+    background-size: 12px 12px;
+    background-color: #1B1B1B;
     color: #fff;
     display: none;
     justify-content: center;
@@ -66,10 +71,14 @@
 
   .menu-page.open {
     display: flex;
+    align-items: flex-start;
   }
 
   .menu-page .menu-content {
-    padding: 20px;
+     flex-grow: 1; 
+     display: flex;
+     flex-flow: column;
+     padding-top: 8.8em;
   }
 
   .menu-page h2 {
@@ -77,12 +86,42 @@
     margin-bottom: 20px;
   }
 
-  /* Menu items */
-  .menu-page .menu li {
+  .menu-page .menu,
+  .menu-page .menu ul {
+    list-style: none;     
+    padding: 0;         
   }
 
+  .menu-page .menu{
+    display: flex;
+    align-content: space-around;
+    flex-direction: column;
+  }
+
+  /* Menu items */
+  .menu-page .menu li {
+      background-color: #323232;
+      height: 72px;
+      align-content: center;
+      border-top: 1px solid #F1E2CC;
+      border-bottom: 1px solid #F1E2CC;
+
+      font-family: var(--title-font);
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+
+      text-align: start;
+      padding-right: 1em;
+      padding-left: 1em;
+  }
+
+  /* Liens du menu */
   .menu-page .menu li a {
     color: #fff;
+    text-decoration: none;
+    padding-left: 1em;
   }
 
   /* Bloquer le scroll quand menu ouvert */
@@ -93,5 +132,31 @@
   /* Enlever le background du header quand menu ouvert */
   body.menu-open .site-header {
     background: transparent;
+  }
+
+
+  /* CSS de la barre de recherche */
+  form.search-form {
+    border-top: 1px solid #F1E2CC;
+    padding: 10px 0px;
+    border-bottom: 1px solid #F1E2CC;
+    flex-grow: 1;
+    padding-left: 1em;
+    padding-right: 1em;
+    display: flex;
+    background-color: #323232;
+    margin-bottom: 38vw;
+  }
+
+  input.search-field {
+    background-color: transparent;
+    border: none;
+    flex-grow: inherit;
+    margin-left: 1em;
+    color: #F1E2CC;
+  }
+
+  .search-form button {
+    margin-right: 1em;
   }
 }
