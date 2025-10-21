@@ -15,38 +15,38 @@
     font-family: var(--title-font);
   }
 
-  .Border {
+  .border {
     position: fixed;
     background: white; /* couleur des bords */
     z-index: 9999;
   }
 
-  .Border.Gauche {
+  .border.gauche {
     top: 0;
     left: 1em;
     width: 2px; /* épaisseur du bord gauche */
     height: 100%;
   }
 
-  .Border.Droite {
+  .border.droite {
     top: 0;
     right: 1em;
     width: 2px; /* épaisseur du bord droit */
     height: 100%;
   }
 
-  .Carroussel {
+  .carroussel {
     border-top: 2px solid var(--border-color);
     padding: 2em;
   }
 
-  .ImageWrap {
+  .image-wrap {
     filter: drop-shadow(-9px 9px 0 var(--bouton-projet-arcade-color))
             drop-shadow(-11px 12px 0 var(--bouton-projet-jt-color))
             drop-shadow(-11px 13px 0 var(--bouton-projet-finissant-color));
   }
 
-  #ImageCarroussel {
+  #image-carroussel {
     display: block;
     justify-self: center;
     width: 100%;
@@ -57,7 +57,7 @@
     object-fit: cover; 
   }
 
-  .ImageTitre {
+  .image-titre {
     width: 310px;
     height: 43px;
     margin-top: -26em;
@@ -66,7 +66,7 @@
     z-index: 1;
   }
 
-  .ArcadeDetails {
+  .arcade-details {
     position: absolute;
     margin-top: -20em;
     margin-left: 4em;
@@ -74,13 +74,13 @@
     font-family: var(--general-font);
   }
 
-  .ArcadeDetails > .Sous-titre {
+  .arcade-details > .sous-titre {
     font-size: 35px;
     font-family: var(--title-font);
     -webkit-text-stroke: 2px black;
   }
 
-  .ArcadeDetails > .Plus {
+  .arcade-details > .plus {
     border: 2px solid var(--border-color);
     padding: 0.5em;
     width: 100px;
@@ -88,19 +88,19 @@
     font-weight: bolder;
   }
 
-  .ArcadeDetails > .Description {font-weight: bolder;}
+  .arcade-details > .description {font-weight: bolder;}
 
-  .Sous-titreCarroussel {
+  .sous-titre-carroussel {
     margin-left: -2em;
     text-align: center;
   }
 
-  .CarrousselChoix {
+  .carroussel-choix {
     display: flex;
     justify-content: center;
   }
 
-  .CarrousselChoix > p {
+  .carroussel-choix > p {
     padding: 1em;
     border: 1px solid var(--border-color);
     width: 100px;
@@ -111,30 +111,30 @@
     font-size: 10px;
   }
 
-  .CarrousselChoix > .Arcade {clip-path: polygon(0 0, 75% 0, 100% 100%, 0% 100%);}
+  .carroussel-choix > .arcade {clip-path: polygon(0 0, 75% 0, 100% 100%, 0% 100%);}
 
-  .CarrousselChoix > .ArcadeClick {background-color: var(--carrousel-bouton-background-color);}
+  .carroussel-choix > .arcade-click {background-color: var(--carrousel-bouton-background-color);}
 
-  .CarrousselChoix > .JourTerre {clip-path: polygon(0 0, 74% 0, 100% 100%, 15% 100%);}
+  .carroussel-choix > .jour-terre {clip-path: polygon(0 0, 74% 0, 100% 100%, 15% 100%);}
 
-  .CarrousselChoix > .JourTerreClick {background-color: var(--bouton-projet-jt-color);}
+  .carroussel-choix > .jour-terre-click {background-color: var(--bouton-projet-jt-color);}
 
-  .CarrousselChoix > .Finissants {clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%);}
+  .carroussel-choix > .finissants {clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%);}
 
-  .CarrousselChoix > .FinissantsClick {background-color: var(--bouton-projet-finissant-color);}
+  .carroussel-choix > .finissants-click {background-color: var(--bouton-projet-finissant-color);}
 
-  .ArcadeDetails > .Plus:hover,
-  .CarrousselChoix > .Arcade:hover,
-  .CarrousselChoix > .JourTerre:hover,
-  .CarrousselChoix > .Finissants:hover {
+  .arcade-details > .plus:hover,
+  .carroussel-choix > .arcade:hover,
+  .carroussel-choix > .jour-terre:hover,
+  .carroussel-choix > .finissants:hover {
     cursor: pointer;
   }
-  .Plus{
+  .plus{
     color: var(--font-color);
     text-decoration: none;
   }
 
-  .Accroche {
+  .accroche {
     width: 246px;
     height: 209px;
     font-size: 28px;
@@ -145,24 +145,24 @@
     -webkit-text-fill-color: transparent;
   }
 
-  .APropos {
+  .a-propos {
     border-bottom: 2px solid var(--border-color);
   }
 
-  .APropos > .Sous-titre {
+  .a-propos > .sous-titre {
     text-align: center;
     font-family: var(--title-font);
     font-size: xx-large;
   }
 
-  .APropos > .ImageAPropos {
+  .a-propos > .image-a-propos {
     display: block;
     width: 411px;
     height: 144px;
     justify-self: center;
   }
 
-  .APropos > .Description {
+  .a-propos > .description {
     font-family: var(--general-font);
     justify-self: center;
     font-size: 14px;
@@ -170,24 +170,24 @@
     width: 200px;
   }
 
-  .Horaire {
+  .horaire {
     border-top: 2px solid var(--border-color);
     border-bottom: 2px solid var(--border-color);
     text-align: center;
   }
 
-  .Horaire > .Sous-titre {
+  .horaire > .sous-titre {
     font-family: var(--title-font);
     font-size: xx-large;
   }
 
-  .HoraireExposition {
+  .horaire-exposition {
     border: 1px solid #F1E2CC;
     width: 270px;
     padding-bottom: 2em;
   }
 
-  .HoraireExposition > .Heure {
+  .horaire-exposition > .heure {
     color: black;
     background-color: var(--border-color-special);
     text-align: left;
@@ -195,25 +195,25 @@
     padding-left: 1em;
   }
 
-  .Horaire > .HoraireExposition,
-  .Horaire > .ArcadeHoraire,
-  .Horaire > .JourTerreHoraire,
-  .Horaire > .FinissantsHoraire {
+  .horaire > .horaire-exposition,
+  .horaire > .arcade-horaire,
+  .horaire > .jour-terre-horaire,
+  .horaire > .finissants-horaire {
     display: flex;
     flex-direction: column;
     justify-self: center;
   }
 
-  .HoraireExposition > .Heure, 
-  .ArcadeHoraire > span, 
-  .JourTerreHoraire > span, 
-  .FinissantsHoraire > span {
+  .horaire-exposition > .heure, 
+  .arcade-horaire > span, 
+  .jour-terre-horaire > span, 
+  .finissants-horaire > span {
     align-content: center;
     height: 2.5em;
     font-weight: bold;
   }
 
-  .ArcadeHoraire {
+  .arcade-horaire {
     border: 1px solid var(--bouton-projet-arcade-color);
     width: 170px;
     color: var(--font-color);
@@ -223,9 +223,9 @@
     margin-top: 1em;
   }
 
-  .ArcadeHoraire > .Sous-titre {background-color: var(--bouton-projet-arcade-color);}
+  .arcade-horaire > .sous-titre {background-color: var(--bouton-projet-arcade-color);}
 
-  .JourTerreHoraire {
+  .jour-terre-horaire {
     width: 170px;
     border: 1px solid var(--bouton-projet-jt-color);
     color: var(--font-color);
@@ -235,9 +235,9 @@
     margin-top: 1em;
   }
 
-  .JourTerreHoraire > .Sous-titre {background-color: var(--bouton-projet-jt-color);}
+  .jour-terre-horaire > .sous-titre {background-color: var(--bouton-projet-jt-color);}
 
-  .FinissantsHoraire {
+  .finissants-horaire {
     width: 170px;
     border: 1px solid var(--bouton-projet-finissant-color);
     color: var(--font-color);
@@ -247,9 +247,9 @@
     margin-top: 1em;
   }
 
-  .FinissantsHoraire > .Sous-titre {background-color: var(--bouton-projet-finissant-color);}
+  .finissants-horaire > .sous-titre {background-color: var(--bouton-projet-finissant-color);}
 
-  .GrilleHoraire {
+  .grille-horaire {
     display: grid;
 	  grid-template-rows: repeat(2, 1fr);
 	  grid-template-columns: repeat(4, 1fr);
@@ -264,32 +264,32 @@
     margin-bottom: 1em;
   }
 
-  .GrilleHoraire > span {
+  .grille-horaire > span {
     border: 1px black solid;
     background-color: var(--border-color-special);
     padding: 0.4em;
     color: black;
   }
 
-  .GrilleHoraire > .HeureClick {
+  .grille-horaire > .heure-click {
     background-color: #b39f84;
   }
 
-  .ProjetsPopulaire > h1,
-  .Partenaires > h1,
-  .Equipe > h1 {
+  .projets-populaire > h1,
+  .partenaires > h1,
+  .equipe > h1 {
     text-align: center;
   }
 
-  .ProjetsPopulaire > p {
+  .projets-populaire > p {
     font-family: var(--general-font);
     width: 335px;
     margin: auto;
   }
 
-  .ProjetPopulaireArcade,
-  .ProjetPopulaireFinissant,
-  .ProjetPopulaireJourTerre {
+  .projet-populaire-arcade,
+  .projet-populaire-finissant,
+  .projet-populaire-jour-terre {
     display: grid;
 	  grid-template-columns: repeat(4, 1fr); /* first col = 1/4, second = 3/4 */
     grid-template-rows: 1fr 1fr;
@@ -299,61 +299,61 @@
     margin-top: 2em;
   }
 
-  .ProjetPopulaireArcade > span,
-  .ProjetPopulaireJourTerre > span,
-  .ProjetPopulaireFinissant > span {
+  .projet-populaire-arcade > span,
+  .projet-populaire-jour-terre > span,
+  .projet-populaire-finissant > span {
     border: 1px var(--border-color) solid;
     padding: 0.4em;
     text-align: center;
   }
 
-  .ProjetPopulaireArcade > span {background-color: var(--bouton-projet-arcade-color);}
-  .ProjetPopulaireJourTerre > span {background-color: var(--bouton-projet-jt-color);}
-  .ProjetPopulaireFinissant > span {background-color: var(--bouton-projet-finissant-color);}
+  .projet-populaire-arcade > span {background-color: var(--bouton-projet-arcade-color);}
+  .projet-populaire-jour-terre > span {background-color: var(--bouton-projet-jt-color);}
+  .projet-populaire-finissant > span {background-color: var(--bouton-projet-finissant-color);}
 
-  .ProjetPopulaireArcade > .Titre,
-  .ProjetPopulaireJourTerre > .Titre,
-  .ProjetPopulaireFinissant > .Titre {
+  .projet-populaire-arcade > .titre,
+  .projet-populaire-jour-terre > .titre,
+  .projet-populaire-finissant > .titre {
     grid-column: 1 / 4;
     grid-row: 1;
     font-size: x-large;
   }
 
-  .ProjetPopulaireArcade > .Bouton,
-  .ProjetPopulaireJourTerre > .Bouton,
-  .ProjetPopulaireFinissant > .Bouton {
+  .projet-populaire-arcade > .bouton,
+  .projet-populaire-jour-terre > .bouton,
+  .projet-populaire-finissant > .bouton {
     grid-column: 4 / 5;
     grid-row: 1;
     font-size: x-large;
   }
 
-  .ProjetPopulaireArcade > .Categorie,
-  .ProjetPopulaireJourTerre > .Categorie,
-  .ProjetPopulaireFinissant > .Categorie {
+  .projet-populaire-arcade > .categorie,
+  .projet-populaire-jour-terre > .categorie,
+  .projet-populaire-finissant > .categorie {
     grid-column: 1 / 2;
     grid-row: 2;
     padding-top: 1em;
   }
 
-  .ProjetPopulaireArcade > .CategorieNom,
-  .ProjetPopulaireJourTerre > .CategorieNom,
-  .ProjetPopulaireFinissant > .CategorieNom {
+  .projet-populaire-arcade > .categorie-nom,
+  .projet-populaire-jour-terre > .categorie-nom,
+  .projet-populaire-finissant > .categorie-nom {
     grid-column: 2 / 5; 
     grid-row: 2;
     padding-top: 1em;
   }
 
-  .ImagePopulaireArcade,
-  .ImagePopulaireJourTerre,
-  .ImagePopulaireFinissants,
-  .Partenaires > img {
+  .image-populaire-arcade,
+  .image-populaire-jour-terre,
+  .image-populaire-finissants,
+  .partenaires > img {
     display: block;
     justify-self: center;
   }
 
-  .DescriptionPopulaireArcade,
-  .DescriptionPopulaireJourTerre,
-  .DescriptionPopulaireFinissants {
+  .description-populaire-arcade,
+  .description-populaire-jour-terre,
+  .description-populaire-finissants {
     display: grid;
     grid-template-columns: 3fr 1fr; 
     grid-template-rows: 1fr;       
@@ -362,36 +362,36 @@
     border: 1px solid var(--border-color);
   }
 
-  .DescriptionPopulaireArcade > span,
-  .DescriptionPopulaireJourTerre > span,
-  .DescriptionPopulaireFinissants > span {
+  .description-populaire-arcade > span,
+  .description-populaire-jour-terre > span,
+  .description-populaire-finissants > span {
     padding: 0.4em;
   }
 
-  .DescriptionPopulaireArcade > .Moins,
-  .DescriptionPopulaireJourTerre > .Moins,
-  .DescriptionPopulaireFinissants > .Moins {
+  .description-populaire-arcade > .moins,
+  .description-populaire-jour-terre > .moins,
+  .description-populaire-finissants > .moins {
     width: 45px;
     text-align: end;
     border-left: 1px solid var(--border-color);
   }
 
-  .Partenaires {
+  .partenaires {
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
     margin-top: 2em;
   }
 
-  .Partenaires > img {
+  .partenaires > img {
     padding-top: 2em;
     padding-bottom: 1em;
   }
 
-  .CarteEquipe,
-  .CarteEquipe2,
-  .CarteEquipe3,
-  .CarteEquipe4,
-  .CarteEquipe5 {
+  .carte-equipe,
+  .carte-equipe-2,
+  .carte-equipe-3,
+  .carte-equipe-4,
+  .carte-equipe-5 {
     display: grid;
 	  grid-template-rows: repeat(4, 1fr);
 	  grid-template-columns: repeat(2, 1fr);
@@ -401,16 +401,16 @@
     margin-top: 2em;
   }
 
-  .CarteEquipe > .Photo,
-  .CarteEquipe3 > .Photo,
-  .CarteEquipe5 > .Photo {
+  .carte-equipe > .photo,
+  .carte-equipe-3 > .photo,
+  .carte-equipe-5 > .photo {
     grid-area: 1 / 1 / 5 / 2;
     border: 1px var(--border-color-special) solid;
   }
 
-  .CarteEquipe > .Nom,
-  .CarteEquipe3 > .Nom,
-  .CarteEquipe5 > .Nom {
+  .carte-equipe > .nom,
+  .carte-equipe-3 > .nom,
+  .carte-equipe-5 > .nom {
     grid-area: 1 / 2 / 2 / 3;
     border: 1px var(--border-color-special) solid;
     background-color: var(--border-color-special);
@@ -419,30 +419,30 @@
     padding-left: 0.4em;
   }
 
-  .CarteEquipe > .Role,
-  .CarteEquipe3 > .Role,
-  .CarteEquipe5 > .Role {
+  .carte-equipe > .role,
+  .carte-equipe-3 > .role,
+  .carte-equipe-5 > .role {
     grid-area: 2 / 2 / 3 / 3;
     border: 1px var(--border-color-special) solid;
     padding-top: 0.4em;
     padding-left: 0.4em;
   }
 
-  .CarteEquipe > .PetitsCarre,
-  .CarteEquipe3 > .PetitsCarre,
-  .CarteEquipe5 > .PetitsCarre {
+  .carte-equipe > .petits-carre,
+  .carte-equipe-3 > .petits-carre,
+  .carte-equipe-5 > .petits-carre {
     grid-area: 3 / 2 / 5 / 3;
     border: 1px var(--border-color-special) solid;
   }
 
-  .CarteEquipe2 > .Photo,
-  .CarteEquipe4 > .Photo {
+  .carte-equipe-2 > .photo,
+  .carte-equipe-4 > .photo {
     grid-area: 3 / 1 / 5 / 2;
     border: 1px var(--border-color-special) solid;
   }
 
-  .CarteEquipe2 > .Nom,
-  .CarteEquipe4 > .Nom {
+  .carte-equipe-2 > .nom,
+  .carte-equipe-4 > .nom {
     grid-area: 1 / 1 / 2 / 2;
     border: 1px var(--border-color-special) solid;
     background-color: var(--border-color-special);
@@ -451,16 +451,16 @@
     padding-left: 0.4em;
   }
 
-  .CarteEquipe2 > .Role,
-  .CarteEquipe4 > .Role {
+  .carte-equipe-2 > .role,
+  .carte-equipe-4 > .role {
     grid-area: 2 / 1 / 3 / 2;
     border: 1px var(--border-color-special) solid;
     padding-top: 0.4em;
     padding-left: 0.4em;
   }
 
-  .CarteEquipe2 > .PetitsCarre,
-  .CarteEquipe4 > .PetitsCarre {
+  .carte-equipe-2 > .petits-carre,
+  .carte-equipe-4 > .petits-carre {
     grid-area: 1 / 2 / 5 / 3;
     border: 1px var(--border-color-special) solid;
   }

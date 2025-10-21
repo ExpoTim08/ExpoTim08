@@ -17,58 +17,58 @@
   <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-  <div class="Border Gauche"></div>
-  <div class="Border Droite"></div>
+  <div class="border gauche"></div>
+  <div class="border droite"></div>
   <?php get_header(); ?>
 
 
   <main>
-    <div class="Carroussel">
-      <div class="ImageWrap"><img id="ImageCarroussel" src="<?php echo get_template_directory_uri(); ?>/Images/Arcade.jpg" alt=""></div>
-      <img class="ImageTitre" src="<?php echo get_template_directory_uri(); ?>/Images/Texte.png" alt="">
+    <div class="carroussel">
+      <div class="image-wrap"><img id="image-carroussel" src="<?php echo get_template_directory_uri(); ?>/Images/Arcade.jpg" alt=""></div>
+      <img class="image-titre" src="<?php echo get_template_directory_uri(); ?>/Images/Texte.png" alt="">
 
-      <div class="ArcadeDetails">
-        <p class="Sous-titre Sous-titreCarroussel">ARCADE</p>
-        <p class="Description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate animi voluptate...</p>
-        <a href="<?php echo get_permalink( get_page_by_path('arcade') ); ?>" class="Plus">Voir Plus</a>
+      <div class="arcade-details">
+        <p class="sous-titre sous-titre-carroussel">ARCADE</p>
+        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate animi voluptate...</p>
+        <a href="<?php echo get_permalink( get_page_by_path('arcade') ); ?>" class="plus">Voir Plus</a>
       </div>
 
-      <div class="CarrousselChoix">
-        <p class="Arcade ArcadeClick" onclick="ChangeImageManuel('<?php echo get_template_directory_uri(); ?>/Images/Arcade.jpg')">ARCADE</p> 
-        <p class="JourTerre" onclick="ChangeImageManuel('<?php echo get_template_directory_uri(); ?>/Images/Nature.jpeg')">JOUR DE LA TERRE</p>
-        <p class="Finissants" onclick="ChangeImageManuel('<?php echo get_template_directory_uri(); ?>/Images/Finissants.jpg')">PROJETS DES FINISSANTS</p>
+      <div class="carroussel-choix">
+        <p class="arcade arcade-click" onclick="ChangeImageManuel('<?php echo get_template_directory_uri(); ?>/Images/Arcade.jpg')">ARCADE</p> 
+        <p class="jour-terre" onclick="ChangeImageManuel('<?php echo get_template_directory_uri(); ?>/Images/Nature.jpeg')">JOUR DE LA TERRE</p>
+        <p class="finissants" onclick="ChangeImageManuel('<?php echo get_template_directory_uri(); ?>/Images/Finissants.jpg')">PROJETS DES FINISSANTS</p>
       </div>
     </div>
 
-    <p class="Accroche">Découvrez l’univers créatif des étudiants de la Technique d’intégration multimédia! </p>
+    <p class="accroche">Découvrez l’univers créatif des étudiants de la Technique d’intégration multimédia! </p>
 
-    <div class="APropos">
-      <p class="Sous-titre">À propos de l'expo TIM</p>
-      <img class="ImageAPropos" src="<?php echo get_template_directory_uri(); ?>/Images/Arcade.jpg" alt="">
-      <p class="Description">Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
+    <div class="a-propos">
+      <p class="sous-titre">À propos de l'expo TIM</p>
+      <img class="image-a-propos" src="<?php echo get_template_directory_uri(); ?>/Images/Arcade.jpg" alt="">
+      <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
     </div>
 
-    <div class="Horaire">
-      <p class="Sous-titre">HORAIRE</p>
+    <div class="horaire">
+      <p class="sous-titre">HORAIRE</p>
 
-      <div class="HoraireExposition">
-        <span class="Heure">13:00</span>
-        <div class="ArcadeHoraire">
-          <span class="Sous-titre">Arcade</span>
+      <div class="horaire-exposition">
+        <span class="heure">13:00</span>
+        <div class="arcade-horaire">
+          <span class="sous-titre">Arcade</span>
           <span>Indisponible</span>
         </div>
-        <div class="JourTerreHoraire">
-         <span class="Sous-titre">Jour de la Terre</span>
+        <div class="jour-terre-horaire">
+         <span class="sous-titre">Jour de la Terre</span>
          <span>Indisponible</span>
         </div>
-        <div class="FinissantsHoraire">
-          <span class="Sous-titre">Projet de finissants</span>
+        <div class="finissants-horaire">
+          <span class="sous-titre">Projet de finissants</span>
           <span>Indisponible</span>
         </div> 
       </div>
 
-      <div class="GrilleHoraire">
-        <span class="HeureClick">13:00</span>
+      <div class="grille-horaire">
+        <span class="heure-click">13:00</span>
         <span>14:00</span>
         <span>15:00</span>
         <span>16:00</span>
@@ -79,91 +79,91 @@
       </div>
     </div>
 
-    <div class="ProjetsPopulaire">
+    <div class="projets-populaire">
       <h1>PROJETS POPULAIRE</h1>
       <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident minus sit exercitationem. Facere repudiandae error enim labore! Quibusdam, tempore? Necessitatibus magni illum, adipisci dicta nostrum sequi iure. Dolor, nulla dignissimos?</p>
-      <div class="ProjetPopulaireArcade">
-        <span class="Titre">TITRE</span>
-        <span class="Bouton">>></span>
-        <span class="Categorie">Catégorie</span>
-        <span class="CategorieNom">ARCADE</span>
+      <div class="projet-populaire-arcade">
+        <span class="titre">TITRE</span>
+        <span class="bouton">>></span>
+        <span class="categorie">Catégorie</span>
+        <span class="categorie-nom">ARCADE</span>
       </div>
-      <img class="ImagePopulaireArcade" src="<?php echo get_template_directory_uri(); ?>/Images/EcotidienArcade.png" alt="">
+      <img class="image-populaire-arcade" src="<?php echo get_template_directory_uri(); ?>/Images/EcotidienArcade.png" alt="">
 
-      <div class="DescriptionPopulaireArcade">
-        <span class="Description">Description</span>
-        <span class="Moins">[-]</span>
-      </div>
-
-      <div class="ProjetPopulaireJourTerre">
-        <span class="Titre">TITRE</span>
-        <span class="Bouton">>></span>
-        <span class="Categorie">Catégorie</span>
-        <span class="CategorieNom">JOUR DE LA TERRE</span>
-      </div>
-      <img class="ImagePopulaireJourTerre" src="<?php echo get_template_directory_uri(); ?>/Images/EcotidienJourTerre.png" alt="">
-
-      <div class="DescriptionPopulaireJourTerre">
-        <span class="Description">Description</span>
-        <span class="Moins">[-]</span>
+      <div class="description-populaire-arcade">
+        <span class="description">Description</span>
+        <span class="moins">[-]</span>
       </div>
 
-      <div class="ProjetPopulaireFinissant">
-        <span class="Titre">TITRE</span>
-        <span class="Bouton">>></span>
-        <span class="Categorie">Catégorie</span>
-        <span class="CategorieNom">PROJETS DES FINISSANTS</span>
+      <div class="projet-populaire-jour-terre">
+        <span class="titre">TITRE</span>
+        <span class="bouton">>></span>
+        <span class="categorie">Catégorie</span>
+        <span class="categorie-nom">JOUR DE LA TERRE</span>
       </div>
-      <img class="ImagePopulaireFinissants" src="<?php echo get_template_directory_uri(); ?>/Images/FinissantsPopulaire.png" alt="">
+      <img class="image-populaire-jour-terre" src="<?php echo get_template_directory_uri(); ?>/Images/EcotidienJourTerre.png" alt="">
 
-      <div class="DescriptionPopulaireFinissants">
-        <span class="Description">Description</span>
-        <span class="Moins">[-]</span>
+      <div class="description-populaire-jour-terre">
+        <span class="description">Description</span>
+        <span class="moins">[-]</span>
+      </div>
+
+      <div class="projet-populaire-finissant">
+        <span class="titre">TITRE</span>
+        <span class="bouton">>></span>
+        <span class="categorie">Catégorie</span>
+        <span class="categorie-nom">PROJETS DES FINISSANTS</span>
+      </div>
+      <img class="image-populaire-finissants" src="<?php echo get_template_directory_uri(); ?>/Images/FinissantsPopulaire.png" alt="">
+
+      <div class="description-populaire-finissants">
+        <span class="description">Description</span>
+        <span class="moins">[-]</span>
       </div>
     </div>
 
-    <div class="Partenaires">
+    <div class="partenaires">
       <h1>Partenaires</h1>
       <img src="<?php echo get_template_directory_uri(); ?>/Images/MaisonneuveLogo.png" alt="">
       <img src="<?php echo get_template_directory_uri(); ?>/Images/MaisonneuveLogo.png" alt="">
       <img src="<?php echo get_template_directory_uri(); ?>/Images/MaisonneuveLogo.png" alt="">
     </div>
 
-    <div class="Equipe">
+    <div class="equipe">
       <h1>L'équipe</h1>
-      <div class="CarteEquipe">
-        <span class="Photo"></span>
-        <span class="Nom">Nom</span>
-        <span class="Role">Role</span>
-        <span class="PetitsCarre"></span>
+      <div class="carte-equipe">
+        <span class="photo"></span>
+        <span class="nom">Nom</span>
+        <span class="role">Role</span>
+        <span class="petits-carre"></span>
       </div>
 
-      <div class="CarteEquipe2">
-        <span class="Photo"></span>
-        <span class="Nom">Nom</span>
-        <span class="Role">Role</span>
-        <span class="PetitsCarre"></span>
+      <div class="carte-equipe-2">
+        <span class="photo"></span>
+        <span class="nom">Nom</span>
+        <span class="role">Role</span>
+        <span class="petits-carre"></span>
       </div>
 
-      <div class="CarteEquipe3">
-        <span class="Photo"></span>
-        <span class="Nom">Nom</span>
-        <span class="Role">Role</span>
-        <span class="PetitsCarre"></span>
+      <div class="carte-equipe-3">
+        <span class="photo"></span>
+        <span class="nom">Nom</span>
+        <span class="role">Role</span>
+        <span class="petits-carre"></span>
       </div>
 
-      <div class="CarteEquipe4">
-        <span class="Photo"></span>
-        <span class="Nom">Nom</span>
-        <span class="Role">Role</span>
-        <span class="PetitsCarre"></span>
+      <div class="carte-equipe-4">
+        <span class="photo"></span>
+        <span class="nom">Nom</span>
+        <span class="role">Role</span>
+        <span class="petits-carre"></span>
       </div>
 
-      <div class="CarteEquipe5">
-        <span class="Photo"></span>
-        <span class="Nom">Nom</span>
-        <span class="Role">Role</span>
-        <span class="PetitsCarre"></span>
+      <div class="carte-equipe-5">
+        <span class="photo"></span>
+        <span class="nom">Nom</span>
+        <span class="role">Role</span>
+        <span class="petits-carre"></span>
       </div>
     </div>
   </main>
