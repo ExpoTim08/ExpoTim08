@@ -44,7 +44,7 @@ function ChangeImageAutomatique(index) {
     elm.classList.remove('arcade-click', 'jour-terre-click', 'finissants-click');
   });
 
-  document.querySelector(`.${ClassName}`).classList.add(`${ClassName}click`);
+  document.querySelector(`.${ClassName}`).classList.add(`${ClassName}-click`);
 }
 
 // ✅ Change image every 3 seconds
