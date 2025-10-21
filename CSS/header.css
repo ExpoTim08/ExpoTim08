@@ -111,7 +111,6 @@
     display: flex;
     align-content: space-around;
     flex-direction: column;
-    padding-top: 50%;
     padding-bottom: 50%;
   }
 
