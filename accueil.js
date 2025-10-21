@@ -3,17 +3,17 @@
   {
     src: `${themeUrl}/Images/Arcade.jpg`,
     Titre: "ARCADE",
-    ClassName: "Arcade"
+    ClassName: "arcade"
   },
   {
     src: `${themeUrl}/Images/Nature.jpeg`,
     Titre: "JOUR DE LA TERRE",
-    ClassName: "JourTerre"
+    ClassName: "jour-terre"
   },
   {
     src: `${themeUrl}/Images/Finissants.jpg`,
     Titre: "PROJETS DES FINISSANTS",
-    ClassName: "Finissants"
+    ClassName: "finissants"
   }
 ];
 
@@ -30,8 +30,8 @@ window.ChangeImageManuel = function(NewSrc)  {
 
 //Fonction pour alterner entre les images automatiquement
 function ChangeImageAutomatique(index) {
-  const Image = document.getElementById('ImageCarroussel');
-  const subtitle = document.querySelector('.Sous-titreCarroussel');
+  const Image = document.getElementById('image-carroussel');
+  const subtitle = document.querySelector('.sous-titre-carroussel');
 
   const { src, Titre, ClassName } = Images[index];
 
@@ -40,11 +40,11 @@ function ChangeImageAutomatique(index) {
   subtitle.innerText = Titre;
 
   // Update class states
-  document.querySelectorAll('.CarrousselChoix p').forEach(elm => {
-    elm.classList.remove('ArcadeClick', 'JourTerreClick', 'FinissantsClick');
+  document.querySelectorAll('.carroussel-choix p').forEach(elm => {
+    elm.classList.remove('arcade-click', 'jour-terre-click', 'finissants-click');
   });
 
-  document.querySelector(`.${ClassName}`).classList.add(`${ClassName}Click`);
+  document.querySelector(`.${ClassName}`).classList.add(`${ClassName}click`);
 }
 
 // ✅ Change image every 3 seconds
