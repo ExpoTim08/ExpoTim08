@@ -1,32 +1,40 @@
 <?php
-//charge le fichier customizer.php
+// =========================================================
+// Charger le fichier customizer.php (options du thème)
+// =========================================================
 require get_template_directory() . '/customizer.php';
 
-// Charger les fichiers CSS globaux et le menu burger
+
+// =========================================================
+// Charger les fichiers CSS et JS du thème
+// =========================================================
 function expo_enqueue_assets() {
-    // CSS principal du thème
-    wp_enqueue_style('style-theme', get_stylesheet_uri());
 
-    // CSS main.css global
-    wp_enqueue_style('style-main', get_template_directory_uri() . '/CSS/main.css');
+    // --- CSS global du thème ---
+    wp_enqueue_style('style-theme', get_stylesheet_uri()); // style.css (obligatoire dans WordPress)
+    wp_enqueue_style('style-main', get_template_directory_uri() . '/CSS/main.css'); // CSS global
+    wp_enqueue_style('style-header', get_template_directory_uri() . '/CSS/header.css'); // menu burger
 
-    // CSS header.css (menu burger)
-    wp_enqueue_style('style-header', get_template_directory_uri() . '/CSS/header.css');
-
-    // Script du menu burger
+    // --- JS global (menu burger) ---
     wp_enqueue_script('menu-script', get_template_directory_uri() . '/menu.js', array(), false, true);
-}
-add_action('wp_enqueue_scripts', 'expo_enqueue_assets');
 
-// Charger un CSS spécifique à la page arcade
-function charger_styles_arcade() {
-    if (is_page_template('arcade.php')) {
+    // --- CSS spécifique à la page d'accueil ---
+    if (is_front_page()){
+        wp_enqueue_style('style-accueil', get_template_directory_uri() . '/CSS/accueil.css');
+    }
+
+    // --- CSS spécifique à la page Arcade ---
+    // S’applique seulement si la page utilise le modèle arcade.php ou ar.php
+    if (is_page_template('arcade.php') || is_page_template('ar.php')) {
         wp_enqueue_style('style-arcade', get_template_directory_uri() . '/CSS/arcade.css');
     }
 }
-add_action('wp_enqueue_scripts', 'charger_styles_arcade');
+add_action('wp_enqueue_scripts', 'expo_enqueue_assets');
 
+
+// =========================================================
 // Enregistrer le menu principal
+// =========================================================
 register_nav_menus(array(
     'main-menu' => 'Menu principal',
 ));
