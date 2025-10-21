@@ -4,6 +4,10 @@
  */
 ?>
 
+<div class="HeaderTopMargin">
+  <!-- Espace en haut de la page pour mobile -->
+</div>
+
 <header class="site-header">
   <h1 class="logo"><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
 
