@@ -3,7 +3,7 @@
     <div class="footer-logo">
       <img src="<?php echo get_template_directory_uri(); ?>/Images/logo.png" alt="Logo de l'expo TIM">
     </div>
-    <div class="footer-socials">
+    <div class="footer-icones">
       <a href="https://www.youtube.com" target="_blank" aria-label="YouTube">
         <img src="<?php echo get_template_directory_uri(); ?>/Images/youtube.svg" alt="YouTube">
       </a>
@@ -44,7 +44,7 @@
   </div>
 
   <div class="footer-menu-bas">
-    <p>© <?php echo date('Y'); ?> Expo TIM — Tous droits réservés.</p>
+    <p>© <?php echo date('Y'); ?> TimVision — Tous droits réservés.</p>
   </div>
 
   <?php wp_footer(); ?>
