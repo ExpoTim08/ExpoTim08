@@ -22,7 +22,7 @@
     footer > * {
         border-top: solid 2px var(--font-color);
         padding: 1em 1em;
-        margin: 1em;
+        margin: 0em 1em;
     }
 
     footer ul{

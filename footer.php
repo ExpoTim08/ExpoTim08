@@ -20,8 +20,11 @@
     </div>
   </div>
 
-  <div class="footer-contact">
+  <div class="footer-adresse">
     <p>3800 Sherbrooke St E, Montréal, Québec H1X 2A2</p>
+  </div>
+
+  <div class="footer-telephone">
     <p>+1 (514) 254 7131</p>
   </div>
 
