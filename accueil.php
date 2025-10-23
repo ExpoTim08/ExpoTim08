@@ -161,6 +161,6 @@ require("global.php");
    <script>const themeUrl = "<?php echo get_template_directory_uri(); ?>";</script>
    <script src="<?php echo get_template_directory_uri(); ?>/accueil.js"></script>
 
-  <?php wp_footer(); ?>
+   <?php get_footer(); ?>
 </body>
 </html>

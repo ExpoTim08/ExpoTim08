@@ -29,5 +29,6 @@ require("global.php");
   <!-- Scripts JS -->
   <script>const themeUrl = "<?php echo get_template_directory_uri(); ?>";</script>
   <script src="<?php echo get_template_directory_uri(); ?>/menu.js"></script>
+  <?php get_footer(); ?>
 </body>
 </html>
