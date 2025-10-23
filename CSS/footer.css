@@ -2,6 +2,10 @@
 
 @media screen and (max-width: 440px) {
 
+    body {
+        margin: 0px;
+    }
+
     footer {
         margin-top: 5em;
     }
@@ -17,12 +21,22 @@
 
     footer > * {
         border-top: solid 2px var(--font-color);
-        padding: 1em 2em;
+        padding: 1em 1em;
+        margin: 1em;
     }
 
-    footer ul li{
+    footer ul{
         list-style: none;
         padding: 0;
+    }
+
+    footer ul li a {
+        text-decoration: none;
+    }
+
+    .footer-bottom {
+        display: flex;
+        flex-flow: row;
     }
     
 }
