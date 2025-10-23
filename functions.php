@@ -14,6 +14,7 @@ function expo_enqueue_assets() {
     wp_enqueue_style('style-theme', get_stylesheet_uri()); // style.css (obligatoire dans WordPress)
     wp_enqueue_style('style-main', get_template_directory_uri() . '/CSS/main.css'); // CSS global
     wp_enqueue_style('style-header', get_template_directory_uri() . '/CSS/header.css'); // menu burger
+    wp_enqueue_style('style-footer', get_template_directory_uri() . '/CSS/footer.css'); // footer
 
     // --- JS global (menu burger) ---
     wp_enqueue_script('menu-script', get_template_directory_uri() . '/menu.js', array(), false, true);

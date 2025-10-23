@@ -1,0 +1,28 @@
+/*------------- Footer CSS --------------*/
+
+@media screen and (max-width: 440px) {
+
+    footer {
+        margin-top: 5em;
+    }
+
+    footer a, footer p, footer h3 {
+        color: var(--font-color);
+    }
+
+    .footer-top{
+        display: flex;
+        flex-flow: row;
+    }
+
+    footer > * {
+        border-top: solid 2px var(--font-color);
+        padding: 1em 2em;
+    }
+
+    footer ul li{
+        list-style: none;
+        padding: 0;
+    }
+    
+}
