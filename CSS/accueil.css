@@ -1,10 +1,3 @@
-@media screen and (max-width: 440px) {
-  body {
-    background-color: var(--background-color);
-    background-image: url(../Images/Hexagon.png);
-    background-size: 10em;
-  }
-
   span, p {
     font-family: var(--general-font);
     color: var(--font-color);
@@ -13,6 +6,14 @@
   h1 {
     color: var(--font-color);
     font-family: var(--title-font);
+  }
+
+/**************************************** CSS Mobile ****************************************************/
+@media screen and (max-width: 440px) {
+  body {
+    background-color: var(--background-color);
+    background-image: url(../Images/Hexagon.png);
+    background-size: 10em;
   }
 
   .border {
@@ -35,21 +36,22 @@
     height: 100%;
   }
 
+/**************************************** CSS Section Carroussel **************************************************/
   .carroussel {
     border-top: 2px solid var(--border-color);
-    padding: 2em;
+    /* justify-content: center; */
   }
 
   .image-wrap {
+    display: block;
+    justify-self: center;
     filter: drop-shadow(-9px 9px 0 var(--bouton-projet-arcade-color))
             drop-shadow(-11px 12px 0 var(--bouton-projet-jt-color))
             drop-shadow(-11px 13px 0 var(--bouton-projet-finissant-color));
   }
 
   #image-carroussel {
-    display: block;
-    justify-self: center;
-    width: 100%;
+    width: 20rem;
     height: 80vh; 
     clip-path: polygon(75% 0, 100% 15%, 100% 100%, 19% 100%, 0 82%, 0 0);
     opacity: 1;
@@ -60,8 +62,8 @@
   .image-titre {
     width: 310px;
     height: 43px;
-    margin-top: -26em;
-    margin-left: 1.5em;
+    top: 35%;
+    left: 15%;
     position: absolute;
     z-index: 1;
   }
@@ -78,6 +80,7 @@
     font-size: 35px;
     font-family: var(--title-font);
     -webkit-text-stroke: 2px black;
+    margin-left: 0.2rem;
   }
 
   .arcade-details > .plus {
@@ -86,9 +89,14 @@
     width: 100px;
     text-align: center;
     font-weight: bolder;
+    margin-left: 2rem;
   }
 
-  .arcade-details > .description {font-weight: bolder;}
+  .arcade-details > .description {
+    font-weight: bolder;
+    width: 75%;
+    margin-left: 2rem;
+  }
 
   .sous-titre-carroussel {
     margin-left: -2em;
@@ -103,7 +111,7 @@
   .carroussel-choix > p {
     padding: 1em;
     border: 1px solid var(--border-color);
-    width: 100px;
+    width: 5.5rem;
     height: 30px;
     text-align: center;
     align-content: center;
@@ -129,11 +137,13 @@
   .carroussel-choix > .finissants:hover {
     cursor: pointer;
   }
+
   .plus{
     color: var(--font-color);
     text-decoration: none;
   }
 
+/****************************************** CSS Section Accroche ***************************************************/
   .accroche {
     width: 246px;
     height: 209px;
@@ -145,6 +155,7 @@
     -webkit-text-fill-color: transparent;
   }
 
+/*************************************** CSS Section À Propos ******************************************************/
   .a-propos {
     border-bottom: 2px solid var(--border-color);
   }
@@ -170,6 +181,7 @@
     width: 200px;
   }
 
+/**************************************** CSS Section Horaire ****************************************************/
   .horaire {
     border-top: 2px solid var(--border-color);
     border-bottom: 2px solid var(--border-color);
@@ -185,6 +197,10 @@
     border: 1px solid #F1E2CC;
     width: 270px;
     padding-bottom: 2em;
+  }
+
+  .horaire-desktop {
+    display: none;
   }
 
   .horaire-exposition > .heure {
@@ -275,6 +291,7 @@
     background-color: #b39f84;
   }
 
+/************************************ CSS Section Projets Populaire **********************************************/
   .projets-populaire > h1,
   .partenaires > h1,
   .equipe > h1 {
@@ -376,6 +393,7 @@
     border-left: 1px solid var(--border-color);
   }
 
+/************************************* CSS Section Partenaires ****************************************************/
   .partenaires {
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
@@ -387,6 +405,7 @@
     padding-bottom: 1em;
   }
 
+/******************************************* CSS Section Équipe ****************************************************/
   .carte-equipe,
   .carte-equipe-2,
   .carte-equipe-3,
@@ -466,3 +485,267 @@
   }
 
 }
+
+/********************************************** CSS Desktop ********************************************************/
+@media screen and (min-width: 992px) {
+  body {
+    background-color: rgb(44, 44, 44);
+  }
+
+  .border {
+    position: fixed;
+    background: white; /* couleur des bords */
+    z-index: 9999;
+  }
+
+  .border.gauche {
+    top: 0;
+    left: 1em;
+    width: 2px; /* épaisseur du bord gauche */
+    height: 100%;
+  }
+
+  .border.droite {
+    top: 0;
+    right: 1em;
+    width: 2px; /* épaisseur du bord droit */
+    height: 100%;
+  }
+
+/******************************** CSS Section Carroussel Desktop **************************************************/
+  .carroussel {
+    position: relative;
+  }
+
+  .image-wrap {
+    filter: drop-shadow(10px -15px 0 var(--bouton-projet-arcade-color))
+            drop-shadow(17px -12px 0 var(--bouton-projet-jt-color))
+            drop-shadow(20px -11px 0 var(--bouton-projet-finissant-color));
+  }
+
+  #image-carroussel {
+    display: block;
+    width: 85vw;
+    height: 70vh;
+    justify-self: center;
+    clip-path: polygon(81% 0, 100% 31%, 100% 100%, 0 100%, 0 0);
+    object-fit: cover;
+
+  }
+
+  .image-titre {
+    scale: 0.3;
+    position: absolute;
+    top: -5%;
+    left: -25%;
+    background-color: var(--bouton-projet-arcade-color);
+    padding: 5rem;
+  }
+
+  .arcade-details {
+    position: absolute;
+    margin-top: -15vw;
+    margin-left: 9vw;
+    height: 25vh;
+    width: 100vh;
+    background-color: rgba(25, 26, 25, 0.9);
+    display: grid;
+	  grid-template-rows: repeat(3, 1fr);
+	  grid-template-columns: repeat(2, 1fr);
+	  gap: 0;
+  }
+
+  .arcade-details > .sous-titre-carroussel {
+    grid-area: 1 / 1 / 4 / 2;
+    font-size: xx-large;
+    text-align: center;
+    -webkit-text-stroke: 2px rgb(255, 255, 255);
+    text-shadow: 0px 35px 0px rgb(255, 255, 255, 0.8),
+                  0px 70px 0px rgb(255, 255, 255, 0.6),
+                  0px 105px 0px rgb(255, 255, 255, 0.4) ;
+  }
+
+  .arcade-details > .description {
+    grid-area: 1 / 2 / 3 / 3;
+  }
+
+  .arcade-details > .plus {
+    width: fit-content;
+    height: fit-content;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+    border: 1px solid white;
+    grid-area: 3 / 2 / 4 / 3;
+  }
+
+  .carroussel-choix {
+    display: flex;
+    justify-content: center;
+  }
+
+  .carroussel-choix > .arcade, .carroussel-choix > .jour-terre, .carroussel-choix > .finissants {
+    padding: 1rem;
+    padding-bottom: 2rem;
+    margin: 2rem;
+    width: 10vw;
+    height: 5vh;
+    border: 2px black solid;
+    font-size: x-large;
+    cursor: pointer;
+    background-color: #7D77D4;
+    transform: skew(-20deg);
+    text-align: center;
+  }
+
+  .carroussel-choix > .arcade {
+    font-size: 40px;
+  }
+
+  .carroussel-choix > .arcade-click {background-color: var(--carrousel-bouton-background-color);}
+  .carroussel-choix > .jour-terre-click {background-color: var(--bouton-projet-jt-color);}
+  .carroussel-choix > .finissants-click {background-color: var(--bouton-projet-finissant-color);}
+
+/*********************************** CSS Section Accroche Desktop *************************************************/
+  .accroche {
+    width: 50vw;
+    height: 209px;
+    font-size: 3rem;
+    justify-self: center;
+    background: linear-gradient(to right, #7D77D4 20%, #2FC7BF 50%, #EECC7F 80%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+/********************************* CSS Section À Propos Desktop ****************************************************/
+  .a-propos {
+    display: grid;
+	  grid-template-rows: repeat(4, 1fr);
+	  grid-template-columns: repeat(2, 1fr);
+	  gap: 0;
+    justify-items: center;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+    padding: 2rem;
+  }
+
+  .a-propos > .image-a-propos {
+    grid-area: 1 / 1 / 5 / 2;
+    height: 40vh;
+  }
+
+  .a-propos > .sous-titre {
+    grid-area: 1 / 2 / 3 / 3;
+    font-size: 40px;
+  }
+
+  .a-propos > .description {
+    grid-area: 3 / 2 / 5 / 3;
+  }
+
+/********************************** CSS Section Horaire Desktop ****************************************************/
+  .horaire {
+    display: none;
+  }
+
+  .horaire-desktop > p {
+    font-size: 60px;
+    padding-left: 3rem;
+  }
+
+  .horaire-exposition {
+    border-top: var(--border-color-special) 2px solid;
+    border-bottom: var(--border-color-special) 2px solid;
+    padding-top: 3rem;
+  }
+
+  .horaire-desktop > .horaire-exposition,
+  .horaire-desktop > .arcade-horaire,
+  .horaire-desktop > .jour-terre-horaire,
+  .horaire-desktop > .finissants-horaire {
+    display: grid;
+	  grid-template-rows: repeat(8, 1fr);
+	  grid-template-columns: repeat(4, 1fr);
+	  gap: 1em 0px;
+    justify-items: center;
+    height: 90vh;
+  }
+
+  .arcade-horaire {
+    border: 1px solid var(--bouton-projet-arcade-color);
+    width: 170px;
+    color: var(--font-color);
+    display: flex;
+    flex-direction: column;
+    margin-top: 1em;
+  }
+
+  .arcade-horaire > .sous-titre {background-color: var(--bouton-projet-arcade-color);}
+
+  .jour-terre-horaire {
+    width: 170px;
+    border: 1px solid var(--bouton-projet-jt-color);
+    color: var(--font-color);
+    display: flex;
+    flex-direction: column;
+    margin-top: 1em;
+  }
+
+  .jour-terre-horaire > .sous-titre {background-color: var(--bouton-projet-jt-color);}
+
+  .finissants-horaire {
+    width: 170px;
+    border: 1px solid var(--bouton-projet-finissant-color);
+    color: var(--font-color);
+    display: flex;
+    flex-direction: column;
+    margin-top: 1em;
+  }
+
+  .finissants-horaire > .sous-titre {background-color: var(--bouton-projet-finissant-color);}
+
+  .horaire-exposition > .heure, 
+  .arcade-horaire > span, 
+  .jour-terre-horaire > span, 
+  .finissants-horaire > span {
+    align-content: center;
+    height: 2.5em;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .une-heure,
+  .deux-heure,
+  .trois-heure,
+  .quatre-heure,
+  .cinq-heure,
+  .six-heure,
+  .sept-heure,
+  .huit-heure{
+    height: 40vh;
+    align-content: center;
+    border: var(--border-color-special) 1px solid;
+    width: 15vw;
+    justify-items: center;
+  }
+
+  .une-heure > .heure,
+  .deux-heure > .heure,
+  .trois-heure > .heure,
+  .quatre-heure > .heure,
+  .cinq-heure > .heure,
+  .six-heure > .heure,
+  .sept-heure > .heure,
+  .huit-heure > .heure {
+    color: black;
+    background-color: var(--border-color-special);
+    text-align: left;
+    padding: 0.4em;
+    padding-left: 1em;
+  }
+
+}
+
+

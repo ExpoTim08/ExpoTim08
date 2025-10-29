@@ -12,6 +12,7 @@ require("global.php");
 
 
   <main>
+<!----------------------------------------------- PHP Section Carroussel --------------------------------------------->
     <div class="carroussel">
       <div class="image-wrap"><img id="image-carroussel" src="<?php echo get_template_directory_uri(); ?>/Images/Arcade.jpg" alt=""></div>
       <img class="image-titre" src="<?php echo get_template_directory_uri(); ?>/Images/Texte.png" alt="">
@@ -29,14 +30,17 @@ require("global.php");
       </div>
     </div>
 
+<!------------------------------------------------ PHP Section Accroche --------------------------------------------->
     <p class="accroche">Découvrez l’univers créatif des étudiants de la Technique d’intégration multimédia! </p>
 
+<!------------------------------------------------ PHP Section À propos --------------------------------------------->
     <div class="a-propos">
       <p class="sous-titre">À propos de l'expo TIM</p>
       <img class="image-a-propos" src="<?php echo get_template_directory_uri(); ?>/Images/Arcade.jpg" alt="">
       <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
     </div>
 
+<!------------------------------------------ PHP Section Horaire Mobile --------------------------------------------->
     <div class="horaire">
       <p class="sous-titre">HORAIRE</p>
 
@@ -68,6 +72,142 @@ require("global.php");
       </div>
     </div>
 
+<!------------------------------------------- PHP Section Horaire Desktop ------------------------------------------->
+    <div class="horaire-desktop">
+      <p class="sous-titre">HORAIRE</p>
+
+        <div class="horaire-exposition">
+          <div class="une-heure">
+            <span class="heure">13:00</span>
+            <div class="arcade-horaire">
+              <span class="sous-titre">Arcade</span>
+              <span>Indisponible</span>
+            </div>
+            <div class="jour-terre-horaire">
+             <span class="sous-titre">Jour de la Terre</span>
+             <span>Indisponible</span>
+            </div>
+            <div class="finissants-horaire">
+              <span class="sous-titre">Projet de finissants</span>
+              <span>Indisponible</span>
+            </div>
+          </div>
+
+          <div class="deux-heure">
+            <span class="heure">14:00</span>
+            <div class="arcade-horaire">
+              <span class="sous-titre">Arcade</span>
+              <span>Indisponible</span>
+            </div>
+            <div class="jour-terre-horaire">
+             <span class="sous-titre">Jour de la Terre</span>
+             <span>Indisponible</span>
+            </div>
+            <div class="finissants-horaire">
+              <span class="sous-titre">Projet de finissants</span>
+              <span>Indisponible</span>
+            </div>
+          </div>
+
+          <div class="trois-heure">
+            <span class="heure">15:00</span>
+            <div class="arcade-horaire">
+              <span class="sous-titre">Arcade</span>
+              <span>Indisponible</span>
+            </div>
+            <div class="jour-terre-horaire">
+             <span class="sous-titre">Jour de la Terre</span>
+             <span>Indisponible</span>
+            </div>
+            <div class="finissants-horaire">
+              <span class="sous-titre">Projet de finissants</span>
+              <span>Indisponible</span>
+            </div>
+          </div>
+
+          <div class="quatre-heure">
+            <span class="heure">16:00</span>
+            <div class="arcade-horaire">
+              <span class="sous-titre">Arcade</span>
+              <span>Indisponible</span>
+            </div>
+            <div class="jour-terre-horaire">
+             <span class="sous-titre">Jour de la Terre</span>
+             <span>Indisponible</span>
+            </div>
+            <div class="finissants-horaire">
+              <span class="sous-titre">Projet de finissants</span>
+              <span>Indisponible</span>
+            </div>
+          </div>
+
+          <div class="cinq-heure">
+            <span class="heure">17:00</span>
+            <div class="arcade-horaire">
+              <span class="sous-titre">Arcade</span>
+              <span>Indisponible</span>
+            </div>
+            <div class="jour-terre-horaire">
+             <span class="sous-titre">Jour de la Terre</span>
+             <span>Indisponible</span>
+            </div>
+            <div class="finissants-horaire">
+              <span class="sous-titre">Projet de finissants</span>
+              <span>Indisponible</span>
+            </div>
+          </div>
+
+          <div class="six-heure">
+            <span class="heure">18:00</span>
+            <div class="arcade-horaire">
+              <span class="sous-titre">Arcade</span>
+              <span>Indisponible</span>
+            </div>
+            <div class="jour-terre-horaire">
+             <span class="sous-titre">Jour de la Terre</span>
+             <span>Indisponible</span>
+            </div>
+            <div class="finissants-horaire">
+              <span class="sous-titre">Projet de finissants</span>
+              <span>Indisponible</span>
+            </div>
+          </div>
+
+          <div class="sept-heure">
+            <span class="heure">19:00</span>
+            <div class="arcade-horaire">
+              <span class="sous-titre">Arcade</span>
+              <span>Indisponible</span>
+            </div>
+            <div class="jour-terre-horaire">
+             <span class="sous-titre">Jour de la Terre</span>
+             <span>Indisponible</span>
+            </div>
+            <div class="finissants-horaire">
+              <span class="sous-titre">Projet de finissants</span>
+              <span>Indisponible</span>
+            </div>
+          </div>
+
+          <div class="huit-heure">
+            <span class="heure">20:00</span>
+            <div class="arcade-horaire">
+              <span class="sous-titre">Arcade</span>
+              <span>Indisponible</span>
+            </div>
+            <div class="jour-terre-horaire">
+             <span class="sous-titre">Jour de la Terre</span>
+             <span>Indisponible</span>
+            </div>
+            <div class="finissants-horaire">
+              <span class="sous-titre">Projet de finissants</span>
+              <span>Indisponible</span>
+            </div>
+          </div>
+        </div>
+    </div>
+
+<!------------------------------------------- PHP Section Projets Populaire ----------------------------------------->
     <div class="projets-populaire">
       <h1>PROJETS POPULAIRE</h1>
       <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident minus sit exercitationem. Facere repudiandae error enim labore! Quibusdam, tempore? Necessitatibus magni illum, adipisci dicta nostrum sequi iure. Dolor, nulla dignissimos?</p>
@@ -111,6 +251,7 @@ require("global.php");
       </div>
     </div>
 
+<!--------------------------------------------- PHP Section Partenaires --------------------------------------------->
     <div class="partenaires">
       <h1>Partenaires</h1>
       <img src="<?php echo get_template_directory_uri(); ?>/Images/MaisonneuveLogo.png" alt="">
@@ -118,6 +259,7 @@ require("global.php");
       <img src="<?php echo get_template_directory_uri(); ?>/Images/MaisonneuveLogo.png" alt="">
     </div>
 
+<!------------------------------------------------ PHP Section Équipes --------------------------------------------->
     <div class="equipe">
       <h1>L'équipe</h1>
       <div class="carte-equipe">

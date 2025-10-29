@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  //Tableau des images avec leurs titres et leurs classes.
   const Images = [
     {
       src: `${themeUrl}/Images/Arcade.jpg`,
@@ -19,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let CurrentIndex = 0;
 
-  // Click manuels
+  // Cliques manuel
   window.ChangeImageManuel = function (NewSrc) {
     const FoundIndex = Images.findIndex(img => img.src === NewSrc);
     if (FoundIndex !== -1) {

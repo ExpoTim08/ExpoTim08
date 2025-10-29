@@ -1,30 +1,42 @@
-
-
+<!---------------- Section footer ----------------->
 
 <footer class="site-footer">
-
+  
+  <!-- Section haute du footer (logo + icones) -->
   <div class="footer-top">
     <div class="footer-logo">
       <img src="<?php echo get_template_directory_uri(); ?>/Images/logo.png" alt="Logo de l'expo TIM">
     </div>
     <div class="footer-icones">
-      <a href="https://www.youtube.com" target="_blank" aria-label="YouTube">
+      <a href="https://www.youtube.com/" target="_blank" aria-label="YouTube">
         <img src="<?php echo get_template_directory_uri(); ?>/Images/youtube.svg" alt="YouTube">
       </a>
-      <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
+      <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram">
         <img src="<?php echo get_template_directory_uri(); ?>/Images/instagram.svg" alt="Instagram">
       </a>
-      <a href="https://www.facebook.com" target="_blank" aria-label="Facebook">
+      <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook">
         <img src="<?php echo get_template_directory_uri(); ?>/Images/facebook.svg" alt="Facebook">
       </a>
     </div>
   </div>
 
+  <!-- Section contact (adresse + cell du college) -->
   <div class="footer-contact">
-    <p>3800 Sherbrooke St E, Montréal, Québec H1X 2A2</p>
-    <p>+1 (514) 254 7131</p>
+    <div class="footer-adresse">
+      <p>3800 Sherbrooke St E, Montréal, Québec H1X 2A2</p>
+    </div>
+
+    <div class="footer-telephone">
+      <p>+1 (514) 254 7131</p>
+    </div>
   </div>
 
+  <!-- Image logo TIM (seuleument en tablet et desktop)-->
+  <div class="footer-tim">
+    <p>TIM</p>
+  </div>
+
+  <!-- Section bas du footer (menu + liens) -->
   <div class="footer-bottom">
     <div class="footer-left">
       <h3>Navigation</h3>
@@ -47,6 +59,7 @@
     </div>
   </div>
 
+  <!-- Section très bas du footer (copyright) -->
   <div class="footer-menu-bas">
     <p>© <?php echo date('Y'); ?> TimVision — Tous droits réservés.</p>
   </div>
