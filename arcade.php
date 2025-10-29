@@ -9,7 +9,7 @@ require("global.php");
   <?php get_header(); ?>
 
   <main class="page-arcade">
-    <section>
+    <section class="presentationArcade">
       <h1 class="titre-arcade">Arcade</h1>
       <p class="description-titre">Description</p>
       <p class="description-arcade">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non fugit exercitationem praesentium deleniti accusamus dicta, sapiente perspiciatis facilis repudiandae, omnis veniam. Quidem omnis doloribus numquam, neque praesentium unde porro eaque!</p>
@@ -17,7 +17,7 @@ require("global.php");
 
     <p class="filtre">Filtrer</p>
 
-    <section>
+    <section class="exempleProjet">
       <h2 class="titre-projet-arcade">Nom du projet</h2>
       <img class="image-projet-arcade" src="<?php echo get_template_directory_uri(); ?>/Images/Arcade.jpg" alt="">
       <p class="description-projet">Ce projet illustre la fusion entre art visuel et interactivité numérique. Il invite les visiteurs à explorer un univers inspiré des jeux rétro modernisés.</p>

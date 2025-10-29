@@ -5,23 +5,55 @@
     background-size: 10em;
   }
 
+  h1, h2 {
+    color: var(--font-color);
+    font-family: var(--title-font);
+  }
+
+  p{
+    font-family: var(--general-font);
+    color: var(--font-color);
+  }
+
   .page-arcade {
     display: flex;
     max-width: 1200px; /* optionnel : limite la largeur comme l’accueil */
     margin: 0 auto; /* centre le conteneur principal */
     padding: 20px; /* espace autour du contenu */
+    flex-direction: column;
   }
   
   .page-arcade section {
     width: 100%;
     margin-bottom: 40px;
   }
+
+  .page-arcade .exempleProjet{
+    background-color: rgb(48, 48, 48);
+    border: 1px solid white;
+  }
   
+  .page-arcade section h1, h2, p{
+    margin-left: 2rem;
+  }
+
   .page-arcade img {
     max-width: 100%;
     height: auto;
     display: block;
     margin: 0 auto; /* centre les images */
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
   }
   
+  .filtre{
+    width: fit-content;
+    background-color: rgb(48, 48, 48);
+    border: 1px solid white;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin-left: 0;
+  }
 }
