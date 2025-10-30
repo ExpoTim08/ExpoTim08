@@ -22,6 +22,7 @@ function expo_enqueue_assets() {
     // --- CSS spécifique à la page d'accueil ---
     if (is_front_page()){
         wp_enqueue_style('style-accueil', get_template_directory_uri() . '/CSS/accueil.css');
+        // wp_enqueue_style('style-accueil', get_template_directory_uri() . '/CSS/test.css');
     }
 
     // --- CSS spécifique à la page Arcade ---

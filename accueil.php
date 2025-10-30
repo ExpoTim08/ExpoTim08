@@ -34,10 +34,12 @@ require("global.php");
     <p class="accroche">Découvrez l’univers créatif des étudiants de la Technique d’intégration multimédia! </p>
 
 <!------------------------------------------------ PHP Section À propos --------------------------------------------->
-    <div class="a-propos">
-      <p class="sous-titre">À propos de l'expo TIM</p>
-      <img class="image-a-propos" src="<?php echo get_template_directory_uri(); ?>/Images/Arcade.jpg" alt="">
-      <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
+    <div class="a-propos-background">
+      <div class="a-propos">
+        <p class="sous-titre">À propos de l'expo TIM</p>
+        <img class="image-a-propos" src="<?php echo get_template_directory_uri(); ?>/Images/Arcade.jpg" alt="">
+        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
+      </div>
     </div>
 
 <!------------------------------------------ PHP Section Horaire Mobile --------------------------------------------->
@@ -211,45 +213,48 @@ require("global.php");
     <div class="projets-populaire">
       <h1>PROJETS POPULAIRE</h1>
       <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident minus sit exercitationem. Facere repudiandae error enim labore! Quibusdam, tempore? Necessitatibus magni illum, adipisci dicta nostrum sequi iure. Dolor, nulla dignissimos?</p>
-      <div class="projet-populaire-arcade">
-        <span class="titre">TITRE</span>
-        <span class="bouton">>></span>
-        <span class="categorie">Catégorie</span>
-        <span class="categorie-nom">ARCADE</span>
-      </div>
-      <img class="image-populaire-arcade" src="<?php echo get_template_directory_uri(); ?>/Images/EcotidienArcade.png" alt="">
+      <div class="projets">
+        <div class="projet-populaire-arcade">
+          <span class="titre">TITRE</span>
+          <span class="bouton">>></span>
+          <span class="categorie">Catégorie</span>
+          <span class="categorie-nom">ARCADE</span>
+          <img class="image-populaire-arcade" src="<?php echo get_template_directory_uri(); ?>/Images/EcotidienArcade.png" alt="">
+        </div>
 
-      <div class="description-populaire-arcade">
-        <span class="description">Description</span>
-        <span class="moins">[-]</span>
-      </div>
+        <div class="background"></div>
+        <div class="background2"></div>
 
-      <div class="projet-populaire-jour-terre">
-        <span class="titre">TITRE</span>
-        <span class="bouton">>></span>
-        <span class="categorie">Catégorie</span>
-        <span class="categorie-nom">JOUR DE LA TERRE</span>
+        <div class="description-populaire-arcade">
+          <span class="description">Description</span>
+          <span class="moins">[-]</span>
+        </div>
+        <div class="projet-populaire-jour-terre">
+          <span class="titre">TITRE</span>
+          <span class="bouton">>></span>
+          <span class="categorie">Catégorie</span>
+          <span class="categorie-nom">JOUR DE LA TERRE</span>
+          <img class="image-populaire-jour-terre" src="<?php echo get_template_directory_uri(); ?>/Images/EcotidienJourTerre.png" alt="">
+        </div>
+        
+        <div class="description-populaire-jour-terre">
+          <span class="description">Description</span>
+          <span class="moins">[-]</span>
+        </div>
+        <div class="projet-populaire-finissant">
+          <span class="titre">TITRE</span>
+          <span class="bouton">>></span>
+          <span class="categorie">Catégorie</span>
+          <span class="categorie-nom">PROJETS DES FINISSANTS</span>
+          <img class="image-populaire-finissants" src="<?php echo get_template_directory_uri(); ?>/Images/FinissantsPopulaire.png" alt="">
+        </div>
+        
+        <div class="description-populaire-finissants">
+          <span class="description">Description</span>
+          <span class="moins">[-]</span>
+        </div>
+        </div>
       </div>
-      <img class="image-populaire-jour-terre" src="<?php echo get_template_directory_uri(); ?>/Images/EcotidienJourTerre.png" alt="">
-
-      <div class="description-populaire-jour-terre">
-        <span class="description">Description</span>
-        <span class="moins">[-]</span>
-      </div>
-
-      <div class="projet-populaire-finissant">
-        <span class="titre">TITRE</span>
-        <span class="bouton">>></span>
-        <span class="categorie">Catégorie</span>
-        <span class="categorie-nom">PROJETS DES FINISSANTS</span>
-      </div>
-      <img class="image-populaire-finissants" src="<?php echo get_template_directory_uri(); ?>/Images/FinissantsPopulaire.png" alt="">
-
-      <div class="description-populaire-finissants">
-        <span class="description">Description</span>
-        <span class="moins">[-]</span>
-      </div>
-    </div>
 
 <!--------------------------------------------- PHP Section Partenaires --------------------------------------------->
     <div class="partenaires">
