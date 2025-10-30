@@ -36,7 +36,7 @@
 
     .footer-bottom {
       display: flex;
-      flex-flow: row;
+      flex-flow: column wrap;
       border-top: solid 2px var(--font-color);
       padding: 0em;
       margin: 0em 1em;
@@ -44,10 +44,6 @@
 
     .footer-tim {
       display: none;
-    }
-
-    .footer-left {
-      border-right: 2px solid var(--border-color);
     }
     
 } /*------------- FIN FOOTER MOBILE --------------*/
@@ -123,6 +119,7 @@
     display: grid;
     grid-template-columns: 3fr 1fr;      
     grid-template-areas:
+    
         "adresse telephone";
 
     border: 2px solid white;

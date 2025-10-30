@@ -261,8 +261,7 @@
     border-top: 2px solid white;
     border-bottom: 2px solid white;
     height: 40px;
-    margin-bottom: 6%;
-    padding: 0 2em;
+    padding: 0 3em;
   }
 
   .logo {
@@ -304,7 +303,7 @@
     max-width: 1200px;
   }
 
-  /* Center the navigation menu */
+
   .menu {
     display: flex;
     justify-content: center;
@@ -444,8 +443,8 @@
     border-top: 2px solid white;
     border-bottom: 2px solid white;
     height: 50px;
-    margin-bottom: 6%;
-    padding: 0 2em;
+    /*margin-bottom: 6%;*/
+    padding: 0 4em;
   }
 
   .logo {

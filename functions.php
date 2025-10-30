@@ -19,6 +19,9 @@ function expo_enqueue_assets() {
     // --- JS global (menu burger) ---
     wp_enqueue_script('menu-script', get_template_directory_uri() . '/menu.js', array(), false, true);
 
+    // --- JS pour la description déroulante ---
+    wp_enqueue_script('projet-script', get_template_directory_uri() . '/projet.js', array(), false, true);
+
     // --- CSS spécifique à la page d'accueil ---
     if (is_front_page()){
         wp_enqueue_style('style-accueil', get_template_directory_uri() . '/CSS/accueil.css');
