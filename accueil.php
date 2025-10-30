@@ -267,39 +267,37 @@ require("global.php");
 <!------------------------------------------------ PHP Section Équipes --------------------------------------------->
     <div class="equipe">
       <h1>L'équipe</h1>
-      <div class="carte-equipe">
-        <span class="photo"></span>
-        <span class="nom">Nom</span>
-        <span class="role">Role</span>
-        <span class="petits-carre"></span>
-      </div>
-
-      <div class="carte-equipe-2">
-        <span class="photo"></span>
-        <span class="nom">Nom</span>
-        <span class="role">Role</span>
-        <span class="petits-carre"></span>
-      </div>
-
-      <div class="carte-equipe-3">
-        <span class="photo"></span>
-        <span class="nom">Nom</span>
-        <span class="role">Role</span>
-        <span class="petits-carre"></span>
-      </div>
-
-      <div class="carte-equipe-4">
-        <span class="photo"></span>
-        <span class="nom">Nom</span>
-        <span class="role">Role</span>
-        <span class="petits-carre"></span>
-      </div>
-
-      <div class="carte-equipe-5">
-        <span class="photo"></span>
-        <span class="nom">Nom</span>
-        <span class="role">Role</span>
-        <span class="petits-carre"></span>
+      <div class="cartes">
+        <div class="carte-equipe">
+          <span class="photo"></span>
+          <span class="nom">Nom</span>
+          <span class="role">Role</span>
+          <span class="petits-carre"></span>
+        </div>
+        <div class="carte-equipe-2">
+          <span class="photo"></span>
+          <span class="nom">Nom</span>
+          <span class="role">Role</span>
+          <span class="petits-carre"></span>
+        </div>
+        <div class="carte-equipe-3">
+          <span class="photo"></span>
+          <span class="nom">Nom</span>
+          <span class="role">Role</span>
+          <span class="petits-carre"></span>
+        </div>
+        <div class="carte-equipe-4">
+          <span class="photo"></span>
+          <span class="nom">Nom</span>
+          <span class="role">Role</span>
+          <span class="petits-carre"></span>
+        </div>
+        <div class="carte-equipe-5">
+          <span class="photo"></span>
+          <span class="nom">Nom</span>
+          <span class="role">Role</span>
+          <span class="petits-carre"></span>
+        </div>
       </div>
     </div>
   </main>
