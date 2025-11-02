@@ -61,7 +61,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: 100svh;
     background-color: #1B1B1B;
     color: #fff;
     display: none;
@@ -70,17 +70,13 @@
     text-align: center;
     z-index: 1001;
     overflow: hidden;
-
     background-image: 
-      radial-gradient(circle, #141414 1.3px, transparent 1px), /* pointillés */
-      linear-gradient(to top ,  #1b1b1b 0%, #2B2B2B 44.23%, #323232 77.88%, #1B1B1B 100%); /* dégradé */
-    background-size: 
-      10px 10px, 
-      auto;       
-    background-repeat: 
-      repeat,     
-      no-repeat;  
+      radial-gradient(circle, #141414 1.3px, transparent 1px),
+      linear-gradient(to top ,  #1b1b1b 0%, #2B2B2B 44.23%, #323232 77.88%, #1B1B1B 100%);
+    background-size: 10px 10px, auto;
+    background-repeat: repeat, no-repeat;
   }
+
 
   .menu-page.open {
     display: flex;
@@ -94,6 +90,11 @@
     padding-top: 13em;
     height: 78vh;
     justify-content: space-between;    
+  }
+
+  .menu .menu-item-has-children > a {
+    pointer-events: none;
+    cursor: default;
   }
 
   .menu-page h2 {
@@ -114,7 +115,7 @@
     padding-bottom: 50%;
   }
 
-    /* Bloquer le scroll quand menu ouvert */
+  /* Bloquer le scroll quand menu ouvert */
   body.menu-open {
     overflow: hidden;
   }
@@ -123,7 +124,6 @@
   body.menu-open .site-header {
     background: transparent;
   }
-
 
   /* Menu principale */
   .menu-page .menu li:not(.sub-menu > li) {
@@ -161,7 +161,6 @@
     width: 40vw;
   }
 
-  
   /* Liens du menu */
   .menu-page .menu li .sub-menu li a {
     display: block;
@@ -170,14 +169,13 @@
     text-decoration: none;
   }
 
-
   .menu-page .menu li a {
     color: #fff;
     text-decoration: none;
     padding-left: 1em;
   }
 
-  /* ------------------------------ Sub-menu animation (mobile) */
+  /* Sub-menu animation (mobile) */
   .menu-page .menu li .sub-menu {
     max-height: 0;                 
     overflow: hidden;
@@ -186,13 +184,12 @@
     transition: max-height 320ms ease-out, opacity 100ms ease-out, transform 220ms ease-out;
   }
 
-  
   .menu-page .menu li.open > .sub-menu {
     max-height: 400px; 
     opacity: 1;
     transform: translateY(0);
+    padding-top: 25px; /* plus grand espacement entre Expositions et sous-menus */
   }
-
 
   .menu-page .menu li .sub-menu li {
     opacity: 0;
@@ -204,8 +201,6 @@
     opacity: 1;
     transform: translateY(0);
   }
-  /* ------------------------------ Fin du sous-menu animation*/
-
 
   /* CSS de la barre de recherche */
   form.search-form {
@@ -240,7 +235,7 @@
     display: none;
   }
 }
-/*------------- FIN HEADER MOBILE --------------*/  
+/*------------- FIN HEADER MOBILE --------------*/
 
 /*------------- HEADER TABLET --------------*/
 @media screen and (min-width: 441px) and (max-width: 1024px) {
