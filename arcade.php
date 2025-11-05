@@ -7,6 +7,9 @@ get_header();
 ?>
 
 <main class="page-arcade">
+  <div class="border gauche"></div>
+  <div class="border droite"></div>
+
 
     <!-- Présentation Arcade -->
     <section class="presentation-arcade">
@@ -25,13 +28,15 @@ get_header();
             </p>
         </span>
     </section>
+    
 
     <!-- Liste des projets -->
     <span class="conteneur-section-arcade-bas">
+
         <div class="conteneur-arcade-filtre">
             <p class="filtre">Filtrer</p>
         </div>
-
+    
         <section class="liste-projet-arcade">
             <?php
             global $wpdb;

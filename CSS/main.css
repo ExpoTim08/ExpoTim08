@@ -21,13 +21,13 @@
 :root {
   --background-color: rgb(50, 50, 50); /*Couleur du background globale du site*/
 
-  --font-color: white; /*Couleur de la police du site*/
+  --font-color: #F1E2CC; /*Couleur de la police du site*/
 
   --header-backgounrd-color: white; /*Couleur du background du header*/
 
   --title-color: white; /*Couleur des titres du site*/
 
-  --border-color: white; /*Couleur des border générale*/
+  --border-color: #F1E2CC; /*Couleur des border générale*/
 
   --footer-background-color: white; /*Couleur du background du footer*/
 
