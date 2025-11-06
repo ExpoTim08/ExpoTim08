@@ -20,18 +20,18 @@ get_header();
             <span class="titre-arcade-layer titre-arcade-layer--3">ARCADE</span>
         </h1>
 
-        <span class="conteneur-description-arcade">
+        <div class="conteneur-description-arcade">
             <p class="description-titre">Description</p>
             <p class="description-texte">
                 L’Arcade de l’expoTIM présente les prototypes de jeux vidéo créés par les étudiants de deuxième année en Technique d’intégration multimédia. 
                 Réalisés dans le cadre du cours Création de jeu en équipe, ces projets sont le fruit d’un processus de production complet : de la conception et la planification à la création des médias, de la programmation aux tests de qualité jusqu’au produit fini.
             </p>
-        </span>
+        </div>
     </section>
     
 
     <!-- Liste des projets -->
-    <span class="conteneur-section-arcade-bas">
+    <div class="conteneur-section-arcade-bas">
 
         <div class="conteneur-arcade-filtre">
             <p class="filtre">Filtrer</p>
@@ -55,18 +55,18 @@ get_header();
                 $liste_etudiants = implode(', ', $noms_etudiants);
             ?>
                 <div class="carte-projet-arcade">
-                    <span class="conteneur-carte-haut">
+                    <div class="conteneur-carte-haut">
                         <h2 class="titre-projet-arcade"><?php echo esc_html($projet->titre); ?></h2>
                         <button class="button-projet-arcade">>></button>
-                    </span>
+                    </div>
 
                     <img class="image-projet-arcade" src="<?php echo !empty($projet->image_url) ? esc_url($projet->image_url) : get_template_directory_uri().'/Images/Arcade.jpg'; ?>" alt="<?php echo esc_attr($projet->titre); ?>">
 
                     <div class="conteneur-carte-bas">
-                        <span class="conteneur-button-dropdown-arcade">
+                        <div class="conteneur-button-dropdown-arcade">
                             <p class="carte-arcade-titre-description">Description</p>
                             <button class="button-dropdown-arcade">+</button>
-                        </span>
+                        </div>
                         <div class="dropdown-carte-arcade">
                             <p class="description-projet"><?php echo esc_html($projet->description); ?></p>
                             <?php if(!empty($liste_etudiants)) : ?>
@@ -77,7 +77,7 @@ get_header();
                 </div>
             <?php endforeach; ?>
         </section>
-    </span>
+    </div>
 
 </main>
 

@@ -1,7 +1,6 @@
   
   body {
     background-image: linear-gradient(180deg, #1B1B1B 0%, #2B2B2B 44.23%, #323232 77.88%, #1B1B1B 100%);
-;
     background-size: 10em;
   }
 
@@ -57,7 +56,7 @@
 
   .conteneur-description-arcade .description-titre {
     border: 1px solid var(--border-color);
-    width: min-content;
+    width: auto;
     padding: 5px 100px 6px 11px;
   }
 
@@ -199,20 +198,44 @@
     height: 100%;
   }
 
-  .titre-arcade {
-    border-bottom: 2px solid var(--border-color);
+  .conteneur-description-arcade {
+    background-color: rgb(42 42 42);
+    border-top: 1px solid rgb(64 50 255);
+    border-bottom: 1px solid rgb(64 50 255);
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+  }
+
+  .description-titre {
+    writing-mode: vertical-rl;        
+    text-orientation: upright;       
+    white-space: nowrap;              
+    display: inline-block;            
+    transform-origin: center;  
+    line-height: 1;
+    font-size: 12px;
+    padding: 6px 8px;
+    box-sizing: border-box;
+    align-self: center;
+    text-transform: uppercase;
+    overflow: hidden; 
+  }
+
+  @media screen and (min-width: 650px) and (max-width: 1024px) {
+      .description-titre {
+        font-size: 9px
+    }
   }
 
   .conteneur-description-arcade .description-texte {
-    padding: 0px 147px;
+    padding: 20px 16vw;
+    padding-left: 0px;
+    max-width: 568px;
   }
 
   .conteneur-description-arcade .description-titre {
-    padding-left: 147px;
-  }
-
-  .presentation-arcade {
-    border-bottom: 2px solid var(--border-color);
+    padding-left: 16vw;
   }
 
   .page-arcade {
@@ -256,8 +279,20 @@
   .presentation-arcade {
     display: flex;
     flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
     border-bottom: 2px solid var(--border-color);
-    padding: 0px 300px;
+  }
+
+  .conteneur-description-arcade .description-texte {
+    max-width: 595px;
+    margin-left: 2vw;
+    background-image: linear-gradient(to left, var(--font-color), white);
+    color: transparent;
+    background-clip: text;
+  }
+  .conteneur-description-arcade .description-titre {
+    display: none;
   }
 }
 
@@ -285,7 +320,7 @@
 
   /*------------- Titre arcade --------------*/
   .titre-arcade--base {
-    -webkit-text-fill-color: var(--font-color);
+    -webkit-text-fill-color: var(--title-color);
   }
 
   .titre-arcade {
