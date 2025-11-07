@@ -17,7 +17,7 @@
   <!-- Espace en haut de la page pour mobile -->
 </div>
 
-<span class="header-container">
+<div class="header-container">
   <header class="site-header">
     <h1 class="logo">
       <a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a>
@@ -59,4 +59,4 @@
       <button type="submit"></button>
     </form>
   </div>
-</span>
+</div>

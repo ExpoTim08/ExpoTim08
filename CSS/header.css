@@ -1,6 +1,20 @@
 /*------------- HEADER MOBILE --------------*/
 @media screen and (max-width: 440px) {
-  /* Header */
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /* bloque scroll horizontal global */
+    background-color: var(--background-color);
+  }
+
+  body.menu-open {
+    overflow: hidden;
+    position: relative;
+  }
+
   .site-header {
     display: flex;
     justify-content: space-between;
@@ -9,9 +23,10 @@
     color: var(--general-font);
     position: relative;
     z-index: 9999;
-    margin: 0px 0px 20px 0px;
+    margin: 0 0 20px 0;
     border-top: 2px solid var(--border-color);
-    padding: 20px 2em 0px 2em;
+    padding: 20px 1em 0 1em;
+    box-sizing: border-box;
   }
 
   .logo a {
@@ -19,13 +34,9 @@
     text-decoration: none;
     font-weight: bold;
     font-size: 20px;
+    margin-left: 1em; /* marge gauche */
   }
 
-  .logo {
-    margin: 0;
-  }
-
-  /* Burger */
   .menu-burger {
     width: 30px;
     height: 22px;
@@ -34,19 +45,19 @@
     justify-content: space-between;
     cursor: pointer;
     z-index: 1003;
+    margin-right: 1em;
   }
 
   .menu-burger span {
     display: block;
     height: 3px;
-    background: var(--border-color); /* garde la couleur blanche */
+    background: var(--border-color);
     border-radius: 2px;
     transition: 0.3s;
   }
 
-  /* Transform burger → X */
   .menu-burger.open span:nth-child(1) {
-    transform: rotate(45deg) translate(8.3px, 8.3px);
+    transform: rotate(45deg) translate(8px, 8px);
   }
   .menu-burger.open span:nth-child(2) {
     opacity: 0;
@@ -55,186 +66,152 @@
     transform: rotate(-45deg) translate(5px, -5px);
   }
 
-  /* Menu overlay complet */
+  .header-container {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
   .menu-page {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100svh;
+    min-height: 100%;
     background-color: #1B1B1B;
     color: var(--border-color);
     display: none;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    flex-direction: column;
     z-index: 1001;
-    overflow: hidden;
+    text-align: center;
     background-image: 
       radial-gradient(circle, #141414 1.3px, transparent 1px),
-      linear-gradient(to top ,  #1b1b1b 0%, #2B2B2B 44.23%, #323232 77.88%, #1B1B1B 100%);
+      linear-gradient(to top, #1b1b1b 0%, #2B2B2B 44%, #323232 78%, #1B1B1B 100%);
     background-size: 10px 10px, auto;
     background-repeat: repeat, no-repeat;
+    overflow-y: auto; /* scroll vertical uniquement */
+    overflow-x: hidden; /* bloque scroll horizontal */
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    box-sizing: border-box;
+    align-items: stretch;
   }
-
 
   .menu-page.open {
     display: flex;
-    align-items: flex-start;
   }
 
-  .menu-page .menu-content {
-    flex-grow: 1;
+  .menu-content {
     display: flex;
-    flex-flow: column;
-    padding-top: 13em;
-    height: 78vh;
-    justify-content: space-between;    
-  }
-
-  .menu .menu-item-has-children > a {
-    pointer-events: none;
-    cursor: default;
-  }
-
-  .menu-page h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
+    flex-direction: column;
+    padding-top: 7em;  /* garde l’espacement du haut */
+    justify-content: flex-start;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .menu-page .menu,
   .menu-page .menu ul {
-    list-style: none;     
-    padding: 0;         
-  }
-
-  .menu-page .menu{
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: flex;
-    align-content: space-around;
     flex-direction: column;
-    padding-bottom: 50%;
+    width: 100%;
+    box-sizing: border-box;
   }
 
-  /* Bloquer le scroll quand menu ouvert */
-  body.menu-open {
-    overflow: hidden;
-  }
-
-  /* Enlever le background du header quand menu ouvert */
-  body.menu-open .site-header {
-    background: transparent;
-  }
-
-  /* Menu principale */
-  .menu-page .menu li:not(.sub-menu > li) {
-      background-color: #323232;
-      padding-top: clamp(1rem, 20px, 25px);
-      padding-bottom: clamp(1rem, 20px, 25px);
-      align-content: center;
-      border-top: var(--border-color) solid 1px;
-      border-bottom: var(--border-color) solid 1px;
-
-      font-family: var(--title-font);
-      font-size: 24px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
-
-      text-align: start;
-      padding-right: 1em;
-      padding-left: 1em;
-  }
-
-  /* Sous-menu */
-  .menu-page .menu li .sub-menu {
-    color: #F1E2CC;
-    font-family: var(--general-font);
-    font-size: 14px;
-    font-style: normal;
+  .menu li {
+    background-color: #323232;
+    padding: clamp(1rem, 20px, 25px) 0;
+    border-bottom: 1px solid var(--border-color);
+    font-family: var(--title-font);
+    font-size: 24px;
     font-weight: 400;
-    line-height: normal;
-
-    padding-left: 1em;
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    box-sizing: border-box;
+    flex-direction: column;
   }
 
-  .sub-menu li {
-    width: 40vw;
-  }
-
-  /* Liens du menu */
-  .menu-page .menu li .sub-menu li a {
-    display: block;
-    padding: 8px 1em;
-    color: #F1E2CC;
-    text-decoration: none;
-  }
-
-  .menu-page .menu li a {
+  .menu li a {
     color: var(--border-color);
     text-decoration: none;
-    padding-left: 1em;
+    cursor: pointer;
+    display: block;
+    text-align: left;
+    width: 100%;
+    padding-left: 1em; /* espace texte menu */
+    box-sizing: border-box;
   }
 
-  /* Sub-menu animation (mobile) */
-  .menu-page .menu li .sub-menu {
-    max-height: 0;                 
+  /* Sous-menu mobile corrigé */
+  .menu li .sub-menu {
+    display: flex;
+    flex-direction: column;
+    max-height: 0;
     overflow: hidden;
     opacity: 0;
-    transform: translateY(-6px);
-    transition: max-height 320ms ease-out, opacity 100ms ease-out, transform 220ms ease-out;
-  }
-
-  .menu-page .menu li.open > .sub-menu {
-    max-height: 400px; 
-    opacity: 1;
-    transform: translateY(0);
-    padding-top: 25px; /* plus grand espacement entre Expositions et sous-menus */
-  }
-
-  .menu-page .menu li .sub-menu li {
-    opacity: 0;
-    transform: translateY(-6px);
-    transition: opacity 260ms ease, transform 260ms ease;
-  }
-
-  .menu-page .menu li.open > .sub-menu li{
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* CSS de la barre de recherche */
-  form.search-form {
-    border-top: var(--border-color) solid 1px;
-    padding: 10px 0px;
-    border-bottom: var(--border-color) solid 1px;
-    flex-grow: 1;
+    transition: max-height 0.35s ease, opacity 0.35s ease;
     padding-left: 1em;
-    padding-right: 1em;
-    display: flex;
-    background-color: #323232;
-    max-height: 20px;
+    position: relative; /* reste sous parent */
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
   }
 
-  input.search-field {
-    background-color: transparent;
-    border: none;
-    flex-grow: inherit;
-    margin-left: 1em;
+  .menu li.open > .sub-menu {
+    max-height: none;  /* permet scroll jusqu'en bas */
+    opacity: 1;
+  }
+
+  .menu li .sub-menu li a {
+    display: block;
+    padding: 8px 0.5em;
+    font-family: var(--general-font);
+    font-size: 14px;
     color: #F1E2CC;
+    width: 100%;
+    box-sizing: border-box;
   }
 
-  .search-form button {
+  /* Barre de recherche mobile */
+  .menu-search-desktop { display: none !important; }
+  .menu-search-mobile { display: none; }
+
+  .menu-page.open .menu-search-mobile {
+    display: flex;
+    padding: 10px 0.5em;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    background-color: #323232;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .menu-page.open .menu-search-mobile input {
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    color: #F1E2CC;
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 1em;
+  }
+
+  .menu-page.open .menu-search-mobile button {
     margin-right: 1em;
+    box-sizing: border-box;
   }
 
-  .header-margin {
-    height: 70px;
-  }
-
-  .menu-search-desktop {
-    display: none;
-  }
+  .header-margin { height: 70px; }
 }
+
 /*------------- FIN HEADER MOBILE --------------*/
 
 /*------------- HEADER TABLET --------------*/
