@@ -36,6 +36,14 @@ function expo_enqueue_assets() {
     if (file_exists(get_template_directory() . '/CSS/normalize.css')) {
         wp_enqueue_style('style-normalize', $theme_uri . '/CSS/normalize.css');
     }
+      // --- CSS spécifique à la page Projet finissants ---
+    if (is_page_template('projets-des-finissants.php') || is_page_template('ar.php')) {
+        wp_enqueue_style('style-arcade', $theme_uri . '/CSS/projet-finissant.css');
+    }
+       // --- CSS spécifique à la page Jour de la terre ---
+    if (is_page_template('jour-terre.php') || is_page_template('ar.php')) {
+        wp_enqueue_style('style-arcade', $theme_uri . '/CSS/jour-terre.css');
+    }
 }
 add_action('wp_enqueue_scripts', 'expo_enqueue_assets');
 
