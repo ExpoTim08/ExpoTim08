@@ -23,6 +23,21 @@ $video       = get_field('lien_de_la_video', $projet_id);
 $annee       = get_field('annee', $projet_id);
 $numeroCours = get_field('numero_du_cours', $projet_id);
 $etudiants   = get_field('etudiants_associes', $projet_id);
+
+// Conversion automatique du lien YouTube en embed
+$embed_url = '';
+if ($video) {
+    if (strpos($video, 'youtube.com/watch?v=') !== false) {
+        $video_id = explode('v=', $video)[1];
+        $ampersand_position = strpos($video_id, '&');
+        if ($ampersand_position !== false) {
+            $video_id = substr($video_id, 0, $ampersand_position);
+        }
+        $embed_url = "https://www.youtube.com/embed/" . $video_id;
+    } else {
+        $embed_url = $video; // si déjà un lien embed
+    }
+}
 ?>
 
 <main class="page-arcade">
@@ -32,6 +47,7 @@ $etudiants   = get_field('etudiants_associes', $projet_id);
   <!-- Présentation du projet -->
   <section class="presentation-arcade">
 
+    <!-- Titre du projet -->
     <h1 class="titre-arcade" aria-label="<?php echo esc_attr($nom); ?>">
       <span class="titre-arcade-layer titre-arcade--base"><?php echo esc_html($nom); ?></span>
       <span class="titre-arcade-layer titre-arcade-layer--1"><?php echo esc_html($nom); ?></span>
@@ -46,12 +62,10 @@ $etudiants   = get_field('etudiants_associes', $projet_id);
       </a>
     </p>
 
-
-
     <!-- Vidéo YouTube -->
-    <?php if ($video): ?>
+    <?php if ($embed_url): ?>
       <div class="video-projet">
-        <iframe width="100%" height="500" src="<?php echo esc_url($video); ?>" frameborder="0" allowfullscreen></iframe>
+        <iframe width="100%" height="500" src="<?php echo esc_url($embed_url); ?>" frameborder="0" allowfullscreen></iframe>
       </div>
     <?php endif; ?>
 
