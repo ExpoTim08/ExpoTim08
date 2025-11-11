@@ -142,6 +142,7 @@
   .plus{
     color: var(--font-color);
     text-decoration: none;
+    font-family: var(--general-font);
   }
 
 /****************************************** CSS Section Accroche ***************************************************/
@@ -621,6 +622,13 @@
   .carroussel-choix > .arcade {
     font-size: 40px;
   }
+  .plus{
+    color: var(--font-color);
+    text-decoration: none;
+    font-family: var(--general-font);
+    
+  }
+
 
   .carroussel-choix > .arcade-click {background-color: var(--carrousel-bouton-background-color);}
   .carroussel-choix > .jour-terre-click {background-color: var(--bouton-projet-jt-color);}
