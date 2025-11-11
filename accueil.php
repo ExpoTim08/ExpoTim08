@@ -32,12 +32,16 @@ require("global.php");
     </div>
 
     <!------------------------------------------------ PHP Section Accroche --------------------------------------------->
-    <p class="accroche">Découvrez l’univers créatif des étudiants de la Technique d’intégration multimédia! </p>
+    <div class="accroche-conteneur">
+      <p class="numeration">1234567</p>
+      <div class="ligne-parallele"></div>
+      <p class="accroche">Découvrez l’univers créatif des étudiants de la Technique d’intégration multimédia! </p>
+    </div>
 
     <!------------------------------------------------ PHP Section À propos --------------------------------------------->
     <div class="a-propos-background">
       <div class="a-propos">
-        <p class="sous-titre">À propos de l'expo TIM</p>
+        <p class="sous-titre">À propos de TIMVision</p>
         <img class="image-a-propos" src="<?php echo get_template_directory_uri(); ?>/Images/Arcade.jpg" alt="">
         <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
       </div>

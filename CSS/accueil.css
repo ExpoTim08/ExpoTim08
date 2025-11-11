@@ -18,27 +18,27 @@
 
   .border {
     position: fixed;
-    background: white; /* couleur des bords */
+    background: var(--border-color-side); /* couleur des bords */
     z-index: 9999;
   }
 
   .border.gauche {
     top: 0;
     left: 1em;
-    width: 2px; /* épaisseur du bord gauche */
+    width: 1px; /* épaisseur du bord gauche */
     height: 100%;
   }
 
   .border.droite {
     top: 0;
     right: 1em;
-    width: 2px; /* épaisseur du bord droit */
+    width: 1px; /* épaisseur du bord droit */
     height: 100%;
   }
 
 /**************************************** CSS Section Carroussel **************************************************/
   .carroussel {
-    border-top: 2px solid var(--border-color);
+    border-top: 1px solid var(--border-color);
     position: relative;
     display: flex;
     flex-direction: column;
@@ -59,8 +59,8 @@
   }
 
   .image-titre {
-    width: 250px;
-    height: 43px;
+    width: 30%;
+    height: auto;
     top: 3rem;
     left: 5rem;
     position: absolute;
@@ -71,7 +71,8 @@
     position: absolute;
     top: 18rem;
     left: 5rem;
-    width: 85%;
+    max-width: 80%;
+    min-width: 50%;
     font-family: var(--general-font);
   }
 
@@ -105,7 +106,7 @@
 
   .carroussel-choix {
     display: flex;
-    margin-left: 4.5rem;
+    justify-content: center;
   }
 
   .carroussel-choix > p {
@@ -144,20 +145,109 @@
   }
 
 /****************************************** CSS Section Accroche ***************************************************/
-  .accroche {
-    width: 246px;
-    height: 209px;
-    font-size: 28px;
-    padding-left: 5em;
-    background: linear-gradient(to right, #7D77D4 40%, #2FC7BF 50%, #EECC7F 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+
+
+.accroche {
+  width: 246px;
+  height: auto;
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-family: var(--title-font);
+  
+  background: linear-gradient(90deg,
+    #7D77D4 0%,
+    #2FC7BF 35%,
+    #EECC7F 80%,
+    #7D77D4 100%);
+
+  background-size: 200% auto;
+  color: #000;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: anim-accroche 3s linear infinite;
+}
+
+.numeration {
+  color: #606060;
+  font-family: var(--title-font);
+
+  writing-mode: vertical-rl;        
+  text-orientation: upright;       
+  white-space: nowrap;              
+  display: inline-block;            
+  transform-origin: center;  
+  font-size: 14px;
+  box-sizing: border-box;
+  align-self: center;
+  text-transform: uppercase;
+  overflow: hidden; 
+  letter-spacing: 13px;
+  margin: 0px;
+  padding-top: 7px;
+}
+
+.ligne-parallele {
+  position: relative;
+  width: 28px;      
+  height: 240px;      
+  margin: 0;
+  align-self: center;
+  pointer-events: none;
+}
+
+.ligne-parallele::before,
+.ligne-parallele::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--font-color);
+  opacity: 0.85;
+}
+
+.ligne-parallele::before { 
+  left: 4px; 
+  background: linear-gradient(
+    #222 0%,
+    #404040 10.1%,
+    #505050 21.63%, 
+    #5A5A5A 32.21%, 
+    #A4A4A4 84.13%, 
+    #222 100%
+    );
+  }  
+
+.ligne-parallele::after  { 
+  left: 18px;
+  background: linear-gradient(
+    #222 0%,
+    #404040 10.1%,
+    #505050 21.63%, 
+    #5A5A5A 32.21%, 
+    #A4A4A4 84.13%, 
+    #222 100%
+    );
+}  
+
+
+@keyframes anim-accroche {
+  to {
+    background-position: 200% center;
   }
+}
+
+.accroche-conteneur {
+  padding: 25vw 0;
+  padding-left: 1em;
+  display: flex;
+  justify-content: center;
+}
+
 
 /*************************************** CSS Section À Propos ******************************************************/
   .a-propos {
-    border-bottom: 2px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
   }
 
   .a-propos > .sous-titre {
@@ -170,7 +260,7 @@
 
   .a-propos > .image-a-propos {
     display: block;
-    width: 411px;
+    width: 100%;
     height: 144px;
     justify-self: center;
   }
@@ -297,6 +387,11 @@
   }
 
 /******************************************* CSS Section Équipe ****************************************************/
+
+  .equipe {
+    padding-bottom: 6em;
+  }
+
   .carte-equipe,
   .carte-equipe-2,
   .carte-equipe-3,
@@ -377,29 +472,57 @@
 
 }
 
-/********************************************** CSS Desktop ********************************************************/
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 440.02px) {
   body {
-    background-color: rgb(44, 44, 44);
+    background: linear-gradient(180deg, #1B1B1B 0%, #2B2B2B 44.23%, #323232 77.88%, #1B1B1B 100%);
   }
 
   .border {
     position: fixed;
-    background: white; /* couleur des bords */
+    background: var(--border-color-side); 
     z-index: 9999;
   }
 
   .border.gauche {
     top: 0;
-    left: 1em;
-    width: 2px; /* épaisseur du bord gauche */
+    left: 2em;
+    width: 1px; 
     height: 100%;
   }
 
   .border.droite {
     top: 0;
-    right: 1em;
-    width: 2px; /* épaisseur du bord droit */
+    right: 2em;
+    width: 1px; 
+    height: 100%;
+  }
+}
+
+/********************************************** CSS Desktop ********************************************************/
+@media screen and (min-width: 1024px) {
+  body {
+    background: linear-gradient(180deg, #1B1B1B 0%, #2B2B2B 44.23%, #323232 77.88%, #1B1B1B 100%);
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+  .border {
+    position: fixed;
+    background: var(--border-color-side); 
+    z-index: 9999;
+  }
+
+  .border.gauche {
+    top: 0;
+    left: 3em;
+    width: 1px; 
+    height: 100%;
+  }
+
+  .border.droite {
+    top: 0;
+    right: 3em;
+    width: 1px; 
     height: 100%;
   }
 
@@ -505,15 +628,112 @@
 
 /*********************************** CSS Section Accroche Desktop *************************************************/
   .accroche {
-    width: 50vw;
-    height: 209px;
-    font-size: 3rem;
-    justify-self: center;
-    background: linear-gradient(to right, #7D77D4 20%, #2FC7BF 50%, #EECC7F 80%);
-    -webkit-background-clip: text;
+    width: 730px;
+    max-height: 209px;
+    font-size: clamp(1rem, 3vw, 2rem);
+    font-family: var(--title-font);
+    
+    background: linear-gradient(90deg,
+      #7D77D4 0%,
+      #2FC7BF 35%,
+      #EECC7F 80%,
+      #7D77D4 100%);
+
+    background-size: 200% auto;
+    color: #000;
     background-clip: text;
+    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    animation: anim-accroche 3s linear infinite;
   }
+
+  .numeration {
+    color: transparent;
+    -webkit-user-select: none;
+    -moz-user-select: none;    
+    -ms-user-select: none;     
+    user-select: none;        
+
+  }
+
+  .numeration::after {
+    content: "123";
+    color: #606060;
+    font-family: var(--title-font);
+
+    writing-mode: vertical-rl;        
+    text-orientation: upright;       
+    white-space: nowrap;              
+    display: inline-block;            
+    transform-origin: center;  
+    font-size: 12px;
+    box-sizing: border-box;
+    align-self: center;
+    text-transform: uppercase;
+    overflow: hidden; 
+    letter-spacing: 24px;
+    margin: 0px;
+    padding-top: 3.7vh;
+  }
+
+  .ligne-parallele {
+    position: relative;
+    width: 28px;      
+    height: 22vh;      
+    margin: 0;
+    align-self: center;
+    pointer-events: none;
+    margin-left: 7px;
+  }
+
+  .ligne-parallele::before,
+  .ligne-parallele::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--font-color);
+    opacity: 0.85;
+  }
+
+  .ligne-parallele::before { 
+    left: 4px; 
+    background: linear-gradient(
+      #222 0%,
+      #404040 10.1%,
+      #505050 21.63%, 
+      #5A5A5A 32.21%, 
+      #A4A4A4 84.13%, 
+      #222 100%
+      );
+    }  
+
+  .ligne-parallele::after  { 
+    left: 18px;
+    background: linear-gradient(
+      #222 0%,
+      #404040 10.1%,
+      #505050 21.63%, 
+      #5A5A5A 32.21%, 
+      #A4A4A4 84.13%, 
+      #222 100%
+      );
+  }  
+
+
+  @keyframes anim-accroche {
+    to {
+      background-position: 200% center;
+    }
+  }
+
+  .accroche-conteneur {
+    padding: 7vw 0;
+    padding-left: 1em;
+    display: flex;
+    justify-content: center;
+}
 
 /********************************* CSS Section À Propos Desktop ****************************************************/
   .a-propos-background, .partenaires {
@@ -528,8 +748,8 @@
 	  grid-template-columns: repeat(2, 1fr);
 	  gap: 0;
     justify-items: center;
-    border-top: 2px solid white;
-    border-bottom: 2px solid white;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
     padding: 2rem;
   }
 
@@ -541,6 +761,7 @@
   .a-propos > .sous-titre {
     grid-area: 1 / 2 / 3 / 3;
     font-size: 40px;
+    font-family: var(--title-font);
   }
 
   .a-propos > .description {
@@ -753,6 +974,11 @@
   }
 
   /******************************** CSS Section Équipe Desktop********************************************/
+  .equipe {
+    padding-bottom: 6rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
   .equipe > h1 {
     justify-self: end;
     margin-right: 3rem;
@@ -815,5 +1041,4 @@
     border: 1px solid var(--border-color-special);
   }
 }
-
 

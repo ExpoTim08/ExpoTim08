@@ -1,24 +1,38 @@
 /*------------- Footer CSS --------------*/
 
+  footer h3, footer p, footer a, footer li {
+    font-family: var(--general-font);
+    color: var(--font-color);
+  }
+
 @media screen and (max-width: 440px) {
 
     body {
      margin: 0px;
     }
 
-    footer a, footer p, footer h3 {
-      color: var(--font-color);
+    footer a, footer p {
+      font-size: 12px;
     }
 
-    .footer-top{
-      display: flex;
-      flex-flow: row;
+    footer h3 {
+      font-size: 15px;
+    }
+
+    footer a, footer p, footer h3 {
+      color: var(--font-color);
     }
 
     footer > *:not(#wpadminbar, .footer-bottom) {
       border-top: solid 1px var(--font-color);
       padding: 1em 1em;
       margin: 0em 1em;
+    }
+
+    .footer-top{
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
     }
 
     footer ul{
@@ -49,12 +63,23 @@
     .footer-tim {
       display: none;
     }
+
+    .footer-adresse, .footer-telephone {
+      display: flex;
+      flex-flow: nowrap row;
+    }
+
+    .footer-adresse img, .footer-telephone img {
+      width: 20px;
+      margin-right: 10px;
+    }
+    
     
 } /*------------- FIN FOOTER MOBILE --------------*/
 
 
 /*--------------FOOTER TABLET/PETIT ECRAN --------------*/
-@media screen and (min-width: 441px) and (max-width: 1024px) {
+@media screen and (min-width: 440.02px) and (max-width: 1200px) {
   .site-footer {
     width: 85vw;
     margin: auto;
@@ -173,11 +198,22 @@
     color: var(--font-color);
     border-color: var(--border-color);
   }    
+
+  .footer-adresse, .footer-telephone {
+    display: flex;
+    flex-flow: nowrap row;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .footer-adresse img, .footer-telephone img {
+    width: 22px;
+  }
 }/*-------------- FIN FOOTER/PETIT ECRAN --------------*/
 
 
 /*--------------FOOTER DESKTOP --------------*/
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 1200.02px) {
   .site-footer {
     width: 75vw;
     margin: auto;
@@ -234,6 +270,10 @@
   .footer-adresse {
     grid-area: adresse;
     border-bottom: 1px solid var(--border-color);
+  }
+
+  .footer-adresse img {
+    width: 20px;
   }
 
   .footer-telephone {
@@ -300,6 +340,17 @@
     color: var(--font-color);
     border-color: var(--border-color);
   }    
+
+  .footer-adresse, .footer-telephone {
+    display: flex;
+    flex-flow: nowrap row;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .footer-adresse img, .footer-telephone img {
+    width: 22px;
+  }
 } /*-------------- FIN FOOTER DESKTOP --------------*/
 
 
@@ -310,6 +361,23 @@ footer ul{
 
 footer ul li a {
   text-decoration: none;
+}
+
+.footer-icones a img {
+  height: clamp(20px, 2vw, 30px);
+}
+
+
+.footer-icones a {
+  color: transparent;
+}
+
+.footer-icones {
+  border: 1px solid var(--border-color);
+  padding: 0.4em 0.7em;
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 10px;
 }
 
 

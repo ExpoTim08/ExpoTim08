@@ -24,7 +24,7 @@
     position: relative;
     z-index: 9999;
     margin: 0 0 20px 0;
-    border-top: 2px solid var(--border-color);
+    border-top: 1px solid var(--border-color);
     padding: 20px 1em 0 1em;
     box-sizing: border-box;
   }
@@ -35,6 +35,11 @@
     font-weight: bold;
     font-size: 20px;
     margin-left: 1em; /* marge gauche */
+  }
+
+  .logo {
+    margin: 0;
+    flex-shrink: 0;
   }
 
   .menu-burger {
@@ -209,13 +214,13 @@
     box-sizing: border-box;
   }
 
-  .header-margin { height: 70px; }
+  .header-margin { height: 20px; }
 }
 
 /*------------- FIN HEADER MOBILE --------------*/
 
 /*------------- HEADER TABLET --------------*/
-@media screen and (min-width: 441px) and (max-width: 1024px) {
+@media screen and (min-width: 440.02px){
 
    body {
     margin: 0;
@@ -230,8 +235,8 @@
     justify-content: space-between;
     align-items: center;
     background: #b9949400;
-    border-top: 2px solid var(--border-color);
-    border-bottom: 2px solid var(--border-color);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
     height: 40px;
     padding: 0 3em;
   }
@@ -397,9 +402,9 @@
 
 
 /*------------- HEADER DESKTOP --------------*/
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1025px) {
 
-  body {
+   body {
     margin: 0;
   }
 
@@ -412,10 +417,9 @@
     justify-content: space-between;
     align-items: center;
     background: #b9949400;
-    border-top: 2px solid var(--border-color);
-    border-bottom: 2px solid var(--border-color);
-    height: 50px;
-    /*margin-bottom: 6%;*/
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    height: 40px;
     padding: 0 4em;
   }
 
@@ -430,7 +434,7 @@
 
   .logo a {
     font-size: 1rem;
-    color: #fff;
+    color: var(--border-color);
     text-decoration: none;
     font-weight: bold;
   }
@@ -458,7 +462,7 @@
     max-width: 1200px;
   }
 
-  /* Center the navigation menu */
+
   .menu {
     display: flex;
     justify-content: center;
@@ -470,19 +474,19 @@
 
   .menu li {
     position: relative;
-    height: 50px;
+    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0px 20px;
+    padding: 0px 15px;
     border: 1px solid var(--border-color);
   }
 
   .menu li a {
-    color: #fff;
+    color: var(--border-color);
     text-decoration: none;
     font-family: var(--title-font);
-    font-size: clamp(12px, 1.2vw + 0.2rem, 16px);
+    font-size: 13px;
     transition: color 0.2s ease;
   }
 
@@ -490,7 +494,7 @@
     color: #F1E2CC;
   }
 
- /* --- Submenu dropdown --- */
+ /* --- Sous-menu dropdown --- */
   .menu li .sub-menu {
     position: absolute;
     top: 103%;
@@ -541,7 +545,6 @@
     color: #fff;
   }
 
-
   .menu li .sub-menu li .sub-menu {
     top: 0;
     left: 100%;
@@ -563,7 +566,7 @@
     border: none;
     color: #F1E2CC;
     outline: none;
-    width: 150px;
+    width: 100px;
   }
 
   .search-form button {
@@ -571,6 +574,7 @@
     border: none;
     color: var(--border-color);
     cursor: pointer;
+    content: "0";
   }
 
   .menu-search-mobile {

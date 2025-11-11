@@ -7,6 +7,7 @@
     <div class="footer-logo">
       <img src="<?php echo get_template_directory_uri(); ?>/Images/logo.png" alt="Logo de l'expo TIM">
     </div>
+    
     <div class="footer-icones">
       <a href="https://www.youtube.com/" target="_blank" aria-label="YouTube">
         <img src="<?php echo get_template_directory_uri(); ?>/Images/youtube.svg" alt="YouTube">
@@ -23,10 +24,12 @@
   <!-- Section contact (adresse + cell du college) -->
   <div class="footer-contact">
     <div class="footer-adresse">
+      <img src="<?php echo get_template_directory_uri(); ?>/Images/MapLogo.svg" alt="Adresse">
       <p>3800 Sherbrooke St E, Montréal, Québec H1X 2A2</p>
     </div>
 
     <div class="footer-telephone">
+        <img src="<?php echo get_template_directory_uri(); ?>/Images/CellLogo.svg" alt="Téléphone">
       <p>+1 (514) 254 7131</p>
     </div>
   </div>

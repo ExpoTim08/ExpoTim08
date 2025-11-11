@@ -32,6 +32,10 @@
   --footer-background-color: white; /*Couleur du background du footer*/
 
   --border-color-special: #F1E2CC;
+
+  --border-color-side: #afa28f; /*Couleur des bordures latérales*/
+  
+  --border-color-project: #050506; /*Couleur des bordures des projets*/
 }
 
 /*Variables couleurs de la navigation du site*/
