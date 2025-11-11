@@ -13,14 +13,23 @@ function expo_enqueue_assets() {
     $theme_uri = get_template_directory_uri();
 
     // --- CSS global du thème ---
-    wp_enqueue_style('style-theme', get_stylesheet_uri()); // style.css (obligatoire)
-    wp_enqueue_style('style-main', $theme_uri . '/CSS/main.css'); // CSS global
-    wp_enqueue_style('style-header', $theme_uri . '/CSS/header.css'); // menu burger
-    wp_enqueue_style('style-footer', $theme_uri . '/CSS/footer.css'); // footer
+    wp_enqueue_style('style-theme', get_stylesheet_uri()); // style.css
+    wp_enqueue_style('style-main', $theme_uri . '/CSS/main.css');
+    wp_enqueue_style('style-header', $theme_uri . '/CSS/header.css');
+    wp_enqueue_style('style-footer', $theme_uri . '/CSS/footer.css');
 
     // --- JS global ---
-    wp_enqueue_script('menu-script', $theme_uri . '/menu.js', array('jquery'), null, true); // menu burger
-    wp_enqueue_script('projet-script', $theme_uri . '/projet.js', array('jquery'), null, true); // description déroulante
+    wp_enqueue_script('menu-script', $theme_uri . '/menu.js', array('jquery'), null, true);
+    wp_enqueue_script('projet-script', $theme_uri . '/projet.js', array('jquery'), null, true);
+    wp_enqueue_script('accueil-js', $theme_uri . '/accueil.js', array('jquery'), null, true);
+
+    // --- Passage des variables JS depuis WordPress ---
+    wp_localize_script('accueil-js', 'themeVars', array(
+        'themeUrl' => $theme_uri,
+        'pageArcade' => site_url('/arcade/'),
+        'pageJourTerre' => site_url('/jour-de-la-terre/'),
+        'pageFinissants' => site_url('/projets-des-finissants/')
+    ));
 
     // --- CSS spécifique à la page d'accueil ---
     if (is_front_page()) {
@@ -41,14 +50,17 @@ function expo_enqueue_assets() {
     if (file_exists(get_template_directory() . '/CSS/normalize.css')) {
         wp_enqueue_style('style-normalize', $theme_uri . '/CSS/normalize.css');
     }
-      // --- CSS spécifique à la page Projet finissants ---
+
+    // --- CSS spécifique à la page Projet finissants ---
     if (is_page_template('projets-des-finissants.php') || is_page_template('ar.php')) {
-        wp_enqueue_style('style-arcade', $theme_uri . '/CSS/projet-finissant.css');
+        wp_enqueue_style('style-projet-finissant', $theme_uri . '/CSS/projet-finissant.css');
     }
-       // --- CSS spécifique à la page Jour de la terre ---
+
+    // --- CSS spécifique à la page Jour de la terre ---
     if (is_page_template('jour-terre.php') || is_page_template('ar.php')) {
-        wp_enqueue_style('style-arcade', $theme_uri . '/CSS/jour-terre.css');
+        wp_enqueue_style('style-jour-terre', $theme_uri . '/CSS/jour-terre.css');
     }
+
 }
 add_action('wp_enqueue_scripts', 'expo_enqueue_assets');
 
@@ -81,7 +93,6 @@ function ajuster_menu_mobile() {
         const menuPage = document.querySelector('.menu-page');
         if (!menuPage) return;
 
-        // Fonction pour ajuster la hauteur du menu
         function ajusterHauteur() {
             const hauteur = window.innerHeight;
             menuPage.style.height = hauteur + 'px';
