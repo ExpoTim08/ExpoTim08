@@ -51,51 +51,92 @@ get_header();
       $etudiants   = get_field('etudiants_associes'); // relation ACF
   ?>
 
-    <div class="carte-projet-arcade">
-      <div class="conteneur-carte-haut">
-        <h2 class="titre-projet-arcade"><?php echo esc_html($nom); ?></h2>
-        <button class="button-projet-arcade">>></button>
-      </div>
+  <!-- VERSION DESKTOP -->
+  <div class="carte-projet-arcade--desktop">
+    <?php if ($image) : ?>
+      <img class="image-projet-arcade" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($nom); ?>">
+    <?php endif; ?>
 
-      <?php if ($image) : ?>
-        <img class="image-projet-arcade" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($nom); ?>">
+    <div class="conteneur-carte-bas">
+      <h2 class="titre-projet-arcade"><?php echo esc_html($nom); ?></h2>
+      <p class="carte-arcade-titre-description">Description</p>
+      <p class="description-projet"><?php echo esc_html($description); ?></p>
+
+      <?php if ($annee) : ?>
+        <p class="annee-projet">Année : <?php echo esc_html($annee); ?></p>
       <?php endif; ?>
 
-      <div class="conteneur-carte-bas">
-        <div class="conteneur-button-dropdown-arcade">
-          <p class="carte-arcade-titre-description">Description</p>
-          <button class="button-dropdown-arcade">+</button>
-        </div>
-        <div class="dropdown-carte-arcade">
-          <p class="description-projet"><?php echo esc_html($description); ?></p>
+      <?php if ($etudiants) : ?>
+        <p class="etudiants-projet">
+          Étudiants :
+          <?php
+          $liste = [];
+          foreach ($etudiants as $etudiant) {
+            $prenom = get_field('prenom', $etudiant->ID);
+            $nomEtu = get_field('nom_etudiant', $etudiant->ID);
+            $liste[] = trim("$prenom $nomEtu");
+          }
+          echo esc_html(implode(', ', $liste));
+          ?>
+        </p>
+      <?php endif; ?>
 
-          <?php if ($annee) : ?>
-            <p class="annee-projet">Année : <?php echo esc_html($annee); ?></p>
-          <?php endif; ?>
+      <?php if ($video) : ?>
+        <p class="video-projet">
+          <a href="<?php echo esc_url($video); ?>" target="_blank">Voir la vidéo</a>
+        </p>
+      <?php endif; ?>
 
-          <?php if ($etudiants) : ?>
-            <p class="etudiants-projet">
-              Étudiants :
-              <?php
-              $liste = [];
-              foreach ($etudiants as $etudiant) {
-                $prenom = get_field('prenom', $etudiant->ID);
-                $nomEtu = get_field('nom_etudiant', $etudiant->ID);
-                $liste[] = trim("$prenom $nomEtu");
-              }
-              echo esc_html(implode(', ', $liste));
-              ?>
-            </p>
-          <?php endif; ?>
+      <button class="button-projet-arcade">>></button>
+    </div>
+  </div>
 
-          <?php if ($video) : ?>
-            <p class="video-projet">
-              <a href="<?php echo esc_url($video); ?>" target="_blank">Voir la vidéo</a>
-            </p>
-          <?php endif; ?>
-        </div>
+  <!-- VERSION MOBILE -->
+  <div class="carte-projet-arcade">
+    <div class="conteneur-carte-haut">
+      <h2 class="titre-projet-arcade"><?php echo esc_html($nom); ?></h2>
+      <button class="button-projet-arcade">>></button>
+    </div>
+
+    <?php if ($image) : ?>
+      <img class="image-projet-arcade" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($nom); ?>">
+    <?php endif; ?>
+
+    <div class="conteneur-carte-bas">
+      <div class="conteneur-button-dropdown-arcade">
+        <p class="carte-arcade-titre-description">Description</p>
+        <button class="button-dropdown-arcade">+</button>
+      </div>
+      <div class="dropdown-carte-arcade">
+        <p class="description-projet"><?php echo esc_html($description); ?></p>
+
+        <?php if ($annee) : ?>
+          <p class="annee-projet">Année : <?php echo esc_html($annee); ?></p>
+        <?php endif; ?>
+
+        <?php if ($etudiants) : ?>
+          <p class="etudiants-projet">
+            Étudiants :
+            <?php
+            $liste = [];
+            foreach ($etudiants as $etudiant) {
+              $prenom = get_field('prenom', $etudiant->ID);
+              $nomEtu = get_field('nom_etudiant', $etudiant->ID);
+              $liste[] = trim("$prenom $nomEtu");
+            }
+            echo esc_html(implode(', ', $liste));
+            ?>
+          </p>
+        <?php endif; ?>
+
+        <?php if ($video) : ?>
+          <p class="video-projet">
+            <a href="<?php echo esc_url($video); ?>" target="_blank">Voir la vidéo</a>
+          </p>
+        <?php endif; ?>
       </div>
     </div>
+  </div>
 
   <?php
     endwhile;
