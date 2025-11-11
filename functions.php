@@ -32,6 +32,11 @@ function expo_enqueue_assets() {
         wp_enqueue_style('style-arcade', $theme_uri . '/CSS/arcade.css');
     }
 
+    // --- CSS spécifique à la page Projet Arcade ---
+    if (is_page_template('projetArcade.php')) {
+        wp_enqueue_style('style-projet-arcade', $theme_uri . '/CSS/projetArcade.css');
+    }
+
     // --- normalize.css ---
     if (file_exists(get_template_directory() . '/CSS/normalize.css')) {
         wp_enqueue_style('style-normalize', $theme_uri . '/CSS/normalize.css');

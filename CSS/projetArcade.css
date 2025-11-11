@@ -1,0 +1,24 @@
+body {
+  background: linear-gradient(180deg, #1B1B1B 0%, #2B2B2B 44.23%, #323232 77.88%, #1B1B1B 100%);
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.retour-arcade {
+  margin-top: 20px;
+}
+
+.lien-retour {
+  color: #ffffff; /* texte blanc */
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px; /* espace entre la flèche et le texte */
+}
+
+.lien-retour:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
