@@ -4,6 +4,14 @@
  */
 require("global.php");
 ?>
+<script>
+const themeUrl = "<?php echo get_template_directory_uri(); ?>";
+const pageArcade = "<?php echo get_permalink(get_page_by_path('arcade')); ?>";
+const pageJourTerre = "<?php echo get_permalink(get_page_by_path('jour-de-la-terre')); ?>";
+const pageFinissants = "<?php echo get_permalink(get_page_by_path('projet-des-finissants')); ?>";
+</script>
+<script src="<?php echo get_template_directory_uri(); ?>/accueil.js"></script>
+
 
 <body <?php body_class(); ?>>
   <div class="border gauche"></div>

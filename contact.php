@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Arcade
+Template Name: Contact
 */
 require("global.php");
 ?>
