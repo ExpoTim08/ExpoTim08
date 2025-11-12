@@ -34,10 +34,17 @@ function expo_enqueue_assets() {
 
     // --- CSS spécifique aux autres pages ---
     if (is_page_template('arcade.php') || is_page_template('ar.php')) wp_enqueue_style('style-arcade', $theme_uri . '/CSS/arcade.css');
+
     if (is_page_template('projetArcade.php')) wp_enqueue_style('style-projet-arcade', $theme_uri . '/CSS/projetArcade.css');
+
     if (file_exists(get_template_directory() . '/CSS/normalize.css')) wp_enqueue_style('style-normalize', $theme_uri . '/CSS/normalize.css');
+
     if (is_page_template('projets-des-finissants.php') || is_page_template('ar.php')) wp_enqueue_style('style-projet-finissant', $theme_uri . '/CSS/projet-finissant.css');
+
     if (is_page_template('jour-terre.php') || is_page_template('ar.php')) wp_enqueue_style('style-jour-terre', $theme_uri . '/CSS/jour-terre.css');
+
+    if (is_search()) {wp_enqueue_style('style-search', $theme_uri . '/CSS/search.css');}
+    
 }
 add_action('wp_enqueue_scripts', 'expo_enqueue_assets');
 
@@ -76,26 +83,47 @@ function ajuster_menu_mobile() {
 add_action('wp_footer', 'ajuster_menu_mobile');
 
 // =========================================================
-// Recherche dans les projets et les étudiants associés (ACF)
+// Recherche dans les projets et les étudiants associés
 // =========================================================
-function expo_search_projets_etudiants($query) {
+function expo_search_simple($query) {
     if (!is_admin() && $query->is_main_query() && $query->is_search) {
+
+        // On cible uniquement notre CPT projet
         if (isset($_GET['post_type']) && $_GET['post_type'] === 'projet') {
             $query->set('post_type', 'projet');
 
-            // Ajouter la recherche dans les champs ACF pour étudiants
-            add_filter('posts_join', function($join) {
-                global $wpdb;
-                return $join . " LEFT JOIN {$wpdb->postmeta} AS pm ON {$wpdb->posts}.ID = pm.post_id ";
-            });
+            // On garde la recherche WP normale sur le titre
+            add_filter('the_posts', function($posts) use ($query) {
+                $search = $query->get('s');
 
-            add_filter('posts_where', function($where) {
-                global $wpdb;
-                $search = esc_sql($wpdb->esc_like(get_query_var('s')));
-                return $where . " OR (pm.meta_key = 'etudiants_associes' AND pm.meta_value LIKE '%$search%')";
+                // Filtrer les projets si le titre ne contient pas le terme de recherche
+                // mais un étudiant associé contient le terme
+                $filtered = [];
+                foreach ($posts as $post) {
+                    $etudiants = get_field('etudiants_associes', $post->ID);
+                    $found = false;
+
+                    if ($etudiants) {
+                        foreach ($etudiants as $etu) {
+                            $prenom = get_field('prenom', $etu->ID);
+                            $nom = get_field('nom_etudiant', $etu->ID);
+                            if (stripos("$prenom $nom", $search) !== false) {
+                                $found = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if ($found || stripos($post->post_title, $search) !== false) {
+                        $filtered[] = $post;
+                    }
+                }
+
+                return $filtered;
             });
         }
     }
 }
-add_action('pre_get_posts', 'expo_search_projets_etudiants');
+add_action('pre_get_posts', 'expo_search_simple');
+
 ?>
