@@ -25,9 +25,9 @@ get_header();
       </div>
 
       <div class="carroussel-choix">
-        <p class="arcade arcade-click" onclick="ChangeImageManuel('<?php echo get_template_directory_uri(); ?>/Images/Arcade.jpg')">ARCADE</p> 
-        <p class="jour-terre" onclick="ChangeImageManuel('<?php echo get_template_directory_uri(); ?>/Images/Nature.jpeg')">GRAPHISME</p>
-        <p class="finissants" onclick="ChangeImageManuel('<?php echo get_template_directory_uri(); ?>/Images/Finissants.jpg')">FINISSANTS</p>
+        <p class="arcade arcade-click">ARCADE</p> 
+        <p class="jour-terre">JOUR DE LA TERRE</p>
+        <p class="finissants">PROJETS DES FINISSANTS</p>
       </div>
     </div>
 
@@ -127,7 +127,7 @@ get_header();
     </div>
   </main>
 
-  <!-- Déclaration themeVars une seule fois -->
+  <!-- Variables globales JS -->
   <script>
     var themeVars = themeVars || {};
     themeVars.themeUrl = "<?php echo get_template_directory_uri(); ?>";
