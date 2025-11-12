@@ -14,7 +14,7 @@ get_header();
     <!-------------------------------- Carroussel -------------------------------->
     <div class="carroussel">
       <div class="image-wrap">
-        <img id="image-carroussel" src="<?php echo get_template_directory_uri(); ?>/Images/Arcade.jpg" alt="">
+        <img id="image-carroussel" src="<?php echo get_template_directory_uri(); ?>/Images/Affiche-Arcade/Affiche-Code3.jpg" alt="">
       </div>
       <img class="image-titre" src="<?php echo get_template_directory_uri(); ?>/Images/Texte.png" alt="">
 
@@ -26,8 +26,8 @@ get_header();
 
       <div class="carroussel-choix">
         <p class="arcade arcade-click" onclick="ChangeImageManuel('<?php echo get_template_directory_uri(); ?>/Images/Arcade.jpg')">ARCADE</p> 
-        <p class="jour-terre" onclick="ChangeImageManuel('<?php echo get_template_directory_uri(); ?>/Images/Nature.jpeg')">JOUR DE LA TERRE</p>
-        <p class="finissants" onclick="ChangeImageManuel('<?php echo get_template_directory_uri(); ?>/Images/Finissants.jpg')">PROJETS DES FINISSANTS</p>
+        <p class="jour-terre" onclick="ChangeImageManuel('<?php echo get_template_directory_uri(); ?>/Images/Nature.jpeg')">GRAPHISME</p>
+        <p class="finissants" onclick="ChangeImageManuel('<?php echo get_template_directory_uri(); ?>/Images/Finissants.jpg')">FINISSANTS</p>
       </div>
     </div>
 

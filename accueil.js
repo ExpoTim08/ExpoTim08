@@ -2,13 +2,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- Tableau des images avec titre, classe et lien WordPress ---
   const Images = [
     {
-      src: `${themeVars.themeUrl}/Images/Arcade.jpg`,
+      src: `${themeVars.themeUrl}/Images/Affiche-Arcade/Affiche-Hachiman.jpg`,
       Titre: "ARCADE",
       ClassName: "arcade",
       Lien: themeVars.pageArcade
     },
     {
-      src: `${themeVars.themeUrl}/Images/Nature.jpeg`,
+      src: `${themeVars.themeUrl}/Images/EcotidienArcade.png`,
       Titre: "JOUR DE LA TERRE",
       ClassName: "jour-terre",
       Lien: themeVars.pageJourTerre
