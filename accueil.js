@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // --- Tableau des images avec titre, classe et lien WordPress ---
   const Images = [
     {
       src: `${themeVars.themeUrl}/Images/Affiche-Arcade/Affiche-Hachiman.jpg`,
@@ -21,67 +20,60 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   ];
 
-  // --- Index de l'image actuellement affichée ---
   let CurrentIndex = 0;
-
-  // --- Sélecteurs principaux ---
   const Image = document.getElementById("image-carroussel");
   const Subtitle = document.querySelector(".sous-titre-carroussel");
   const BoutonVoirPlus = document.querySelector(".plus");
   const ChoixElements = document.querySelectorAll(".carroussel-choix p");
 
-  // --- Vérifie que tous les éléments existent ---
   if (!Image || !Subtitle || !BoutonVoirPlus || ChoixElements.length === 0) return;
 
-  // --- Fonction principale pour changer l'image et les informations ---
   function ChangeImageAutomatique(index) {
     const { src, Titre, ClassName, Lien } = Images[index];
 
-    // --- Change l'image et le sous-titre ---
+    // --- Change image et texte ---
     Image.src = src;
     Subtitle.innerText = Titre;
 
-    // --- Met à jour les classes visuelles des boutons ---
+    // --- Met à jour les classes visuelles ---
     ChoixElements.forEach(elm => {
       elm.classList.remove("arcade-click", "jour-terre-click", "finissants-click");
     });
     const currentChoice = document.querySelector(`.${ClassName}`);
     if (currentChoice) currentChoice.classList.add(`${ClassName}-click`);
 
-    // --- Met à jour le lien du bouton "Voir Plus" ---
+    // --- Lien du bouton ---
     BoutonVoirPlus.setAttribute("href", Lien);
   }
 
-  // --- Fonction pour changer l'image manuellement via clic ---
-  window.ChangeImageManuel = function (NewSrc) {
-    const FoundIndex = Images.findIndex(img => img.src === NewSrc);
-    if (FoundIndex !== -1) {
-      CurrentIndex = FoundIndex;
+  // --- Gestion du timer unique ---
+  let intervalID = null;
+
+  function startAutoChange() {
+    // Empêche plusieurs timers simultanés
+    if (intervalID !== null) clearInterval(intervalID);
+    intervalID = setInterval(() => {
+      CurrentIndex = (CurrentIndex + 1) % Images.length;
       ChangeImageAutomatique(CurrentIndex);
-    }
-  };
+    }, 5000);
+  }
 
-  // --- Affiche la première image au chargement ---
+  // --- Initialisation ---
   ChangeImageAutomatique(CurrentIndex);
+  startAutoChange();
 
-  // --- Changement automatique toutes les 5 secondes ---
-  setInterval(() => {
-    CurrentIndex = (CurrentIndex + 1) % Images.length;
-    ChangeImageAutomatique(CurrentIndex);
-  }, 5000);
-
-  // --- Clique sur le bouton "Voir Plus" ---
+  // --- Bouton "Voir Plus" ---
   BoutonVoirPlus.addEventListener("click", (e) => {
     e.preventDefault();
     window.location.href = Images[CurrentIndex].Lien;
   });
 
-  // --- Clique sur les boutons de catégorie ---
+  // --- Clics manuels ---
   ChoixElements.forEach((elm, i) => {
     elm.addEventListener("click", () => {
       CurrentIndex = i;
       ChangeImageAutomatique(CurrentIndex);
-      // --- Plus de redirection ici ---
+      startAutoChange(); // réinitialise proprement le timer
     });
   });
 });
