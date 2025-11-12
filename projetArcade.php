@@ -57,7 +57,7 @@ if ($video) {
 
     <!-- Bouton retour vers Arcade -->
     <p class="retour-arcade">
-      <a href="http://localhost/ExpoTim/index.php/arcade/" class="lien-retour">
+      <a href="<?php echo esc_url(get_permalink(get_page_by_path('arcade'))); ?>" class="lien-retour">
         &lt; Arcade
       </a>
     </p>
