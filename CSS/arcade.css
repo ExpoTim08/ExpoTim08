@@ -1,40 +1,52 @@
-  
-  /*-------------- CSS Arcade --------------*/
+/*-------------- CSS Arcade --------------*/
 
-  body {
-    background: linear-gradient(180deg, #1B1B1B 0%, #2B2B2B 44.23%, #323232 77.88%, #1B1B1B 100%);
-    background-attachment: fixed;
-    background-size: cover;
-  }
+body {
+  background: linear-gradient(180deg, #1B1B1B 0%, #2B2B2B 44.23%, #323232 77.88%, #1B1B1B 100%);
+  background-attachment: fixed;
+  background-size: cover;
+}
 
-  .pattern-background {
-    background-image:  linear-gradient(#4e4b41bd 1px, transparent 1px), linear-gradient(to right, #4e4b41bd 1px, #71718300 1px);
-    background-size: 40px 40px;
-    background-attachment: fixed;
-  }
+.pattern-background {
+  background-image: linear-gradient(#4e4b41bd 1px, transparent 1px), linear-gradient(to right, #4e4b41bd 1px, #71718300 1px);
+  background-size: 40px 40px;
+  background-attachment: fixed;
+}
 
-   h1, h2 {
-    color: var(--font-color);
-    font-family: var(--title-font);
-  }
+h1, h2 {
+  color: var(--font-color);
+  font-family: var(--title-font);
+}
 
-  .page-arcade h3, .page-arcade p, .page-arcade a, .page-arcade li {
-    font-family: var(--general-font);
-    color: var(--font-color);
-  }
+.page-arcade h3, .page-arcade p, .page-arcade a, .page-arcade li {
+  font-family: var(--general-font);
+  color: var(--font-color);
+}
 
-
-/*-------------- MOBILE ARCADE--------------*/
+/*-------------- MOBILE ARCADE --------------*/
 @media screen and (max-width: 440px) {
 
-  /*------------- Header --------------*/
+  .presentation-arcade {
+    background-image: linear-gradient(177deg, #4032FF 11.95%, #362CB6 28.39%, #21212100 82.04%);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5em 0;
+  }
+
+  .titre-arcade {
+    font-size: clamp(18px, 8vw, 36px);
+    text-align: center;
+    -webkit-text-stroke-width: 0.8px;
+  }
+
   .site-header {
     padding: 20px 2em 1em 2em;
     border-bottom: 2px solid var(--border-color);
-    margin: 0px;
+    margin: 0;
   }
 
-  /*------------- Borders --------------*/
   .border {
     position: fixed;
     top: 0;
@@ -45,18 +57,9 @@
     pointer-events: none;
   }
 
-  .border.gauche { 
-    left: 1rem; 
-    border-left: 1px solid var(--border-color-side); 
-  }
+  .border.gauche { left: 1rem; border-left: 1px solid var(--border-color-side); }
+  .border.droite { right: 1rem; border-left: 1px solid var(--border-color-side); }
 
-  .border.droite  { 
-    right: 1rem; 
-    border-left: 1px solid var(--border-color-side);
-  }
-
-
-  /*------------- Description arcade --------------*/
   .conteneur-description-arcade {
     padding: 25px 35px 45px 35px;
     display: flex;
@@ -70,44 +73,38 @@
     padding: 5px 100px 6px 11px;
   }
 
-
-
-  /*------------- Contenu page arcade --------------*/
   .page-arcade {
     display: flex;
     max-width: 1200px; 
-    margin: 0em 1em; 
+    margin: 0 1em; 
     flex-direction: column;
   }
   
-  .page-arcade section {
-    width: 100%;
-  }
+  .page-arcade section { width: 100%; }
 
   .page-arcade img {
     max-width: 100%;
     height: auto;
     display: block;
-    margin: 0 auto; /* centre les images */
+    margin: 0 auto;
     border-top: 1px solid var(--border-color-project);
     border-bottom: 1px solid var(--border-color-project);
+    object-fit: contain;
   }
 
-  /*------------- Liste des projets arcade --------------*/
-  .liste-projet-arcade {
-    gap: 30px;
-  }
+  .liste-projet-arcade { gap: 30px; }
 
-  .carte-projet-arcade--desktop {
-    display: none;
-  }
-
-  .carte-projet-arcade{
-    background-color: rgb(48, 48, 48);
+  /* Version mobile des cartes */
+  .carte-projet-arcade { 
+    display: block; 
+    background-color: rgb(48,48,48);
     border: 1px solid var(--border-color-project);
-    margin: 0px 47px;
+    margin: 0 47px;
     box-shadow: 6px 6px 0px var(--border-color-project);
   }
+
+  /* On cache la version desktop */
+  .carte-projet-arcade--desktop { display: none; }
 
   .conteneur-carte-haut {
     position: relative; 
@@ -119,14 +116,13 @@
     display: block;
     width: 100%;
     height: auto;
-    object-fit: cover;
+    object-fit: contain;
   }
 
-  /* bouton superposé sur l'image */
   .conteneur-carte-haut .button-projet-arcade {
     position: absolute;
     top: 12px;
-    right: 0px;
+    right: 0;
     z-index: 10;
     width: 40px;
     height: 20px;
@@ -138,13 +134,10 @@
     text-align: center;
   }
 
-  /*------------- Dropdown description arcade --------------*/
-  
   .conteneur-button-dropdown-arcade {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    /*background-color: none;*/
     border-bottom: 1px solid var(--border-color-project);
   }
 
@@ -158,7 +151,6 @@
     border-left: 1px solid var(--border-color-project);
   }
 
-    /* carte fermée */
   .carte-projet-arcade .dropdown-carte-arcade {
     max-height: 0;
     overflow: hidden;
@@ -166,7 +158,6 @@
     display: block;
   }
 
-  /* carte s'ouvre*/
   .carte-projet-arcade.open-desc .dropdown-carte-arcade {
     max-height: 800px; 
     font-size: 12px;
@@ -179,13 +170,7 @@
     padding-left: 10px;
   }
 
-
-  .conteneur-section-arcade-bas {
-     padding-bottom: 4em;
-  }
-  
-
-  /*------------- Filtre --------------*/
+  .conteneur-section-arcade-bas { padding-bottom: 4em; }
 
   .conteneur-arcade-filtre {
     margin-top: 50px;
@@ -195,253 +180,152 @@
     border: 1px solid var(--border-color);
     padding: 0.2em 0.7em 0.3em 0.5em;
     margin-left: 47px;
-
     display: flex;
     flex-flow: nowrap row;
     align-items: center;
   }
 
-  .filtre {
-    margin: 0px;
-    font-size: 14px;
-  }
-
-  .icone-filtre {
-    width: 20px;
-    height: 20px;
-  }
+  .filtre { margin: 0; font-size: 14px; }
+  .icone-filtre { width: 20px; height: 20px; }
 }
 
-/*-------------- TABLET/PETIT ECRAN ARCADE--------------*/
-@media screen and (min-width: 440.02px) {
+/*-------------- TABLET / PETIT ECRAN ARCADE --------------*/
+@media screen and (min-width: 441px) and (max-width: 1023px) {
 
-  body {
-    overflow-x: hidden;
-  }
-
-
-  img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-  }
+  body { overflow-x: hidden; }
+  img { max-width: 100%; height: auto; display: block; object-fit: contain; }
 
   .border {
     position: fixed;
-    background: var(--border-color-side); 
+    background: var(--border-color-side);
     z-index: 9999;
   }
 
-  .border.gauche {
-    top: 0;
-    left: 2em;
-    width: 1px; 
-    height: 100%;
-  }
+  .border.gauche { top: 0; left: 2em; width: 1px; height: 100%; }
+  .border.droite { top: 0; right: 2em; width: 1px; height: 100%; }
 
-  .border.droite {
-    top: 0;
-    right: 2em;
-    width: 1px; 
-    height: 100%;
-  }
-
-  .carte-projet-arcade {
-    display: none;
-  }
-
-  /*------------- Description arcade --------------*/
+  /* On cache la version mobile des cartes */
+  .carte-projet-arcade { display: none; }
+  .carte-projet-arcade--desktop { display: flex; }
 
   .conteneur-description-arcade {
-    background-color: rgb(42 42 42);
-    border-top: 1px solid rgb(64 50 255);
-    border-bottom: 1px solid rgb(64 50 255);
+    background-color: rgb(42, 42, 42);
+    border-top: 1px solid rgb(64, 50, 255);
+    border-bottom: 1px solid rgb(64, 50, 255);
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
   }
 
   .description-titre {
-    writing-mode: vertical-rl;        
-    text-orientation: upright;       
-    white-space: nowrap;              
-    display: inline-block;            
-    transform-origin: center;  
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    white-space: nowrap;
+    display: inline-block;
     line-height: 1;
     font-size: 12px;
     padding: 6px 8px;
-    box-sizing: border-box;
-    align-self: center;
     text-transform: uppercase;
-    overflow: hidden; 
+    overflow: hidden;
   }
 
   @media screen and (min-width: 650px) and (max-width: 1024px) {
-      .description-titre {
-        font-size: 9px
-    }
+    .description-titre { font-size: 9px; }
   }
 
   .conteneur-description-arcade .description-texte {
     padding: 20px 16vw;
-    padding-left: 0px;
+    padding-left: 0;
     max-width: 568px;
   }
 
-  .conteneur-description-arcade .description-titre {
-    padding-left: 16vw;
-  }
+  .conteneur-description-arcade .description-titre { padding-left: 16vw; }
 
-  .page-arcade {
-    display: flex;
-    max-width: 1200px; 
-    margin: 0em 2em; 
-    flex-direction: column;
-  }
+  .page-arcade { display: flex; max-width: 1200px; margin: 0 2em; flex-direction: column; }
 
-    /*------------- Liste des projets arcade --------------*/
-  
-  /* Carte projet arcade — version desktop (pas de dropdown) */
   .carte-projet-arcade--desktop {
-      display: flex;
-      flex-direction: row;
-      align-items: stretch;
-      gap: 0;
-      width: 80%;
-      max-width: 1140px;
-      margin: 1rem auto;
-      background-color: #2c2c2f;
-
-      overflow: hidden;
-      box-shadow: 10px 10px 0px var(--border-color-project);
-      border: 2px solid var(--border-color-project);
+    flex-direction: row;
+    align-items: stretch;
+    width: 80%;
+    max-width: 1140px;
+    margin: 1rem auto;
+    background-color: #2c2c2f;
+    overflow: hidden;
+    box-shadow: 10px 10px 0px var(--border-color-project);
+    border: 2px solid var(--border-color-project);
   }
 
-  /* Haut gauche : titre + bouton dans une colonne au-dessus de l'image (desktop keeps row layout) */
   .carte-projet-arcade--desktop .conteneur-carte-haut {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 1.1rem 1.25rem;
-      width: 55%;
-      box-sizing: border-box;
-      background: linear-gradient(90deg, rgba(255,255,255,0.02), transparent);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.1rem 1.25rem;
+    width: 55%;
+    box-sizing: border-box;
+    background: linear-gradient(90deg, rgba(255,255,255,0.02), transparent);
   }
 
-  /* Titre */
   .carte-projet-arcade--desktop .titre-projet-arcade {
-      margin: 0 0 0.6rem 0;
-      font-size: 1.3rem;
-      line-height: 1.1;
-      color: var(--font-color);
-      font-weight: 800;
-      letter-spacing: .4px;
+    margin: 0 0 0.6rem 0;
+    font-size: 1.3rem;
+    line-height: 1.1;
+    color: var(--font-color);
+    font-weight: 800;
+    letter-spacing: .4px;
   }
 
-  /* Bouton ">>"*/
-  .carte-projet-arcade--desktop .button-projet-arcade {
-    display: contents;
-    position: static;
-    width: 40px;
-    height: 20px;
-    background-color: #4032FF;
-    color: #ffffff;
-    font-size: 10px;
-    border: 1px solid var(--font-color);
-    cursor: pointer;
-    text-align: center;
-  }
-
-  /* Image à droite */
   .carte-projet-arcade--desktop .image-projet-arcade {
-      width: 45%;
-      height: auto;
-      object-fit: cover;
+    width: 45%;
+    height: auto;
+    object-fit: contain;
   }
 
-  /* Bas de la carte : description (placée sous le titre dans la même colonne gauche) */
   .carte-projet-arcade--desktop .conteneur-carte-bas {
-      padding: 2rem;
-      background: transparent;
-      box-sizing: border-box;
-      width: 55%;
+    padding: 2rem;
+    width: 55%;
+    background: transparent;
+    box-sizing: border-box;
   }
 
-  /* Titre "Description" au-dessus du texte */
   .carte-projet-arcade--desktop .carte-arcade-titre-description {
-      margin: 0.6rem 0 0.35rem;
-      font-weight: 700;
-      color: var(--font-color);
+    margin: 0.6rem 0 0.35rem;
+    font-weight: 700;
+    color: var(--font-color);
   }
 
-  /* Texte descriptif */
   .carte-projet-arcade--desktop .description-projet {
-      margin: 0;
-      color: var(--font-color);
-      line-height: 1.45;
-      font-size: 0.98rem;
-      font-size: 14px;
+    margin: 0;
+    color: var(--font-color);
+    line-height: 1.45;
+    font-size: 14px;
   }
 
-  .button-dropdown-arcade, .button-projet-arcade, .carte-arcade-titre-description {
-    display: none;
-  }
+  .button-dropdown-arcade, .button-projet-arcade, .carte-arcade-titre-description { display: none; }
 
-  /*------------- Filtre --------------*/
   .conteneur-arcade-filtre {
     margin-top: 50px;
     margin-bottom: 20px;
     padding: 0.2em 0.7em 0.3em 0.5em;
     margin-left: 10%;
     width: fit-content;
-
-    background-color: rgb(48, 48, 48);
+    background-color: rgb(48,48,48);
     border: 1px solid var(--border-color);
-
     display: flex;
     flex-flow: nowrap row;
     align-items: center;
   }
 
-  .filtre {
-    margin: 0px;
-    font-size: 14px;
-  }
-
-  .icone-filtre {
-    width: 20px;
-    height: 20px;
-  }
-
+  .filtre { margin: 0; font-size: 14px; }
+  .icone-filtre { width: 20px; height: 20px; }
 }
 
 /*-------------- DESKTOP ARCADE --------------*/
 @media screen and (min-width: 1024px) {
-  .border {
-    position: fixed;
-    background: var(--border-color-side); 
-    z-index: 9999;
-  }
+  .border { position: fixed; background: var(--border-color-side); z-index: 9999; }
+  .border.gauche { top: 0; left: 3em; width: 1px; height: 100%; }
+  .border.droite { top: 0; right: 3em; width: 1px; height: 100%; }
 
-  .border.gauche {
-    top: 0;
-    left: 3em;
-    width: 1px; 
-    height: 100%;
-  }
-
-  .border.droite {
-    top: 0;
-    right: 3em;
-    width: 1px; 
-    height: 100%;
-  }
-
-  .page-arcade {
-    margin: 0em 3em; 
-    max-width: none;
-  }
-  
+  .page-arcade { margin: 0 3em; max-width: none; }
 
   .presentation-arcade {
     display: flex;
@@ -449,12 +333,10 @@
     align-items: center;
     justify-content: center;
     border-bottom: 1px solid var(--border-color);
+    background-image: linear-gradient(177deg, #4032FF 11.95%, #362CB6 28.39%, #21212100 82.04%);
   }
 
-  .conteneur-description-arcade {
-    background-color: transparent;
-    border: none;
-  }
+  .conteneur-description-arcade { background-color: transparent; border: none; }
 
   .conteneur-description-arcade .description-texte {
     max-width: 595px;
@@ -462,80 +344,45 @@
     background-image: linear-gradient(to left, var(--font-color), white);
     color: transparent;
     background-clip: text;
-    padding: 20px 0vw;
+    padding: 20px 0;
   }
 
-  .conteneur-description-arcade .description-titre {
-    display: none;
-  }
+  .conteneur-description-arcade .description-titre { display: none; }
 
-  /*------------- Liste des projets arcade --------------*/
-  /* Carte projet arcade — version desktop */
-    .carte-projet-arcade--desktop {
-        display: flex;
-        flex-direction: row;
-        align-items: stretch;
-        gap: 0;
-        height: 300px;
-        max-width: 1140px;
-        margin: 1rem auto;
-        background-color: #2c2c2f;
-        overflow: hidden;
-        width: 80%;
-  }
+  .carte-projet-arcade { display: none; }
+  .carte-projet-arcade--desktop { display: flex; flex-direction: row; align-items: stretch; gap: 0; height: 300px; max-width: 1140px; margin: 1rem auto; background-color: #2c2c2f; overflow: hidden; width: 80%; }
 }
 
-  /*------------- Section description + titre --------------*/
-  .presentation-arcade {
-    background-image: 
-      linear-gradient(177deg, #4032FF 11.95%, #362CB6 28.39%, #21212100 82.04%);
-    
-  }
+/*-------------- Titre arcade --------------*/
+.titre-arcade--base {
+  -webkit-text-fill-color: var(--title-color);
+}
 
+.titre-arcade {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(20px, 9vw, 45px);
+  line-height: 0.6;
+  text-transform: uppercase;
+  margin: 0;
+  font-weight: lighter;
+  -webkit-text-stroke-width: 0.8px;
+  -webkit-text-stroke-color: rgb(255,255,255);
+}
 
-  /*------------- Titre arcade --------------*/
-  .titre-arcade--base {
-    -webkit-text-fill-color: var(--title-color);
-  }
+.titre-arcade-layer--1 {
+  opacity: 0.8;
+  -webkit-text-stroke-width: 0.8px;
+}
 
-  .titre-arcade {
-    color: transparent;               
-    -webkit-font-smoothing: antialiased;
-    -webkit-text-stroke: 0px transparent;
-  }
+.titre-arcade-layer--2 {
+  opacity: 0.5;
+  -webkit-text-stroke-width: 0.5px;
+}
 
-  .titre-arcade {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    font-size: clamp(20px, 9vw, 45px);
-    line-height: 0.78;
-    text-transform: uppercase;
-    margin: 0;
-    -webkit-text-stroke-width: 0.8px;
-    -webkit-text-stroke-color: rgb(255, 255, 255);
-
-    line-height: 0.6;
-    letter-spacing: 1px;
-    height: 220px;
-    font-weight: lighter;
-  }
-
-  .titre-arcade-layer--1 {
-    opacity: 0.8;
-    -webkit-text-stroke-width: 0.8px;
-  }
-
-  .titre-arcade-layer--2 {
-    opacity: 0.5;
-    -webkit-text-stroke-width: 0.5px;
-  }
-
-  .titre-arcade-layer--3 {
-    opacity: 0.3;
-    -webkit-text-stroke-width: 0.2px;
-  }
-
-
+.titre-arcade-layer--3 {
+  opacity: 0.3;
+  -webkit-text-stroke-width: 0.2px;
+}

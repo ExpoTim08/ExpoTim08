@@ -82,12 +82,9 @@ get_header();
         <?php endif; ?>
 
         <button class="button-projet-arcade"
-  onclick="window.location.href='<?php echo esc_url(add_query_arg('projet_id', get_the_ID(), get_permalink(get_page_by_path('projet-arcade')))); ?>'">
-  >>
-</button>
-
-
-
+          onclick="window.location.href='<?php echo esc_url(add_query_arg('projet_id', get_the_ID(), get_permalink(get_page_by_path('projet-arcade')))); ?>'">
+          >>
+        </button>
       </div>
     </div>
 
@@ -96,14 +93,9 @@ get_header();
       <div class="conteneur-carte-haut">
         <h2 class="titre-projet-arcade"><?php echo esc_html($nom); ?></h2>
         <button class="button-projet-arcade"
-  onclick="window.location.href='<?php echo esc_url(add_query_arg('projet_id', get_the_ID(), get_permalink(get_page_by_path('projet-arcade')))); ?>'">
-  >>
-</button>
-
-
-
-
-
+          onclick="window.location.href='<?php echo esc_url(add_query_arg('projet_id', get_the_ID(), get_permalink(get_page_by_path('projet-arcade')))); ?>'">
+          >>
+        </button>
       </div>
 
       <?php if ($image): ?>
