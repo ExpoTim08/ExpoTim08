@@ -95,24 +95,27 @@ get_header();
     </article>
 
     <!-- ===== Carte Projet Mobile ===== -->
-    <article class="carte-projet-graphisme carte-projet-graphisme--mobile">
+   <article class="carte-projet-graphisme carte-projet-graphisme--mobile">
       <?php if (!empty($image) && !empty($image['url'])) : ?>
-        <figure>
+        <figure class="image-projet-wrapper">
           <img class="image-projet-graphisme"
                src="<?php echo esc_url($image['url']); ?>"
                alt="<?php echo esc_attr($image['alt'] ?: $titre); ?>">
         </figure>
       <?php endif; ?>
 
-      <div class="conteneur-carte-mobile">
-        <h3 class="titre-projet-mobile"><?php echo esc_html($titre); ?></h3>
+      <div class="conteneur-carte-bas">
+        <h2 class="titre-projet-graphisme"><?php echo esc_html($titre); ?></h2>
 
         <?php if ($description) : ?>
-          <p class="description-projet-mobile"><?php echo esc_html($description); ?></p>
+          <div class="bloc-description">
+            <p class="carte-graphisme-titre-description">Description</p>
+            <p class="description-projet"><?php echo esc_html($description); ?></p>
+          </div>
         <?php endif; ?>
 
         <?php if (!empty($etudiants)) : ?>
-          <p class="etudiants-projet-mobile">
+          <p class="etudiants-projet">
             <strong>Étudiants :</strong>
             <?php
             $liste = array_map(function ($etudiant) {
@@ -124,7 +127,7 @@ get_header();
         <?php endif; ?>
 
         <?php if ($behance) : ?>
-          <p class="behance-projet-mobile">
+          <p class="behance-projet">
             <a href="<?php echo esc_url($behance); ?>" target="_blank" rel="noopener noreferrer">
               Voir sur Behance
             </a>
