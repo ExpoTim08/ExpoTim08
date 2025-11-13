@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Graphisme
+Template Name: Graphismes
 */
 get_header();
 ?>
