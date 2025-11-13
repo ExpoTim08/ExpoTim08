@@ -23,27 +23,12 @@ h1, h2 {
 }
 
 /*-------------- MOBILE ARCADE --------------*/
-@media screen and (max-width: 440px) {
+@media screen and (max-width: 576px) {
 
-  .presentation-arcade {
-    background-image: linear-gradient(177deg, #4032FF 11.95%, #362CB6 28.39%, #21212100 82.04%);
-    border-bottom: 1px solid var(--border-color);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 1.5em 0;
-  }
-
-  .titre-arcade {
-    font-size: clamp(18px, 8vw, 36px);
-    text-align: center;
-    -webkit-text-stroke-width: 0.8px;
-  }
-
+  /* style generale + border */
   .site-header {
     padding: 20px 2em 1em 2em;
-    border-bottom: 2px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
     margin: 0;
   }
 
@@ -60,6 +45,7 @@ h1, h2 {
   .border.gauche { left: 1rem; border-left: 1px solid var(--border-color-side); }
   .border.droite { right: 1rem; border-left: 1px solid var(--border-color-side); }
 
+  /* CSS informations sur arcade titre + description */
   .conteneur-description-arcade {
     padding: 25px 35px 45px 35px;
     display: flex;
@@ -82,6 +68,11 @@ h1, h2 {
   
   .page-arcade section { width: 100%; }
 
+  /* -------------- Version mobile des cartes */
+
+  /* On cache la version desktop */
+  .carte-projet-arcade--desktop { display: none; }
+
   .page-arcade img {
     max-width: 100%;
     height: auto;
@@ -92,24 +83,32 @@ h1, h2 {
     object-fit: contain;
   }
 
-  .liste-projet-arcade { gap: 30px; }
-
-  /* Version mobile des cartes */
   .carte-projet-arcade { 
     display: block; 
     background-color: rgb(48,48,48);
     border: 1px solid var(--border-color-project);
     margin: 0 47px;
     box-shadow: 6px 6px 0px var(--border-color-project);
+    margin-bottom: 10%;
+    max-width: 330px;
+    place-self: center;
   }
 
-  /* On cache la version desktop */
-  .carte-projet-arcade--desktop { display: none; }
+  .titre-projet-arcade{
+    font-size: clamp(14px, 4.5vw, 20px);
+    margin: 0.6rem 0 0.35rem;
+    font-weight: 300;
+    color: var(--font-color);
+  }
 
   .conteneur-carte-haut {
     position: relative; 
     overflow: hidden;
-    display: block;
+    display: flex;
+    flex-direction: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 0.5rem;
   }
 
   .conteneur-carte-haut .image-projet-arcade {
@@ -120,12 +119,9 @@ h1, h2 {
   }
 
   .conteneur-carte-haut .button-projet-arcade {
-    position: absolute;
-    top: 12px;
     right: 0;
     z-index: 10;
-    width: 40px;
-    height: 20px;
+    height: 24px;
     background-color: #4032FF;
     color: #ffffff;
     font-size: 10px;
@@ -133,6 +129,7 @@ h1, h2 {
     cursor: pointer;
     text-align: center;
   }
+
 
   .conteneur-button-dropdown-arcade {
     width: 100%;
@@ -190,7 +187,7 @@ h1, h2 {
 }
 
 /*-------------- TABLET / PETIT ECRAN ARCADE --------------*/
-@media screen and (min-width: 441px) and (max-width: 1023px) {
+@media screen and (min-width: 576.02px) {
 
   body { overflow-x: hidden; }
   img { max-width: 100%; height: auto; display: block; object-fit: contain; }
@@ -247,12 +244,13 @@ h1, h2 {
     flex-direction: row;
     align-items: stretch;
     width: 80%;
-    max-width: 1140px;
+    max-width: 600px;
     margin: 1rem auto;
     background-color: #2c2c2f;
     overflow: hidden;
     box-shadow: 10px 10px 0px var(--border-color-project);
     border: 2px solid var(--border-color-project);
+    margin-bottom: 70px;
   }
 
   .carte-projet-arcade--desktop .conteneur-carte-haut {
@@ -285,6 +283,10 @@ h1, h2 {
     width: 55%;
     background: transparent;
     box-sizing: border-box;
+    display: flex;
+    flex-flow: column nowrap;
+    align-self: center;
+    
   }
 
   .carte-projet-arcade--desktop .carte-arcade-titre-description {
@@ -299,8 +301,24 @@ h1, h2 {
     line-height: 1.45;
     font-size: 14px;
   }
+  
+  .carte-projet-arcade--desktop button.button-projet-arcade {
+    z-index: 10;
+    height: 24px;
+    background-color: #4032FF;
+    color: #ffffff;
+    font-size: 10px;
+    border: 1px solid var(--font-color);
+    cursor: pointer;
+    text-align: center;
+    margin-top: 10%;
+  }
 
-  .button-dropdown-arcade, .button-projet-arcade, .carte-arcade-titre-description { display: none; }
+  .carte-projet-arcade--desktop .image-projet-arcade {
+      border-right: 2px solid var(--border-color-project);
+    }
+
+  .button-dropdown-arcade, .carte-arcade-titre-description { display: none; }
 
   .conteneur-arcade-filtre {
     margin-top: 50px;
@@ -336,6 +354,16 @@ h1, h2 {
     background-image: linear-gradient(177deg, #4032FF 11.95%, #362CB6 28.39%, #21212100 82.04%);
   }
 
+  .liste-projet-arcade {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+    align-items: start;
+  }
+
   .conteneur-description-arcade { background-color: transparent; border: none; }
 
   .conteneur-description-arcade .description-texte {
@@ -347,42 +375,185 @@ h1, h2 {
     padding: 20px 0;
   }
 
+  .carte-projet-arcade--desktop { 
+    display: flex; 
+    flex-direction: row; 
+    align-items: stretch; 
+    gap: 0; 
+    height: 300px; 
+    margin: 1rem auto; 
+    background-color: #2c2c2f; 
+    overflow: hidden; 
+    width: 75%; 
+    max-width: none;
+  }
+
+  .carte-projet-arcade--desktop .image-projet-arcade {
+    width: min-content;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .carte-projet-arcade--desktop .conteneur-carte-bas {
+    width: max-content;
+  }
+
   .conteneur-description-arcade .description-titre { display: none; }
 
   .carte-projet-arcade { display: none; }
-  .carte-projet-arcade--desktop { display: flex; flex-direction: row; align-items: stretch; gap: 0; height: 300px; max-width: 1140px; margin: 1rem auto; background-color: #2c2c2f; overflow: hidden; width: 80%; }
+
+  .carte-projet-arcade--desktop button.button-projet-arcade {
+    position: absolute;   
+    bottom: 0px;
+    right: 0px;
+
+    margin-top: 5%;
+    width: 47px;
+    height: 50px;
+    place-self: start;
+    border-color: var(--border-color-project);
+    border-width: 2px 1px 1px 2px;
+  }
 }
 
-/*-------------- Titre arcade --------------*/
-.titre-arcade--base {
-  -webkit-text-fill-color: var(--title-color);
+/*-------------- GRAND ECRAN ARCADE --------------*/
+@media screen and (min-width: 1300px) { 
+
+  /*les projets*/
+  .liste-projet-arcade {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 0.4fr));
+      gap: 3rem;
+      row-gap: 5rem;
+      width: 100%;
+      margin: 0 auto;
+      align-items: start;
+    }
+    
+  .carte-projet-arcade--desktop {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    height: 320px;
+    overflow: hidden;
+    background-color: #2c2c2f;
+  }
 }
 
-.titre-arcade {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: clamp(20px, 9vw, 45px);
-  line-height: 0.6;
-  text-transform: uppercase;
-  margin: 0;
-  font-weight: lighter;
-  -webkit-text-stroke-width: 0.8px;
-  -webkit-text-stroke-color: rgb(255,255,255);
-}
+/*-------------- Effet halftone + hover carte arcade desktop --------------*/
+.carte-projet-arcade--desktop::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
 
-.titre-arcade-layer--1 {
-  opacity: 0.8;
-  -webkit-text-stroke-width: 0.8px;
-}
+    /* halftone + tint */
+    background-image:
+      linear-gradient(rgba(64,50,255,0.06), rgba(64,50,255,0.06)),
+      radial-gradient(circle, rgba(255,255,255,0.12) 1.5px, transparent 1px);
+    background-size: auto, 12px 12px; /* change second value for dot density */
+    mix-blend-mode: screen;
 
-.titre-arcade-layer--2 {
-  opacity: 0.5;
-  -webkit-text-stroke-width: 0.5px;
-}
+    /* commencer par être caché et animer au survol */
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 260ms ease, transform 260ms cubic-bezier(.2,.8,.2,1);
 
-.titre-arcade-layer--3 {
-  opacity: 0.3;
-  -webkit-text-stroke-width: 0.2px;
-}
+    /* estomper le demi-ton vers le haut */
+    -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
+
+    z-index: 2;
+
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+  }
+
+  .carte-projet-arcade--desktop {
+    position: relative; 
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: transform 260ms cubic-bezier(.2,.8,.2,1),
+                box-shadow 260ms ease,
+                filter 260ms ease,
+                border-radius 260ms ease;
+    will-change: transform, box-shadow;
+    transform-origin: center;
+  }
+
+  .carte-projet-arcade--desktop:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .carte-projet-arcade--desktop:hover {
+    transform: translateY(-10px);
+    box-shadow: 16px 16px 0px rgb(15, 13, 50);
+    border-radius: 14px;
+  }
+
+  .carte-projet-arcade--desktop .image-projet-arcade {
+    transition: transform 400ms cubic-bezier(.2,.8,.2,1);
+    will-change: transform;
+  }
+
+  .carte-projet-arcade--desktop:hover .image-projet-arcade {
+    transform: scale(1.05);
+  }
+
+  /*------------- Section description + titre --------------*/
+  .presentation-arcade {
+    background-image: 
+      linear-gradient(177deg, #4032FF 11.95%, #362CB6 28.39%, #21212100 82.04%);
+    
+  }
+
+  /*------------- Titre arcade --------------*/
+  .titre-arcade--base {
+    -webkit-text-fill-color: var(--title-color);
+  }
+
+  .titre-arcade {
+    color: transparent;               
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke: 0px transparent;
+  }
+
+  .titre-arcade {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    font-size: clamp(20px, 9vw, 45px);
+    line-height: 0.78;
+    text-transform: uppercase;
+    margin: 0;
+    -webkit-text-stroke-width: 0.8px;
+    -webkit-text-stroke-color: rgb(255, 255, 255);
+
+    line-height: 0.6;
+    letter-spacing: 1px;
+    height: 220px;
+    font-weight: lighter;
+  }
+
+  .titre-arcade-layer--1 {
+    opacity: 0.8;
+    -webkit-text-stroke-width: 0.8px;
+  }
+
+  .titre-arcade-layer--2 {
+    opacity: 0.5;
+    -webkit-text-stroke-width: 0.5px;
+  }
+
+  .titre-arcade-layer--3 {
+    opacity: 0.3;
+    -webkit-text-stroke-width: 0.2px;
+  }
