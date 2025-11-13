@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Jour de la Terre
+Template Name: Graphisme
 */
 get_header();
 ?>
