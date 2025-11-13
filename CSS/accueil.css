@@ -123,27 +123,32 @@
     margin-right: 2em;
     background-color: var(--carrousel-bouton-background-color);
     opacity: 0.8;
+    letter-spacing: var(--title-letter-spacing);
   }
 
   .carroussel-choix > .arcade-click {
     border: 2px solid black;
     opacity: 1;
+    letter-spacing: var(--title-letter-spacing);
   }
 
   .carroussel-choix > .jour-terre {
     margin-right: 2em;
     background-color: var(--bouton-projet-jt-color);
     opacity: 0.8;
+    letter-spacing: var(--title-letter-spacing);
   }
 
   .carroussel-choix > .jour-terre-click {
     opacity: 1;
     border: 2px solid black;
+    
   }
 
   .carroussel-choix > .finissants {
     background-color: var(--bouton-projet-finissant-color);
     opacity: 0.8;
+    letter-spacing: var(--title-letter-spacing);
   }
 
   .carroussel-choix > .finissants-click {
@@ -185,6 +190,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: anim-accroche 3s linear infinite;
+  letter-spacing: var(--title-letter-spacing);
 }
 
 .numeration {
@@ -647,9 +653,15 @@
   }
 
 
-  .carroussel-choix > .arcade-click {background-color: var(--carrousel-bouton-background-color);}
-  .carroussel-choix > .jour-terre-click {background-color: var(--bouton-projet-jt-color);}
-  .carroussel-choix > .finissants-click {background-color: var(--bouton-projet-finissant-color);}
+  .carroussel-choix > .arcade-click {
+    background-color: var(--carrousel-bouton-background-color);
+    letter-spacing: var(--title-letter-spacing);}
+  .carroussel-choix > .jour-terre-click {
+    background-color: var(--bouton-projet-jt-color);
+    letter-spacing: var(--title-letter-spacing);}
+  .carroussel-choix > .finissants-click {
+    background-color: var(--bouton-projet-finissant-color);
+    letter-spacing: var(--title-letter-spacing);}
 
 /*********************************** CSS Section Accroche Desktop *************************************************/
   .accroche {
