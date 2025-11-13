@@ -68,6 +68,18 @@ h1, h2 {
   
   .page-arcade section { width: 100%; }
 
+  .presentation-arcade {
+    position: relative;
+  }
+
+  .logo-arcade {
+    position: absolute;
+    right: -20px;
+    top: 75px;
+    z-index: 10;
+    mix-blend-mode: color-dodge;
+  }
+
   /* -------------- Version mobile des cartes */
 
   /* On cache la version desktop */
@@ -226,6 +238,19 @@ h1, h2 {
     overflow: hidden;
   }
 
+  /*deco titre arcade*/
+  .presentation-arcade {
+    position: relative;
+  }
+
+  .logo-arcade {
+    position: absolute;
+    left: -30px;
+    bottom: 30%;
+    z-index: 10;
+    mix-blend-mode: color-dodge;
+  }
+
   @media screen and (min-width: 650px) and (max-width: 1024px) {
     .description-titre { font-size: 9px; }
   }
@@ -333,6 +358,7 @@ h1, h2 {
     align-items: center;
   }
 
+
   .filtre { margin: 0; font-size: 14px; }
   .icone-filtre { width: 20px; height: 20px; }
 }
@@ -362,6 +388,24 @@ h1, h2 {
     width: 100%;
     margin: 0 auto;
     align-items: start;
+  }
+
+  /*deco titre arcade*/
+  .presentation-arcade {
+    position: relative;
+  }
+
+  .logo-arcade {
+    position: absolute;
+    left: -70px;
+    bottom: -40%;
+    z-index: 10;
+    mix-blend-mode: color-dodge;
+
+    width: 300px;
+    height: auto;
+    max-width: 10vw;
+    min-width: 170px;
   }
 
   .conteneur-description-arcade { background-color: transparent; border: none; }

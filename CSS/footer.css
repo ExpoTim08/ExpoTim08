@@ -3,6 +3,7 @@
   footer h3, footer p, footer a, footer li {
     font-family: var(--general-font);
     color: var(--font-color);
+    letter-spacing: normal;
   }
 
 @media screen and (max-width: 440px) {
