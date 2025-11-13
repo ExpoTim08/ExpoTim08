@@ -41,7 +41,7 @@ function expo_enqueue_assets() {
 
     if (is_page_template('projets-des-finissants.php') || is_page_template('ar.php')) wp_enqueue_style('style-projet-finissant', $theme_uri . '/CSS/projet-finissant.css');
 
-    if (is_page_template('jour-terre.php') || is_page_template('ar.php')) wp_enqueue_style('style-jour-terre', $theme_uri . '/CSS/jour-terre.css');
+    if (is_page_template('graphisme.php') || is_page_template('ar.php')) wp_enqueue_style('style-jour-terre', $theme_uri . '/CSS/graphisme.css');
 
     if (is_search()) {wp_enqueue_style('style-search', $theme_uri . '/CSS/search.css');}
     

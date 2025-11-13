@@ -86,12 +86,7 @@
   --sous-titre-finissant-color: rgb(218, 200, 101); /*Couleur du sous-titre pour la catégorie finissants*/
 }
 
-h1, h2, h3, h4, h5, h6, a {
+h1, h2, h3, h4, h5, h6, a, .arcade-details p {
   /*font-family: var(--title-font);*/
   letter-spacing: var(--title-letter-spacing);
 }
-
-.arcade-details p {
-  letter-spacing: var(--title-letter-spacing);
-}
-
