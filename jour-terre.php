@@ -9,7 +9,7 @@ get_header();
   <div class="border gauche"></div>
   <div class="border droite"></div>
 
-  <!-- Présentation Graphisme -->
+  <!-- ===================== Présentation Graphisme ===================== -->
   <section class="presentation-graphisme">
     <h1 class="titre-graphisme" aria-label="graphisme">
       <span class="titre-graphisme-layer titre-graphisme--base">GRAPHISME</span>
@@ -31,18 +31,19 @@ get_header();
     </div>
   </section>
 
-  <!-- Liste des projets -->
+  <!-- ===================== Liste des projets ===================== -->
   <section class="liste-projet-graphisme">
     <?php
     $projets = new WP_Query([
-      'post_type' => 'projet-graphisme',
+      'post_type'      => 'projet-graphisme',
       'posts_per_page' => -1,
-      'orderby' => 'title',
-      'order' => 'ASC'
+      'orderby'        => 'title',
+      'order'          => 'ASC'
     ]);
 
     if ($projets->have_posts()) :
-      while ($projets->have_posts()) : $projets->the_post();
+      while ($projets->have_posts()) :
+        $projets->the_post();
 
         $titre       = get_the_title();
         $image       = get_field('affiche');
@@ -51,54 +52,67 @@ get_header();
         $behance     = get_field('liens_behance');
     ?>
 
-    <!-- Carte Projet Desktop -->
-    <div class="carte-projet-graphisme--desktop">
-      <?php if ($image): ?>
-        <img class="image-projet-graphisme" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($titre); ?>">
+    <!-- ===== Carte Projet Desktop ===== -->
+    <article class="carte-projet-graphisme carte-projet-graphisme--desktop">
+      <?php if (!empty($image) && !empty($image['url'])) : ?>
+        <figure class="image-projet-wrapper">
+          <img class="image-projet-graphisme"
+               src="<?php echo esc_url($image['url']); ?>"
+               alt="<?php echo esc_attr($image['alt'] ?: $titre); ?>">
+        </figure>
       <?php endif; ?>
 
       <div class="conteneur-carte-bas">
         <h2 class="titre-projet-graphisme"><?php echo esc_html($titre); ?></h2>
 
-        <?php if ($description): ?>
-          <p class="carte-graphisme-titre-description">Description</p>
-          <p class="description-projet"><?php echo esc_html($description); ?></p>
+        <?php if ($description) : ?>
+          <div class="bloc-description">
+            <p class="carte-graphisme-titre-description">Description</p>
+            <p class="description-projet"><?php echo esc_html($description); ?></p>
+          </div>
         <?php endif; ?>
 
-        <?php if ($etudiants): ?>
+        <?php if (!empty($etudiants)) : ?>
           <p class="etudiants-projet">
-            Étudiants :
+            <strong>Étudiants :</strong>
             <?php
-            $liste = [];
-            foreach ($etudiants as $etudiant) {
-              $liste[] = get_the_title($etudiant->ID);
-            }
+            $liste = array_map(function ($etudiant) {
+              return get_the_title($etudiant->ID);
+            }, $etudiants);
             echo esc_html(implode(', ', $liste));
             ?>
           </p>
         <?php endif; ?>
 
-        <?php if ($behance): ?>
-          <p class="behance-projet"><a href="<?php echo esc_url($behance); ?>" target="_blank">Voir sur Behance</a></p>
+        <?php if ($behance) : ?>
+          <p class="behance-projet">
+            <a href="<?php echo esc_url($behance); ?>" target="_blank" rel="noopener noreferrer">
+              Voir sur Behance
+            </a>
+          </p>
         <?php endif; ?>
       </div>
-    </div>
+    </article>
 
-    <!-- Carte Projet Mobile -->
-    <div class="carte-projet-graphisme carte-projet-graphisme--mobile">
-      <?php if ($image): ?>
-        <img class="image-projet-graphisme" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($titre); ?>">
+    <!-- ===== Carte Projet Mobile ===== -->
+    <article class="carte-projet-graphisme carte-projet-graphisme--mobile">
+      <?php if (!empty($image) && !empty($image['url'])) : ?>
+        <figure>
+          <img class="image-projet-graphisme"
+               src="<?php echo esc_url($image['url']); ?>"
+               alt="<?php echo esc_attr($image['alt'] ?: $titre); ?>">
+        </figure>
       <?php endif; ?>
 
-      <!-- Si tu veux, tu peux afficher juste le titre ici, mais petit -->
+      <!-- Optionnel : afficher le titre en dessous de l’image -->
       <!-- <h3 class="titre-projet-mobile"><?php echo esc_html($titre); ?></h3> -->
-    </div>
+    </article>
 
     <?php
       endwhile;
       wp_reset_postdata();
-    else:
-      echo '<p>Aucun projet trouvé pour le moment.</p>';
+    else :
+      echo '<p class="message-aucun-projet">Aucun projet trouvé pour le moment.</p>';
     endif;
     ?>
   </section>
