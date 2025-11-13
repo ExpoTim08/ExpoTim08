@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Graphismes
+Template Name: Graphisme
 */
 get_header();
 ?>
@@ -104,8 +104,33 @@ get_header();
         </figure>
       <?php endif; ?>
 
-      <!-- Optionnel : afficher le titre en dessous de l’image -->
-      <!-- <h3 class="titre-projet-mobile"><?php echo esc_html($titre); ?></h3> -->
+      <div class="conteneur-carte-mobile">
+        <h3 class="titre-projet-mobile"><?php echo esc_html($titre); ?></h3>
+
+        <?php if ($description) : ?>
+          <p class="description-projet-mobile"><?php echo esc_html($description); ?></p>
+        <?php endif; ?>
+
+        <?php if (!empty($etudiants)) : ?>
+          <p class="etudiants-projet-mobile">
+            <strong>Étudiants :</strong>
+            <?php
+            $liste = array_map(function ($etudiant) {
+              return get_the_title($etudiant->ID);
+            }, $etudiants);
+            echo esc_html(implode(', ', $liste));
+            ?>
+          </p>
+        <?php endif; ?>
+
+        <?php if ($behance) : ?>
+          <p class="behance-projet-mobile">
+            <a href="<?php echo esc_url($behance); ?>" target="_blank" rel="noopener noreferrer">
+              Voir sur Behance
+            </a>
+          </p>
+        <?php endif; ?>
+      </div>
     </article>
 
     <?php
