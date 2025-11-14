@@ -16,7 +16,6 @@ get_header();
       <div class="image-wrap">
         <img id="image-carroussel" src="<?php echo get_template_directory_uri(); ?>/Images/Affiche-Arcade/Affiche-Code3.jpg" alt="">
       </div>
-      <img class="image-titre" src="<?php echo get_template_directory_uri(); ?>/Images/Texte.png" alt="">
 
       <div class="arcade-details">
         <p class="sous-titre sous-titre-carroussel">ARCADE</p>
@@ -25,9 +24,20 @@ get_header();
       </div>
 
       <div class="carroussel-choix">
-        <p class="arcade arcade-click">ARCADE</p> 
-        <p class="jour-terre">JOUR DE LA TERRE</p>
-        <p class="finissants">PROJETS DES FINISSANTS</p>
+        <div class="bouton-arcade">
+          <p class="arcade arcade-click">ARCADE</p>
+          <img class="manette" src="<?php echo get_template_directory_uri(); ?>/Images/Manette.svg" alt="">
+        </div>
+
+        <div class="bouton-graphisme">
+          <p class="jour-terre">GRAPHISME</p>
+          <img class="tree" src="<?php echo get_template_directory_uri(); ?>/Images/Tree.svg" alt="" class="tree">
+        </div>
+
+        <div class="bouton-finissants">
+          <p class="finissants">FINISSANTS</p>
+          <img class="student" src="<?php echo get_template_directory_uri(); ?>/Images/Student.svg" alt="">
+        </div>
       </div>
     </div>
 
