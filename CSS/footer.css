@@ -6,6 +6,31 @@
     letter-spacing: normal;
   }
 
+  footer ul{
+    list-style: none;
+    padding: 0;
+  }
+
+  footer ul li a {
+    text-decoration: none;
+  }
+
+  .footer-icones a img {
+    height: clamp(20px, 2vw, 30px);
+  }
+
+  .footer-icones a {
+    color: transparent;
+  }
+
+  .footer-icones {
+    border: 1px solid var(--border-color);
+    padding: 0.4em 0.7em;
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 10px;
+  }
+
 @media screen and (max-width: 440px) {
 
     body {
@@ -28,6 +53,10 @@
       border-top: solid 1px var(--font-color);
       padding: 1em 1em;
       margin: 0em 1em;
+    }
+
+    .site-footer {
+      padding-top: 5em;
     }
 
     .footer-top{
@@ -74,8 +103,14 @@
       width: 20px;
       margin-right: 10px;
     }
-    
-    
+
+    .footer-logo-img {
+      width: 100px;
+    }
+
+    .footer-logo {
+      align-self: center;
+    }
 } /*------------- FIN FOOTER MOBILE --------------*/
 
 
@@ -97,6 +132,7 @@
 
         
     padding: 2em;
+    padding-top: 7em;
     color: var(--font-color);
   }
 
@@ -210,6 +246,14 @@
   .footer-adresse img, .footer-telephone img {
     width: 22px;
   }
+
+  .footer-logo-img {
+    width: 150px;
+  }
+
+  .footer-logo {
+    align-self: center;
+  }
 }/*-------------- FIN FOOTER/PETIT ECRAN --------------*/
 
 
@@ -227,6 +271,7 @@
         "menu-bas menu-bas menu-bas";
 
     padding: 2em;
+    padding-top: 10em;
     color: var(--border-color);
   }
 
@@ -352,34 +397,19 @@
   .footer-adresse img, .footer-telephone img {
     width: 22px;
   }
+
+  .footer-logo-img {
+    width: 175px;
+  }
+
+  .footer-logo {
+    align-self: center;
+  }
 } /*-------------- FIN FOOTER DESKTOP --------------*/
 
 
-footer ul{
-  list-style: none;
-  padding: 0;
-}
-
-footer ul li a {
-  text-decoration: none;
-}
-
-.footer-icones a img {
-  height: clamp(20px, 2vw, 30px);
-}
 
 
-.footer-icones a {
-  color: transparent;
-}
-
-.footer-icones {
-  border: 1px solid var(--border-color);
-  padding: 0.4em 0.7em;
-  display: flex;
-  flex-flow: row nowrap;
-  gap: 10px;
-}
 
 
 

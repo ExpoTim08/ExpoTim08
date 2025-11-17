@@ -21,6 +21,7 @@
 :root {
 
   --title-letter-spacing: 2.5px; /*Espacement entres les lettres des titres*/
+  --header-letter-spacing: 1.5px; /*Espacement entres les lettres des headers*/
 
   --background-color: rgb(50, 50, 50); /*Couleur du background globale du site*/
 
@@ -67,8 +68,6 @@
   --carrousel-bouton-background-color: rgb(64, 50, 255); /*La couleur des boutons du carrousel*/
 
   --carrousel-text-bouton-color: black; /*La couleur du texte des boutons du carrousel*/
-
-
 }
 
 /*Variables des assets couleurs de chaque catégorie du site*/
@@ -84,9 +83,20 @@
   --sous-titre-jt-color: rgb(206,247,204); /*Couleur du sous-titre pour la catégorie jour de la terre*/
 
   --sous-titre-finissant-color: rgb(218, 200, 101); /*Couleur du sous-titre pour la catégorie finissants*/
+
+  --background-color-arcade: linear-gradient(177deg, #4032FF 11.95%, #362CB6 28.39%, #21212100 82.04%); /*Couleur de background de la catégorie graphisme*/
+
+  --background-color-graphisme: linear-gradient(180deg, #00978F 5.29%, #00978F 14.9%, #056863 31.25%, #21212100 84.62%); /*Couleur de background de la catégorie graphisme*/
+
+  --background-color-finissant: linear-gradient(180deg, #D09308 5.29%, #D09308 14.9%, #7A5C04 31.25%, #21212100 84.62%); /*Couleur de background de la catégorie finissant*/
 }
 
 h1, h2, h3, h4, h5, h6, a, .arcade-details p {
   /*font-family: var(--title-font);*/
   letter-spacing: var(--title-letter-spacing);
 }
+
+h2 {
+  letter-spacing: var(--title-letter-spacing);
+}
+

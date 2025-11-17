@@ -5,7 +5,7 @@
   <!-- Section haute du footer (logo + icones) -->
   <div class="footer-top">
     <div class="footer-logo">
-      <img src="<?php echo get_template_directory_uri(); ?>/Images/logo.png" alt="Logo de l'expo TIM">
+      <img class="footer-logo-img" src="<?php echo get_template_directory_uri(); ?>/Images/Texte.png" alt="Logo de l'expo TIM">
     </div>
     
     <div class="footer-icones">

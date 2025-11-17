@@ -1,21 +1,718 @@
- body {
-    background: linear-gradient(180deg, #1B1B1B 0%, #2B2B2B 44.23%, #323232 77.88%, #1B1B1B 100%);
-    background-attachment: fixed;
-    background-size: cover;
+
+body {
+  background: linear-gradient(180deg, #1B1B1B 0%, #2B2B2B 44.23%, #323232 77.88%, #1B1B1B 100%);
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.pattern-background {
+  background-image: linear-gradient(#4e4b4194 1px, transparent 1px), linear-gradient(to right, #4e4b4194 1px, #71718300 1px);
+  background-size: 40px 40px;
+  background-attachment: fixed;
+}
+
+h1, h2 {
+  color: var(--font-color);
+  font-family: var(--title-font);
+}
+
+/* scope text for graphisme pages */
+.page-graphisme h3, .page-graphisme p, .page-graphisme a, .page-graphisme li {
+  font-family: var(--general-font);
+  color: var(--font-color);
+}
+
+/*------------- Section description + titre --------------*/
+.presentation-graphisme {
+  background-image: var(--background-color-graphisme);
+  margin-bottom: 5vh;
+}
+
+/*-------------- MOBILE GRAPHISME --------------*/
+@media screen and (max-width: 576px) {
+
+  /* style generale + border */
+  .site-header {
+    padding: 20px 2em 1em 2em;
+    border-bottom: 1px solid var(--border-color);
+    margin: 0;
   }
 
-  .pattern-background {
-    background-image:  linear-gradient(#4e4b41bd 1px, transparent 1px), linear-gradient(to right, #4e4b41bd 1px, #71718300 1px);
-    background-size: 40px 40px;
-    background-attachment: fixed;
+  .border {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 0;                
+    background: transparent;
+    z-index: 9999;
+    pointer-events: none;
   }
 
-   h1, h2 {
+  .border.gauche { left: 1rem; border-left: 1px solid var(--border-color-side); }
+  .border.droite { right: 1rem; border-left: 1px solid var(--border-color-side); }
+
+  /* CSS informations sur graphisme titre + description */
+  .conteneur-description-graphisme {
+    padding: 25px 35px 45px 35px;
+    display: flex;
+    flex-flow: column nowrap;
+    border-bottom: 2px solid var(--border-color);
+  }
+
+  .conteneur-description-graphisme .description-titre {
+    border: 1px solid var(--border-color);
+    width: auto;
+    padding: 5px 100px 6px 11px;
+  }
+
+  .page-graphisme {
+    display: flex;
+    max-width: 1200px; 
+    margin: 0 1em; 
+    flex-direction: column;
+  }
+  
+  .page-graphisme section { width: 100%; }
+
+  .presentation-graphisme {
+    position: relative;
+  }
+
+  .logo-graphisme {
+    position: absolute;
+    right: -20px;
+    top: 75px;
+    z-index: 10;
+    mix-blend-mode: difference;
+  }
+
+  /* -------------- Version mobile des cartes */
+
+  /* On cache la version desktop */
+  .carte-projet-graphisme--desktop { display: none; }
+
+  .page-graphisme img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-top: 2px solid var(--border-color-project);
+    border-bottom: 2px solid var(--border-color-project);
+    object-fit: contain;
+  }
+
+  .carte-projet-graphisme--mobile { 
+    display: block; 
+    background-color: rgb(48,48,48);
+    border: 2px solid var(--border-color-project);
+    margin: 0 47px;
+    box-shadow: 6px 6px 0px var(--border-color-project);
+    margin-bottom: 10%;
+    max-width: 330px;
+    place-self: center;
+  }
+
+  .titre-projet-graphisme{
+    font-size: clamp(14px, 4.5vw, 20px);
+    margin: 0.6rem 0 0.35rem;
+    font-weight: 300;
     color: var(--font-color);
-    font-family: var(--title-font);
   }
 
-  .page-arcade h3, .page-arcade p, .page-arcade a, .page-arcade li {
-    font-family: var(--general-font);
+  .bloc-titre {
+    position: relative; 
+    overflow: hidden;
+    display: flex;
+    flex-direction: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 0.5rem;
+  }
+
+  .bloc-titre .image-projet-graphisme {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .bloc-titre .button-projet-graphisme {
+    right: 0;
+    z-index: 10;
+    height: 24px;
+    background-color: var(--bouton-projet-jt-color);
+    color: #ffffff;
+    font-size: 10px;
+    border: 1px solid var(--font-color);
+    cursor: pointer;
+    text-align: center;
+  }
+
+
+  .conteneur-button-dropdown-graphisme {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--border-color-project);
+  }
+
+  .button-dropdown-graphisme {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    color: var(--font-color);
+    border-left: 2px solid var(--border-color-project);
+  }
+
+  .carte-projet-graphisme--mobile .dropdown-carte-graphisme {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 1rem;
+    display: block;
+  }
+
+  .carte-projet-graphisme--mobile.open-desc .dropdown-carte-graphisme {
+    max-height: 800px; 
+    font-size: 12px;
+  }
+
+  .carte-graphisme-titre-description {
+    font-size: 12px;
+    margin: 0;
+    align-self: center;
+    padding-left: 10px;
+  }
+
+  .conteneur-section-graphisme-bas { padding-bottom: 4em; }
+
+  .conteneur-graphisme-filtre {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    width: fit-content;
+    background-color: rgb(48, 48, 48);
+    border: 1px solid var(--border-color);
+    padding: 0.2em 0.7em 0.3em 0.5em;
+    margin-left: 47px;
+    display: flex;
+    flex-flow: nowrap row;
+    align-items: center;
+  }
+
+  .filtre { margin: 0; font-size: 14px; }
+  .icone-filtre { width: 20px; height: 20px; }
+
+  .filter-bar{
+    margin: 1rem 0rem 3rem 0rem;
+    place-self: center;
+  }
+}
+
+/*-------------- TABLET / PETIT ECRAN graphisme --------------*/
+@media screen and (min-width: 576.02px) {
+
+  body { overflow-x: hidden; }
+  img { max-width: 100%; height: auto; display: block; object-fit: contain; }
+
+  .border {
+    position: fixed;
+    background: var(--border-color-side);
+    z-index: 9999;
+  }
+
+  .border.gauche { top: 0; left: 2em; width: 1px; height: 100%; }
+  .border.droite { top: 0; right: 2em; width: 1px; height: 100%; }
+
+  /* On cache la version mobile des cartes */
+  .carte-projet-graphisme--mobile { display: none; }
+  .carte-projet-graphisme--desktop { display: flex; }
+
+  .conteneur-description-graphisme {
+    background-color: rgb(42, 42, 42);
+    border-top: 1px solid var(--bouton-projet-jt-color);
+    border-bottom: 1px solid var(--bouton-projet-jt-color);
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+  }
+
+  .description-titre {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    white-space: nowrap;
+    display: inline-block;
+    line-height: 1;
+    font-size: 12px;
+    padding: 6px 8px;
+    text-transform: uppercase;
+    overflow: hidden;
+  }
+
+  /*deco titre graphisme*/
+  .presentation-graphisme {
+    position: relative;
+  }
+
+  .logo-graphisme {
+    position: absolute;
+    left: -30px;
+    bottom: 30%;
+    z-index: 10;
+    mix-blend-mode: normal;
+  }
+
+  @media screen and (min-width: 650px) and (max-width: 1024px) {
+    .description-titre { font-size: 9px; }
+  }
+
+  .conteneur-description-graphisme .description-texte {
+    padding: 20px 16vw;
+    padding-left: 0;
+    max-width: 568px;
+  }
+
+  .conteneur-description-graphisme .description-titre { padding-left: 16vw; }
+
+  .page-graphisme { display: flex; max-width: 1200px; margin: 0 2em; flex-direction: column; }
+
+  .carte-projet-graphisme--desktop {
+    flex-direction: row;
+    align-items: stretch;
+    width: 80%;
+    max-width: 600px;
+    margin: 1rem auto;
+    background-color: #2c2c2f;
+    overflow: hidden;
+    box-shadow: 10px 10px 0px var(--border-color-project);
+    border: 2px solid var(--border-color-project);
+    margin-bottom: 70px;
+  }
+
+  .carte-projet-graphisme--desktop .bloc-titre {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.1rem 1.25rem;
+    width: 55%;
+    box-sizing: border-box;
+    background: linear-gradient(90deg, rgba(255,255,255,0.02), transparent);
+  }
+
+  .carte-projet-graphisme--desktop .titre-projet-graphisme {
+    margin: 0 0 0.6rem 0;
+    font-size: 1.3rem;
+    line-height: 1.1;
+    color: var(--font-color);
+    font-weight: 800;
+    letter-spacing: .4px;
+  }
+
+  .carte-projet-graphisme--desktop .image-projet-graphisme {
+    width: 45%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .carte-projet-graphisme--desktop .conteneur-carte-bas {
+    padding: 2rem;
+    width: 55%;
+    background: transparent;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column nowrap;
+    align-self: center;
+    
+  }
+
+  .carte-projet-graphisme--desktop .carte-graphisme-titre-description {
+    margin: 0.6rem 0 0.35rem;
+    font-weight: 700;
     color: var(--font-color);
   }
+
+  .carte-projet-graphisme--desktop .description-projet {
+    margin: 0;
+    color: var(--font-color);
+    line-height: 1.45;
+    font-size: 14px;
+  }
+  
+  .carte-projet-graphisme--desktop button.button-projet-graphisme {
+    z-index: 10;
+    height: 24px;
+    background-color: var(--bouton-projet-jt-color);
+    color: #ffffff;
+    font-size: 10px;
+    border: 1px solid var(--font-color);
+    cursor: pointer;
+    text-align: center;
+    margin-top: 10%;
+  }
+
+  .carte-projet-graphisme--desktop .image-projet-graphisme {
+      border-right: 2px solid var(--border-color-project);
+    }
+
+  .button-dropdown-graphisme, .carte-graphisme-titre-description { display: none; }
+
+  .conteneur-graphisme-filtre {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    padding: 0.2em 0.7em 0.3em 0.5em;
+    margin-left: 10%;
+    width: fit-content;
+    background-color: rgb(48,48,48);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-flow: nowrap row;
+    align-items: center;
+  }
+
+
+  .filtre { margin: 0; font-size: 14px; }
+  .icone-filtre { width: 20px; height: 20px; }
+
+  .filter-bar{
+    margin: 1rem 0rem 3rem 0rem;
+    place-self: center;
+    width: 80%;
+    max-width: 600px;
+    justify-content: end;
+  }
+}
+
+/*-------------- DESKTOP GRAPHISME --------------*/
+@media screen and (min-width: 1024px) {
+  .border { position: fixed; background: var(--border-color-side); z-index: 9999; }
+  .border.gauche { top: 0; left: 3em; width: 1px; height: 100%; }
+  .border.droite { top: 0; right: 3em; width: 1px; height: 100%; }
+
+  .page-graphisme { margin: 0 3em; max-width: none; }
+
+  .presentation-graphisme {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--border-color);
+    background-image: var(--background-color-graphisme);
+  }
+
+  .liste-projet-graphisme {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+    align-items: start;
+  }
+
+  /*deco titre graphisme*/
+  .presentation-graphisme {
+    position: relative;
+  }
+
+  .logo-graphisme {
+    position: absolute;
+    left: -20px;
+    bottom: -40%;
+    z-index: 10;
+    mix-blend-mode: normal;
+
+    height: auto;
+    max-width: 10vw;
+    min-width: 140px;
+  }
+
+  .conteneur-description-graphisme { background-color: transparent; border: none; }
+
+  .conteneur-description-graphisme .description-texte {
+    max-width: 595px;
+    margin-left: 2vw;
+    background-image: linear-gradient(to left, var(--font-color), white);
+    color: transparent;
+    background-clip: text;
+    padding: 20px 0;
+  }
+
+  .carte-projet-graphisme--desktop { 
+    display: flex; 
+    flex-direction: row; 
+    align-items: stretch; 
+    gap: 0; 
+    height: 300px; 
+    margin: 1rem auto; 
+    background-color: #2c2c2f; 
+    overflow: hidden; 
+    width: 75%; 
+    max-width: none;
+  }
+
+  .carte-projet-graphisme--desktop .image-projet-graphisme {
+    width: min-content;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .carte-projet-graphisme--desktop .conteneur-carte-bas {
+    width: max-content;
+  }
+
+  .conteneur-description-graphisme .description-titre { display: none; }
+
+  .carte-projet-graphisme--mobile { display: none; }
+
+  .carte-projet-graphisme--desktop button.button-projet-graphisme {
+    position: absolute;   
+    bottom: 0px;
+    right: 0px;
+
+    margin-top: 5%;
+    width: 47px;
+    height: 50px;
+    place-self: start;
+    border-color: var(--border-color-project);
+    border-width: 2px 1px 1px 2px;
+  }
+
+  .filter-bar{
+    margin: 1rem 0;
+    place-self: center;
+    width: 74%;
+    max-width: none;
+  }
+}
+
+/*-------------- GRAND ECRAN GRAPHISME --------------*/
+@media screen and (min-width: 1300px) { 
+
+  /*les projets*/
+  .liste-projet-graphisme {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 0.4fr));
+      gap: 5rem;
+      row-gap: 6rem;
+      width: 100%;
+      margin: 0 auto;
+      align-items: start;
+    }
+    
+  .carte-projet-graphisme--desktop {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    height: 320px;
+    overflow: hidden;
+    background-color: #2c2c2f;
+  }
+
+  .presentation-graphisme {
+    margin-bottom: 7vh;
+    padding: 3vh 0px;
+  }
+
+  .filter-bar{
+    margin: 1rem 0;
+    place-self: center;
+    width: 80%;
+    max-width: none;
+  }
+}
+
+/*-------------- Effet halftone + hover carte graphisme desktop --------------*/
+.carte-projet-graphisme--desktop::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    /* halftone + tint */
+    background-image:
+      linear-gradient(rgba(0,151,143,0.06), rgba(0,151,143,0.06)),
+      radial-gradient(circle, rgba(255,255,255,0.12) 1.5px, transparent 1px);
+    background-size: auto, 12px 12px; /* change second value for dot density */
+    mix-blend-mode: screen;
+
+    /* commencer par être caché et animer au survol */
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 260ms ease, transform 260ms cubic-bezier(.2,.8,.2,1);
+
+    /* estomper le demi-ton vers le haut */
+    -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
+
+    z-index: 2;
+
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+  }
+
+  .carte-projet-graphisme--desktop {
+    position: relative; 
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: transform 260ms cubic-bezier(.2,.8,.2,1),
+                box-shadow 260ms ease,
+                filter 260ms ease,
+                border-radius 260ms ease;
+    will-change: transform, box-shadow;
+    transform-origin: center;
+  }
+
+  .carte-projet-graphisme--desktop:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .carte-projet-graphisme--desktop:hover {
+    transform: translateY(-10px);
+    box-shadow: 16px 16px 0px rgb(5, 25, 28);
+    border-color: rgb(1, 11, 13);
+    border-radius: 14px;
+    color: thistle;
+  }
+
+  .carte-projet-graphisme--desktop .image-projet-graphisme {
+    transition: transform 400ms cubic-bezier(.2,.8,.2,1);
+    will-change: transform;
+  }
+
+  .carte-projet-graphisme--desktop:hover .image-projet-graphisme {
+    transform: scale(1.05);
+  }
+
+
+  /*------------- Titre graphisme --------------*/
+  .titre-graphisme--base {
+    -webkit-text-fill-color: var(--title-color);
+  }
+
+  .titre-graphisme {
+    color: transparent;               
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke: 0px transparent;
+  }
+
+  .titre-graphisme {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    font-size: clamp(20px, 9vw, 45px);
+    line-height: 0.78;
+    text-transform: uppercase;
+    margin: 0;
+    -webkit-text-stroke-width: 0.8px;
+    -webkit-text-stroke-color: rgb(255, 255, 255);
+
+    line-height: 0.6;
+    letter-spacing: 1px;
+    height: 220px;
+    font-weight: lighter;
+  }
+
+  .titre-graphisme-layer--1 {
+    opacity: 0.8;
+    -webkit-text-stroke-width: 0.8px;
+  }
+
+  .titre-graphisme-layer--2 {
+    opacity: 0.5;
+    -webkit-text-stroke-width: 0.5px;
+  }
+
+  .titre-graphisme-layer--3 {
+    opacity: 0.3;
+    -webkit-text-stroke-width: 0.2px;
+  }
+
+  /*-------------- FILTRE --------------*/
+
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  padding: 0.35rem;
+  background: transparent;
+  color: var(--font-color);
+}
+
+.filter-bar label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--font-color);
+  white-space: nowrap;
+}
+
+#filter-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0.45rem 0.9rem 0.45rem 0.6rem;
+  border-radius: 2px;
+  border: 1px solid var(--border-color);
+  background:
+    linear-gradient(rgba(255,255,255,0.02), rgba(255,255,255,0.02)),
+    url("data:image/svg+xml;charset=UTF-8,%3Csvg width='12' height='8' viewBox='0 0 12 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23FFFFFF' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E") no-repeat right 10px center;
+  background-size: auto, 12px 8px;
+  color: var(--font-color);
+  font-size: 0.95rem;
+  min-width: 140px;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+#filter-select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* pour petit ecran */
+@media (max-width: 420px) {
+  .filter-bar {
+    gap: 0.4rem;
+    padding: 0.25rem;
+  }
+  #filter-select { min-width: 110px; font-size: 0.9rem; }
+}
+
+#filter-select {
+  color: var(--font-color);
+  background-color: #2f2f2f; /* matches page dark surface */
+  -webkit-text-fill-color: var(--font-color);
+}
+
+
+#filter-select option {
+  background-color: #2f2f2f;
+  color: var(--font-color);
+  padding: 0.25rem 0.5rem;
+}
+
+/* si selectionner*/
+#filter-select option:checked,
+#filter-select option[selected] {
+  background-color: rgba(50, 255, 245, 0.14);
+  color: #ffffff;
+}
+
+/* Hide native arrow in some browsers if you want to use a custom icon */
+#filter-select::-ms-expand { display: none; }
+
+#filter-select:focus,
+.filter-bar label:focus {
+  outline: 3px solid rgba(0,151,143,0.14); 
+  outline-offset: 2px;
+  border-color: rgba(0,151,143,0.6);
+  border-radius: 8px;
+}

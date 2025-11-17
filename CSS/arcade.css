@@ -7,7 +7,7 @@ body {
 }
 
 .pattern-background {
-  background-image: linear-gradient(#4e4b41bd 1px, transparent 1px), linear-gradient(to right, #4e4b41bd 1px, #71718300 1px);
+  background-image: linear-gradient(#4e4b4194 1px, transparent 1px), linear-gradient(to right, #4e4b4194 1px, #71718300 1px);
   background-size: 40px 40px;
   background-attachment: fixed;
 }
@@ -20,6 +20,14 @@ h1, h2 {
 .page-arcade h3, .page-arcade p, .page-arcade a, .page-arcade li {
   font-family: var(--general-font);
   color: var(--font-color);
+}
+
+/*------------- Section description + titre --------------*/
+.presentation-arcade {
+  background-image: 
+    linear-gradient(177deg, #4032FF 11.95%, #362CB6 28.39%, #21212100 82.04%);
+    
+  margin-bottom: 5vh;
 }
 
 /*-------------- MOBILE ARCADE --------------*/
@@ -77,7 +85,7 @@ h1, h2 {
     right: -20px;
     top: 75px;
     z-index: 10;
-    mix-blend-mode: color-dodge;
+    mix-blend-mode: difference;
   }
 
   /* -------------- Version mobile des cartes */
@@ -90,15 +98,15 @@ h1, h2 {
     height: auto;
     display: block;
     margin: 0 auto;
-    border-top: 1px solid var(--border-color-project);
-    border-bottom: 1px solid var(--border-color-project);
+    border-top: 2px solid var(--border-color-project);
+    border-bottom: 2px solid var(--border-color-project);
     object-fit: contain;
   }
 
   .carte-projet-arcade { 
     display: block; 
     background-color: rgb(48,48,48);
-    border: 1px solid var(--border-color-project);
+    border: 2px solid var(--border-color-project);
     margin: 0 47px;
     box-shadow: 6px 6px 0px var(--border-color-project);
     margin-bottom: 10%;
@@ -147,7 +155,7 @@ h1, h2 {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid var(--border-color-project);
+    border-bottom: 2px solid var(--border-color-project);
   }
 
   .button-dropdown-arcade {
@@ -157,7 +165,7 @@ h1, h2 {
     width: 25px;
     height: 25px;
     color: var(--font-color);
-    border-left: 1px solid var(--border-color-project);
+    border-left: 2px solid var(--border-color-project);
   }
 
   .carte-projet-arcade .dropdown-carte-arcade {
@@ -196,6 +204,11 @@ h1, h2 {
 
   .filtre { margin: 0; font-size: 14px; }
   .icone-filtre { width: 20px; height: 20px; }
+
+  .filter-bar{
+    margin: 1rem 0rem 3rem 0rem;
+    place-self: center;
+  }
 }
 
 /*-------------- TABLET / PETIT ECRAN ARCADE --------------*/
@@ -248,7 +261,7 @@ h1, h2 {
     left: -30px;
     bottom: 30%;
     z-index: 10;
-    mix-blend-mode: color-dodge;
+    mix-blend-mode: normal;
   }
 
   @media screen and (min-width: 650px) and (max-width: 1024px) {
@@ -361,6 +374,14 @@ h1, h2 {
 
   .filtre { margin: 0; font-size: 14px; }
   .icone-filtre { width: 20px; height: 20px; }
+
+  .filter-bar{
+    margin: 1rem 0rem 3rem 0rem;
+    place-self: center;
+    width: 80%;
+    max-width: 600px;
+    justify-content: end;
+  }
 }
 
 /*-------------- DESKTOP ARCADE --------------*/
@@ -400,7 +421,7 @@ h1, h2 {
     left: -70px;
     bottom: -40%;
     z-index: 10;
-    mix-blend-mode: color-dodge;
+    mix-blend-mode: normal;
 
     width: 300px;
     height: auto;
@@ -458,6 +479,13 @@ h1, h2 {
     border-color: var(--border-color-project);
     border-width: 2px 1px 1px 2px;
   }
+
+  .filter-bar{
+    margin: 1rem 0;
+    place-self: center;
+    width: 74%;
+    max-width: none;
+  }
 }
 
 /*-------------- GRAND ECRAN ARCADE --------------*/
@@ -467,8 +495,8 @@ h1, h2 {
   .liste-projet-arcade {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 0.4fr));
-      gap: 3rem;
-      row-gap: 5rem;
+      gap: 5rem;
+      row-gap: 6rem;
       width: 100%;
       margin: 0 auto;
       align-items: start;
@@ -485,6 +513,18 @@ h1, h2 {
     height: 320px;
     overflow: hidden;
     background-color: #2c2c2f;
+  }
+
+  .presentation-arcade {
+    margin-bottom: 7vh;
+    padding: 3vh 0px;
+  }
+
+  .filter-bar{
+    margin: 1rem 0;
+    place-self: center;
+    width: 80%;
+    max-width: none;
   }
 }
 
@@ -539,6 +579,7 @@ h1, h2 {
     transform: translateY(-10px);
     box-shadow: 16px 16px 0px rgb(15, 13, 50);
     border-radius: 14px;
+    color: thistle;
   }
 
   .carte-projet-arcade--desktop .image-projet-arcade {
@@ -550,12 +591,6 @@ h1, h2 {
     transform: scale(1.05);
   }
 
-  /*------------- Section description + titre --------------*/
-  .presentation-arcade {
-    background-image: 
-      linear-gradient(177deg, #4032FF 11.95%, #362CB6 28.39%, #21212100 82.04%);
-    
-  }
 
   /*------------- Titre arcade --------------*/
   .titre-arcade--base {
@@ -601,3 +636,95 @@ h1, h2 {
     opacity: 0.3;
     -webkit-text-stroke-width: 0.2px;
   }
+
+  /*-------------- FILTRE --------------*/
+
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  padding: 0.35rem;
+  background: transparent;
+  color: var(--font-color);
+}
+
+.filter-bar label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--font-color);
+  white-space: nowrap;
+}
+
+/* Select (dark-friendly) */
+#filter-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0.45rem 0.9rem 0.45rem 0.6rem;
+  border: 1px solid var(--border-color);
+  background:
+    linear-gradient(rgba(255,255,255,0.02), rgba(255,255,255,0.02)),
+    url("data:image/svg+xml;charset=UTF-8,%3Csvg width='12' height='8' viewBox='0 0 12 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23FFFFFF' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E") no-repeat right 10px center;
+  background-size: auto, 12px 8px;
+  color: var(--font-color);
+  font-size: 0.95rem;
+  min-width: 140px;
+  cursor: pointer;
+  box-shadow: none;
+  border-radius: 2px;
+}
+
+/* disabled / subtle state if needed */
+#filter-select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Focus / keyboard users */
+#filter-select:focus,
+.filter-bar label:focus {
+  outline: 3px solid rgba(63,50,255,0.14);
+  outline-offset: 2px;
+  border-color: rgba(64,50,255,0.6);
+  border-radius: 8px;
+}
+
+/* Compact layout for very small screens */
+@media (max-width: 420px) {
+  .filter-bar {
+    gap: 0.4rem;
+    padding: 0.25rem;
+  }
+  #filter-select { min-width: 110px; font-size: 0.9rem; }
+}
+
+#filter-select {
+  color: var(--font-color);
+  background-color: #2f2f2f; /* matches page dark surface */
+  -webkit-text-fill-color: var(--font-color);
+}
+
+/* General option styling (limited browser support) */
+#filter-select option {
+  background-color: #2f2f2f;
+  color: var(--font-color);
+  padding: 0.25rem 0.5rem;
+}
+
+/* Selected / highlighted option */
+#filter-select option:checked,
+#filter-select option[selected] {
+  background-color: rgba(64,50,255,0.14);
+  color: #ffffff;
+}
+
+/* Hide native arrow in some browsers if you want to use a custom icon */
+#filter-select::-ms-expand { display: none; }
+
+/* Accessible focus ring consistent with theme */
+#filter-select:focus {
+  box-shadow: 0 0 0 4px rgba(64,50,255,0.12);
+  border-color: rgba(28, 21, 139, 0.911);
+  border-width: 1px;
+}
