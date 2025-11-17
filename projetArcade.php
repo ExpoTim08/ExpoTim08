@@ -39,6 +39,8 @@ if ($video) {
     }
 }
 ?>
+  <div class="border gauche"></div>
+  <div class="border droite"></div>
 
 <main class="page-arcade">
   <div class="border gauche"></div>
@@ -49,18 +51,18 @@ if ($video) {
 
     <!-- Titre du projet -->
     <h1 class="titre-arcade" aria-label="<?php echo esc_attr($nom); ?>">
-      <span class="titre-arcade-layer titre-arcade--base"><?php echo esc_html($nom); ?></span>
-      <span class="titre-arcade-layer titre-arcade-layer--1"><?php echo esc_html($nom); ?></span>
-      <span class="titre-arcade-layer titre-arcade-layer--2"><?php echo esc_html($nom); ?></span>
-      <span class="titre-arcade-layer titre-arcade-layer--3"><?php echo esc_html($nom); ?></span>
-    </h1>
-
-    <!-- Bouton retour vers Arcade -->
-    <p class="retour-arcade">
+      <span class="titre-arcade-layer titre-arcade-base"><?php echo esc_html($nom); ?></span>
+      <span class="titre-arcade-layer titre-arcade-layer1"><?php echo esc_html($nom); ?></span>
+      <span class="titre-arcade-layer titre-arcade-layer2"><?php echo esc_html($nom); ?></span>
+      <span class="titre-arcade-layer titre-arcade-layer3"><?php echo esc_html($nom); ?></span>
+      <!-- Bouton retour vers Arcade -->
+      <p class="retour-arcade">
       <a href="<?php echo esc_url(get_permalink(get_page_by_path('arcade'))); ?>" class="lien-retour">
         &lt; Arcade
       </a>
-    </p>
+      </p>
+      <img class="manette" src="<?php echo get_template_directory_uri(); ?>/Images/Manette.svg" alt="">
+    </h1>
 
     <!-- Vidéo YouTube -->
     <?php if ($embed_url): ?>
@@ -82,15 +84,17 @@ if ($video) {
     <!-- Étudiants -->
     <?php if ($etudiants): ?>
       <div class="infos-etudiants">
-        <strong>Équipe :</strong>
+        <strong class="titre-equipe">Équipe :</strong>
         <?php
         $liste = [];
         foreach ($etudiants as $etudiant) {
-            $prenom = get_field('prenom', $etudiant->ID);
-            $nomEtu = get_field('nom_etudiant', $etudiant->ID);
-            $liste[] = trim("$prenom $nomEtu");
+          $prenom = get_field('prenom', $etudiant->ID);
+          $nomEtu = get_field('nom_etudiant', $etudiant->ID);
+          $fullName = trim("$prenom $nomEtu");
+
+          $liste[] = '<span class="nom-etudiant">' . esc_html($fullName) . '</span>';
         }
-        echo esc_html(implode(', ', $liste));
+        echo implode(' ', $liste);
         ?>
       </div>
     <?php endif; ?>
@@ -98,6 +102,7 @@ if ($video) {
     <!-- Image du projet -->
     <?php if ($image): ?>
       <div class="image-projet">
+        <span>Affiche</span>
         <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($nom); ?>" class="image-projet-arcade">
       </div>
     <?php endif; ?>
@@ -105,7 +110,8 @@ if ($video) {
     <!-- Description -->
     <?php if ($description): ?>
       <div class="description-projet">
-        <p><?php echo esc_html($description); ?></p>
+        <span class="description-titre">Description</span>
+        <span class="description"><?php echo esc_html($description); ?></span>
       </div>
     <?php endif; ?>
 
