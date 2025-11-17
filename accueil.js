@@ -79,3 +79,31 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+// ------------------------------------------------------
+//  CARROUSSEL "À PROPOS" MODE 3 IMAGES (CENTRE + CÔTÉS)
+// ------------------------------------------------------
+document.addEventListener("DOMContentLoaded", () => {
+  const images = document.querySelectorAll('.carroussel-apropos img');
+  let index = 0;
+
+  function updateFocus() {
+    // Remove all actives
+    images.forEach(img => img.classList.remove("active"));
+  
+    // Apply active to current
+    images[index].classList.add("active");
+
+    // Go to next
+    index = (index + 1) % images.length;
+  }
+
+  // First activation
+  updateFocus();
+
+  // Change every 3 seconds
+  setInterval(updateFocus, 3000);
+
+
+});
+

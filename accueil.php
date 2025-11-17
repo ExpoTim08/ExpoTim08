@@ -52,8 +52,12 @@ get_header();
     <div class="a-propos-background">
       <div class="a-propos">
         <p class="sous-titre">À propos de TIMVision</p>
-        <img class="image-a-propos" src="<?php echo get_template_directory_uri(); ?>/Images/Arcade.jpg" alt="">
-        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
+        <div class="carroussel-apropos">
+          <img class="image-a-propos" src="<?php echo get_template_directory_uri(); ?>/Images/Arcade-404.png" alt="">
+          <img class="image-a-propos2" src="<?php echo get_template_directory_uri(); ?>/Images/Arcade-404-2.png" alt="">
+          <img class="image-a-propos3" src="<?php echo get_template_directory_uri(); ?>/Images/Arcade-404-3.png" alt="">
+        </div>
+        <p class="description">« TimVision », c’est la grande célébration annuelle qui met en lumière la diversité et la qualité des projets réalisés par les étudiants. De la première à la troisième année, une exposition unique vous attend : jeux vidéo, sites web, expériences interactives, concepts visuels et bien plus encore. Venez à la rencontre du talent, de l’audace et de l’innovation de la relève. </p>
       </div>
     </div>
 
@@ -92,12 +96,12 @@ get_header();
     </div>
 
     <!-------------------------------- Partenaires -------------------------------->
-    <div class="partenaires">
+    <!-- <div class="partenaires">
       <h1>Partenaires</h1>
       <img src="<?php echo get_template_directory_uri(); ?>/Images/MaisonneuveLogo.png" alt="">
       <img src="<?php echo get_template_directory_uri(); ?>/Images/MaisonneuveLogo.png" alt="">
       <img src="<?php echo get_template_directory_uri(); ?>/Images/MaisonneuveLogo.png" alt="">
-    </div>
+    </div> -->
 
     <!-------------------------------- Équipe -------------------------------->
     <div class="equipe">
