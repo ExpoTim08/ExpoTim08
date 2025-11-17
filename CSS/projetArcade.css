@@ -1,0 +1,176 @@
+body {
+  background: linear-gradient(180deg, #1B1B1B 0%, #2B2B2B 44.23%, #323232 77.88%, #1B1B1B 100%);
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+span, p, strong {
+  font-family: var(--general-font);
+  color: var(--font-color);
+}
+
+h1 {
+  color: var(--font-color);
+  font-family: var(--title-font);
+}
+
+.border {
+    position: fixed;
+    background: var(--border-color-side); /* couleur des bords */
+    z-index: 9999;
+  }
+
+  .border.gauche {
+    top: 0;
+    left: 1em;
+    width: 1px; /* épaisseur du bord gauche */
+    height: 100%;
+  }
+
+  .border.droite {
+    top: 0;
+    right: 1em;
+    width: 1px; /* épaisseur du bord droit */
+    height: 100%;
+  }
+
+/*************************Présentation du projet*******************************************/
+.titre-arcade {
+  background-color: var(--bouton-projet-arcade-color);
+  position: relative;
+  line-height: 0.7;
+  padding: 3vw;
+  border-top: 2px solid var(--border-color-side);
+  border-bottom: 2px solid var(--border-color-side);
+  font-family: var(--title-font);
+}
+
+.titre-arcade-layer {
+  display: flex;
+  justify-content: center;
+  margin: 0. auto;
+  font-size: 10vw;
+  font-family: var(--title-font);
+}
+
+.titre-arcade-layer1 {
+  color: transparent;
+  opacity: 0.8;
+  -webkit-text-stroke-width: 0.8px;
+  -webkit-text-stroke-color: var(--font-color);
+}
+
+.titre-arcade-layer2 {
+  opacity: 0.5;
+  color: transparent;
+  -webkit-text-stroke-width: 0.6px;
+  -webkit-text-stroke-color: var(--font-color);
+}
+
+.titre-arcade-layer3{
+  opacity: 0.5;
+  color: transparent;
+  -webkit-text-stroke-width: 0.4px;
+  -webkit-text-stroke-color: var(--font-color);
+}
+
+.retour-arcade {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.lien-retour {
+  color: #ffffff; /* texte blanc */
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px; /* espace entre la flèche et le texte */
+}
+
+.lien-retour:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.manette {
+  position: absolute;
+  margin-left: 60vw;
+  margin-top: -25vw;
+  width: 30vw;
+  transform: rotateZ(-35deg);
+}
+
+.video-projet {
+  border-top: 2px solid var(--border-color-side);
+  border-bottom: 2px solid var(--border-color-side);
+}
+
+.infos-cours-annee {
+  text-align: center;
+  background-color: var(--bouton-projet-arcade-color);
+  width: 40vw;
+  padding: 4vw;
+  justify-self: center;
+  margin-top: 2em;
+  border: 1px solid white;
+}
+
+.infos-etudiants {
+  display: flex;
+  flex-direction: column;
+  /* text-align: center; */
+  justify-self: center;
+  margin-top: 2em;
+  width: 70vw;
+  border: 2px solid var(--border-color-side);
+}
+
+.titre-equipe {
+  background-color: var(--bouton-projet-arcade-color);
+  color: #ffffff;
+  padding: 8px;
+  border-bottom: 2px solid var(--border-color-side);
+}
+
+.nom-etudiant {
+  padding: 10px;
+}
+
+.titre-equipe, .nom-etudiant {
+  padding-left: 20px;
+}
+
+.image-projet {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  margin-top: 2em;
+}
+
+.image-projet > span, .description-projet > .description-titre {
+  background-color: var(--bouton-projet-arcade-color);
+  width: 20vw;
+  padding: 10px;
+  border: 2px solid var(--border-color-side);
+  border-bottom: none;
+}
+
+.image-projet-arcade {
+  width: 70vw;
+  border: 2px solid var(--border-color-side);
+}
+
+.description-projet {
+  display: flex;
+  flex-direction: column;
+  width: 70vw;
+  justify-self: center;
+  margin-top: 2em;
+}
+
+.description-projet > .description {
+  border: 2px solid var(--border-color-side);
+  padding: 10px;
+}

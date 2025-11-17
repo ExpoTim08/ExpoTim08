@@ -19,6 +19,9 @@
 
 /*Variables couleurs globales du site*/
 :root {
+
+  --title-letter-spacing: 2.5px; /*Espacement entres les lettres des titres*/
+
   --background-color: rgb(50, 50, 50); /*Couleur du background globale du site*/
 
   --font-color: #F1E2CC; /*Couleur de la police du site*/
@@ -81,4 +84,9 @@
   --sous-titre-jt-color: rgb(206,247,204); /*Couleur du sous-titre pour la catégorie jour de la terre*/
 
   --sous-titre-finissant-color: rgb(218, 200, 101); /*Couleur du sous-titre pour la catégorie finissants*/
+}
+
+h1, h2, h3, h4, h5, h6, a, .arcade-details p {
+  /*font-family: var(--title-font);*/
+  letter-spacing: var(--title-letter-spacing);
 }

@@ -1,5 +1,5 @@
 /*------------- HEADER MOBILE --------------*/
-@media screen and (max-width: 440px) {
+@media screen and (max-width: 767px) {
 
   html, body {
     margin: 0;
@@ -220,7 +220,7 @@
 /*------------- FIN HEADER MOBILE --------------*/
 
 /*------------- HEADER TABLET --------------*/
-@media screen and (min-width: 440.02px){
+@media screen and (min-width: 767.02px){
 
    body {
     margin: 0;
