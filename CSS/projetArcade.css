@@ -38,10 +38,11 @@ h1 {
 .titre-arcade {
   background-color: var(--bouton-projet-arcade-color);
   position: relative;
-  line-height: 0.6;
+  line-height: 0.7;
   padding: 3vw;
   border-top: 2px solid var(--border-color-side);
   border-bottom: 2px solid var(--border-color-side);
+  font-family: var(--title-font);
 }
 
 .titre-arcade-layer {
@@ -49,6 +50,7 @@ h1 {
   justify-content: center;
   margin: 0. auto;
   font-size: 10vw;
+  font-family: var(--title-font);
 }
 
 .titre-arcade-layer1 {
