@@ -26,7 +26,7 @@ function expo_enqueue_assets() {
         'themeUrl' => $theme_uri,
         'pageArcade' => site_url('/index.php/arcade/'),
         'pageJourTerre' => site_url('/index.php/graphismes/'),
-        'pageFinissants' => site_url('/index.php/projets-des-finissants/')
+        'pageFinissants' => site_url('/index.php/projet-des-finissants/')
     ));
 
     // --- CSS spécifique à la page d'accueil ---
