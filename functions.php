@@ -25,7 +25,7 @@ function expo_enqueue_assets() {
     wp_localize_script('accueil-js', 'themeVars', array(
         'themeUrl' => $theme_uri,
         'pageArcade' => site_url('/index.php/arcade/'),
-        'pageJourTerre' => site_url('/index.php/jour-de-la-terre/'),
+        'pageJourTerre' => site_url('/index.php/graphismes/'),
         'pageFinissants' => site_url('/index.php/projets-des-finissants/')
     ));
 
