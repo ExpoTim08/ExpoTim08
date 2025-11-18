@@ -1,3 +1,6 @@
+.header-container form.search-form {
+  transform: translateY(14px); 
+}
 
 body {
   background: linear-gradient(180deg, #1B1B1B 0%, #2B2B2B 44.23%, #323232 77.88%, #1B1B1B 100%);
@@ -30,6 +33,16 @@ h1, h2 {
 
 /*-------------- MOBILE GRAPHISME --------------*/
 @media screen and (max-width: 576px) {
+
+  /* FIX MOBILE : enlever background-attachment: fixed */
+  body {
+    background-attachment: scroll !important;
+    background-size: cover;
+  }
+
+  .pattern-background {
+    background-attachment: scroll !important;
+  }
 
   /* style generale + border */
   .site-header {
@@ -74,20 +87,22 @@ h1, h2 {
   
   .page-graphisme section { width: 100%; }
 
-.presentation-graphisme {
-    position: relative;
-}
-
-.logo-graphisme {
-  position: absolute;
-  right: -8px;   /* même position que avant */
-  top: 120px;      /* même position que avant */
-  z-index: 10;    /* devant le fond */
-  mix-blend-mode: normal; /* couleur originale conservée */
-  width: auto;
-  height: auto;
-  max-width: 80px; /* ajuste si besoin */
-}
+  .presentation-graphisme {
+    position: relative; /* garde le contexte pour le contenu */
+    z-index: 1;         /* faible */
+    overflow: visible;  /* assure que les enfants absolus ne sont pas masqués */
+  }
+  
+  .logo-graphisme {
+    position: absolute;
+    right: -15px;
+    top: 110px;
+    z-index: 9999;      /* assure qu’il passe au-dessus */
+    mix-blend-mode: normal;
+    width: 90px;
+    height: 90px;
+    max-width: 150px;
+  }
 
   /* -------------- Version mobile des cartes */
 
@@ -151,7 +166,6 @@ h1, h2 {
     text-align: center;
   }
 
-
   .conteneur-button-dropdown-graphisme {
     width: 100%;
     display: flex;
@@ -211,6 +225,7 @@ h1, h2 {
     place-self: center;
   }
 }
+
 
 /*-------------- TABLET / PETIT ECRAN graphisme --------------*/
 @media screen and (min-width: 576.02px) {
@@ -424,14 +439,14 @@ h1, h2 {
 
   .logo-graphisme {
     position: absolute;
-    left: -20px;
-    bottom: -40%;
-    z-index: 10;
+    left: -25px;
+    bottom: -30%;
     mix-blend-mode: normal;
 
-    height: auto;
-    max-width: 10vw;
-    min-width: 140px;
+    width: 140px;
+    height: 140px;
+    max-width: 100px;
+    min-width: 80px;
   }
 
   .conteneur-description-graphisme { background-color: transparent; border: none; }

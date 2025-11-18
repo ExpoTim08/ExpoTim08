@@ -1,5 +1,9 @@
 /*-------------- CSS Arcade --------------*/
 
+.header-container form.search-form {
+  transform: translateY(14px); 
+}
+
 body {
   background: linear-gradient(180deg, #1B1B1B 0%, #2B2B2B 44.23%, #323232 77.88%, #1B1B1B 100%);
   background-attachment: fixed;
@@ -26,7 +30,6 @@ h1, h2 {
 .presentation-arcade {
   background-image: 
     linear-gradient(177deg, #4032FF 11.95%, #362CB6 28.39%, #21212100 82.04%);
-    
   margin-bottom: 5vh;
 }
 
@@ -76,24 +79,27 @@ h1, h2 {
   
   .page-arcade section { width: 100%; }
 
+  /* ===== FIX DU PROBLÈME DE Z-INDEX ===== */
   .presentation-arcade {
     position: relative;
+    z-index: 1; /* garantit que le fond est derrière le logo */
   }
 
   .logo-arcade {
     position: absolute;
-    right: -15px;   /* même position que avant */
-    top: 85px;      /* même position que avant */
-    z-index: 10;    /* devant le fond */
-    mix-blend-mode: normal; /* couleur originale conservée */
+    right: -15px;
+    top: 85px;
+    z-index: 9999; /* AU-DESSUS DE TOUT, même WordPress */
+    mix-blend-mode: normal;
     width: 120px;
     height: 120px;
-    max-width: 300px; /* ajuste si besoin */
+    max-width: 300px;
+    pointer-events: none; /* optionnel, évite interactions */
   }
+  /* ====================================== */
 
   /* -------------- Version mobile des cartes */
 
-  /* On cache la version desktop */
   .carte-projet-arcade--desktop { display: none; }
 
   .page-arcade img {
@@ -152,7 +158,6 @@ h1, h2 {
     cursor: pointer;
     text-align: center;
   }
-
 
   .conteneur-button-dropdown-arcade {
     width: 100%;
@@ -213,6 +218,7 @@ h1, h2 {
     place-self: center;
   }
 }
+
 
 /*-------------- TABLET / PETIT ECRAN ARCADE --------------*/
 @media screen and (min-width: 576.02px) {
@@ -495,8 +501,8 @@ h1, h2 {
 @media screen and (min-width: 1300px) { 
 
   .header-container form.search-form {
-    transform: translateY(8px);
-  }
+    transform: translateY(8px); 
+}
 
   /*les projets*/
   .liste-projet-arcade {
