@@ -82,10 +82,13 @@ h1, h2 {
 
   .logo-arcade {
     position: absolute;
-    right: -20px;
-    top: 75px;
-    z-index: 10;
-    mix-blend-mode: difference;
+    right: -20px;   /* même position que avant */
+    top: 75px;      /* même position que avant */
+    z-index: 10;    /* devant le fond */
+    mix-blend-mode: normal; /* couleur originale conservée */
+    width: 130px;
+    height: 130px;
+    max-width: 300px; /* ajuste si besoin */
   }
 
   /* -------------- Version mobile des cartes */

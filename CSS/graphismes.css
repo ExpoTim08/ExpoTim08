@@ -74,17 +74,20 @@ h1, h2 {
   
   .page-graphisme section { width: 100%; }
 
-  .presentation-graphisme {
-    position: relative;
-  }
+.presentation-graphisme {
+    overflow: visible; /* pour que le logo ne soit pas coupé */
+}
 
-  .logo-graphisme {
-    position: absolute;
-    right: -20px;
-    top: 75px;
-    z-index: 10;
-    mix-blend-mode: difference;
-  }
+.logo-graphisme {
+  position: absolute;
+  right: 5px;   /* même position que avant */
+  top: 240px;      /* même position que avant */
+  z-index: 10;    /* devant le fond */
+  mix-blend-mode: normal; /* couleur originale conservée */
+  width: auto;
+  height: auto;
+  max-width: 80px; /* ajuste si besoin */
+}
 
   /* -------------- Version mobile des cartes */
 

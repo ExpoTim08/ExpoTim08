@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // ================= CARROUSSEL PRINCIPAL =================
   const Images = [
     {
       src: `${themeVars.themeUrl}/Images/Affiche-Arcade/Arcade-404.jpg`,
@@ -27,83 +28,68 @@ document.addEventListener("DOMContentLoaded", () => {
   const Image = document.getElementById("image-carroussel");
   const Subtitle = document.querySelector(".sous-titre-carroussel");
   const BoutonVoirPlus = document.querySelector(".plus");
-  const DescriptionCategorie = document.querySelector(".description")
+  const DescriptionCategorie = document.querySelector(".description");
   const ChoixElements = document.querySelectorAll(".carroussel-choix p");
 
-  if (!Image || !Subtitle || !BoutonVoirPlus || !DescriptionCategorie || ChoixElements.length === 0) return;
+  if (Image && Subtitle && BoutonVoirPlus && DescriptionCategorie && ChoixElements.length > 0) {
+    function ChangeImageAutomatique(index) {
+      const { src, Titre, ClassName, Description, Lien } = Images[index];
 
-  // --- Fonction de changement d’image ---
-  function ChangeImageAutomatique(index) {
-    const { src, Titre, ClassName, Description, Lien } = Images[index];
+      Image.src = src;
+      Subtitle.innerText = Titre;
+      DescriptionCategorie.innerText = Description;
 
-    Image.src = src;
-    Subtitle.innerText = Titre;
-    DescriptionCategorie.innerText = Description;
+      ChoixElements.forEach(elm => {
+        elm.classList.remove("arcade-click", "jour-terre-click", "finissants-click");
+      });
+      const currentChoice = document.querySelector(`.${ClassName}`);
+      if (currentChoice) currentChoice.classList.add(`${ClassName}-click`);
 
-    ChoixElements.forEach(elm => {
-      elm.classList.remove("arcade-click", "jour-terre-click", "finissants-click");
+      BoutonVoirPlus.setAttribute("href", Lien);
+    }
+
+    let intervalID = null;
+    function startAutoChange() {
+      if (intervalID !== null) clearInterval(intervalID);
+      intervalID = setInterval(() => {
+        CurrentIndex = (CurrentIndex + 1) % Images.length;
+        ChangeImageAutomatique(CurrentIndex);
+      }, 5000);
+    }
+
+    // Initialisation
+    ChangeImageAutomatique(CurrentIndex);
+    startAutoChange();
+
+    // Bouton "Voir Plus"
+    BoutonVoirPlus.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.location.href = Images[CurrentIndex].Lien;
     });
-    const currentChoice = document.querySelector(`.${ClassName}`);
-    if (currentChoice) currentChoice.classList.add(`${ClassName}-click`);
 
-    BoutonVoirPlus.setAttribute("href", Lien);
-  }
-
-  // --- Gestion du timer ---
-  let intervalID = null;
-
-  function startAutoChange() {
-    if (intervalID !== null) clearInterval(intervalID);
-    intervalID = setInterval(() => {
-      CurrentIndex = (CurrentIndex + 1) % Images.length;
-      ChangeImageAutomatique(CurrentIndex);
-    }, 5000);
-  }
-
-  // --- Initialisation ---
-  ChangeImageAutomatique(CurrentIndex);
-  startAutoChange();
-
-  // --- Bouton "Voir Plus" ---
-  BoutonVoirPlus.addEventListener("click", (e) => {
-    e.preventDefault();
-    window.location.href = Images[CurrentIndex].Lien;
-  });
-
-  // --- Clics manuels ---
-  ChoixElements.forEach((elm, i) => {
-    elm.addEventListener("click", () => {
-      CurrentIndex = i;
-      ChangeImageAutomatique(CurrentIndex);
-      startAutoChange(); // remet à zéro le timer
+    // Clics manuels
+    ChoixElements.forEach((elm, i) => {
+      elm.addEventListener("click", () => {
+        CurrentIndex = i;
+        ChangeImageAutomatique(CurrentIndex);
+        startAutoChange();
+      });
     });
-  });
-});
-
-// ------------------------------------------------------
-//  CARROUSSEL "À PROPOS" MODE 3 IMAGES (CENTRE + CÔTÉS)
-// ------------------------------------------------------
-document.addEventListener("DOMContentLoaded", () => {
-  const images = document.querySelectorAll('.carroussel-apropos img');
-  let index = 0;
-
-  function updateFocus() {
-    // Remove all actives
-    images.forEach(img => img.classList.remove("active"));
-  
-    // Apply active to current
-    images[index].classList.add("active");
-
-    // Go to next
-    index = (index + 1) % images.length;
   }
 
-  // First activation
-  updateFocus();
+  // ================= CARROUSSEL "À PROPOS" =================
+  const aproposImages = document.querySelectorAll('.carroussel-apropos img');
+  if (aproposImages.length > 0) {
+    let index = 0;
 
-  // Change every 3 seconds
-  setInterval(updateFocus, 3000);
+    function updateFocus() {
+      aproposImages.forEach(img => img.classList.remove("active"));
+      if (!aproposImages[index]) return;
+      aproposImages[index].classList.add("active");
+      index = (index + 1) % aproposImages.length;
+    }
 
-
+    updateFocus();
+    setInterval(updateFocus, 3000);
+  }
 });
-
