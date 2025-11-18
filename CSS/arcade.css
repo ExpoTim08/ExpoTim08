@@ -82,12 +82,12 @@ h1, h2 {
 
   .logo-arcade {
     position: absolute;
-    right: -20px;   /* même position que avant */
-    top: 75px;      /* même position que avant */
+    right: -15px;   /* même position que avant */
+    top: 90px;      /* même position que avant */
     z-index: 10;    /* devant le fond */
     mix-blend-mode: normal; /* couleur originale conservée */
-    width: 130px;
-    height: 130px;
+    width: 120px;
+    height: 120px;
     max-width: 300px; /* ajuste si besoin */
   }
 
@@ -421,8 +421,8 @@ h1, h2 {
 
   .logo-arcade {
     position: absolute;
-    left: -70px;
-    bottom: -40%;
+    left: -50px;
+    bottom: -35%;
     z-index: 10;
     mix-blend-mode: normal;
 

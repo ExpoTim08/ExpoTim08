@@ -75,13 +75,13 @@ h1, h2 {
   .page-graphisme section { width: 100%; }
 
 .presentation-graphisme {
-    overflow: visible; /* pour que le logo ne soit pas coupé */
+    position: relative;
 }
 
 .logo-graphisme {
   position: absolute;
-  right: 5px;   /* même position que avant */
-  top: 240px;      /* même position que avant */
+  right: -8px;   /* même position que avant */
+  top: 120px;      /* même position que avant */
   z-index: 10;    /* devant le fond */
   mix-blend-mode: normal; /* couleur originale conservée */
   width: auto;
