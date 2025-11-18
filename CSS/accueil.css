@@ -764,44 +764,33 @@
   }
 
   .numeration {
-    color: transparent;
-    -webkit-user-select: none;
-    -moz-user-select: none;    
-    -ms-user-select: none;     
-    user-select: none;        
-
-  }
-
-  .numeration::after {
-    content: "123";
     color: #606060;
     font-family: var(--title-font);
-
     writing-mode: vertical-rl;        
     text-orientation: upright;       
     white-space: nowrap;              
     display: inline-block;            
     transform-origin: center;  
-    font-size: 12px;
+    font-size: 14px;
     box-sizing: border-box;
     align-self: center;
     text-transform: uppercase;
     overflow: hidden; 
-    letter-spacing: 24px;
+    letter-spacing: 13px;
     margin: 0px;
-    padding-top: 3.7vh;
+    padding-top: 7px;
   }
-
+  
+  /* Ligne parallèle simple */
   .ligne-parallele {
     position: relative;
     width: 28px;      
-    height: 22vh;      
+    height: 240px;      
     margin: 0;
     align-self: center;
     pointer-events: none;
-    margin-left: 7px;
   }
-
+  
   .ligne-parallele::before,
   .ligne-parallele::after {
     content: "";
@@ -812,7 +801,7 @@
     background: var(--font-color);
     opacity: 0.85;
   }
-
+  
   .ligne-parallele::before { 
     left: 4px; 
     background: linear-gradient(
@@ -822,9 +811,9 @@
       #5A5A5A 32.21%, 
       #A4A4A4 84.13%, 
       #222 100%
-      );
-    }  
-
+    );
+  }  
+  
   .ligne-parallele::after  { 
     left: 18px;
     background: linear-gradient(
@@ -834,7 +823,7 @@
       #5A5A5A 32.21%, 
       #A4A4A4 84.13%, 
       #222 100%
-      );
+    );
   }  
 
 
