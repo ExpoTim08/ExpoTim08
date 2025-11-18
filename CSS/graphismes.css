@@ -432,21 +432,23 @@ h1, h2 {
     align-items: start;
   }
 
-  /*deco titre graphisme*/
   .presentation-graphisme {
     position: relative;
+    z-index: 1; /* s’assure que le fond reste derrière le logo */
   }
-
+  
   .logo-graphisme {
     position: absolute;
     left: -25px;
     bottom: -30%;
     mix-blend-mode: normal;
-
+  
     width: 140px;
     height: 140px;
     max-width: 100px;
     min-width: 80px;
+  
+    z-index: 10; /* bien au-dessus de la présentation */
   }
 
   .conteneur-description-graphisme { background-color: transparent; border: none; }
