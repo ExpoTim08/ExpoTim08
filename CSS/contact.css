@@ -24,10 +24,25 @@ h1, h2 {
   color: var(--font-color);
 }
 
+/******************* CSS Contact général **********************/
+.forumContact{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.messagePageContact{
+    text-align: center;
+    padding-bottom: 1rem;
+    padding-bottom: 2rem;
+}
+
+.messagePageContact img{
+    scale: 2;
+}
+
 @media screen and (max-width: 576px) {
-    .forumContact{
-        background-color: red;
-    }
+    
 }
 
 @media screen and (min-width: 576.02px) {
