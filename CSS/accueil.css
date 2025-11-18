@@ -112,6 +112,7 @@
     transform: translate(-50%, -50%);
     justify-self: center;
     font-size: 2vw;
+    gap: 2em;
   }
 
   .bouton-finissants > p, .bouton-arcade > p, .bouton-graphisme > p {
@@ -172,10 +173,6 @@
 
   .bouton-arcade, .bouton-graphisme, .bouton-finissants {
     position: relative;
-  }
-
-  .bouton-arcade, .bouton-graphisme {
-    margin-right: 3em;
   }
 
   .arcade-details > .plus:hover,
@@ -951,76 +948,39 @@
   }
 
   /******************************** CSS Section Équipe Desktop********************************************/
-  .equipe {
-    padding-bottom: 6rem;
-    border-bottom: 1px solid var(--border-color);
-    height: 120vh;
+  .carte-equipe {
+    box-shadow: 5px 5px 17px 5px rgb(1, 1, 125);
+  }
+  .carte-equipe .nom {
+    background-color: rgb(1, 1, 125);
+    color: white;
   }
 
-  .equipe > h1 {
-    justify-self: end;
-    margin-right: 3rem;
+  .carte-equipe-2 {
+    box-shadow: 5px 5px 17px 5px rgb(124, 0, 124);
   }
 
-  .cartes {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    row-gap: 13em;
+  .carte-equipe-2 .nom {
+    background-color: rgb(124, 0, 124);
+    color: white;
   }
 
-  .carte-equipe,
-  .carte-equipe-2,
-  .carte-equipe-3,
-  .carte-equipe-4,
-  .carte-equipe-5 {
-    justify-self: center;
-    display: grid;
-	  grid-template-rows: repeat(7, 1fr);
-	  grid-template-columns: repeat(2, 1fr);
-    padding: 1rem;
+  .carte-equipe-3 {
+    box-shadow: 5px 5px 17px 5px rgb(244, 75, 213);
   }
 
-  .carte-equipe > .photo,
-  .carte-equipe-2 > .photo,
-  .carte-equipe-3 > .photo,
-  .carte-equipe-4 > .photo,
-  .carte-equipe-5 > .photo {
-    grid-area: 2 / 1 / 5 / 3;
-    border: 1px solid var(--border-color-special);
-    height: 15vh;
+  .carte-equipe-3 .nom {
+    background-color: rgb(244, 75, 213);
+    color: white;
   }
 
-  .carte-equipe > .nom,
-  .carte-equipe-2 > .nom,
-  .carte-equipe-3 > .nom,
-  .carte-equipe-4 > .nom,
-  .carte-equipe-5 > .nom {
-    grid-area: 1 / 1 / 2 / 3;
-    border: 1px solid var(--border-color-special);
-    padding: 1rem;
-    padding-right: 6rem;
+  .carte-equipe-4 {
+    box-shadow: 5px 5px 17px 5px red;
   }
 
-  .carte-equipe > .role,
-  .carte-equipe-2 > .role,
-  .carte-equipe-3 > .role,
-  .carte-equipe-4 > .role,
-  .carte-equipe-5 > .role {
-    grid-area: 5 / 1 / 6 / 3;
-    border: 1px solid var(--border-color-special);
-    padding: 1rem;
-  }
-
-  .carte-equipe > .petits-carre,
-  .carte-equipe-2 > .petits-carre,
-  .carte-equipe-3 > .petits-carre,
-  .carte-equipe-4 > .petits-carre,
-  .carte-equipe-5 > .petits-carre {
-    grid-area: 6 / 1 / 8 / 3;
-    border: 1px solid var(--border-color-special);
-    height: 10vh;
+  .carte-equipe-4 .nom {
+    background-color: red;
+    color: white;
   }
 }
 
