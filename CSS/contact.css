@@ -3,5 +3,21 @@ body{
 }
 
 .forumContact{
+    height: 20px;
+    width: 100%;
     background-color: rgb(33, 33, 33);
 }
+
+@media screen and (max-width: 576px) {
+    
+}
+
+@media screen and (min-width: 576.02px) {
+
+}
+
+@media screen and (min-width: 1024px) {
+
+}
+/*if (is_page_template('contact.php') || is_page_template('ar.php')) wp_enqueue_style('style-contact', $theme_uri . '/CSS/contact.css');
+*/
