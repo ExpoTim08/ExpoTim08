@@ -25,7 +25,7 @@ get_header();
       <span class="titre-graphisme-layer titre-graphisme-layer--3">GRAPHISME</span>
     </h1>
 
-    <svg class="logo-finissant" width="100" height="122" viewBox="0 0 100 122" xmlns="http://www.w3.org/2000/svg">
+    <svg class="logo-graphisme" width="100" height="122" viewBox="0 0 100 122" xmlns="http://www.w3.org/2000/svg">
     <!-- Contour blanc -->
     <path
         d="M97.0801 0.508789C102.803 39.1876 98.5018 112.756 35.5107 97.6006C41.8261 81.6158 63.3355 46.6873 77.5439 37.2148C82.2801 34.0574 72.8083 25.9666 68.6641 30.1104C55.8366 39.9774 25.6828 73.3285 12.4219 118.322C10.8512 123.65 -1.19508 119.506 1.17285 114.178L13.6055 85.1689C-6.72066 57.9359 -18.4827 2.87695 97.0801 0.508789Z"
