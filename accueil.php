@@ -24,6 +24,12 @@ get_header();
       </div>
 
       <div class="carroussel-choix">
+
+        <div class="bouton-finissants">
+          <p class="finissants">FINISSANTS</p>
+          <img class="student" src="<?php echo get_template_directory_uri(); ?>/Images/Student.svg" alt="">
+        </div>
+
         <div class="bouton-arcade">
           <p class="arcade arcade-click">ARCADE</p>
           <img class="manette" src="<?php echo get_template_directory_uri(); ?>/Images/Manette.svg" alt="">
@@ -32,11 +38,6 @@ get_header();
         <div class="bouton-graphisme">
           <p class="jour-terre">GRAPHISME</p>
           <img class="tree" src="<?php echo get_template_directory_uri(); ?>/Images/Tree.svg" alt="" class="tree">
-        </div>
-
-        <div class="bouton-finissants">
-          <p class="finissants">FINISSANTS</p>
-          <img class="student" src="<?php echo get_template_directory_uri(); ?>/Images/Student.svg" alt="">
         </div>
       </div>
     </div>
@@ -105,7 +106,7 @@ get_header();
 
     <!-------------------------------- Équipe -------------------------------->
     <div class="equipe">
-      <h1>L'équipe</h1>
+      <h1>Crédits</h1>
       <div class="cartes">
         <div class="carte-equipe">
           <span class="photo"></span>
