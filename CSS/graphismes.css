@@ -387,6 +387,11 @@ h1, h2 {
 
 /*-------------- DESKTOP GRAPHISME --------------*/
 @media screen and (min-width: 1024px) {
+  
+  .header-container form.search-form {
+    transform: translateY(8px);
+  }
+
   .border { position: fixed; background: var(--border-color-side); z-index: 9999; }
   .border.gauche { top: 0; left: 3em; width: 1px; height: 100%; }
   .border.droite { top: 0; right: 3em; width: 1px; height: 100%; }

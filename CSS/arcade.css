@@ -494,6 +494,10 @@ h1, h2 {
 /*-------------- GRAND ECRAN ARCADE --------------*/
 @media screen and (min-width: 1300px) { 
 
+  .header-container form.search-form {
+    transform: translateY(8px);
+  }
+
   /*les projets*/
   .liste-projet-arcade {
       display: grid;
@@ -731,3 +735,4 @@ h1, h2 {
   border-color: rgba(28, 21, 139, 0.911);
   border-width: 1px;
 }
+
