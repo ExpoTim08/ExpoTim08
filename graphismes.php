@@ -2,6 +2,7 @@
 /*
 Template Name: Graphisme
 */
+require("global.php");
 ?>
 
 
