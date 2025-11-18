@@ -26,3 +26,16 @@ h1, h2 {
   background-image: var(--background-color-projets); /* Variable à définir */
   margin-bottom: 5vh;
 }
+
+.section-erreur{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.message{
+  font-family: var(--general-font);
+  color: var(--font-color);
+}
+.boutton{
+  font-family: var(--general-font);
+}

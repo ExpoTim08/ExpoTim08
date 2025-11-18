@@ -9,10 +9,10 @@ Template Name: Page 404
 
 <body>
     <main>
-        <section>
-            <h1>Erreur 404</h1>
-            <p>La page que vous cherchez n'existe pas</p>
-            <button></button>
+        <section class="section-erreur">
+            <h1 class="titre">Erreur 404</h1>
+            <p class="message">La page que vous cherchez n'existe pas</p>
+            <button class="boutton">Retournez à l'accueil</button>
         </section>
     </main>
 </body>
