@@ -43,7 +43,9 @@ function expo_enqueue_assets() {
 
     if (is_page_template('graphismes.php')) wp_enqueue_style('style-graphismes', $theme_uri . '/CSS/graphismes.css');
 
-    if (is_search()) {wp_enqueue_style('style-search', $theme_uri . '/CSS/search.css');}
+    if (is_search()) {wp_enqueue_style('style-search', $theme_uri . '/CSS/search.css');
+
+    if (is_page_template('contact.php') || is_page_template('ar.php')) wp_enqueue_style('style-contact', $theme_uri . '/CSS/contact.css');}
 
     // Nouveau code (CORRIGÉ) :
     if (is_404() || is_page_template('ar.php')) {
