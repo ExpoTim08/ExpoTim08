@@ -36,7 +36,8 @@ h1 {
 
 /*************************Présentation du projet*******************************************/
 .titre-arcade {
-  background-color: var(--bouton-projet-arcade-color);
+  background-image: 
+    linear-gradient(177deg, var(--bouton-projet-arcade-color) 11.95%, #362CB6 28.39%, #21212100 82.04%);
   position: relative;
   line-height: 0.7;
   padding: 3vw;
@@ -96,15 +97,16 @@ h1 {
 
 .manette {
   position: absolute;
-  margin-left: 60vw;
-  margin-top: -25vw;
-  width: 30vw;
+  margin-left: 70vw;
+  margin-top: -20vw;
+  width: 20vw;
   transform: rotateZ(-35deg);
 }
 
 .video-projet {
-  border-top: 2px solid var(--border-color-side);
-  border-bottom: 2px solid var(--border-color-side);
+  border: 2px solid var(--border-color-side);
+  width: 80vw;
+  justify-self: center;
 }
 
 .infos-cours-annee {
