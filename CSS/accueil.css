@@ -323,7 +323,6 @@
   }
 
   .carroussel-apropos img {
-    height: 30vh;
     width: 30vw;
     border: 2px solid var(--border-color);
     transition: transform 0.6s ease, opacity 0.6s ease;
