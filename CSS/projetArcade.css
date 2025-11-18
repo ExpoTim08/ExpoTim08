@@ -176,3 +176,37 @@ h1 {
   border: 2px solid var(--border-color-side);
   padding: 10px;
 }
+
+/********************************************** CSS Desktop ********************************************************/
+@media screen and (min-width: 994px) {
+  .titre-arcade-layer {
+    font-size: 8vw;
+  }
+
+  .manette {
+    width: 15vw;
+  }
+
+  .infos-cours-annee {
+    width: 20vw;
+    padding: 2vw;
+    font-size: 2vw;
+  }
+
+  .image-projet span, .infos-etudiants .titre-equipe,  .description-projet{
+    font-size: 1.8vw;
+  }
+
+  .image-projet-arcade  {
+    width: 40vw;
+  }
+
+  .description-image {
+    display: flex;
+    width: 20vw;
+  }
+
+  .description-projet .description, .nom-etudiant {
+    font-size: 1.5vw;
+  }
+}

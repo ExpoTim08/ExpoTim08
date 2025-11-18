@@ -100,20 +100,21 @@ if ($video) {
     <?php endif; ?>
 
     <!-- Image du projet -->
-    <?php if ($image): ?>
-      <div class="image-projet">
-        <span>Affiche</span>
-        <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($nom); ?>" class="image-projet-arcade">
-      </div>
-    <?php endif; ?>
-
-    <!-- Description -->
-    <?php if ($description): ?>
-      <div class="description-projet">
-        <span class="description-titre">Description</span>
-        <span class="description"><?php echo esc_html($description); ?></span>
-      </div>
-    <?php endif; ?>
+    <div class="description-image">
+      <?php if ($image): ?>
+        <div class="image-projet">
+          <span>Affiche</span>
+          <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($nom); ?>" class="image-projet-arcade">
+        </div>
+      <?php endif; ?>
+      <!-- Description -->
+      <?php if ($description): ?>
+        <div class="description-projet">
+          <span class="description-titre">Description</span>
+          <span class="description"><?php echo esc_html($description); ?></span>
+        </div>
+      <?php endif; ?>
+    </div>
 
   </section>
 </main>
