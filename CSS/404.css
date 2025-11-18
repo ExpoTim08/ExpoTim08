@@ -1,0 +1,28 @@
+body {
+  background: linear-gradient(180deg, #1B1B1B 0%, #2B2B2B 44.23%, #323232 77.88%, #1B1B1B 100%);
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.pattern-background {
+  background-image: linear-gradient(#4e4b4194 1px, transparent 1px), linear-gradient(to right, #4e4b4194 1px, #71718300 1px);
+  background-size: 40px 40px;
+  background-attachment: fixed;
+}
+
+h1, h2 {
+  color: var(--font-color);
+  font-family: var(--title-font);
+}
+
+/* scope text for projets finissants pages */
+.page-finissant h3, .page-finissant p, .page-finissant a, .page-finissant li {
+  font-family: var(--general-font);
+  color: var(--font-color);
+}
+
+/*------------- Section description + titre --------------*/
+.presentation-finissant { /* Changé: .presentation-graphisme -> .presentation-finissant */
+  background-image: var(--background-color-projets); /* Variable à définir */
+  margin-bottom: 5vh;
+}
