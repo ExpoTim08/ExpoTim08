@@ -385,6 +385,7 @@
     color: #F1E2CC;
     outline: none;
     width: 100px;
+    font-family: var(--general-font);
   }
 
   .search-form button {

@@ -58,7 +58,7 @@
   <div class="menu-search-desktop">
   <form role="search" method="get" class="search-form" action="<?php echo home_url('/'); ?>">
         <input type="hidden" name="post_type" value="projet">
-        <input type="search" class="search-field" placeholder="Recherche projet ou étudiant..." value="<?php echo get_search_query(); ?>" name="s">
+        <input type="search" class="search-field" placeholder="Rechercher" value="<?php echo get_search_query(); ?>" name="s">
         <button type="submit"></button>
     </form>
   </div>
