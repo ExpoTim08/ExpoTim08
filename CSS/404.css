@@ -1,34 +1,39 @@
+/* ----------------------------- */
+/* GLOBAL DESKTOP STYLES */
+/* ----------------------------- */
+
 body {
   background: linear-gradient(180deg, #1B1B1B 0%, #2B2B2B 44.23%, #323232 77.88%, #1B1B1B 100%);
   background-attachment: fixed;
   background-size: cover;
-  margin: 0; 
+  margin: 0;
   padding: 0;
-  
 }
 
-/* Contenu principal: Application de la grille */
+/* Motif de fond */
 .pattern-background {
-  /* Réactivation et ajustement de la grille */
-  background-image: 
-    linear-gradient(#4e4b4194 1px, transparent 1px), 
+  background-image:
+    linear-gradient(#4e4b4194 1px, transparent 1px),
     linear-gradient(to right, #4e4b4194 1px, #71718300 1px);
-  background-size: 40px 40px; /* Taille des cellules de la grille */
+  background-size: 40px 40px;
   background-attachment: fixed;
-  min-height: 100vh; /* S'assurer que le motif couvre toute la hauteur */
+  min-height: 100vh;
 }
 
+/* Titres */
 h1, h2 {
   color: var(--font-color);
   font-family: var(--title-font);
 }
 
-/* Styles pour la section d'erreur 404 */
+/* ----------------------------- */
+/* SECTION ERREUR (DESKTOP) */
+/* ----------------------------- */
+
 .section-erreur {
   display: flex;
-  
   text-align: center;
-  width: auto; /* Permet à la marge de prendre effet */
+  width: auto;
   margin-left: 3em;
   margin-right: 3em;
   background-image: linear-gradient(177deg, #961403 11.95%, #871506 28.39%, #21212100 82.04%);
@@ -41,24 +46,16 @@ h1, h2 {
 }
 
 .titre-erreur {
-  color: transparent;                
-  
-  
-}
-
-.titre-erreur {
+  color: transparent;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  font-size: clamp(20px, 9vw, 45px);
-  line-height: 0.78;
+  font-size: clamp(20px, 12vw, 70px);
   text-transform: uppercase;
   margin: 0;
   -webkit-text-stroke-width: 0.8px;
-  -webkit-text-stroke-color: rgb(255, 255, 255);
-
+  -webkit-text-stroke-color: #fff;
   line-height: 0.6;
   letter-spacing: 1px;
   height: 220px;
@@ -67,38 +64,38 @@ h1, h2 {
 
 .titre-erreur-layer--1 {
   opacity: 0.8;
-  -webkit-text-stroke-width: 0.8px;
 }
 
 .titre-erreur-layer--2 {
   opacity: 0.5;
-  -webkit-text-stroke-width: 0.5px;
 }
 
 .titre-erreur-layer--3 {
   opacity: 0.3;
-  -webkit-text-stroke-width: 0.2px;
 }
 
 .message {
   font-family: var(--general-font);
   color: var(--font-color);
   font-size: 1.5em;
-  margin-bottom: 1.5em;
+  align-self: center;
+  margin-left: 3em;
 }
 
+/* ----------------------------- */
+/* BORDURES LATERALES (DESKTOP) */
+/* ----------------------------- */
 
-/* Bordures latérales (déjà définies) */
 .border {
   position: fixed;
-  background: var(--border-color-side); 
+  background: var(--border-color-side);
   z-index: 9999;
 }
 
 .border.gauche {
   top: 0;
   left: 3em;
-  width: 1px; 
+  width: 1px;
   height: 100%;
 }
 
@@ -107,4 +104,204 @@ h1, h2 {
   right: 3em;
   width: 1px;
   height: 100%;
+}
+
+/* ----------------------------- */
+/* LOGOS */
+/* ----------------------------- */
+
+.section-projets-decouverte {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.logo-arcade {
+  position: absolute;
+  right: -15px;
+  top: 85px;
+  z-index: 9999;
+  width: 120px;
+  height: 120px;
+  max-width: 300px;
+  pointer-events: none;
+}
+
+.logo-graphisme {
+  position: absolute;
+  left: 0px;
+  bottom: 400px;
+  z-index: 9999;
+  width: 90px;
+  height: 90px;
+  max-width: 150px;
+}
+
+.logo-finissant {
+  position: absolute;
+  margin-top: 180px;
+  z-index: 9999;
+  width: 90px;
+  height: 90px;
+  max-width: 150px;
+}
+
+/* ----------------------------- */
+/* MOBILE (max-width: 576px) */
+/* ----------------------------- */
+
+@media screen and (max-width: 576px) {
+
+  .border.gauche { left: 1em; }
+  .border.droite { right: 1em; }
+
+  .section-erreur {
+    flex-direction: column;
+    margin-left: 1em;
+    margin-right: 1em;
+    padding: 1em 0;
+  }
+
+  .titre-erreur {
+    font-size: clamp(20px, 9vw, 40px);
+    height: 150px;
+  }
+
+  .message {
+    font-size: 1.2em;
+    margin: 1em;
+  }
+
+  .logo-arcade {
+    position: relative;
+    align-self: flex-end;
+    margin-right: -10px;
+    margin-top: -10px;
+    width: 80px;
+    height: 80px;
+    right: auto;
+    top: auto;
+  }
+
+  .logo-graphisme {
+    position: relative;
+    align-self: flex-start;
+    margin-left: -15px;
+    margin-bottom: -100px;
+    width: 60px;
+    height: 60px;
+    left: auto;
+    bottom: auto;
+  }
+
+  .logo-finissant {
+    position: relative;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    width: 70px;
+    height: 70px;
+  }
+
+  .projet-decouvrir {
+    font-size: 1.2em;
+    text-align: center;
+    margin: 1em;
+  }
+}
+
+/* ----------------------------- */
+/* TABLETTE (min-width: 576.02px) */
+/* ----------------------------- */
+
+@media screen and (min-width: 576.02px) {
+
+  .border.gauche { left: 2em; }
+  .border.droite { right: 2em; }
+
+  .section-erreur {
+    margin-left: 2em;
+    margin-right: 2em;
+  }
+
+  .titre-erreur {
+    font-size: clamp(20px, 6vw, 35px);
+    height: 200px;
+  }
+
+  .message {
+    font-size: 1em;
+    margin-left: 2em;
+  }
+
+  .projet-decouvrir {
+    font-size: 1.4em;
+    text-align: center;
+    margin-left: 2em;
+    margin-right: 2em;
+  }
+
+  .logo-arcade {
+    right: 0px;
+    top: 60px;
+    width: 100px;
+    height: 100px;
+  }
+
+  .logo-graphisme {
+    left: 10px;
+    bottom: 300px;
+    width: 80px;
+    height: 80px;
+  }
+
+  .logo-finissant {
+    margin-top: 150px;
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* ----------------------------- */
+/* DESKTOP LARGE (min-width: 1024.02px) */
+/* ----------------------------- */
+
+@media screen and (min-width: 1024.02px) {
+
+  .section-erreur {
+    margin-left: 3em;
+    margin-right: 3em;
+  }
+
+  .titre-erreur {
+    font-size: clamp(25px, 12vw, 48px);
+    height: 240px;
+  }
+
+  .message {
+    font-size: 1.3em;
+    margin-left: 3em;
+  }
+
+  .border.gauche { left: 3em; }
+  .border.droite { right: 3em; }
+
+  .logo-arcade {
+    right: -15px;
+    top: 85px;
+    width: 120px;
+    height: 120px;
+  }
+
+  .logo-graphisme {
+    left: 0px;
+    bottom: 400px;
+    width: 90px;
+    height: 90px;
+  }
+
+  .logo-finissant {
+    margin-top: 180px;
+    width: 90px;
+    height: 90px;
+  }
 }
