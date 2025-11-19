@@ -1,3 +1,4 @@
+
 body {
   background: linear-gradient(180deg, #1B1B1B 0%, #2B2B2B 44.23%, #323232 77.88%, #1B1B1B 100%);
   background-attachment: fixed;
@@ -15,19 +16,19 @@ h1, h2 {
   font-family: var(--title-font);
 }
 
-/* scope text for projets finissants pages */
+/* scope text for finissant pages */
 .page-finissant h3, .page-finissant p, .page-finissant a, .page-finissant li {
   font-family: var(--general-font);
   color: var(--font-color);
 }
 
 /*------------- Section description + titre --------------*/
-.presentation-finissant { /* Changé: .presentation-graphisme -> .presentation-finissant */
-  background-image: var(--background-color-projets); /* Variable à définir */
+.presentation-finissant {
+  background-image: var(--background-color-finissant);
   margin-bottom: 5vh;
 }
 
-/*-------------- MOBILE PROJETS FINISSANTS --------------*/
+/*-------------- MOBILE FINISSANT --------------*/
 @media screen and (max-width: 576px) {
 
   /* style generale + border */
@@ -41,7 +42,7 @@ h1, h2 {
     position: fixed;
     top: 0;
     height: 100vh;
-    width: 0;
+    width: 0;                
     background: transparent;
     z-index: 9999;
     pointer-events: none;
@@ -50,8 +51,8 @@ h1, h2 {
   .border.gauche { left: 1rem; border-left: 1px solid var(--border-color-side); }
   .border.droite { right: 1rem; border-left: 1px solid var(--border-color-side); }
 
-  /* CSS informations sur titre + description */
-  .conteneur-description-finissant { /* Changé: .conteneur-description-graphisme -> .conteneur-description-finissant */
+  /* CSS informations sur finissant titre + description */
+  .conteneur-description-finissant {
     padding: 25px 35px 45px 35px;
     display: flex;
     flex-flow: column nowrap;
@@ -64,30 +65,32 @@ h1, h2 {
     padding: 5px 100px 6px 11px;
   }
 
-  .page-finissant { /* Changé: .page-graphisme -> .page-finissant */
+  .page-finissant {
     display: flex;
-    max-width: 1200px;
-    margin: 0 1em;
+    max-width: 1200px; 
+    margin: 0 1em; 
     flex-direction: column;
   }
-
+  
   .page-finissant section { width: 100%; }
 
   .presentation-finissant {
     position: relative;
   }
 
-  .logo-finissant { /* Changé: .logo-graphisme -> .logo-finissant */
-    position: absolute;
-    right: -20px;
-    top: 75px;
-    z-index: 10;
-    mix-blend-mode: difference;
+.logo-finissant {
+  position: absolute;
+  right: -8px;   /* même position que avant */
+  top: 90px;      /* même position que avant */
+  z-index: 10;    /* devant le fond */
+  mix-blend-mode: normal; /* couleur originale conservée */
+  width: auto;
+  height: auto;
+  max-width: 140px; /* ajuste si besoin */
   }
+/* -------------- Version mobile des cartes */
 
-  /* -------------- Version mobile des cartes */
-
-  /* On cache la version desktop (cette classe n'est pas dans le PHP, mais gardée pour le responsive) */
+  /* On cache la version desktop */
   .carte-projet-finissant--desktop { display: none; }
 
   .page-finissant img {
@@ -100,8 +103,8 @@ h1, h2 {
     object-fit: contain;
   }
 
-  .carte-projet-finissant { /* Classe utilisée par le PHP pour l'article */
-    display: block;
+  .carte-projet-finissant--mobile { 
+    display: block; 
     background-color: rgb(48,48,48);
     border: 2px solid var(--border-color-project);
     margin: 0 47px;
@@ -111,15 +114,15 @@ h1, h2 {
     place-self: center;
   }
 
-  .titre-projet-finissant { /* Classe non présente dans le PHP, j'utilise h2 ou un sélecteur plus générique */
+  .titre-projet-finissant{
     font-size: clamp(14px, 4.5vw, 20px);
     margin: 0.6rem 0 0.35rem;
     font-weight: 300;
     color: var(--font-color);
   }
 
-  .contenu-projet { /* Remplacement de .bloc-titre */
-    position: relative;
+  .bloc-titre {
+    position: relative; 
     overflow: hidden;
     display: flex;
     flex-direction: row nowrap;
@@ -128,18 +131,18 @@ h1, h2 {
     margin: 0px 0.5rem;
   }
 
-  .contenu-projet .image-projet-finissant { /* Changé: .image-projet-graphisme -> .image-projet-finissant */
+  .bloc-titre .image-projet-finissant {
     display: block;
     width: 100%;
     height: auto;
     object-fit: contain;
   }
 
-  .contenu-projet .button-projet-finissant { /* Changé: .button-projet-graphisme -> .button-projet-finissant */
+  .bloc-titre .button-projet-finissant {
     right: 0;
     z-index: 10;
     height: 24px;
-    background-color: var(--bouton-projet-jt-color);
+    background-color: var(--bouton-projet-finissant-color);
     color: #ffffff;
     font-size: 10px;
     border: 1px solid var(--font-color);
@@ -148,14 +151,14 @@ h1, h2 {
   }
 
 
-  .conteneur-button-dropdown-finissant { /* Changé: .conteneur-button-dropdown-graphisme -> .conteneur-button-dropdown-finissant */
+  .conteneur-button-dropdown-finissant {
     width: 100%;
     display: flex;
     justify-content: space-between;
     border-bottom: 2px solid var(--border-color-project);
   }
 
-  .button-dropdown-finissant { /* Changé: .button-dropdown-graphisme -> .button-dropdown-finissant */
+  .button-dropdown-finissant {
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -165,19 +168,19 @@ h1, h2 {
     border-left: 2px solid var(--border-color-project);
   }
 
-  .carte-projet-finissant .dropdown-carte-finissant { /* Changé: .dropdown-carte-graphisme -> .dropdown-carte-finissant */
+  .carte-projet-finissant--mobile .dropdown-carte-finissant {
     max-height: 0;
     overflow: hidden;
     padding: 0 1rem;
     display: block;
   }
 
-  .carte-projet-finissant.open-desc .dropdown-carte-finissant {
-    max-height: 800px;
+  .carte-projet-finissant--mobile.open-desc .dropdown-carte-finissant {
+    max-height: 800px; 
     font-size: 12px;
   }
 
-  .carte-finissant-titre-description { /* Changé: .carte-graphisme-titre-description -> .carte-finissant-titre-description */
+  .carte-finissant-titre-description {
     font-size: 12px;
     margin: 0;
     align-self: center;
@@ -208,7 +211,7 @@ h1, h2 {
   }
 }
 
-/*-------------- TABLET / PETIT ECRAN PROJETS FINISSANTS --------------*/
+/*-------------- TABLET / PETIT ECRAN finissant --------------*/
 @media screen and (min-width: 576.02px) {
 
   body { overflow-x: hidden; }
@@ -225,13 +228,12 @@ h1, h2 {
 
   /* On cache la version mobile des cartes */
   .carte-projet-finissant--mobile { display: none; }
-  /* La classe carte-projet-finissant est utilisée pour le desktop */
-  .carte-projet-finissant { display: flex; }
+  .carte-projet-finissant--desktop { display: flex; }
 
-  .conteneur-description-finissant { /* Changé: .conteneur-description-graphisme -> .conteneur-description-finissant */
+  .conteneur-description-finissant {
     background-color: rgb(42, 42, 42);
-    border-top: 1px solid var(--bouton-projet-jt-color);
-    border-bottom: 1px solid var(--bouton-projet-jt-color);
+    border-top: 1px solid var(--bouton-projet-finissant-color);
+    border-bottom: 1px solid var(--bouton-projet-finissant-color);
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
@@ -249,14 +251,14 @@ h1, h2 {
     overflow: hidden;
   }
 
-  /*deco titre projets*/
-  .presentation-finissant { /* Changé: .presentation-graphisme -> .presentation-finissant */
+  /*deco titre finissant*/
+  .presentation-finissant {
     position: relative;
   }
 
-  .logo-finissant { /* Changé: .logo-graphisme -> .logo-finissant */
+  .logo-finissant {
     position: absolute;
-    left: -30px;
+    left: -50px;
     bottom: 30%;
     z-index: 10;
     mix-blend-mode: normal;
@@ -276,8 +278,7 @@ h1, h2 {
 
   .page-finissant { display: flex; max-width: 1200px; margin: 0 2em; flex-direction: column; }
 
-  /* Style pour la carte desktop/tablet */
-  .carte-projet-finissant { /* Changé: .carte-projet-graphisme--desktop -> .carte-projet-finissant */
+  .carte-projet-finissant--desktop {
     flex-direction: row;
     align-items: stretch;
     width: 80%;
@@ -290,7 +291,7 @@ h1, h2 {
     margin-bottom: 70px;
   }
 
-  .carte-projet-finissant .contenu-projet {
+  .carte-projet-finissant--desktop .bloc-titre {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -300,7 +301,7 @@ h1, h2 {
     background: linear-gradient(90deg, rgba(255,255,255,0.02), transparent);
   }
 
-  .carte-projet-finissant h2 { /* Titre du projet */
+  .carte-projet-finissant--desktop .titre-projet-finissant {
     margin: 0 0 0.6rem 0;
     font-size: 1.3rem;
     line-height: 1.1;
@@ -309,14 +310,13 @@ h1, h2 {
     letter-spacing: .4px;
   }
 
-  .carte-projet-finissant .image-projet-finissant { /* Changé: .image-projet-graphisme -> .image-projet-finissant */
+  .carte-projet-finissant--desktop .image-projet-finissant {
     width: 45%;
     height: auto;
     object-fit: contain;
-    border-right: 2px solid var(--border-color-project);
   }
 
-  .carte-projet-finissant .conteneur-carte-bas { /* Conteneur non explicite dans le PHP mais peut être utile */
+  .carte-projet-finissant--desktop .conteneur-carte-bas {
     padding: 2rem;
     width: 55%;
     background: transparent;
@@ -324,25 +324,26 @@ h1, h2 {
     display: flex;
     flex-flow: column nowrap;
     align-self: center;
+    
   }
 
-  .carte-projet-finissant h3 {
+  .carte-projet-finissant--desktop .carte-finissant-titre-description {
     margin: 0.6rem 0 0.35rem;
     font-weight: 700;
     color: var(--font-color);
   }
 
-  .carte-projet-finissant .description-projet-courte {
+  .carte-projet-finissant--desktop .description-projet {
     margin: 0;
     color: var(--font-color);
     line-height: 1.45;
     font-size: 14px;
   }
-
-  .carte-projet-finissant button.button-projet-finissant { /* Changé: .button-projet-graphisme -> .button-projet-finissant */
+  
+  .carte-projet-finissant--desktop button.button-projet-finissant {
     z-index: 10;
     height: 24px;
-    background-color: var(--bouton-projet-jt-color);
+    background-color: var(--bouton-projet-finissant-color);
     color: #ffffff;
     font-size: 10px;
     border: 1px solid var(--font-color);
@@ -350,6 +351,10 @@ h1, h2 {
     text-align: center;
     margin-top: 10%;
   }
+
+  .carte-projet-finissant--desktop .image-projet-finissant {
+      border-right: 2px solid var(--border-color-project);
+    }
 
   .button-dropdown-finissant, .carte-finissant-titre-description { display: none; }
 
@@ -379,8 +384,10 @@ h1, h2 {
   }
 }
 
-/*-------------- DESKTOP PROJETS FINISSANTS --------------*/
+/*-------------- DESKTOP FINISSANT --------------*/
 @media screen and (min-width: 1024px) {
+
+  
   .border { position: fixed; background: var(--border-color-side); z-index: 9999; }
   .border.gauche { top: 0; left: 3em; width: 1px; height: 100%; }
   .border.droite { top: 0; right: 3em; width: 1px; height: 100%; }
@@ -393,10 +400,10 @@ h1, h2 {
     align-items: center;
     justify-content: center;
     border-bottom: 1px solid var(--border-color);
-    background-image: var(--background-color-projets);
+    background-image: var(--background-color-finissant);
   }
 
-  .liste-projet-finissants {
+  .liste-projet-finissant {
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
@@ -406,21 +413,22 @@ h1, h2 {
     align-items: start;
   }
 
-  /*deco titre projets*/
+  /*deco titre finissant*/
   .presentation-finissant {
     position: relative;
   }
 
   .logo-finissant {
     position: absolute;
-    left: -20px;
+    left: -85px;
     bottom: -40%;
     z-index: 10;
     mix-blend-mode: normal;
 
     height: auto;
-    max-width: 10vw;
-    min-width: 140px;
+    width: 10vw;
+    max-width: 250px;
+    min-width: 200px;
   }
 
   .conteneur-description-finissant { background-color: transparent; border: none; }
@@ -434,27 +442,26 @@ h1, h2 {
     padding: 20px 0;
   }
 
-  .carte-projet-finissant {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    gap: 0;
-    height: 300px;
-    margin: 1rem auto;
-    background-color: #2c2c2f;
-    overflow: hidden;
-    width: 75%;
+  .carte-projet-finissant--desktop { 
+    display: flex; 
+    flex-direction: row; 
+    align-items: stretch; 
+    gap: 0; 
+    height: 300px; 
+    margin: 1rem auto; 
+    background-color: #2c2c2f; 
+    overflow: hidden; 
+    width: 75%; 
     max-width: none;
-    position: relative; /* Nécessaire pour positionner le bouton */
   }
 
-  .carte-projet-finissant .image-projet-finissant {
+  .carte-projet-finissant--desktop .image-projet-finissant {
     width: min-content;
     height: auto;
     object-fit: contain;
   }
 
-  .carte-projet-finissant .contenu-projet {
+  .carte-projet-finissant--desktop .conteneur-carte-bas {
     width: max-content;
   }
 
@@ -462,8 +469,8 @@ h1, h2 {
 
   .carte-projet-finissant--mobile { display: none; }
 
-  .carte-projet-finissant button.button-projet-finissant {
-    position: absolute;
+  .carte-projet-finissant--desktop button.button-projet-finissant {
+    position: absolute;   
     bottom: 0px;
     right: 0px;
 
@@ -483,11 +490,13 @@ h1, h2 {
   }
 }
 
-/*-------------- GRAND ECRAN PROJETS FINISSANTS --------------*/
-@media screen and (min-width: 1300px) {
+/*-------------- GRAND ECRAN FINISSANT --------------*/
+@media screen and (min-width: 1300px) { 
+
+  main { padding-bottom: 15vh; }
 
   /*les projets*/
-  .liste-projet-finissants {
+  .liste-projet-finissant {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 0.4fr));
       gap: 5rem;
@@ -496,8 +505,8 @@ h1, h2 {
       margin: 0 auto;
       align-items: start;
     }
-
-  .carte-projet-finissant {
+    
+  .carte-projet-finissant--desktop {
     width: 100%;
     max-width: 100%;
     margin: 0;
@@ -523,8 +532,8 @@ h1, h2 {
   }
 }
 
-/*-------------- Effet halftone + hover carte projets finissants --------------*/
-.carte-projet-finissant::after {
+/*-------------- Effet halftone + hover carte finissant desktop --------------*/
+.carte-projet-finissant--desktop::after {
     content: "";
     position: absolute;
     inset: 0;
@@ -532,7 +541,7 @@ h1, h2 {
 
     /* halftone + tint */
     background-image:
-      linear-gradient(rgba(0,151,143,0.06), rgba(0,151,143,0.06)),
+      linear-gradient(rgba(151, 116, 0, 0.06), rgba(98, 71, 14, 0.45)),
       radial-gradient(circle, rgba(255,255,255,0.12) 1.5px, transparent 1px);
     background-size: auto, 12px 12px; /* change second value for dot density */
     mix-blend-mode: screen;
@@ -553,8 +562,8 @@ h1, h2 {
     image-rendering: pixelated;
   }
 
-  .carte-projet-finissant {
-    position: relative;
+  .carte-projet-finissant--desktop {
+    position: relative; 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     transition: transform 260ms cubic-bezier(.2,.8,.2,1),
@@ -565,36 +574,36 @@ h1, h2 {
     transform-origin: center;
   }
 
-  .carte-projet-finissant:hover::after {
+  .carte-projet-finissant--desktop:hover::after {
     opacity: 1;
     transform: translateY(0);
   }
 
-  .carte-projet-finissant:hover {
+  .carte-projet-finissant--desktop:hover {
     transform: translateY(-10px);
-    box-shadow: 16px 16px 0px rgb(5, 25, 28);
-    border-color: rgb(1, 11, 13);
+    box-shadow: 16px 16px 0px rgb(24, 19, 6);
+    border-color: rgb(13, 9, 1);
     border-radius: 14px;
     color: thistle;
   }
 
-  .carte-projet-finissant .image-projet-finissant {
+  .carte-projet-finissant--desktop .image-projet-finissant {
     transition: transform 400ms cubic-bezier(.2,.8,.2,1);
     will-change: transform;
   }
 
-  .carte-projet-finissant:hover .image-projet-finissant {
+  .carte-projet-finissant--desktop:hover .image-projet-finissant {
     transform: scale(1.05);
   }
 
 
   /*------------- Titre finissant --------------*/
-  .titre-finissant--base { /* Changé: .titre-graphisme--base -> .titre-finissant--base */
+  .titre-finissant--base {
     -webkit-text-fill-color: var(--title-color);
   }
 
-  .titre-finissant { /* Changé: .titre-graphisme -> .titre-finissant */
-    color: transparent;
+  .titre-finissant {
+    color: transparent;               
     -webkit-font-smoothing: antialiased;
     -webkit-text-stroke: 0px transparent;
   }
@@ -618,18 +627,20 @@ h1, h2 {
     font-weight: lighter;
   }
 
-  .finissant-layer { /* Changé: .titre-graphisme-layer--X -> .finissant-layer */
-    /* Ces sélecteurs sont utilisés dans le PHP, on les style ici */
+  .titre-finissant-layer--1 {
     opacity: 0.8;
     -webkit-text-stroke-width: 0.8px;
-    /* Vous pourriez vouloir des classes spécifiques comme .finissant-layer--1, --2, etc. pour des opacités différentes */
   }
-  
-  /* Pour cibler les layers spécifiques si vous en aviez besoin: */
-  /*
-  .titre-finissant > .finissant-layer:nth-child(2) { opacity: 0.5; -webkit-text-stroke-width: 0.5px; }
-  .titre-finissant > .finissant-layer:nth-child(3) { opacity: 0.3; -webkit-text-stroke-width: 0.2px; }
-  */
+
+  .titre-finissant-layer--2 {
+    opacity: 0.5;
+    -webkit-text-stroke-width: 0.5px;
+  }
+
+  .titre-finissant-layer--3 {
+    opacity: 0.3;
+    -webkit-text-stroke-width: 0.2px;
+  }
 
   /*-------------- FILTRE --------------*/
 
@@ -698,7 +709,7 @@ h1, h2 {
 /* si selectionner*/
 #filter-select option:checked,
 #filter-select option[selected] {
-  background-color: rgba(50, 255, 245, 0.14);
+  background-color: rgba(255, 200, 50, 0.14);
   color: #ffffff;
 }
 
@@ -707,8 +718,8 @@ h1, h2 {
 
 #filter-select:focus,
 .filter-bar label:focus {
-  outline: 3px solid rgba(0,151,143,0.14);
+  outline: 3px solid rgba(166, 106, 3, 0.14); 
   outline-offset: 2px;
-  border-color: rgba(0,151,143,0.6);
+  border-color: rgba(214, 148, 6, 0.733);
   border-radius: 8px;
 }
