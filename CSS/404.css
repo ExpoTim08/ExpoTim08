@@ -2,6 +2,9 @@ body {
   background: linear-gradient(180deg, #1B1B1B 0%, #2B2B2B 44.23%, #323232 77.88%, #1B1B1B 100%);
   background-attachment: fixed;
   background-size: cover;
+  margin: 0; 
+  padding: 0;
+  
 }
 
 /* Contenu principal: Application de la grille */
@@ -23,57 +26,59 @@ h1, h2 {
 /* Styles pour la section d'erreur 404 */
 .section-erreur {
   display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  min-height: calc(100vh - 100px); /* Ajuster la hauteur pour centrer verticalement (sans compter le header/footer) */
+  
   text-align: center;
-  padding: 50px 0;
+  width: auto; /* Permet à la marge de prendre effet */
+  margin-left: 3em;
+  margin-right: 3em;
+  background-image: linear-gradient(177deg, #961403 11.95%, #871506 28.39%, #21212100 82.04%);
+  justify-content: center;
+  border: solid 1px var(--border-color-side);
 }
 
-.titre-erreur--base {
-    -webkit-text-fill-color: var(--title-color);
-  }
+.titre-erreur-base {
+  -webkit-text-fill-color: var(--title-color);
+}
 
-  .titre-erreur {
-    color: transparent;               
-    -webkit-font-smoothing: antialiased;
-    -webkit-text-stroke: 0px transparent;
-  }
+.titre-erreur {
+  color: transparent;                
+  
+  
+}
 
-  .titre-erreur {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.titre-erreur {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-    font-size: clamp(20px, 9vw, 45px);
-    line-height: 0.78;
-    text-transform: uppercase;
-    margin: 0;
-    -webkit-text-stroke-width: 0.8px;
-    -webkit-text-stroke-color: rgb(255, 255, 255);
+  font-size: clamp(20px, 9vw, 45px);
+  line-height: 0.78;
+  text-transform: uppercase;
+  margin: 0;
+  -webkit-text-stroke-width: 0.8px;
+  -webkit-text-stroke-color: rgb(255, 255, 255);
 
-    line-height: 0.6;
-    letter-spacing: 1px;
-    height: 220px;
-    font-weight: lighter;
-  }
+  line-height: 0.6;
+  letter-spacing: 1px;
+  height: 220px;
+  font-weight: lighter;
+}
 
-  .titre-erreur-layer--1 {
-    opacity: 0.8;
-    -webkit-text-stroke-width: 0.8px;
-  }
+.titre-erreur-layer--1 {
+  opacity: 0.8;
+  -webkit-text-stroke-width: 0.8px;
+}
 
-  .titre-erreur-layer--2 {
-    opacity: 0.5;
-    -webkit-text-stroke-width: 0.5px;
-  }
+.titre-erreur-layer--2 {
+  opacity: 0.5;
+  -webkit-text-stroke-width: 0.5px;
+}
 
-  .titre-erreur-layer--3 {
-    opacity: 0.3;
-    -webkit-text-stroke-width: 0.2px;
-  }
+.titre-erreur-layer--3 {
+  opacity: 0.3;
+  -webkit-text-stroke-width: 0.2px;
+}
 
 .message {
   font-family: var(--general-font);
@@ -82,20 +87,6 @@ h1, h2 {
   margin-bottom: 1.5em;
 }
 
-/* Style pour le bouton/lien de retour */
-.bouton {
-  font-family: var(--general-font);
-  text-decoration: none;
-  color: var(--font-color);
-  background-color: var(--accent-color);
-  padding: 10px 20px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.bouton:hover {
-  background-color: #00aaff; /* Un bleu légèrement plus clair au survol */
-}
 
 /* Bordures latérales (déjà définies) */
 .border {
@@ -106,14 +97,14 @@ h1, h2 {
 
 .border.gauche {
   top: 0;
-  left: 1em;
+  left: 3em;
   width: 1px; 
   height: 100%;
 }
 
 .border.droite {
   top: 0;
-  right: 1em;
+  right: 3em;
   width: 1px;
   height: 100%;
 }
