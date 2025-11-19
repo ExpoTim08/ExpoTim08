@@ -97,47 +97,36 @@ function ajuster_menu_mobile() {
 add_action('wp_footer', 'ajuster_menu_mobile');
 
 // =========================================================
-// Recherche dans les projets et les étudiants associés
+// Normalisation des chaînes pour la recherche (accents, minuscules, espaces)
 // =========================================================
-function expo_search_simple($query) {
-    if (!is_admin() && $query->is_main_query() && $query->is_search) {
+if (!function_exists('normalize_string')) {
+    function normalize_string($str) {
+        if (!$str) return '';
+        $str = mb_strtolower($str, 'UTF-8'); // minuscules
+        $accents = [
+            'à'=>'a','â'=>'a','ä'=>'a','á'=>'a','ã'=>'a','å'=>'a',
+            'ç'=>'c',
+            'è'=>'e','é'=>'e','ê'=>'e','ë'=>'e',
+            'ì'=>'i','í'=>'i','î'=>'i','ï'=>'i',
+            'ñ'=>'n',
+            'ò'=>'o','ó'=>'o','ô'=>'o','ö'=>'o','õ'=>'o',
+            'ù'=>'u','ú'=>'u','û'=>'u','ü'=>'u',
+            'ý'=>'y','ÿ'=>'y',
+            'œ'=>'oe','æ'=>'ae',
+            'ß'=>'ss'
+        ];
 
-        // On cible uniquement notre CPT projet
-        if (isset($_GET['post_type']) && $_GET['post_type'] === 'projet') {
-            $query->set('post_type', 'projet');
+        // Remplacement des accents
+        $str = strtr($str, $accents);
 
-            // On garde la recherche WP normale sur le titre
-            add_filter('the_posts', function($posts) use ($query) {
-                $search = $query->get('s');
+        // Enlever tout caractère non alphanumérique (sauf espace)
+        $str = preg_replace('/[^a-z0-9 ]+/u', '', $str);
 
-                // Filtrer les projets si le titre ne contient pas le terme de recherche
-                // mais un étudiant associé contient le terme
-                $filtered = [];
-                foreach ($posts as $post) {
-                    $etudiants = get_field('etudiants_associes', $post->ID);
-                    $found = false;
+        // Espaces multiples → un seul
+        $str = preg_replace('/\s+/', ' ', $str);
 
-                    if ($etudiants) {
-                        foreach ($etudiants as $etu) {
-                            $prenom = get_field('prenom', $etu->ID);
-                            $nom = get_field('nom_etudiant', $etu->ID);
-                            if (stripos("$prenom $nom", $search) !== false) {
-                                $found = true;
-                                break;
-                            }
-                        }
-                    }
-
-                    if ($found || stripos($post->post_title, $search) !== false) {
-                        $filtered[] = $post;
-                    }
-                }
-
-                return $filtered;
-            });
-        }
+        return trim($str);
     }
 }
-add_action('pre_get_posts', 'expo_search_simple');
-
 ?>
+
