@@ -25,7 +25,7 @@
     z-index: 9999;
     margin: 0 0 20px 0;
     border-top: 1px solid var(--border-color);
-    padding: 20px 1em 0 1em;
+    padding: 20px 2em 0 2em;
     box-sizing: border-box;
   }
 
@@ -128,16 +128,25 @@
 
   .menu li {
     background-color: #323232;
-    padding: clamp(1rem, 20px, 25px) 0;
+    padding: clamp(1rem, 20px, 25px);
     border-bottom: 1px solid var(--border-color);
     font-family: var(--title-font);
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 400;
     display: flex;
     justify-content: flex-start;
     width: 100%;
     box-sizing: border-box;
     flex-direction: column;
+  }
+
+  .menu li:not(.sub-menu li) {
+    padding-left: 1.7em;
+  }
+
+  .sub-menu li {
+    border-bottom: none;
+    padding: 5px;
   }
 
   .menu li a {
@@ -176,7 +185,7 @@
     display: block;
     padding: 8px 0.5em;
     font-family: var(--general-font);
-    font-size: 14px;
+    font-size: 13px;
     color: #F1E2CC;
     width: 100%;
     box-sizing: border-box;
@@ -188,7 +197,7 @@
 
   .menu-page.open .menu-search-mobile {
     display: flex;
-    padding: 10px 0.5em;
+    padding: 10px 2em;
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
     background-color: #323232;
@@ -212,198 +221,15 @@
   .menu-page.open .menu-search-mobile button {
     margin-right: 1em;
     box-sizing: border-box;
+    background: #00000000;
+    border-style: none;
   }
 
   .header-margin { height: 20px; }
 }
 
-/*------------- FIN HEADER MOBILE --------------*/
-
-/*------------- HEADER TABLET --------------*/
-@media screen and (min-width: 767.02px){
-
-   body {
-    margin: 0;
-  }
-
-  .header-margin {
-    height: 20px;
-  }
-
-  .header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #b9949400;
-    border-top: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
-    height: 40px;
-    padding: 0 3em;
-  }
-
-  .logo {
-    margin: 0;
-    flex-shrink: 0;
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    width: 11vw;
-  }
-
-  .logo a {
-    font-size: 1rem;
-    color: var(--border-color);
-    text-decoration: none;
-    font-weight: bold;
-  }
-
-  /* Hide burger on desktop */
-  .menu-burger {
-    display: none;
-  }
-
-  /* Menu container */
-  .menu-page {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    background: none;
-    position: static;
-    height: auto;
-  }
-
-  .menu-content {
-    display: flex;
-    flex-flow: row-reverse;
-    align-items: center;
-    justify-content: center;
-    max-width: 1200px;
-  }
-
-
-  .menu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .menu li {
-    position: relative;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0px 15px;
-    border: 1px solid var(--border-color);
-  }
-
-  .menu li a {
-    color: var(--border-color);
-    text-decoration: none;
-    font-family: var(--title-font);
-    font-size: 13px;
-    transition: color 0.2s ease;
-  }
-
-  .menu li a:hover {
-    color: #F1E2CC;
-  }
-
- /* --- Sous-menu dropdown --- */
-  .menu li .sub-menu {
-    position: absolute;
-    top: 103%;
-    left: 0;
-    background: #1f1f1f;
-    list-style: none;
-    margin: 0;
-    padding: 8px 0;
-    border: 1px solid var(--border-color);
-    min-width: 180px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    transition: all 0.25s ease;
-    z-index: 1005;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .menu li:hover > .sub-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .menu li .sub-menu li {
-    border: none;
-    height: auto;
-    padding: 0;
-  }
-
-  .menu li .sub-menu li a {
-    display: block;
-    padding: 10px 15px;
-    color: #F1E2CC;
-    font-size: 0.95rem;
-    text-align: left;
-    white-space: nowrap;
-    transition: background 0.2s ease, color 0.2s ease;
-  }
-
-  .menu li .sub-menu li a:hover {
-    color: #fff;
-  }
-
-  .menu li .sub-menu li .sub-menu {
-    top: 0;
-    left: 100%;
-    margin-left: 8px;
-  }
-
-  /* --- Search bar --- */
-  form.search-form {
-    display: flex;
-    align-items: center;
-    border: 1px solid #444;
-    padding: 4px 10px;
-    background-color: #2B2B2B;
-    margin-left: auto;
-  }
-
-  input.search-field {
-    background: transparent;
-    border: none;
-    color: #F1E2CC;
-    outline: none;
-    width: 100px;
-    font-family: var(--general-font);
-  }
-
-  .search-form button {
-    background: none;
-    border: none;
-    color: var(--border-color);
-    cursor: pointer;
-    content: "0";
-  }
-
-  .menu-search-mobile {
-    display: none !important;
-  }
-}
-
-
 /*------------- HEADER DESKTOP --------------*/
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 767.02px) {
 
    body {
     margin: 0;
@@ -480,7 +306,6 @@
     justify-content: center;
     align-items: center;
     padding: 0px 15px;
-    border: 1px solid var(--border-color);
   }
 
   .menu li a {
@@ -488,11 +313,12 @@
     text-decoration: none;
     font-family: var(--title-font);
     font-size: 13px;
-    transition: color 0.2s ease;
+    transition: color 0.2s ease, transform 0.2s ease-out;
   }
 
   .menu li a:hover {
-    color: #F1E2CC;
+    color: #f3efe8;
+    transform: scale(1.05);
   }
 
  /* --- Sous-menu dropdown --- */
@@ -514,7 +340,6 @@
     z-index: 1005;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
   }
 
   .menu li:hover > .sub-menu {
@@ -523,7 +348,7 @@
     transform: translateY(0);
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
   }
 
   .menu li .sub-menu li {
@@ -536,7 +361,7 @@
     display: block;
     padding: 10px 15px;
     color: #F1E2CC;
-    font-size: 0.95rem;
+    font-size: 10px;
     text-align: left;
     white-space: nowrap;
     transition: background 0.2s ease, color 0.2s ease;
@@ -560,6 +385,8 @@
     padding: 4px 10px;
     background-color: #2B2B2B;
     margin-left: auto;
+    width: 200px;
+    padding-right: 25px;
   }
 
   input.search-field {
@@ -567,7 +394,6 @@
     border: none;
     color: #F1E2CC;
     outline: none;
-    width: 100px;
   }
 
   .search-form button {
@@ -593,3 +419,93 @@ header form.search-form {
 }
 }
 /*------------- FIN HEADER DESKTOP --------------*/
+
+/* ------------------- Indicateur carré niveau supérieur (CSS uniquement) ------------------- */
+/* Affiche un petit indicateur carré uniquement pour les liens du menu de premier niveau
+  et pour les éléments courants/ancêtres. Cela évite des modifications JS/PHP
+  et masque explicitement les marqueurs générés dans les sous-menus. */
+
+.menu > li > a {
+  position: relative;
+  padding-left: 28px;
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+.menu > li > a::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 0;
+  border: 1px solid rgba(227, 204, 148, 0.237);
+  background: transparent;
+  transition: background-color 180ms, border-color 180ms, transform 120ms;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Survol / focus / pression : ne colorie que le contour (éléments non-actuels).
+  Cible explicitement l'élément <a> afin d'exclure les liens utilisant `aria-current="page"`. */
+.menu > li:not(.current-menu-item):not(.current_page_item):hover > a:not([aria-current="page"])::before,
+.menu > li:not(.current-menu-item):not(.current_page_item):focus-within > a:not([aria-current="page"])::before,
+.menu > li:not(.current-menu-item):not(.current_page_item):active > a:not([aria-current="page"])::before {
+  background: transparent;
+  border-color: var(--font-color);
+  transform: translateY(-50%) scale(1.02);
+}
+
+/* Remplissage de l'indicateur pour la page exactement courante (blanc)
+  et pour les éléments ancêtres (couleur du thème) */
+.menu > li.current-menu-item > a::before,
+.menu > li.current_page_item > a::before,
+.menu > li > a[aria-current="page"]::before {
+  background: var(--font-color); /* remplissage pour la page courante */
+  border: 1px solid rgba(255,255,255,0.14); /* conserve un contour visible */
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.06) inset; /* léger contraste intérieur */
+  transform: translateY(-50%) scale(1.08);
+}
+
+/* Éléments ancêtres/parents : remplir avec la couleur du thème lorsqu'un sous-menu est actif.
+  Cela indique clairement la sous-section active. Si WordPress n'ajoute pas la classe
+  ancestor, la règle :has() la prendra en charge dans les navigateurs compatibles. */
+.menu > li.current-menu-ancestor > a::before,
+.menu > li.current-menu-parent > a::before {
+  background: var(--font-color);
+  border: 1px solid rgba(255,255,255,0.14); /* garde le contour également pour les ancêtres */
+  transform: translateY(-50%) scale(1.06);
+}
+
+/* Rattrapage via :has() — remplit le parent quand un lien du sous-menu descendant a aria-current */
+.menu > li:has(.sub-menu a[aria-current="page"]) > a::before {
+  background: var(--font-color);
+  border: 1px solid rgba(255,255,255,0.14);
+  transform: translateY(-50%) scale(1.06);
+}
+
+/* Au survol de l'élément courant, ajouter une ombre intérieure discrète pour maintenir le contraste */
+.menu > li.current-menu-item:hover > a::before,
+.menu > li.current_page_item:hover > a::before {
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.06) inset;
+}
+
+/* Masque les pseudo-éléments/contenus dans les sous-menus afin que seul le niveau supérieur affiche l'indicateur */
+.menu li .sub-menu li::before,
+.menu li .sub-menu li::after,
+.menu li .sub-menu li a::before,
+.menu li .sub-menu li a::after,
+.menu li .sub-menu li::marker {
+  display: none !important;
+  content: none !important;
+}
+
+/* Mobile : appliquer la même règle pour le menu accordéon (niveau supérieur uniquement) */
+@media screen and (max-width: 767px) {
+  .menu > li > a::before { left: 12px; }
+  .menu > li > a { padding-left: 36px; }
+}
+
+

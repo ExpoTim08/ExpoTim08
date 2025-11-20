@@ -1,5 +1,7 @@
 <!---------------- Section footer ----------------->
 
+<div class="footer-border"></div>
+
 <footer class="site-footer">
   
   <!-- Section haute du footer (logo + icones) -->
@@ -7,6 +9,8 @@
     <div class="footer-logo">
       <img class="footer-logo-img" src="<?php echo get_template_directory_uri(); ?>/Images/Texte.png" alt="Logo de l'expo TIM">
     </div>
+
+
     
     <div class="footer-icones">
       <a href="https://www.youtube.com/" target="_blank" aria-label="YouTube">
