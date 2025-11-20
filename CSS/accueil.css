@@ -656,109 +656,117 @@
   }
 
 /******************************** CSS Section Carroussel Desktop **************************************************/
-  .carroussel {
-    position: relative;
-    margin-top: 50px;
-    border-top: none;
-  }
+.carroussel {
+  position: relative;
+  margin: 30px 0 0 0; /* top 50px, left 5vw pour le décalage vers la gauche */
+  border-top: none;
+  width: 100vw;
+  background-size: 40px;
+}
 
-  .image-wrap {
-    filter: drop-shadow(10px -15px 0 var(--bouton-projet-arcade-color))
-            drop-shadow(17px -12px 0 var(--bouton-projet-jt-color))
-            drop-shadow(20px -11px 0 var(--bouton-projet-finissant-color));
-  }
 
-  #image-carroussel {
-    display: block;
-    width: 100%;
-    height: 70vh;
-    justify-self: center;
-    clip-path: polygon(81% 0, 100% 31%, 100% 100%, 0 100%, 0 0);
-    object-fit: cover;
+.image-wrap {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+    filter: drop-shadow(8px -15px 0 var(--bouton-projet-arcade-color))
+            drop-shadow(5px -12px 0 var(--bouton-projet-jt-color))
+            drop-shadow(18px -11px 0 var(--bouton-projet-finissant-color));
+  width: 88.3vw;
+  margin: 30px 0 0 4.7vw; /* top 50px, left 5vw pour le décalage vers la gauche */
+}
 
-  }
+#image-carroussel {
+  display: block;
+  width: 100%;
+  height: 100%;
+  justify-self: center;
+  clip-path: polygon(81% 0, 100% 31%, 100% 100%, 0 100%, 0 0);
+  object-fit: cover;
+}
 
-  .image-titre {
-    width: 30%;
-    position: absolute;
-    top: 5%;
-    left: 10%;
-    background-color: var(--bouton-projet-arcade-color);
-    padding: 1.5rem;
-  }
+.image-titre {
+  width: 30%;
+  position: absolute;
+  top: 5%;
+  left: 10%;
+  background-color: var(--bouton-projet-arcade-color);
+  padding: 1.5rem;
+}
 
-  .arcade-details {
-    position: absolute;
-    top: -35vw;
-    left: -1vw;
-    max-width: fit-content;
-    background-color: rgba(25, 26, 25, 0.9);
-    border-radius: 20px;
-    display: grid;
-	  grid-template-rows: repeat(3, 1fr);
-	  grid-template-columns: repeat(2, 1fr);
-	  gap: 0;
-    display: none;
-    z-index: 1;
-  }
+/* ================== ARCADE DETAILS ================== */
+.arcade-details {
+  position: absolute;
+  bottom: 0;                 
+  left: 8%;                   /* positionné à gauche */
+  background-color: rgba(25, 26, 25, 0.85);
+  border-radius: 15px;
+  padding: 1.2rem;
 
-  .arcade-details > .sous-titre-carroussel {
-    grid-area: 1 / 1 / 4 / 2;
-    font-size: 4vw;
-    margin-top: 5vw;
-    justify-self: center;
-    -webkit-text-stroke: 2px rgb(255, 255, 255);
-    text-shadow: 0px 40px 0px rgb(255, 255, 255, 0.8)
-  }
+  width: 65vw;
+  height: 150px;
+  max-width: 90%;             
+  box-sizing: border-box;
 
-  .arcade-details > .description {
-    grid-area: 1 / 2 / 3 / 3;
-    font-size: 1.4vw;
-    max-height: fit-content;
-    background: none;
-  }
+  display: flex;              
+  flex-direction: row;
+  align-items: center;        
+  justify-content: center;    
+  gap: 0.5rem;
 
-  .arcade-details > .plus {
-    width: fit-content;
-    height: fit-content;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    padding-right: 1.5rem;
-    padding-left: 1.5rem;
-    border: 1px solid white;
-    grid-area: 3 / 2 / 4 / 3;
-  }
+  transform: translateY(160%);
+  opacity: 0;          
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 3;
+  pointer-events: none; /* le bloc ne bloque pas les hover sur les boutons */
+}
 
-  .carroussel-choix {
-    display: flex;
-    justify-content: center;
-  }
+/* Affichage uniquement quand on survole les boutons */
+.carroussel-choix:hover + .arcade-details {
+  display: flex !important;
+}
 
-  .bouton-arcade > .arcade, .bouton-graphisme > .jour-terre, .bouton-finissants > .finissants {
-    padding: 1rem;
-    padding-bottom: 2rem;
-    margin-right: 0.1em;
-    width: 20vw;
-    height: 0.2vh;
-    font-size: x-large;
-    cursor: pointer;
-  }
+/* Titre */
+.arcade-details > .sous-titre-carroussel {
+  margin: 0;                 
+  font-size: 2.5vw;
+  -webkit-text-stroke: 1px #fff;
+  text-shadow: 0px 10px 0px rgba(255, 255, 255, 0.5);
+}
 
-  .bouton-arcade:hover ~ .arcade-details, .bouton-finissants:hover ~ .arcade-details, .bouton-graphisme:hover ~ .arcade-details {
-    display: block;
-  }
+/* Description */
+.arcade-details > .description {
+  margin: 0;                 
+  font-size: 0.9vw;
+  line-height: 1.1;        
+  background: none;
+}
 
-  .plus{
-    color: var(--font-color);
-    text-decoration: none;
-    font-family: var(--general-font);
-    
-  }
 
-  .manette, .tree, .student {
-    margin-top: 1vh;
-    margin-left: -1vw;
-  }
+/* ================== CARROUSSEL CHOIX ================== */
+.carroussel-choix {
+  display: flex;
+  justify-content: center;
+}
+
+.bouton-arcade > .arcade,
+.bouton-graphisme > .jour-terre,
+.bouton-finissants > .finissants {
+  padding: 1rem;
+  padding-bottom: 2rem;
+  margin-right: 0.1em;
+  width: 20vw;
+  height: 0.2vh;
+  font-size: x-large;
+  cursor: pointer;
+}
+
+/* Icônes */
+.manette, .tree, .student {
+  margin-top: 1vh;
+  margin-left: -1vw;
+}
+
 
 /*********************************** CSS Section Accroche Desktop *************************************************/
   .accroche {
