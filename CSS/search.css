@@ -9,6 +9,10 @@
 @media screen and (max-width: 576px) {
   .carte-projet-arcade--desktop { display: none; }
 
+  img{
+    width: 100px;
+  } 
+
   .projet-card, .carte-projet-arcade { 
     display: block; 
     background-color: rgb(48,48,48);
@@ -172,6 +176,8 @@
 
 /* Desktop : hover effects adapted from arcade.css */
 @media screen and (min-width: 1024px) {
+
+  
   .carte-projet-arcade--desktop::after,
   .projet-card::after {
     content: "";
