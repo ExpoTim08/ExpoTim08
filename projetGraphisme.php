@@ -45,7 +45,7 @@ $nom_affiche = $nom ?: 'Projet Graphisme';
 
     <!-- Bouton retour vers la page Graphisme -->
     <p class="retour-graphisme">
-      <a href="<?php echo esc_url(get_permalink(get_page_by_path('graphismes'))); ?>" class="lien-retour">
+      <a href="<?php echo esc_url(get_permalink(get_page_by_path('graphisme'))); ?>" class="lien-retour">
         &lt; Graphisme
       </a>
     </p>
