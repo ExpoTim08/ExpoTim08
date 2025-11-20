@@ -1,11 +1,12 @@
 <?php get_header(); ?>
-
-<main class="search-results">
+<body>
     <div class="pattern-background">
-        <div class="border gauche"></div>
-        <div class="border droite"></div>
-    </div>
 
+        <main class="search-results">
+            <div class="border gauche"></div>
+            <div class="border droite"></div>
+
+    
 <?php
 $search_query = trim(get_search_query());
 $too_short = empty($search_query) || mb_strlen($search_query) < 2;
@@ -27,7 +28,7 @@ $too_short = empty($search_query) || mb_strlen($search_query) < 2;
 
 
 <?php if ($too_short): ?>
-    <!-- 🔴 CAS : moins de 2 lettres -->
+    <!--CAS : moins de 2 lettres -->    
     <section class="no-results">
         <p class="aucun-projet">Veuillez entrer au moins 2 lettres.</p>
     </section>
@@ -147,7 +148,7 @@ $too_short = empty($search_query) || mb_strlen($search_query) < 2;
 
     <?php if (!empty($results)): ?>
 
-        <!-- 🟢 Résultats -->
+        <!--Résultats -->
         <section class="results-container">
             <div class="projets-grid">
 
@@ -189,7 +190,7 @@ $too_short = empty($search_query) || mb_strlen($search_query) < 2;
 
     <?php else: ?>
 
-        <!-- 🔴 Aucun projet trouvé -->
+        <!--Aucun projet trouvé -->
         <section class="no-results">
             <p class="aucun-projet">Aucun projet trouvé.</p>
         </section>
@@ -198,6 +199,7 @@ $too_short = empty($search_query) || mb_strlen($search_query) < 2;
 
 <?php endif; ?>
 
-</main>
-
+        </main>
+    </div>
+</body>
 <?php get_footer(); ?>

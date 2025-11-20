@@ -2,9 +2,6 @@
 .header-container form.search-form {
   transform: translateY(14px); 
 }
-
-@media screen and (min-width: 1024px) {
-
 .header-container form.search-form {
   transform: translateY(0px); 
 }
@@ -21,11 +18,14 @@ body {
   background-size: 40px 40px;
   background-attachment: fixed;
 }
-
 h1, h2 {
   color: var(--font-color);
   font-family: var(--title-font);
 }
+
+
+@media screen and (min-width: 1024px) {
+
 .aucun-projet{
   color: var(--font-color);
   font-family: var(--general-font);
@@ -49,6 +49,8 @@ h1, h2 {
   width: 1px;
   height: 100%;
 }
+.border.gauche { left: 3em; }
+.border.droite { right: 3em; }
 
 .search-section{
   display: flex;
@@ -110,3 +112,197 @@ h1, h2 {
   gap: 30px;
 }
 }
+
+@media screen and (min-width: 577px) and (max-width: 1023px) {
+
+  /* Bordures */
+  .border {
+    position: fixed;
+    background: var(--border-color-side);
+    z-index: 9999;
+  }
+
+  .border.gauche {
+    top: 0;
+    left: 2em; /* intermédiaire entre desktop et mobile */
+    width: 1px;
+    height: 100%;
+  }
+
+  .border.droite {
+    top: 0;
+    right: 2em; /* intermédiaire */
+    width: 1px;
+    height: 100%;
+  }
+
+  /* Section de recherche */
+  .search-section {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+  }
+
+  .recherche-section {
+    background-image: linear-gradient(177deg, #1b77bd 11.95%, #1b77bd 28.39%, #21212100 82.04%);
+    border: solid 1px var(--border-color-side);
+    margin-left: 2em;
+    margin-right: 2em;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Réduction intermédiaire du gap */
+    flex-direction: column; /* Empilement pour tablette */
+    padding: 15px;
+  }
+
+  /* Titres recherche */
+  .titre-recherche {
+    color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(18px, 10vw, 40px); /* taille adaptée pour tablette */
+    text-transform: uppercase;
+    margin: 0;
+    -webkit-text-stroke-width: 0.7px;
+    -webkit-text-stroke-color: #fff;
+    line-height: 0.65;
+    letter-spacing: 1px;
+    height: auto;
+    font-weight: lighter;
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .titre-recherche-base {
+  -webkit-text-fill-color: var(--title-color);
+  }
+  .titre-recherche-layer--1 {
+    opacity: 0.8;
+  }
+
+  .titre-recherche-layer--2 {
+    opacity: 0.5;
+  }
+
+  .titre-recherche-layer--3 {
+    opacity: 0.3;
+  }
+
+  /* Résultats recherche */
+  .recherche-resultats {
+    color: var(--font-color);
+    font-family: var(--general-font);
+    font-size: 1.3em;
+    text-align: center;
+  }
+
+  /* Aucun projet */
+  .aucun-projet {
+    display: flex;
+    justify-content: center;
+    font-size: 1.1em;
+    padding: 12px;
+    color: var(--font-color);
+    font-family: var(--general-font);
+  }
+}
+
+@media screen and (max-width: 576px) {
+
+  /* Bordures */
+  .border {
+    position: fixed;
+    background: var(--border-color-side);
+    z-index: 9999;
+  }
+
+  .border.gauche {
+    top: 0;
+    left: 1em;
+    width: 1px;
+    height: 100%;
+  }
+
+  .border.droite {
+    top: 0;
+    right: 1em;
+    width: 1px;
+    height: 100%;
+  }
+
+  /* Section de recherche */
+  .search-section {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .recherche-section {
+    background-image: linear-gradient(177deg, #1b77bd 11.95%, #1b77bd 28.39%, #21212100 82.04%);
+    border: solid 1px var(--border-color-side);
+    margin-left: 1em;
+    margin-right: 1em;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Réduction de l'espacement */
+    flex-direction: column; /* Pour que les éléments s'empilent sur petit écran */
+    padding: 10px;
+  }
+
+  /* Titres recherche */
+  .titre-recherche {
+    color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(16px, 8vw, 28px); /* Taille adaptée aux mobiles */
+    text-transform: uppercase;
+    margin: 0;
+    -webkit-text-stroke-width: 0.6px;
+    -webkit-text-stroke-color: #fff;
+    line-height: 0.7;
+    letter-spacing: 1px;
+    height: auto; /* Ajusté pour mobile */
+    font-weight: lighter;
+    text-align: center;
+    margin-top: 30px;
+  }
+  .titre-recherche-base {
+  -webkit-text-fill-color: var(--title-color);
+  }
+  .titre-recherche-layer--1 {
+    opacity: 0.8;
+  }
+
+  .titre-recherche-layer--2 {
+    opacity: 0.5;
+  }
+
+  .titre-recherche-layer--3 {
+    opacity: 0.3;
+  }
+
+  /* Résultats recherche */
+  .recherche-resultats {
+    color: var(--font-color);
+    font-family: var(--general-font);
+    font-size: 1.2em;
+    text-align: center;
+  }
+
+  /* Aucun projet */
+  .aucun-projet {
+    display: flex;
+    justify-content: center;
+    font-size: 1em;
+    padding: 10px;
+    color: var(--font-color);
+    font-family: var(--general-font);
+  }
+}
+
