@@ -17,12 +17,6 @@ get_header();
         <img id="image-carroussel" src="<?php echo get_template_directory_uri(); ?>/Images/Affiche-Arcade/Affiche-Code3.jpg" alt="">
       </div>
 
-      <div class="arcade-details">
-        <p class="sous-titre sous-titre-carroussel">ARCADE</p>
-        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate animi voluptate...</p>
-        <a href="<?php echo get_permalink(get_page_by_path('arcade')); ?>" class="plus">Voir Plus</a>
-      </div>
-
       <div class="carroussel-choix">
 
         <div class="bouton-finissants">
@@ -38,6 +32,12 @@ get_header();
         <div class="bouton-graphisme">
           <p class="jour-terre">GRAPHISME</p>
           <img class="tree" src="<?php echo get_template_directory_uri(); ?>/Images/Tree.svg" alt="" class="tree">
+        </div>
+
+        <div class="arcade-details">
+        <p class="sous-titre sous-titre-carroussel">ARCADE</p>
+          <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate animi voluptate...</p>
+          <a href="<?php echo get_permalink(get_page_by_path('arcade')); ?>" class="plus">Voir Plus...</a>
         </div>
       </div>
     </div>
