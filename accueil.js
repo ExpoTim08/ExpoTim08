@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!Image || !Subtitle || !DescriptionCategorie || ChoixElements.length === 0) return;
 
+  // Change l'image et met à jour le bouton actif
   function ChangeImage(index) {
     const { src, Titre, ClassName, Description } = Images[index];
     Image.src = src;
@@ -65,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ChangeImage(CurrentIndex);
   startAuto();
 
-  // 🔹 Gestion hover uniquement desktop > 1024px
+  // Gestion hover uniquement desktop >1024px
   function setupHover() {
     // Supprimer anciens listeners
     hoverListeners.forEach(({ elm, enter, leave }) => {
@@ -76,18 +77,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (window.innerWidth <= 1024) return; // pas de hover en mobile/tablette
 
-    // Desktop hover
     ChoixElements.forEach((elm, i) => {
       const enter = () => {
         stopAuto();
         CurrentIndex = i;
         ChangeImage(CurrentIndex);
+
         if (Details) {
           Details.style.display = 'flex';
           requestAnimationFrame(() => {
             Details.style.opacity = '1';
             Details.style.transform = 'translateY(130%)';
           });
+        }
+
+        if (hoverTimeout) {
+          clearTimeout(hoverTimeout);
+          hoverTimeout = null;
         }
       };
 
@@ -96,10 +102,9 @@ document.addEventListener("DOMContentLoaded", () => {
           Details.style.opacity = '0';
           Details.style.transform = 'translateY(160%)';
         }
+
         hoverTimeout = setTimeout(() => {
-          CurrentIndex = (CurrentIndex + 1) % Images.length;
-          ChangeImage(CurrentIndex);
-          startAuto();
+          startAuto(); // relance l'autoplay mais ne change pas la catégorie
           hoverTimeout = null;
         }, 2000);
       };
@@ -118,23 +123,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // 🔹 Gestion de l’état initial et au resize
+  // Gère l'état des détails selon écran
   function handleResponsiveDetails() {
     if (!Details) return;
     if (window.innerWidth <= 1024) {
-      // Mobile / tablette : description visible
+      // Mobile/tablette : description visible
       Details.style.display = 'flex';
       Details.style.opacity = '1';
       Details.style.transform = 'none';
     } else {
-      // Desktop : cacher par défaut, placé en bas
+      // Desktop : description cachée par défaut, position bas
       Details.style.display = 'flex';
       Details.style.opacity = '0';
       Details.style.transform = 'translateY(160%)';
     }
   }
 
-  // Initialisation hover et état details
+  // Initialisation
   setupHover();
   handleResponsiveDetails();
 
