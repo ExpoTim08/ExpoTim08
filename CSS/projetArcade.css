@@ -34,6 +34,12 @@ h1 {
     height: 100%;
   }
 
+  main {
+   background-image: linear-gradient(#4e4b4194 1px, transparent 1px), linear-gradient(to right, #4e4b4194 1px, #71718300 1px);
+  background-size: 40px 40px;
+  background-attachment: fixed;
+  }
+
 /*************************Présentation du projet*******************************************/
 .titre-arcade {
   background-image: 
@@ -198,13 +204,29 @@ h1 {
   }
 
   .image-projet-arcade  {
-    width: 20vw;
+    width: 30vw;
   }
 
   .description-image {
-    display: flex;
-    width: 10vw;
-    justify-items: center;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+	  grid-template-columns: repeat(2, 1fr);
+  }
+
+  .description-image .image-projet {
+    grid-area: 1 / 1 / 3 / 2;
+  }
+
+  .description-image .infos-etudiants {
+    grid-area: 1/2/2/3;
+    width: 40vw;
+    height: fit-content;
+  }
+
+  .description-image .description-projet {
+    grid-area: 2/2/3/3;
+    width: 40vw;
+
   }
 
   .description-projet .description, .nom-etudiant {
