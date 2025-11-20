@@ -130,7 +130,7 @@ get_header();
         */ ?>
 
         <button class="button-projet-graphisme"
-          onclick="window.location.href='<?php echo esc_url(add_query_arg('projet_id', get_the_ID(), get_permalink(get_page_by_path('projet-arcade')))); ?>'">
+          onclick="window.location.href='<?php echo esc_url(add_query_arg('projet_id', get_the_ID(), get_permalink(get_page_by_path('projet-graphisme')))); ?>'">
           >>
         </button>
       </div>
@@ -143,7 +143,7 @@ get_header();
       <div class="bloc-titre">
         <h2 class="titre-projet-graphisme"><?php echo esc_html($titre); ?></h2>
         <button class="button-projet-graphisme"
-            onclick="window.location.href='<?php echo esc_url(add_query_arg('projet_id', get_the_ID(), get_permalink(get_page_by_path('projet-arcade')))); ?>'">
+            onclick="window.location.href='<?php echo esc_url(add_query_arg('projet_id', get_the_ID(), get_permalink(get_page_by_path('projet-graphisme')))); ?>'">
             &gt;&gt;
           </button>
       </div>

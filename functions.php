@@ -34,25 +34,17 @@ function expo_enqueue_assets() {
 
     // --- CSS spécifique aux autres pages ---
     if (is_page_template('arcade.php') || is_page_template('ar.php')) wp_enqueue_style('style-arcade', $theme_uri . '/CSS/arcade.css');
-
     if (is_page_template('projetArcade.php')) wp_enqueue_style('style-projet-arcade', $theme_uri . '/CSS/projetArcade.css');
-
     if (file_exists(get_template_directory() . '/CSS/normalize.css')) wp_enqueue_style('style-normalize', $theme_uri . '/CSS/normalize.css');
-
     if (is_page_template('projets-des-finissants.php') || is_page_template('ar.php')) wp_enqueue_style('style-projet-finissant', $theme_uri . '/CSS/projet-finissant.css');
-
     if (is_page_template('graphismes.php')) wp_enqueue_style('style-graphismes', $theme_uri . '/CSS/graphismes.css');
 
-    if (is_search()) {wp_enqueue_style('style-search', $theme_uri . '/CSS/search.css');}
+    // --- CSS spécifique à un projet individuel de graphisme ---
+    if (is_page_template('projetGraphisme.php')) wp_enqueue_style('style-projet-graphisme', $theme_uri . '/CSS/projetGraphisme.css');
 
-    if (is_page_template('contact.php') || is_page_template('ar.php')) { wp_enqueue_style('style-contact', $theme_uri . '/CSS/contact.css');}
-
-    // Nouveau code (CORRIGÉ) :
-    if (is_404() || is_page_template('ar.php')) {
-        wp_enqueue_style('style-404', $theme_uri . '/CSS/404.css');
-    }
-    
-    
+    if (is_search()) wp_enqueue_style('style-search', $theme_uri . '/CSS/search.css');
+    if (is_page_template('contact.php') || is_page_template('ar.php')) wp_enqueue_style('style-contact', $theme_uri . '/CSS/contact.css');
+    if (is_404() || is_page_template('ar.php')) wp_enqueue_style('style-404', $theme_uri . '/CSS/404.css');
 }
 add_action('wp_enqueue_scripts', 'expo_enqueue_assets');
 
@@ -123,4 +115,3 @@ if (!function_exists('normalize_string')) {
     }
 }
 ?>
-
