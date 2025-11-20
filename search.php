@@ -2,16 +2,42 @@
 
 <main class="search-results">
     <div class="pattern-background">
-     <div class="border gauche"></div>
-    <div class="border droite"></div>
-    
-    
+        <div class="border gauche"></div>
+        <div class="border droite"></div>
+    </div>
+
 <?php
 $search_query = trim(get_search_query());
+$too_short = empty($search_query) || mb_strlen($search_query) < 2;
+?>
 
-if (empty($search_query) || mb_strlen($search_query) < 2) {
-    echo '<section class="search-message"><p>Aucune recherche effectuée. Veuillez entrer au moins 2 lettres.</p></section>';
-} else {
+    <!-- SECTION TITRE RECHERCHE -->
+    <section class="recherche-section">
+        <h1 class="titre-recherche" aria-label="recherche">
+            <span class="titre-recherche-layer titre-recherche-base">RECHERCHE</span>
+            <span class="titre-recherche-layer titre-recherche-layer--1">RECHERCHE</span>
+            <span class="titre-recherche-layer titre-recherche-layer--2">RECHERCHE</span>
+            <span class="titre-recherche-layer titre-recherche-layer--3">RECHERCHE</span>
+        </h1>
+
+        <p class="recherche-resultats">
+            Résultats pour "<?php echo esc_html($search_query); ?>"
+        </p>
+    </section>
+
+
+<?php if ($too_short): ?>
+    <!-- 🔴 CAS : moins de 2 lettres -->
+    <section class="no-results">
+        <p class="aucun-projet">Veuillez entrer au moins 2 lettres.</p>
+    </section>
+
+<?php else: ?>
+
+    <?php
+    // =========================
+    //     RECHERCHE PROJETS
+    // =========================
 
     $project_types = ['projet-arcade', 'projet-finissant', 'projet-graphisme'];
     $normalized_query = normalize_string($search_query);
@@ -35,15 +61,18 @@ if (empty($search_query) || mb_strlen($search_query) < 2) {
         // Vérifie correspondance titre
         $match = $normalized_title && mb_stripos($normalized_title, $normalized_query) !== false;
 
-        // Liste étudiants
+        // Étudiants associés
         $liste_etudiants = [];
         $etudiants = get_field('etudiants_associes', $projet_id);
+
         if ($etudiants && is_array($etudiants)) {
             foreach ($etudiants as $etu) {
                 $etu_id = is_object($etu) ? $etu->ID : $etu;
                 if (!$etu_id) continue;
+                
                 $prenom = get_field('prenom', $etu_id);
                 $nom = get_field('nom_etudiant', $etu_id);
+                
                 $fullName = trim("$prenom $nom");
                 if ($fullName) $liste_etudiants[] = $fullName;
 
@@ -54,7 +83,8 @@ if (empty($search_query) || mb_strlen($search_query) < 2) {
         }
 
         if ($match) {
-            // Récupération de l'image
+
+            // Récupération image projet
             $image_field = get_field('image_du_projet', $projet_id);
             $image = '';
 
@@ -70,35 +100,31 @@ if (empty($search_query) || mb_strlen($search_query) < 2) {
                 }
             }
 
-            // fallback featured
+            // Fallback featured
             if (!$image) {
                 $thumb_url = get_the_post_thumbnail_url($projet_id, 'medium');
-                if ($thumb_url) {
-                    $image = $thumb_url;
-                }
+                if ($thumb_url) $image = $thumb_url;
             }
 
-            // fallback image locale
+            // Fallback local
             if (!$image) {
-                $default_image_path = get_template_directory_uri() . '/assets/images/default-project.png';
+                $default_path = get_template_directory_uri() . '/assets/images/default-project.png';
                 if (file_exists(get_theme_file_path('/assets/images/default-project.png'))) {
-                    $image = $default_image_path;
-                } else {
-                    $image = '';
+                    $image = $default_path;
                 }
             }
 
             $results_temp[] = [
-                'id' => $projet_id,
-                'title' => $title,
-                'desc' => get_field('description', $projet_id) ?: '',
-                'image' => $image,
+                'id'        => $projet_id,
+                'title'     => $title,
+                'desc'      => get_field('description', $projet_id) ?: '',
+                'image'     => $image,
                 'etudiants' => $liste_etudiants
             ];
         }
     }
 
-    // Déduplication intelligente
+    // Déduplication
     $results = [];
     $seen_titles = [];
 
@@ -107,7 +133,7 @@ if (empty($search_query) || mb_strlen($search_query) < 2) {
 
         if (!isset($seen_titles[$norm_title])) {
             $results[$norm_title] = $item;
-            $seen_titles[$norm_title] = $item['image'];
+            $seen_titles[$norm_title] = true;
         } else {
             if (empty($results[$norm_title]['image']) && !empty($item['image'])) {
                 $results[$norm_title]['image'] = $item['image'];
@@ -116,20 +142,12 @@ if (empty($search_query) || mb_strlen($search_query) < 2) {
     }
 
     $results = array_values($results);
-?>
-    
-    <section class="recherche-section">
-       <h1 class="titre-recherche" aria-label="recherche">
-      <span class="titre-recherche-layer titre-recherche-base">RECHERCHE</span>
-      <span class="titre-recherche-layer titre-recherche-layer--1">RECHERCHE</span>
-      <span class="titre-recherche-layer titre-recherche-layer--2">RECHERCHE</span>
-      <span class="titre-recherche-layer titre-recherche-layer--3">RECHERCHE</span>
-    </h1>
-        <p class="recherche-resultats">Résultats pour "<?php echo esc_html($search_query); ?>"</p>
-    </section>
+    ?>
+
 
     <?php if (!empty($results)): ?>
 
+        <!-- 🟢 Résultats -->
         <section class="results-container">
             <div class="projets-grid">
 
@@ -171,13 +189,14 @@ if (empty($search_query) || mb_strlen($search_query) < 2) {
 
     <?php else: ?>
 
+        <!-- 🔴 Aucun projet trouvé -->
         <section class="no-results">
             <p class="aucun-projet">Aucun projet trouvé.</p>
         </section>
 
     <?php endif; ?>
 
-<?php } ?>
+<?php endif; ?>
 
 </main>
 
