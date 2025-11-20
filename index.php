@@ -1,12 +1,19 @@
 <?php
-// Si un fichier accueil.php existe, on le charge en priorité
-if ( file_exists( get_template_directory() . '/accueil.php' ) ) {
-    include get_template_directory() . '/accueil.php';
-    return;
-}
-
-http_response_code(404);
-include("404.php");
-exit();
-
+get_header();
 ?>
+
+<main>
+    <?php
+    if ( have_posts() ) :
+        while ( have_posts() ) : the_post();
+            the_content();
+        endwhile;
+    else :
+        // Si WordPress décide que c’est une 404, il va automatiquement charger 404.php
+        get_template_part( '404' );
+    endif;
+    ?>
+</main>
+
+<?php
+get_footer();

@@ -1,7 +1,7 @@
 /*-------------- CSS Arcade --------------*/
 
 .header-container form.search-form {
-  transform: translateY(14px); 
+  transform: translateY(13px); 
 }
 
 body {
@@ -242,6 +242,10 @@ h1, h2 {
 
 /*-------------- TABLET / PETIT ECRAN ARCADE --------------*/
 @media screen and (min-width: 576.02px) {
+
+  .header-container form.search-form {
+    transform: translateY(0px); 
+  }
 
   body { overflow-x: hidden; }
   img { max-width: 100%; height: auto; display: block; object-fit: contain; }
@@ -521,7 +525,7 @@ h1, h2 {
 @media screen and (min-width: 1300px) { 
 
   .header-container form.search-form {
-    transform: translateY(8px); 
+    transform: translateY(0px); 
 }
 
   /*les projets*/

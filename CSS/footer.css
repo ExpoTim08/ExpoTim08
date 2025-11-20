@@ -260,6 +260,7 @@
 /*--------------FOOTER DESKTOP --------------*/
 @media screen and (min-width: 1200.02px) {
   .site-footer {
+    border-top: 1px solid var(--border-color);
     width: 75vw;
     margin: auto;
     display: grid;
@@ -271,7 +272,6 @@
         "menu-bas menu-bas menu-bas";
 
     padding: 2em;
-    padding-top: 10em;
     color: var(--border-color);
   }
 

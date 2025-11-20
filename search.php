@@ -1,137 +1,203 @@
 <?php get_header(); ?>
 
+<main class="search-results">
+    <div class="pattern-background">
+        <div class="border gauche"></div>
+        <div class="border droite"></div>
+    </div>
+
 <?php
 $search_query = trim(get_search_query());
+$too_short = empty($search_query) || mb_strlen($search_query) < 2;
+?>
 
-// Eviter recherche trop courte
-if (empty($search_query) || mb_strlen($search_query) < 2) {
-    echo '<p>Aucune recherche effectuée. Veuillez entrer au moins 2 lettres.</p>';
-} else {
+    <!-- SECTION TITRE RECHERCHE -->
+    <section class="recherche-section">
+        <h1 class="titre-recherche" aria-label="recherche">
+            <span class="titre-recherche-layer titre-recherche-base">RECHERCHE</span>
+            <span class="titre-recherche-layer titre-recherche-layer--1">RECHERCHE</span>
+            <span class="titre-recherche-layer titre-recherche-layer--2">RECHERCHE</span>
+            <span class="titre-recherche-layer titre-recherche-layer--3">RECHERCHE</span>
+        </h1>
+
+        <p class="recherche-resultats">
+            Résultats pour "<?php echo esc_html($search_query); ?>"
+        </p>
+    </section>
+
+
+<?php if ($too_short): ?>
+    <!-- 🔴 CAS : moins de 2 lettres -->
+    <section class="no-results">
+        <p class="aucun-projet">Veuillez entrer au moins 2 lettres.</p>
+    </section>
+
+<?php else: ?>
+
+    <?php
+    // =========================
+    //     RECHERCHE PROJETS
+    // =========================
+
     $project_types = ['projet-arcade', 'projet-finissant', 'projet-graphisme'];
-    $results = [];
-
-    // Fonction pour normaliser (minuscules + remplacer accents)
-    function normalize_string($str) {
-        $str = mb_strtolower($str, 'UTF-8');
-        $accents = [
-            'à'=>'a','â'=>'a','ä'=>'a','á'=>'a','ã'=>'a','å'=>'a',
-            'ç'=>'c',
-            'è'=>'e','é'=>'e','ê'=>'e','ë'=>'e',
-            'ì'=>'i','í'=>'i','î'=>'i','ï'=>'i',
-            'ñ'=>'n',
-            'ò'=>'o','ó'=>'o','ô'=>'o','ö'=>'o','õ'=>'o',
-            'ù'=>'u','ú'=>'u','û'=>'u','ü'=>'u',
-            'ý'=>'y','ÿ'=>'y',
-            'œ'=>'oe','æ'=>'ae'
-        ];
-        return strtr($str, $accents);
-    }
-
     $normalized_query = normalize_string($search_query);
 
-    foreach ($project_types as $ptype) {
-        $projets = get_posts([
-            'post_type' => $ptype,
-            'posts_per_page' => -1
-        ]);
+    // Récupérer tous les projets
+    $all_projects = get_posts([
+        'post_type'      => $project_types,
+        'posts_per_page' => -1,
+        'post_status'    => 'publish',
+    ]);
 
-        foreach ($projets as $projet) {
-            $projet_id = is_object($projet) ? $projet->ID : $projet;
+    $results_temp = [];
 
-            // Titre projet
-            $project_title_field = get_field('nom_du_projet', $projet_id) ?: get_field('nom_projet', $projet_id);
-            if ($project_title_field) {
-                $normalized_title = normalize_string($project_title_field);
+    foreach ($all_projects as $projet) {
+        $projet_id = $projet->ID;
 
-                // Cherche si la chaîne normalisée contient la requête
-                if (mb_stripos($normalized_title, $normalized_query) !== false) {
-                    $results[] = $projet_id;
-                    continue;
-                }
-            }
+        // Titre
+        $title = get_field('nom_du_projet', $projet_id) ?: get_field('nom_projet', $projet_id) ?: get_the_title($projet_id);
+        $normalized_title = normalize_string($title);
 
-            // Étudiants associés
-            $etudiants = get_field('etudiants_associes', $projet_id);
-            if ($etudiants && is_array($etudiants)) {
-                foreach ($etudiants as $etu) {
-                    $etu_id = is_object($etu) ? $etu->ID : $etu;
-                    if (!$etu_id) continue;
+        // Vérifie correspondance titre
+        $match = $normalized_title && mb_stripos($normalized_title, $normalized_query) !== false;
 
-                    $prenom = get_field('prenom', $etu_id);
-                    $nom = get_field('nom_etudiant', $etu_id);
-                    $fullName = trim("$prenom $nom");
-                    $normalized_name = normalize_string($fullName);
+        // Étudiants associés
+        $liste_etudiants = [];
+        $etudiants = get_field('etudiants_associes', $projet_id);
 
-                    if (mb_stripos($normalized_name, $normalized_query) !== false) {
-                        $results[] = $projet_id;
-                        break;
-                    }
+        if ($etudiants && is_array($etudiants)) {
+            foreach ($etudiants as $etu) {
+                $etu_id = is_object($etu) ? $etu->ID : $etu;
+                if (!$etu_id) continue;
+                
+                $prenom = get_field('prenom', $etu_id);
+                $nom = get_field('nom_etudiant', $etu_id);
+                
+                $fullName = trim("$prenom $nom");
+                if ($fullName) $liste_etudiants[] = $fullName;
+
+                if (!$match && mb_stripos(normalize_string($fullName), $normalized_query) !== false) {
+                    $match = true;
                 }
             }
         }
+
+        if ($match) {
+
+            // Récupération image projet
+            $image_field = get_field('image_du_projet', $projet_id);
+            $image = '';
+
+            if ($image_field) {
+                if (is_array($image_field) && isset($image_field['url'])) {
+                    $image = $image_field['url'];
+                } elseif (is_array($image_field) && isset($image_field[0]['url'])) {
+                    $image = $image_field[0]['url'];
+                } elseif (is_numeric($image_field)) {
+                    $image = wp_get_attachment_image_url($image_field, 'medium');
+                } elseif (filter_var($image_field, FILTER_VALIDATE_URL)) {
+                    $image = $image_field;
+                }
+            }
+
+            // Fallback featured
+            if (!$image) {
+                $thumb_url = get_the_post_thumbnail_url($projet_id, 'medium');
+                if ($thumb_url) $image = $thumb_url;
+            }
+
+            // Fallback local
+            if (!$image) {
+                $default_path = get_template_directory_uri() . '/assets/images/default-project.png';
+                if (file_exists(get_theme_file_path('/assets/images/default-project.png'))) {
+                    $image = $default_path;
+                }
+            }
+
+            $results_temp[] = [
+                'id'        => $projet_id,
+                'title'     => $title,
+                'desc'      => get_field('description', $projet_id) ?: '',
+                'image'     => $image,
+                'etudiants' => $liste_etudiants
+            ];
+        }
     }
-?>
 
-<h1>Résultats pour "<?php echo esc_html($search_query); ?>"</h1>
+    // Déduplication
+    $results = [];
+    $seen_titles = [];
 
-<?php if (!empty($results)): ?>
-    <div class="projets-grid">
-        <?php foreach ($results as $projet_id): ?>
-            <?php
-            $project_title = get_field('nom_du_projet', $projet_id) ?: get_field('nom_projet', $projet_id) ?: get_the_title($projet_id);
-            $project_desc = get_field('description', $projet_id) ?: '';
-            $project_image_field = get_field('image_du_projet', $projet_id);
+    foreach ($results_temp as $item) {
+        $norm_title = normalize_string($item['title']);
 
-            if ($project_image_field) {
-                if (is_array($project_image_field) && isset($project_image_field['url'])) {
-                    $project_image = $project_image_field['url'];
-                } elseif (is_numeric($project_image_field)) {
-                    $project_image = wp_get_attachment_image_url($project_image_field, 'medium');
-                } else {
-                    $project_image = $project_image_field;
-                }
-            } else {
-                $project_image = get_the_post_thumbnail_url($projet_id, 'medium');
+        if (!isset($seen_titles[$norm_title])) {
+            $results[$norm_title] = $item;
+            $seen_titles[$norm_title] = true;
+        } else {
+            if (empty($results[$norm_title]['image']) && !empty($item['image'])) {
+                $results[$norm_title]['image'] = $item['image'];
             }
+        }
+    }
 
-            $etudiants = get_field('etudiants_associes', $projet_id);
-            $liste_etudiants = [];
+    $results = array_values($results);
+    ?>
 
-            if ($etudiants && is_array($etudiants)) {
-                foreach ($etudiants as $e) {
-                    $e_id = is_object($e) ? $e->ID : $e;
-                    if (!$e_id) continue;
-                    $liste_etudiants[] = trim(get_field('prenom', $e_id) . ' ' . get_field('nom_etudiant', $e_id));
-                }
-            }
-            ?>
-            <div class="projet-card">
-                <?php if ($project_image): ?>
-                    <a href="<?php echo get_permalink($projet_id); ?>">
-                        <img src="<?php echo esc_url($project_image); ?>" alt="<?php echo esc_attr($project_title); ?>">
-                    </a>
-                <?php endif; ?>
 
-                <h2>
-                    <a href="<?php echo get_permalink($projet_id); ?>">
-                        <?php echo esc_html($project_title); ?>
-                    </a>
-                </h2>
+    <?php if (!empty($results)): ?>
 
-                <?php if (!empty($project_desc)): ?>
-                    <p><?php echo esc_html($project_desc); ?></p>
-                <?php endif; ?>
+        <!-- 🟢 Résultats -->
+        <section class="results-container">
+            <div class="projets-grid">
 
-                <?php if (!empty($liste_etudiants)): ?>
-                    <p class="equipe">Équipe : <?php echo esc_html(implode(', ', $liste_etudiants)); ?></p>
-                <?php endif; ?>
+                <?php foreach ($results as $data): ?>
+                    <article class="projet-card">
+
+                        <?php if (!empty($data['image'])): ?>
+                            <figure class="projet-figure">
+                                <a href="<?php echo get_permalink($data['id']); ?>">
+                                    <img src="<?php echo esc_url($data['image']); ?>" alt="<?php echo esc_attr($data['title']); ?>">
+                                </a>
+                            </figure>
+                        <?php endif; ?>
+
+                        <section class="projet-section">
+                            <h2 class="projet-title">
+                                <a href="<?php echo get_permalink($data['id']); ?>">
+                                    <?php echo esc_html($data['title']); ?>
+                                </a>
+                            </h2>
+                        </section>
+
+                        <?php if (!empty($data['desc'])): ?>
+                            <p class="projet-description"><?php echo esc_html($data['desc']); ?></p>
+                        <?php endif; ?>
+
+                        <?php if (!empty($data['etudiants'])): ?>
+                            <p class="projet-equipe">
+                                <strong>Équipe :</strong>
+                                <?php echo esc_html(implode(', ', $data['etudiants'])); ?>
+                            </p>
+                        <?php endif; ?>
+
+                    </article>
+                <?php endforeach; ?>
+
             </div>
-        <?php endforeach; ?>
-    </div>
-<?php else: ?>
-    <p>Aucun projet trouvé.</p>
+        </section>
+
+    <?php else: ?>
+
+        <!-- 🔴 Aucun projet trouvé -->
+        <section class="no-results">
+            <p class="aucun-projet">Aucun projet trouvé.</p>
+        </section>
+
+    <?php endif; ?>
+
 <?php endif; ?>
 
-<?php } ?>
+</main>
 
 <?php get_footer(); ?>

@@ -81,8 +81,17 @@ if ($video) {
       <?php endif; ?>
     </div>
 
-    <!-- Étudiants -->
-    <?php if ($etudiants): ?>
+    <!-- Image du projet -->
+    <div class="description-image">
+      <?php if ($image): ?>
+        <div class="image-projet">
+          <span>Affiche</span>
+          <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($nom); ?>" class="image-projet-arcade">
+        </div>
+      <?php endif; ?>
+
+      <!-- Étudiants -->
+      <?php if ($etudiants): ?>
       <div class="infos-etudiants">
         <strong class="titre-equipe">Équipe :</strong>
         <?php
@@ -97,23 +106,16 @@ if ($video) {
         echo implode(' ', $liste);
         ?>
       </div>
-    <?php endif; ?>
+      <?php endif; ?>
 
-    <!-- Image du projet -->
-    <?php if ($image): ?>
-      <div class="image-projet">
-        <span>Affiche</span>
-        <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($nom); ?>" class="image-projet-arcade">
-      </div>
-    <?php endif; ?>
-
-    <!-- Description -->
-    <?php if ($description): ?>
-      <div class="description-projet">
-        <span class="description-titre">Description</span>
-        <span class="description"><?php echo esc_html($description); ?></span>
-      </div>
-    <?php endif; ?>
+      <!-- Description -->
+      <?php if ($description): ?>
+        <div class="description-projet">
+          <span class="description-titre">Description</span>
+          <span class="description"><?php echo esc_html($description); ?></span>
+        </div>
+      <?php endif; ?>
+    </div>
 
   </section>
 </main>
