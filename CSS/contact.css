@@ -19,9 +19,8 @@ h1, h2 {
   font-family: var(--title-font);
 }
 
-.page-arcade h3, .page-arcade p, .page-arcade a, .page-arcade li {
-  font-family: var(--general-font);
-  color: var(--font-color);
+.header-container form.search-form {
+    transform: translateY(8px); 
 }
 
 /******************* CSS Contact général **********************/
@@ -49,6 +48,10 @@ h1, h2 {
   background: none;
   border-bottom: 2px solid var(--border-color-side);
   color: var(--font-color);
+}
+
+.forumContact form h1{
+  color: blue;
 }
 
 .forumContact form input::placeholder{
@@ -116,6 +119,74 @@ h1, h2 {
 
 /********************* Section @Media ********************/
 @media screen and (max-width: 576px) {
+  
+  .border {
+    position: fixed;
+    background: var(--border-color-side);
+    z-index: 9999;
+  }
+
+  .border.gauche {
+    top: 0;
+    left: 1em;
+    width: 1px;
+    height: 100%;
+  }
+
+  .border.droite {
+    top: 0;
+    right: 1em;
+    width: 1px;
+    height: 100%;
+  }
+
+  .contact-section {
+    background-image: linear-gradient(177deg, #580caa 11.95%, #580caa 28.39%, #21212100 82.04%);
+    border: solid 1px var(--border-color-side);
+    margin-left: 1em;
+    margin-right: 1em;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Réduction de l'espacement */
+    flex-direction: column; /* Pour que les éléments s'empilent sur petit écran */
+    padding: 10px;
+  }
+
+  .titre-contact {
+    color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(16px, 8vw, 28px); /* Taille adaptée aux mobiles */
+    text-transform: uppercase;
+    margin: 0;
+    -webkit-text-stroke-width: 0.6px;
+    -webkit-text-stroke-color: #fff;
+    line-height: 0.7;
+    letter-spacing: 1px;
+    height: auto; /* Ajusté pour mobile */
+    font-weight: lighter;
+    text-align: center;
+    margin-top: 30px;
+  }
+  .titre-contact-base {
+  -webkit-text-fill-color: var(--title-color);
+  }
+  .titre-contact-layer--1 {
+    opacity: 0.8;
+  }
+
+  .titre-contact-layer--2 {
+    opacity: 0.5;
+  }
+
+  .titre-contact-layer--3 {
+    opacity: 0.3;
+  }
+
+  /********* Secttion pour Forum Contact **********/
   .forumContact form{
     width: 27rem; /*23rem*/
     height: 21rem; /*27rem*/
@@ -126,14 +197,159 @@ h1, h2 {
     min-width: 420px;
     max-width: 576px;
   }
+  
 }
 
 @media screen and (min-width: 576.02px) {
   .forumContact form{
     margin-bottom: 0;
   }
+
+  .border {
+    position: fixed;
+    background: var(--border-color-side);
+    z-index: 9999;
+  }
+
+  .border.gauche {
+    top: 0;
+    left: 2em;
+    width: 1px;
+    height: 100%;
+  }
+
+  .border.droite {
+    top: 0;
+    right: 2em;
+    width: 1px;
+    height: 100%;
+  }
+
+  .contact-section {
+    background-image: linear-gradient(177deg, #580caa 11.95%, #580caa 28.39%, #21212100 82.04%);
+    border: solid 1px var(--border-color-side);
+    margin-left: 2em;
+    margin-right: 2em;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Réduction intermédiaire du gap */
+    flex-direction: column; /* Empilement pour tablette */
+    padding: 15px;
+  }
+
+  /* Titres recherche */
+  .titre-contact {
+    color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(18px, 10vw, 40px); /* taille adaptée pour tablette */
+    text-transform: uppercase;
+    margin: 0;
+    -webkit-text-stroke-width: 0.7px;
+    -webkit-text-stroke-color: #fff;
+    line-height: 0.65;
+    letter-spacing: 1px;
+    height: auto;
+    font-weight: lighter;
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .titre-contact-base {
+  -webkit-text-fill-color: var(--title-color);
+  }
+  .titre-contact-layer--1 {
+    opacity: 0.8;
+  }
+
+  .titre-contact-layer--2 {
+    opacity: 0.5;
+  }
+
+  .titre-contact-layer--3 {
+    opacity: 0.3;
+  }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1024px){
+  .border {
+    position: fixed;
+    background: var(--border-color-side);
+    z-index: 9999;
+  }
 
+  .border.gauche {
+    top: 0;
+    left: 3em;
+    width: 1px;
+    height: 100%;
+  } 
+
+  .border.droite {
+    top: 0;
+    right: 3em;
+    width: 1px;
+    height: 100%;
+  }
+  .border.gauche { left: 3em; }
+  .border.droite { right: 3em; }
+
+  .search-section{
+    display: flex;
+    justify-content: center;
+  }
+
+  .titre-contact-base {
+    -webkit-text-fill-color: var(--title-color);
+  }
+
+  .titre-contact {
+    color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(20px, 12vw, 50px);
+    text-transform: uppercase;
+    margin: 0;
+    -webkit-text-stroke-width: 0.8px;
+    -webkit-text-stroke-color: #fff;
+    line-height: 0.6;
+    letter-spacing: 1px;
+    height: 220px;
+    font-weight: lighter;
+  }
+
+  .titre-contact-layer--1 {
+    opacity: 0.8;
+  }
+
+  .titre-contact-layer--2 {
+    opacity: 0.5;
+  }
+
+  .titre-contact-layer--3 {
+    opacity: 0.3;
+  }
+
+  .contact-section{
+    background-image: linear-gradient(177deg, #580caa 11.95%, #580caa 28.39%, #21212100 82.04%);
+    border: solid 1px var(--border-color-side);
+    margin-left: 3em;
+    margin-right: 3em;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+}
+
+@media screen and (min-width: 1200.02px) {
+  .forumContact form{
+    margin-bottom: 8rem;
+  }
+  
 }

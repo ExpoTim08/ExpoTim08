@@ -7,6 +7,19 @@ Template Name: Contact
 <body>
     <?php get_header(); //appelle le header ?>
 
+    <div class="pattern-background">
+    <div class="border gauche"></div>
+    <div class="border droite"></div>
+
+    <section class="contact-section">
+        <h1 class="titre-contact" aria-label="contact">
+            <span class="titre-contact-layer titre-contact-base">CONTACT</span>
+            <span class="titre-contact-layer titre-contact-layer--1">CONTACT</span>
+            <span class="titre-contact-layer titre-contact-layer--2">CONTACT</span>
+            <span class="titre-contact-layer titre-contact-layer--3">CONTACT</span>
+        </h1>
+    </section>
+
     <div class="forumContact">
         <form>
             <div class="messagePageContact">
