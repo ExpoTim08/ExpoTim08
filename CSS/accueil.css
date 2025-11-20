@@ -114,7 +114,7 @@
     transform: translate(-50%, -50%);
     justify-self: center;
     font-size: 2vw;
-    gap: 2em;
+    gap: 2rem;
   }
 
   .bouton-finissants > p, .bouton-arcade > p, .bouton-graphisme > p {
@@ -169,8 +169,8 @@
     display: block;
     position: absolute;
     width: 5vw;
-    top: 3%;
-    left: 0;
+    top: 0;
+    right: 35%;
   }
 
   .bouton-arcade, .bouton-graphisme, .bouton-finissants {
@@ -488,7 +488,7 @@
     border-left: 1px solid var(--border-color);
   }
 
-/************************************* CSS Section Partenaires ****************************************************/
+/*********************************** CSS Section Partenaires*****************************************/
   .partenaires {
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
@@ -500,7 +500,7 @@
     padding-bottom: 1em;
   }
 
-/******************************************* CSS Section Équipe ****************************************************/
+/******************************************* CSS Section Équipe ************************************/
 
   .equipe {
   padding-bottom: 6em;
@@ -601,7 +601,7 @@
     border: 1px var(--border-color-special) solid;
   }
 
-/********************************************** CSS Tablette ********************************************************/
+/*************************************** CSS Tablette*************************************************/
 
 @media screen and (min-width: 440.02px) {
   body {
@@ -629,8 +629,8 @@
   }
 }
 
-/********************************************** CSS Desktop ********************************************************/
-@media screen and (min-width: 994px) {
+/************************************* CSS Desktop *************************************************/
+@media screen and (min-width: 1024px) {
   body {
     background: linear-gradient(180deg, #1B1B1B 0%, #2B2B2B 44.23%, #323232 77.88%, #1B1B1B 100%);
     background-attachment: fixed;
@@ -904,6 +904,10 @@
   .carroussel-apropos img.active {
   transform: scale(1);
   opacity: 1;
+  }
+
+  img.image-a-propos3 {
+    display: block;
   }
 
   .a-propos > .sous-titre {
