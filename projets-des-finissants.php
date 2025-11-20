@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Projet finissants
+Template Name: Projets finissants
 */
 require("global.php");
 ?>
