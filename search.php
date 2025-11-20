@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 
 <main class="search-results">
+    <div class="pattern-background">
      <div class="border gauche"></div>
     <div class="border droite"></div>
     
