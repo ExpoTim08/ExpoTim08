@@ -112,6 +112,9 @@ $too_short = empty($search_query) || mb_strlen($search_query) < 2;
                 $default_path = get_template_directory_uri() . '/assets/images/default-project.png';
                 if (file_exists(get_theme_file_path('/assets/images/default-project.png'))) {
                     $image = $default_path;
+                } else {
+                    // If no local default file, use a small neutral SVG data-URI as fallback
+                    $image = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><rect width="100%" height="100%" fill="%232f2f2f"/><g fill="%234032FF" opacity="0.12"><circle cx="100" cy="100" r="80"/><circle cx="700" cy="500" r="120"/></g></svg>';
                 }
             }
 
