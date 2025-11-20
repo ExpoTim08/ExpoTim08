@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const { src, Titre, ClassName, Description } = Images[index];
     Image.src = src;
     Subtitle.innerText = Titre;
-    DescriptionCategorie.innerText = Description; // aucune limite de texte
+    DescriptionCategorie.innerText = Description; // pas de limite
 
     ChoixElements.forEach(elm => {
       elm.classList.remove("arcade-click", "jour-terre-click", "finissants-click");
@@ -59,42 +59,45 @@ document.addEventListener("DOMContentLoaded", () => {
     if (intervalID !== null) clearInterval(intervalID);
   }
 
-  // Initialisation
   ChangeImage(CurrentIndex);
   startAuto();
 
-  // Hover et clic
+  const isHoverable = window.matchMedia("(hover: hover)").matches;
+
   ChoixElements.forEach((elm, i) => {
-    elm.addEventListener("mouseenter", () => {
-      stopAuto();
-      CurrentIndex = i;
-      if (hoverTimeout) { clearTimeout(hoverTimeout); hoverTimeout = null; }
-      ChangeImage(CurrentIndex);
-
-      if (Details) {
-        Details.style.display = 'flex';
-        // fondu + slide
-        requestAnimationFrame(() => {
-          Details.style.opacity = '1';
-          Details.style.transform = 'translateY(130%)';
-        });
-      }
-    });
-
-    elm.addEventListener("mouseleave", () => {
-      if (Details) {
-        Details.style.opacity = '0';
-        Details.style.transform = 'translateY(160%)';
-      }
-
-      hoverTimeout = setTimeout(() => {
-        CurrentIndex = (CurrentIndex + 1) % Images.length;
+    if (isHoverable) {
+      // Desktop : hover
+      elm.addEventListener("mouseenter", () => {
+        stopAuto();
+        CurrentIndex = i;
+        if (hoverTimeout) { clearTimeout(hoverTimeout); hoverTimeout = null; }
         ChangeImage(CurrentIndex);
-        startAuto();
-        hoverTimeout = null;
-      }, 2000);
-    });
 
+        if (Details) {
+          Details.style.display = 'flex';
+          requestAnimationFrame(() => {
+            Details.style.opacity = '1';
+            Details.style.transform = 'translateY(130%)';
+          });
+        }
+      });
+
+      elm.addEventListener("mouseleave", () => {
+        if (Details) {
+          Details.style.opacity = '0';
+          Details.style.transform = 'translateY(160%)';
+        }
+
+        hoverTimeout = setTimeout(() => {
+          CurrentIndex = (CurrentIndex + 1) % Images.length;
+          ChangeImage(CurrentIndex);
+          startAuto();
+          hoverTimeout = null;
+        }, 2000);
+      });
+    }
+
+    // Click pour mobile + desktop
     elm.addEventListener("click", () => {
       window.location.href = Images[i].Lien;
     });
