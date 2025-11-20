@@ -50,10 +50,10 @@
   #image-carroussel {
     display: flex;
     justify-self: center;
-    height: 80vh; 
+    height: 75vh; 
+    width: 100vw;
     opacity: 0.5;
     border-bottom: 2px solid var(--border-color-special);
-    
   }
 
   .image-titre {
@@ -66,6 +66,8 @@
   }
 
   .arcade-details {
+    display: flex;
+    flex-direction: column;
     position: absolute;
     top: 20%;
     left: 20%;
