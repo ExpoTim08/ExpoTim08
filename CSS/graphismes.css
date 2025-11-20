@@ -104,7 +104,7 @@ h1, h2 {
     max-width: 150px;
   }
 
-  /* -------------- Version mobile des cartes */
+  /* -------------- Version mobile des cartes -------------- */
 
   /* On cache la version desktop */
   .carte-projet-graphisme--desktop { display: none; }
@@ -229,6 +229,10 @@ h1, h2 {
 
 /*-------------- TABLET / PETIT ECRAN graphisme --------------*/
 @media screen and (min-width: 576.02px) {
+
+  .header-container form.search-form {
+    transform: translateY(0px); 
+  }
 
   body { overflow-x: hidden; }
   img { max-width: 100%; height: auto; display: block; object-fit: contain; }
