@@ -37,7 +37,7 @@ function expo_enqueue_assets() {
     if (is_page_template('projetArcade.php')) wp_enqueue_style('style-projet-arcade', $theme_uri . '/CSS/projetArcade.css');
     if (file_exists(get_template_directory() . '/CSS/normalize.css')) wp_enqueue_style('style-normalize', $theme_uri . '/CSS/normalize.css');
     if (is_page_template('projets-des-finissants.php') || is_page_template('ar.php')) wp_enqueue_style('style-projet-finissant', $theme_uri . '/CSS/projet-finissant.css');
-    if (is_page_template('graphismes.php')) wp_enqueue_style('style-graphismes', $theme_uri . '/CSS/graphismes.css');
+    if (is_page_template('graphisme.php')) wp_enqueue_style('style-graphisme', $theme_uri . '/CSS/graphisme.css');
 
     // --- CSS spécifique à un projet individuel de graphisme ---
     if (is_page_template('projetGraphisme.php')) wp_enqueue_style('style-projet-graphisme', $theme_uri . '/CSS/projetGraphisme.css');
