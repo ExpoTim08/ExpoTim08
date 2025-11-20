@@ -404,7 +404,7 @@ h1, h2 {
 @media screen and (min-width: 1024px) {
   
   .header-container form.search-form {
-    transform: translateY(8px);
+    transform: translateY(0px);
   }
 
   .border { position: fixed; background: var(--border-color-side); z-index: 9999; }

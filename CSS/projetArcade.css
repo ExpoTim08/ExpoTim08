@@ -198,12 +198,13 @@ h1 {
   }
 
   .image-projet-arcade  {
-    width: 40vw;
+    width: 20vw;
   }
 
   .description-image {
     display: flex;
-    width: 20vw;
+    width: 10vw;
+    justify-items: center;
   }
 
   .description-projet .description, .nom-etudiant {

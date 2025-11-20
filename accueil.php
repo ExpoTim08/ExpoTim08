@@ -11,35 +11,39 @@ get_header();
   <div class="border droite"></div>
 
   <main>
-    <!-------------------------------- Carroussel -------------------------------->
-    <div class="carroussel">
-      <div class="image-wrap">
-        <img id="image-carroussel" src="<?php echo get_template_directory_uri(); ?>/Images/Affiche-Arcade/Affiche-Code3.jpg" alt="">
-      </div>
+    
+<!-------------------------------- Carroussel -------------------------------->
 
-      <div class="arcade-details">
-        <p class="sous-titre sous-titre-carroussel">ARCADE</p>
-        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate animi voluptate...</p>
-        <a href="<?php echo get_permalink(get_page_by_path('arcade')); ?>" class="plus">Voir Plus</a>
-      </div>
+<div class="carroussel">
+  <div class="image-wrap">
+    <img id="image-carroussel" src="<?php echo get_template_directory_uri(); ?>/Images/Finissants.jpg" alt="">
+  </div>
 
-      <div class="carroussel-choix">
-        <div class="bouton-arcade">
-          <p class="arcade arcade-click">ARCADE</p>
-          <img class="manette" src="<?php echo get_template_directory_uri(); ?>/Images/Manette.svg" alt="">
-        </div>
-
-        <div class="bouton-graphisme">
-          <p class="jour-terre">GRAPHISME</p>
-          <img class="tree" src="<?php echo get_template_directory_uri(); ?>/Images/Tree.svg" alt="" class="tree">
-        </div>
-
-        <div class="bouton-finissants">
-          <p class="finissants">FINISSANTS</p>
-          <img class="student" src="<?php echo get_template_directory_uri(); ?>/Images/Student.svg" alt="">
-        </div>
-      </div>
+  <div class="carroussel-choix">
+    <div class="bouton-finissants">
+      <p class="finissants">FINISSANTS</p>
+      <img class="student" src="<?php echo get_template_directory_uri(); ?>/Images/Student.svg" alt="">
     </div>
+
+    <div class="bouton-arcade">
+      <p class="arcade arcade-click">ARCADE</p>
+      <img class="manette" src="<?php echo get_template_directory_uri(); ?>/Images/Manette.svg" alt="">
+    </div>
+
+    <div class="bouton-graphisme">
+      <p class="jour-terre">GRAPHISME</p>
+      <img class="tree" src="<?php echo get_template_directory_uri(); ?>/Images/Tree.svg" alt="">
+    </div>
+  </div> <!-- fin carroussel-choix -->
+
+  <div class="arcade-details">
+    <p class="sous-titre sous-titre-carroussel">ARCADE</p>
+    <p class="description">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate animi voluptate...
+    </p>
+  </div>
+</div>
+
 
     <!-------------------------------- Accroche -------------------------------->
     <div class="accroche-conteneur">
@@ -105,7 +109,7 @@ get_header();
 
     <!-------------------------------- Équipe -------------------------------->
     <div class="equipe">
-      <h1>L'équipe</h1>
+      <h1>Crédits</h1>
       <div class="cartes">
         <div class="carte-equipe">
           <span class="photo"></span>
