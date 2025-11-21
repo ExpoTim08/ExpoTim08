@@ -1,9 +1,4 @@
-/* -----------------------------------------------
-   Cleaned CSS for search page
-   - No nested media queries
-   - Ordered: base -> mobile -> tablet -> desktop
-   - Removed arcade-specific selectors
------------------------------------------------ */
+/* Cleaned CSS (merged duplicates, no functional changes) */
 
 /* ---------------- Base styles ---------------- */
 .header-container form.search-form {
@@ -23,13 +18,8 @@ body {
   background-attachment: fixed;
 }
 
-/* Ensure main content stays within the left/right fixed borders.
-   Borders are positioned at ~3rem from the edges; add matching padding
-   on the main/search container so cards never sit under the borders. */
 .search-results,
 .results-container {
-  margin-left: 3em;
-  margin-right: 3em;
   box-sizing: border-box;
 }
 
@@ -39,7 +29,6 @@ h1, h2, a {
   font-family: var(--title-font);
 }
 
-/* Search header/title */
 .recherche-section {
   background-image: linear-gradient(177deg, #1b77bd 11.95%, #1b77bd 28.39%, #21212100 82.04%);
   border: 1px solid var(--border-color-side);
@@ -47,9 +36,9 @@ h1, h2, a {
   align-items: center;
   justify-content: center;
   gap: 30px;
-  padding: 1rem;
-  
-  
+  padding: 3rem;
+  margin-left: 3em;
+  margin-right: 3em;
 }
 
 .titre-recherche {
@@ -72,20 +61,36 @@ h1, h2, a {
 .titre-recherche-layer--2 { opacity: 0.5; }
 .titre-recherche-layer--3 { opacity: 0.3; }
 
-.recherche-resultats {
-  color: var(--font-color);
-  font-family: var(--general-font);
-  font-size: 1.2rem;
-}
-
+.recherche-resultats,
 .aucun-projet {
   color: var(--font-color);
   font-family: var(--general-font);
+}
+
+.aucun-projet {
   display: flex;
   justify-content: center;
 }
 
-/* ---------------- Mobile (small) ---------------- */
+/* Grid for projects: automatic columns, min width 320px. This allows
+   two columns when space permits, otherwise it collapses to one column. */
+.projets-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* default: single column */
+  gap: 1.5rem;
+  justify-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Show exactly 2 columns when viewport allows (min width approx 720px) */
+@media screen and (min-width: 720px) {
+  .projets-grid {
+    grid-template-columns: repeat(2, minmax(320px, 1fr));
+  }
+}
+
+/* ---------------- Mobile ---------------- */
 @media screen and (max-width: 576px) {
   .titre-recherche {
     font-size: clamp(16px, 8vw, 28px);
@@ -94,6 +99,7 @@ h1, h2, a {
 
   .projets-grid {
     gap: 1.25rem;
+    grid-template-columns: 1fr; /* single column on very small screens */
   }
 
   .projet-card {
@@ -103,7 +109,8 @@ h1, h2, a {
     background-color: rgb(48, 48, 48);
     border: 2px solid var(--border-color-project);
     box-shadow: 6px 6px 0 var(--border-color-project);
-    overflow: hidden; /* ensure nothing spills out of the card */
+    overflow: hidden;
+    gap: 0.6rem;
   }
 
   .projet-title {
@@ -111,30 +118,42 @@ h1, h2, a {
     font-weight: 300;
   }
 
-  .projet-figure img {
-    object-fit: contain;
+  .projet-figure {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--background-color);
   }
 
-  /* Make mobile images uniform using aspect-ratio so all cards match visually */
-  .projet-figure { aspect-ratio: 16 / 9; overflow: hidden; }
-  .projet-figure { display: flex; align-items: center; justify-content: center; background: var(--background-color); }
-  .projet-figure img { max-width:100%; max-height:100%; object-fit: contain; display: block; }
-  .projet-figure a { display: block; width: 100%; height: 100%; }
+  .projet-figure img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .projet-figure a {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
 }
 
-/* ---------------- Tablet (medium) ---------------- */
+/* ---------------- Tablet ---------------- */
 @media screen and (min-width: 577px) and (max-width: 1023px) {
   .titre-recherche {
     font-size: clamp(18px, 10vw, 40px);
   }
 
-  /* Larger, uniform images and fixed-height cards on tablet */
   .projet-card {
-    width: 80%;
+    width: 100%;
     max-width: 720px;
     flex-direction: row;
-    height: 320px; /* uniform card height */
+    height: 320px;
     overflow: hidden;
+    gap: 0.75rem;
   }
 
   .projet-figure {
@@ -150,23 +169,28 @@ h1, h2, a {
   .projet-figure img {
     max-width: 100%;
     max-height: 100%;
-    object-fit: contain; /* show full image */
+    object-fit: contain;
     display: block;
+  }
+
+  .projet-figure a {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 
   .projet-section {
     flex: 1 1 40%;
-    padding: 1.1rem 1.25rem;
-    overflow: auto; /* keep description visible if long */
+    padding: 0.6rem 0.8rem 0.6rem 0.4rem;
+    overflow: auto;
     background: linear-gradient(90deg, rgba(255,255,255,0.02), transparent);
+    display: flex;
+    flex-direction: column;
   }
-
-  .projet-figure a { display: block; width: 100%; height: 100%; }
 }
 
-/* ---------------- Desktop (large) ---------------- */
-@media screen and (min-width: 1024px) {
-
+/* ---------------- Desktop ---------------- */
+@media screen and (min-width: 1300px) {
   .border {
     position: fixed;
     background: var(--border-color-side);
@@ -187,24 +211,22 @@ h1, h2, a {
     height: 100%;
   }
 
-  /* Desktop: use grid for equal-sized cards */
   .projets-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(320px, 1fr));
-    gap: 3rem;
     justify-items: center;
     align-items: start;
     width: 100%;
-    margin-left: 3.2em;
-    margin-right: 3.2em;
-
+    padding-top: 3em;
+    
+    
   }
 
   .projet-card {
     margin-top: 50px;
     width: 100%;
-    max-width: 840px;
-    height: 360px; /* uniform card height */
+    max-width: 600px;
+    height: 360px;
     position: relative;
     background: var(--background-color);
     display: flex;
@@ -212,7 +234,8 @@ h1, h2, a {
     align-items: stretch;
     box-sizing: border-box;
     border: 2px solid var(--border-color-project);
-    overflow: hidden; /* prevent image or content from overflowing the card */
+    overflow: hidden;
+    gap: 0.75rem;
   }
 
   .projet-card::after {
@@ -257,13 +280,6 @@ h1, h2, a {
     flex: 0 0 60%;
     height: 100%;
     display: flex;
-    box-sizing: border-box;
-  }
-
-  .projet-figure {
-    flex: 0 0 60%;
-    height: 100%;
-    display: flex;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
@@ -275,64 +291,22 @@ h1, h2, a {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-    transition: transform 400ms cubic-bezier(.2, .8, .2, 1);
+    transition: transform 400ms cubic-bezier(.2‍, .8‍, .2‍, 1);
+
   }
 
-  .projet-figure a { display: block; width: 100%; height: 100%; }
+  .projet-figure a {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
 
   .projet-section {
     flex: 1 1 40%;
-    padding: 2rem;
+    padding: 1rem 1rem 1rem 0.2rem;
     overflow: auto;
-    
-  }
-
-  /* Ensure the text column is a vertical container so title stays on top
-     and description/equipe/button stay below and don't overlap the title. */
-  .projet-section {
     display: flex;
     flex-direction: column;
-    
-  }
-
-  .projet-title {
-    margin: 0.5rem 0;
-    font-size: 1.1rem;
-    color: var(--font-color);
-    flex: 0 0 auto;
-  }
-
-  .projet-description {
-    margin: 0.5rem 0 0;
-    color: var(--font-color);
-    line-height: 1.45;
-    font-size: 0.95rem;
-    font-family: var(--general-font);
-    flex: 1 1 auto; /* take remaining space */
-    overflow: auto; /* prevent overflowing the card */
-  }
-
-  .projet-equipe {
-    margin-top: 0.5rem;
-    color: var(--font-color);
-    font-size: 0.9rem;
-    font-family: var(--general-font);
-    flex: 0 0 auto;
-  }
-
-  .projet-actions {
-    margin-top: 0.75rem;
-    display: flex;
-    justify-content: flex-end;
-    flex: 0 0 auto;
-  }
-
-  .button-voir-projet {
-    background: transparent;
-    border: 1px solid var(--border-color-project);
-    color: var(--font-color);
-    padding: 0.4rem 0.6rem;
-    cursor: pointer;
   }
 
   .projet-title {
@@ -347,7 +321,8 @@ h1, h2, a {
     line-height: 1.45;
     font-size: 0.95rem;
     font-family: var(--general-font);
-  
+    flex: 1 1 auto;
+    overflow: auto;
   }
 
   .projet-equipe {
@@ -356,4 +331,20 @@ h1, h2, a {
     font-size: 0.9rem;
     font-family: var(--general-font);
   }
+
+  .projet-actions {
+    margin-top: 0.75rem;
+    display: flex;
+    justify-content: flex-end;
+    flex: 0 0 auto;
+  }
+
+  .button-voir-projet {
+    background: #1b77bd;
+    border: 1px solid var(--border-color-project);
+    color: var(--font-color);
+    padding: 0.4rem 0.6rem;
+    cursor: pointer;
+  }
 }
+
