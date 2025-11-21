@@ -113,8 +113,8 @@ get_header();
                 ?>
             
             <button class="button-projet-finissant"
-                onclick="window.location.href='<?php echo esc_url(get_permalink()); ?>'">
-                <!--En savoir plus--> >>
+            onclick="window.location.href='<?php echo esc_url(add_query_arg('projet_id', get_the_ID(), get_permalink(get_page_by_path('projet-finissant')))); ?>'">
+            >>
             </button>
         </article>
 
@@ -123,7 +123,7 @@ get_header();
             <div class="bloc-titre">
                 <h2 class="titre-projet-finissant"><?php echo esc_html($titre); ?></h2>
                 <button class="button-projet-finissant"
-                    onclick="window.location.href='<?php echo esc_url(add_query_arg('projet_id', get_the_ID(), get_permalink(get_page_by_path('projets-finissants')))); ?>'">
+                    onclick="window.location.href='<?php echo esc_url(add_query_arg('projet_id', get_the_ID(), get_permalink(get_page_by_path('projet-finissant')))); ?>'">
                     &gt;&gt;
                 </button>
             </div>

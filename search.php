@@ -1,10 +1,10 @@
 <?php get_header(); ?>
 <body>
-<div class="pattern-background">
+    <div class="pattern-background">
 
-    <main class="search-results">
-        <div class="border gauche"></div>
-        <div class="border droite"></div>
+        <main class="search-results">
+            <div class="border gauche"></div>
+            <div class="border droite"></div>
 
 <?php
 $search_query = trim(get_search_query());
@@ -37,6 +37,7 @@ $too_short = empty($search_query) || mb_strlen($search_query) < 2;
 // =========================
 //     RECHERCHE PROJETS
 // =========================
+
 $project_types = ['projet-arcade', 'projet-finissant', 'projet-graphisme'];
 $normalized_query = normalize_string($search_query);
 
@@ -53,7 +54,7 @@ foreach ($all_projects as $projet) {
     $projet_id = $projet->ID;
 
     // Titre
-    $title = get_field('nom_du_projet', $projet_id) ?: get_field('nom_projet', $projet_id) ?: get_the_title($projet_id);
+    $title = get_field('nom_du_projet', $projet_id) ?: get_the_title($projet_id);
     $normalized_title = normalize_string($title);
 
     // Vérifie correspondance titre
@@ -67,9 +68,10 @@ foreach ($all_projects as $projet) {
         foreach ($etudiants as $etu) {
             $etu_id = is_object($etu) ? $etu->ID : $etu;
             if (!$etu_id) continue;
-
+            
             $prenom = get_field('prenom', $etu_id);
             $nom = get_field('nom_etudiant', $etu_id);
+            
             $fullName = trim("$prenom $nom");
             if ($fullName) $liste_etudiants[] = $fullName;
 
@@ -80,30 +82,30 @@ foreach ($all_projects as $projet) {
     }
 
     if ($match) {
-        // Récupération image
-        $image = '';
-        $acf_fields = ['affiche', 'image_du_projet']; // tous les champs possibles
 
-        foreach ($acf_fields as $field) {
-            $img = get_field($field, $projet_id);
-            if ($img) {
-                if (is_array($img) && isset($img['url'])) {
-                    $image = $img['url'];
-                } elseif (is_numeric($img)) {
-                    $image = wp_get_attachment_image_url($img, 'medium');
-                } elseif (filter_var($img, FILTER_VALIDATE_URL)) {
-                    $image = $img;
-                }
-                break;
+        // Récupération image projet
+        $image_field = get_field('image', $projet_id) ?: get_field('image_du_projet', $projet_id) ?: get_field('affiche', $projet_id);
+        $image = '';
+
+        if ($image_field) {
+            if (is_array($image_field) && isset($image_field['url'])) {
+                $image = $image_field['url'];
+            } elseif (is_array($image_field) && isset($image_field[0]['url'])) {
+                $image = $image_field[0]['url'];
+            } elseif (is_numeric($image_field)) {
+                $image = wp_get_attachment_image_url($image_field, 'medium');
+            } elseif (filter_var($image_field, FILTER_VALIDATE_URL)) {
+                $image = $image_field;
             }
         }
 
-        // Fallback featured image
+        // Fallback featured
         if (!$image) {
-            $image = get_the_post_thumbnail_url($projet_id, 'medium');
+            $thumb_url = get_the_post_thumbnail_url($projet_id, 'medium');
+            if ($thumb_url) $image = $thumb_url;
         }
 
-        // Fallback local par défaut
+        // Fallback local
         if (!$image) {
             $default_path = get_template_directory_uri() . '/assets/images/default-project.png';
             if (file_exists(get_theme_file_path('/assets/images/default-project.png'))) {
@@ -116,7 +118,8 @@ foreach ($all_projects as $projet) {
             'title'     => $title,
             'desc'      => get_field('description', $projet_id) ?: '',
             'image'     => $image,
-            'etudiants' => $liste_etudiants
+            'etudiants' => $liste_etudiants,
+            'type'      => $projet->post_type
         ];
     }
 }
@@ -127,6 +130,7 @@ $seen_titles = [];
 
 foreach ($results_temp as $item) {
     $norm_title = normalize_string($item['title']);
+
     if (!isset($seen_titles[$norm_title])) {
         $results[$norm_title] = $item;
         $seen_titles[$norm_title] = true;
@@ -147,11 +151,29 @@ $results = array_values($results);
         <div class="projets-grid">
 
             <?php foreach ($results as $data): ?>
+
+                <?php
+                // Déterminer le lien du projet selon son type
+                switch ($data['type']) {
+                    case 'projet-arcade':
+                        $lien_projet = add_query_arg('projet_id', $data['id'], get_permalink(get_page_by_path('projet-arcade')));
+                        break;
+                    case 'projet-graphisme':
+                        $lien_projet = add_query_arg('projet_id', $data['id'], get_permalink(get_page_by_path('projet-graphisme')));
+                        break;
+                    case 'projet-finissant':
+                        $lien_projet = add_query_arg('projet_id', $data['id'], get_permalink(get_page_by_path('projet-finissant')));
+                        break;
+                    default:
+                        $lien_projet = get_permalink($data['id']);
+                }
+                ?>
+
                 <article class="projet-card">
 
                     <?php if (!empty($data['image'])): ?>
                         <figure class="projet-figure">
-                            <a href="<?php echo get_permalink($data['id']); ?>">
+                            <a href="<?php echo esc_url($lien_projet); ?>">
                                 <img src="<?php echo esc_url($data['image']); ?>" alt="<?php echo esc_attr($data['title']); ?>">
                             </a>
                         </figure>
@@ -159,7 +181,7 @@ $results = array_values($results);
 
                     <section class="projet-section">
                         <h2 class="projet-title">
-                            <a href="<?php echo get_permalink($data['id']); ?>">
+                            <a href="<?php echo esc_url($lien_projet); ?>">
                                 <?php echo esc_html($data['title']); ?>
                             </a>
                         </h2>
@@ -175,6 +197,11 @@ $results = array_values($results);
                             <?php echo esc_html(implode(', ', $data['etudiants'])); ?>
                         </p>
                     <?php endif; ?>
+
+                    <!-- Bouton vers le projet -->
+                    <button class="button-voir-projet" onclick="window.location.href='<?php echo esc_url($lien_projet); ?>'">
+                        >>
+                    </button>
 
                 </article>
             <?php endforeach; ?>
@@ -193,6 +220,7 @@ $results = array_values($results);
 
 <?php endif; ?>
 
-    </main>
-</div>
+        </main>
+    </div>
+</body>
 <?php get_footer(); ?>
