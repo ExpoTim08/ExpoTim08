@@ -185,23 +185,23 @@ $results = array_values($results);
                                 <?php echo esc_html($data['title']); ?>
                             </a>
                         </h2>
+                        <?php if (!empty($data['desc'])): ?>
+                            <p class="projet-description"><?php echo esc_html($data['desc']); ?></p>
+                        <?php endif; ?>
+
+                        <?php if (!empty($data['etudiants'])): ?>
+                            <p class="projet-equipe">
+                                <strong>Équipe :</strong>
+                                <?php echo esc_html(implode(', ', $data['etudiants'])); ?>
+                            </p>
+                        <?php endif; ?>
+
+                        <div class="projet-actions">
+                            <button class="button-voir-projet" onclick="window.location.href='<?php echo esc_url($lien_projet); ?>'">
+                                >>
+                            </button>
+                        </div>
                     </section>
-
-                    <?php if (!empty($data['desc'])): ?>
-                        <p class="projet-description"><?php echo esc_html($data['desc']); ?></p>
-                    <?php endif; ?>
-
-                    <?php if (!empty($data['etudiants'])): ?>
-                        <p class="projet-equipe">
-                            <strong>Équipe :</strong>
-                            <?php echo esc_html(implode(', ', $data['etudiants'])); ?>
-                        </p>
-                    <?php endif; ?>
-
-                    <!-- Bouton vers le projet -->
-                    <button class="button-voir-projet" onclick="window.location.href='<?php echo esc_url($lien_projet); ?>'">
-                        >>
-                    </button>
 
                 </article>
             <?php endforeach; ?>
