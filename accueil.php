@@ -65,9 +65,9 @@ get_header();
       </div>
     </div>
 
-    <!-------------------------------- Projets Populaire -------------------------------->
+    <!-------------------------------- Projets Découvertes -------------------------------->
     <div class="projets-populaire">
-      <h1>PROJETS POPULAIRES</h1>
+      <h1>PROJETS Découvertes</h1>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident minus sit exercitationem...</p>
       <div class="projets">
         <!-- Exemple projet Arcade -->

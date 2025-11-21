@@ -40,8 +40,13 @@
   .logo {
     margin: 0;
     flex-shrink: 0;
+
   }
 
+  .header-logo-img {
+    width:100px;
+  }
+  
   .menu-burger {
     width: 30px;
     height: 22px;
@@ -265,6 +270,11 @@
     text-decoration: none;
     font-weight: bold;
   }
+
+
+.header-logo-img {
+  width:100px;
+}
 
   /* Hide burger on desktop */
   .menu-burger {

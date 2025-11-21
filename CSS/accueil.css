@@ -313,7 +313,6 @@
 
   .a-propos {
     border-bottom: 1px solid var(--border-color);
-    height: 80vh;
     max-width: 900px;
     width: 100%;
     box-sizing: border-box;
@@ -322,6 +321,8 @@
     align-items: center;
     text-align: center; 
     position: relative;
+    min-height: 800px; /* hauteur minimale pour grands écrans */
+    padding: 2rem 1rem; /* espace vertical qui s’adapte */
   }
 
   .a-propos > .sous-titre {
@@ -352,13 +353,13 @@
   .carroussel-apropos img {
     position: absolute;
     top: 10%;
-    left: 50%;
+    left: 51%;
     width: 220px;
     height: 220px;
     object-fit: cover;
     border-radius: 12px;
     transform-style: preserve-3d;
-    transform-origin: center center -220px; 
+    transform-origin: center center -130px; 
     animation: spin 10s linear infinite;
     border: 2px solid var(--border-color);
   }
@@ -775,25 +776,67 @@
 .carroussel-choix {
   display: flex;
   justify-content: center;
+  gap: 4rem; /* espace entre les boutons */
+}
+
+.bouton-arcade,
+.bouton-graphisme,
+.bouton-finissants {
+  position: relative; /* conteneur pour que les icônes absolues se réfèrent à lui */
+  width: 22vw;        /* boutons un peu plus larges */
+  height: auto;
+  cursor: pointer;
+  text-align: center;
+  padding: 1.5rem 0;
 }
 
 .bouton-arcade > .arcade,
 .bouton-graphisme > .jour-terre,
 .bouton-finissants > .finissants {
-  padding: 1rem;
-  padding-bottom: 2rem;
-  margin-right: 0.1em;
-  width: 20vw;
-  height: 0.2vh;
-  font-size: x-large;
-  cursor: pointer;
+  font-size: clamp(1rem, 2vw, x-large); /* taille min 1rem, idéale 2vw, max x-large */
+  margin: 0;
 }
 
-/* Icônes */
-.bouton-arcade .manette, .bouton-graphisme .tree, .bouton-finissants .student {
+/* Icônes devant le bouton et descendues (par défaut pour manette et student) */
+.bouton-finissants .student {
+  position: absolute;
+  top: 50%;
   left: -10%;
-  top: -200px;
+  transform: translateY(19px);
+  z-index: 2;
+
+  width: 68px;      /* taille fixe beaucoup plus petite */
+  max-width: 68px;  /* limite vraiment la grandeur */
+  height: auto;
+  object-fit: contain;
 }
+
+.bouton-arcade .manette {
+  position: absolute;
+  top: 50%;
+  left: -5%;
+  transform: translateY(19px);
+  z-index: 2;
+
+  width: 68px;      /* taille fixe beaucoup plus petite */
+  max-width: 68px;  /* limite vraiment la grandeur */
+  height: auto;
+  object-fit: contain;
+}
+
+.bouton-graphisme .tree {
+  position: absolute;
+  top: 50%;
+  left: -9%;
+  transform: translateY(19px);
+  z-index: 2;
+
+  width: 60px;      /* taille fixe beaucoup plus petite */
+  max-width: 60px;  /* limite vraiment la grandeur */
+  height: auto;
+  object-fit: contain;
+}
+
 
 
 /******************************* CSS Section Accroche Desktop ***************************************/
@@ -901,7 +944,8 @@
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
     padding: 2rem;
-    height: 700px;
+    height: 300px;
+    max-height: 600px;
   }
 
   .carroussel-apropos {
@@ -931,9 +975,27 @@
     margin-top: -16rem;
   }
 
-  /******************************** CSS Section Projets Populaire Desktop********************************************/
+  .carroussel-apropos img {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    transform-style: preserve-3d;
+    transform-origin: center center -180px; 
+    animation: spin 10s linear infinite;
+    border: 2px solid var(--border-color);
+  }
+
+  /******************************** CSS Section Projets Populaire Desktop ********************************************/
   .projets {
     border-bottom: 1px solid var(--border-color);
+  }
+
+  .projets-populaire {
+    margin-top: 5rem;
   }
 
   .projets-populaire > h1, .projets-populaire p {
@@ -974,6 +1036,11 @@
   }
 
   /******************************** CSS Section Équipe Desktop********************************************/
+  
+  .equipe {
+    margin-top: 3rem;
+  }
+
   .carte-equipe {
     box-shadow: 5px 5px 17px 5px rgb(1, 1, 125);
   }
