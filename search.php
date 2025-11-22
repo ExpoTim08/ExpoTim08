@@ -145,6 +145,30 @@ $results = array_values($results);
 ?>
 
 <?php if (!empty($results)): ?>
+    <?php
+// Couper le texte sans couper les mots
+function truncate_no_cut($text, $max_chars = 200) {
+    $text = trim($text);
+    if ($text === '') return '';
+    if (function_exists('mb_strlen')) {
+        if (mb_strlen($text) <= $max_chars) return $text;
+        $trunc = mb_substr($text, 0, $max_chars);
+        $last_space = mb_strrpos($trunc, ' ');
+        if ($last_space !== false) {
+            $trunc = mb_substr($trunc, 0, $last_space);
+        }
+        return rtrim($trunc) . '…';
+    } else {
+        if (strlen($text) <= $max_chars) return $text;
+        $trunc = substr($text, 0, $max_chars);
+        $last_space = strrpos($trunc, ' ');
+        if ($last_space !== false) {
+            $trunc = substr($trunc, 0, $last_space);
+        }
+        return rtrim($trunc) . '…';
+    }
+}
+?>
 
     <!--Résultats -->
     <section class="results-container">
@@ -186,7 +210,7 @@ $results = array_values($results);
                             </a>
                         </h2>
                         <?php if (!empty($data['desc'])): ?>
-                            <p class="projet-description"><?php echo esc_html($data['desc']); ?></p>
+                            <p class="projet-description"><?php echo esc_html(truncate_no_cut($data['desc'], 200)); ?></p>
                         <?php endif; ?>
 
                         <?php if (!empty($data['etudiants'])): ?>
