@@ -484,6 +484,7 @@ h1, h2 {
     overflow: hidden; 
     width: 75%; 
     max-width: none;
+    
   }
 
   .carte-projet-arcade--desktop .image-projet-arcade {
@@ -550,6 +551,7 @@ h1, h2 {
     height: 320px;
     overflow: hidden;
     background-color: #2c2c2f;
+    margin-bottom: 70px;
   }
 
   .presentation-arcade {

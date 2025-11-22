@@ -594,6 +594,7 @@ h1, h2 {
                 border-radius 260ms ease;
     will-change: transform, box-shadow;
     transform-origin: center;
+    margin-bottom: 70px;
   }
 
   .carte-projet-graphisme--desktop:hover::after {

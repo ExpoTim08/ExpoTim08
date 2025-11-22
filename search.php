@@ -200,7 +200,14 @@ function truncate_no_cut($text, $max_chars = 200) {
                             <a href="<?php echo esc_url($lien_projet); ?>">
                                 <img src="<?php echo esc_url($data['image']); ?>" alt="<?php echo esc_attr($data['title']); ?>">
                             </a>
+                            <!-- Toggle button positioned inside the figure (bottom-right) -->
+                            <button class="button-toggle-desc" aria-expanded="false" aria-controls="desc-<?php echo $data['id']; ?>">Détails</button>
                         </figure>
+
+                        <!-- Actions container keeps the 'voir projet' button (navigation) -->
+                        <div class="projet-actions">
+                            <button class="button-voir-projet" onclick="window.location.href='<?php echo esc_url($lien_projet); ?>'">&gt;&gt;</button>
+                        </div>
                     <?php endif; ?>
 
                     <section class="projet-section">
@@ -210,7 +217,7 @@ function truncate_no_cut($text, $max_chars = 200) {
                             </a>
                         </h2>
                         <?php if (!empty($data['desc'])): ?>
-                            <p class="projet-description"><?php echo esc_html(truncate_no_cut($data['desc'], 200)); ?></p>
+                            <p id="desc-<?php echo $data['id']; ?>" class="projet-description"><?php echo esc_html(truncate_no_cut($data['desc'], 200)); ?></p>
                         <?php endif; ?>
 
                         <?php if (!empty($data['etudiants'])): ?>
@@ -220,11 +227,6 @@ function truncate_no_cut($text, $max_chars = 200) {
                             </p>
                         <?php endif; ?>
 
-                        <div class="projet-actions">
-                            <button class="button-voir-projet" onclick="window.location.href='<?php echo esc_url($lien_projet); ?>'">
-                                >>
-                            </button>
-                        </div>
                     </section>
 
                 </article>
@@ -244,7 +246,9 @@ function truncate_no_cut($text, $max_chars = 200) {
 
 <?php endif; ?>
 
-        </main>
-    </div>
+                </main>
+        </div>
+
+
 </body>
 <?php get_footer(); ?>
