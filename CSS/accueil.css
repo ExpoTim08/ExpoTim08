@@ -575,6 +575,11 @@
     border-left: 1px solid var(--border-color);
   }
 
+  .image-populaire-arcade {
+    width: 335px;
+    height: 478px;
+  }
+
 /*********************************** CSS Section Partenaires*****************************************/
   .partenaires {
     border-top: 1px solid var(--border-color);
@@ -1230,19 +1235,22 @@
     width: 40%;
   }
 
+  .projets {
+    display: flex;
+  }
+
   .projets > p {
     width: 25%;
     font-size: small;
   }
 
-  .projet-populaire-arcade {
-    margin-left: 16.5vw;
+  /* .projet-populaire-arcade {
+
   }
 
   .projet-populaire-finissant {
-    margin-left: 61.2vw;
-    margin-bottom: 3vw;
-  }
+    
+  } */
 
   /*************************** CSS Section Partenaires Desktop***************************************/
   .partenaires {

@@ -60,21 +60,21 @@ h1 {
   font-family: var(--title-font);
 }
 
-.titre-graphisme-layer1 {
+.titre-graphisme-layer-1 {
   color: transparent;
   opacity: 0.8;
   -webkit-text-stroke-width: 0.8px;
   -webkit-text-stroke-color: var(--font-color);
 }
 
-.titre-graphisme-layer2 {
+.titre-graphisme-layer-2 {
   opacity: 0.5;
   color: transparent;
   -webkit-text-stroke-width: 0.6px;
   -webkit-text-stroke-color: var(--font-color);
 }
 
-.titre-graphisme-layer3{
+.titre-graphisme-layer-3{
   opacity: 0.5;
   color: transparent;
   -webkit-text-stroke-width: 0.4px;
@@ -101,10 +101,10 @@ h1 {
   cursor: pointer;
 }
 
-.manette {
+.tree {
   position: absolute;
   margin-left: 70vw;
-  margin-top: -20vw;
+  margin-top: -40vw;
   width: 20vw;
   transform: rotateZ(-35deg);
 }
@@ -116,7 +116,64 @@ h1 {
   justify-self: center;
 }
 
-.infos-cours-annee {
+.infos-etudiants {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  margin-top: 2em;
+  width: 70vw;
+  border: 2px solid var(--border-color-side);
+  border-radius: 25px;
+}
+
+.infos-etudiants strong {
+  border-bottom: 2px solid var(--border-color-side);
+    background-image: linear-gradient(177deg, var(--bouton-projet-jt-color) 11.95%, var(--bouton-projet-jt-color) 28.39%, #21212100 82.04%);
+    border-radius: 20px;
+}
+
+.infos-etudiants strong, .nom-etudiant {
+  padding: 15px;
+}
+
+.image-projet {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  margin-top: 2em;
+  border-radius: 25px;
+  border: 2px solid var(--border-color-side);
+}
+
+.image-projet-graphisme {
+  width: 70vw;
+  border-radius: 22px;
+}
+
+.conteneur-description {
+  display: flex;
+  flex-direction: column;
+  width: 70vw;
+  justify-self: center;
+  margin-top: 2em;
+  border: 2px solid var(--border-color-side);
+  border-radius: 25px;
+
+}
+
+ .conteneur-description .description-titre {
+  background-image: 
+    linear-gradient(177deg, var(--bouton-projet-jt-color) 11.95%, var(--bouton-projet-jt-color) 28.39%, #21212100 82.04%);
+  border-bottom: 2px solid var(--border-color-side);
+  padding-left: 10px;
+  font-weight: bold;
+}
+
+.conteneur-description .description-texte {
+  padding-left: 10px;
+}
+
+.behance-projet {
   text-align: center;
   background-image: 
     linear-gradient(177deg, var(--bouton-projet-graphisme-color) 11.95%, #362CB6 28.39%, #21212100 82.04%);
@@ -129,88 +186,15 @@ h1 {
   font-weight: bold;
 }
 
-.infos-etudiants {
-  display: flex;
-  flex-direction: column;
-  justify-self: center;
-  margin-top: 2em;
-  width: 70vw;
-  border: 2px solid var(--border-color-side);
-  border-radius: 31px;
-}
-
-.titre-equipe {
-  background-image: 
-    linear-gradient(177deg, var(--bouton-projet-graphisme-color) 11.95%, #362CB6 28.39%, #21212100 82.04%);
-  color: #ffffff;
-  padding: 8px;
-  border-bottom: 2px solid var(--border-color-side);
-  border-radius: 30px;
-}
-
-.nom-etudiant {
-  padding: 10px;
-}
-
-.titre-equipe, .nom-etudiant {
-  padding: 15px;
-}
-
-.image-projet {
-  display: flex;
-  flex-direction: column;
-  justify-self: center;
-  margin-top: 2em;
-  border-radius: 25px;
-  border: 2px solid var(--border-color-side);
-}
- .description-projet > .description-titre {
-  background-image: 
-    linear-gradient(177deg, var(--bouton-projet-graphisme-color) 11.95%, #362CB6 28.39%, #21212100 82.04%);
-  width: 20vw;
-  padding: 10px;
-  border: 2px solid var(--border-color-side);
-  border-radius: 40px;
-}
-
-.image-projet-graphisme {
-  width: 70vw;
-  border-bottom-left-radius: 28px;
-  border-bottom-right-radius: 28px;
-}
-
-.conteneur-description {
-  display: flex;
-  flex-direction: column;
-  width: 70vw;
-  justify-self: center;
-  margin-top: 2em;
-  border: 2px solid var(--border-color-side);
-  border-radius: 25px;
-  height: fit-content;
-}
-
-.description-projet .description-titre {
-  width: auto;
-  padding-left: 20px;
-  font-weight: bold;
-  border-top: none;
-
-}
-
-.description-projet > .description {
-  border-radius: 40px;
-  padding: 20px;
-}
-
 /********************************************** CSS Desktop ********************************************************/
 @media screen and (min-width: 994px) {
   .titre-graphisme-layer {
-    font-size: 8vw;
+    font-size: 4vw;
   }
-
-  .manette {
-    width: 15vw;
+ .tree {
+    width: 10vw;
+    right: 15%;
+    bottom: 0;
   }
 
   .infos-cours-annee {
@@ -244,17 +228,25 @@ h1 {
 
   .description-projet .infos-etudiants {
     grid-area: 1/2/2/3;
-    width: 40vw;
+    width: 100%;
     height: fit-content;
   }
 
-  .description-projet .description-projet {
+  .description-projet .conteneur-description {
     grid-area: 2/2/3/3;
-    width: 40vw;
+    width: 100%;
 
+  }
+
+  .conteneur-description .description-titre {
+    border-radius: 25px;
   }
 
   .description-projet .description, .nom-etudiant {
     font-size: 1.5vw;
+  }
+
+  .behance-projet {
+    padding: 20px;
   }
 }

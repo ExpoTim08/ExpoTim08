@@ -82,7 +82,7 @@ get_header();
           <span class="bouton">>></span>
           <span class="categorie">Catégorie</span>
           <span class="categorie-nom">ARCADE</span>
-          <img class="image-populaire-arcade" src="<?php echo get_template_directory_uri(); ?>/Images/EcotidienArcade.png" alt="">
+          <img class="image-populaire-arcade" src="<?php echo get_template_directory_uri(); ?>/Images/Affiche-Arcade/Affiche-Hachiman.jpg" alt="">
         </div>
 
         <!-- Projet Jour de la Terre -->

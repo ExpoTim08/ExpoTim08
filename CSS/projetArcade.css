@@ -217,11 +217,13 @@ iframe {
 /********************************************** CSS Desktop ********************************************************/
 @media screen and (min-width: 994px) {
   .titre-arcade-layer {
-    font-size: 8vw;
+    font-size: 4vw;
   }
 
   .manette {
-    width: 15vw;
+    width: 10vw;
+    right: 30%;
+    bottom: 2%;
   }
 
   .infos-cours-annee {

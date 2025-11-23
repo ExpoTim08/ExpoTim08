@@ -38,17 +38,17 @@ $nom_affiche = $nom ?: 'Projet Graphisme';
     <!-- Titre du projet (avec style Graphisme) -->
     <h1 class="titre-graphisme" aria-label="<?php echo esc_attr($nom_affiche); ?>">
       <span class="titre-graphisme-layer titre-graphisme--base"><?php echo esc_html($nom_affiche); ?></span>
-      <span class="titre-graphisme-layer titre-graphisme-layer--1"><?php echo esc_html($nom_affiche); ?></span>
-      <span class="titre-graphisme-layer titre-graphisme-layer--2"><?php echo esc_html($nom_affiche); ?></span>
-      <span class="titre-graphisme-layer titre-graphisme-layer--3"><?php echo esc_html($nom_affiche); ?></span>
+      <span class="titre-graphisme-layer titre-graphisme-layer-1"><?php echo esc_html($nom_affiche); ?></span>
+      <span class="titre-graphisme-layer titre-graphisme-layer-2"><?php echo esc_html($nom_affiche); ?></span>
+      <span class="titre-graphisme-layer titre-graphisme-layer-3"><?php echo esc_html($nom_affiche); ?></span>
+      <!-- Bouton retour vers la page Graphisme -->
+      <p class="retour-graphisme">
+        <a href="<?php echo esc_url(get_permalink(get_page_by_path('graphisme'))); ?>" class="lien-retour">
+          &lt; Graphisme
+        </a>
+      </p>
+      <img class="tree" src="<?php echo get_template_directory_uri(); ?>/Images/Tree.svg" alt="">
     </h1>
-
-    <!-- Bouton retour vers la page Graphisme -->
-    <p class="retour-graphisme">
-      <a href="<?php echo esc_url(get_permalink(get_page_by_path('graphisme'))); ?>" class="lien-retour">
-        &lt; Graphisme
-      </a>
-    </p>
 
     <!-- Description -->
     <div class="description-projet">
