@@ -32,6 +32,12 @@ h1, h2 {
   margin-bottom: 5vh;
 }
 
+/* svg img pour button voir plus */
+/*.svg-action {
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;;
+}*/
+
 /*-------------- MOBILE ARCADE --------------*/
 @media screen and (max-width: 576px) {
 
@@ -321,7 +327,7 @@ h1, h2 {
     overflow: hidden;
     box-shadow: 10px 10px 0px var(--border-color-project);
     border: 2px solid var(--border-color-project);
-    margin-bottom: 70px;
+    margin-bottom: 70px;  
   }
 
   .carte-projet-arcade--desktop .conteneur-carte-haut {
@@ -356,8 +362,7 @@ h1, h2 {
     box-sizing: border-box;
     display: flex;
     flex-flow: column nowrap;
-    align-self: center;
-    
+    align-self: center; 
   }
 
   .carte-projet-arcade--desktop .carte-arcade-titre-description {
@@ -432,6 +437,7 @@ h1, h2 {
     justify-content: center;
     border-bottom: 1px solid var(--border-color);
     background-image: linear-gradient(177deg, #4032FF 11.95%, #362CB6 28.39%, #21212100 82.04%);
+    padding: 2% 10%;
   }
 
   .liste-projet-arcade {
@@ -527,7 +533,11 @@ h1, h2 {
 
   .header-container form.search-form {
     transform: translateY(0px); 
-}
+  }
+
+  main{
+    padding-bottom: 15vh;
+  }
 
   /*les projets*/
   .liste-projet-arcade {
@@ -551,7 +561,6 @@ h1, h2 {
     height: 320px;
     overflow: hidden;
     background-color: #2c2c2f;
-    margin-bottom: 70px;
   }
 
   .presentation-arcade {
@@ -576,7 +585,7 @@ h1, h2 {
 
     /* halftone + tint */
     background-image:
-      linear-gradient(rgba(64,50,255,0.06), rgba(64,50,255,0.06)),
+      linear-gradient(rgba(64,50,255,0.06), rgba(53, 40, 236, 0.272)),
       radial-gradient(circle, rgba(255,255,255,0.12) 1.5px, transparent 1px);
     background-size: auto, 12px 12px; /* change second value for dot density */
     mix-blend-mode: screen;
@@ -695,7 +704,7 @@ h1, h2 {
   white-space: nowrap;
 }
 
-/* Select (dark-friendly) */
+
 #filter-select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -714,13 +723,13 @@ h1, h2 {
   border-radius: 2px;
 }
 
-/* disabled / subtle state if needed */
+/* état désactivé / état discret si nécessaire */
 #filter-select:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-/* Focus / keyboard users */
+/* Focus / utilisateurs clavier */
 #filter-select:focus,
 .filter-bar label:focus {
   outline: 3px solid rgba(63,50,255,0.14);
@@ -729,7 +738,7 @@ h1, h2 {
   border-radius: 8px;
 }
 
-/* Compact layout for very small screens */
+/* Mise en page compacte pour très petits écrans */
 @media (max-width: 420px) {
   .filter-bar {
     gap: 0.4rem;
@@ -740,28 +749,28 @@ h1, h2 {
 
 #filter-select {
   color: var(--font-color);
-  background-color: #2f2f2f; /* matches page dark surface */
+  background-color: #2f2f2f; /* s'accorde avec la surface sombre de la page */
   -webkit-text-fill-color: var(--font-color);
 }
 
-/* General option styling (limited browser support) */
+/* Style général des <option> (support navigateurs limité) */
 #filter-select option {
   background-color: #2f2f2f;
   color: var(--font-color);
   padding: 0.25rem 0.5rem;
 }
 
-/* Selected / highlighted option */
+/* Option sélectionnée / surlignée */
 #filter-select option:checked,
 #filter-select option[selected] {
   background-color: rgba(64,50,255,0.14);
   color: #ffffff;
 }
 
-/* Hide native arrow in some browsers if you want to use a custom icon */
+/* Masquer la flèche native dans certains navigateurs si vous utilisez une icône personnalisée */
 #filter-select::-ms-expand { display: none; }
 
-/* Accessible focus ring consistent with theme */
+/* Anneau de focus accessible, cohérent avec le thème */
 #filter-select:focus {
   box-shadow: 0 0 0 4px rgba(64,50,255,0.12);
   border-color: rgba(28, 21, 139, 0.911);

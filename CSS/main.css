@@ -91,12 +91,16 @@
   --background-color-finissant: linear-gradient(177deg, #D09308 5.29%, #D09308 14.9%, #7A5C04 31.25%, #21212100 84.62%); /*Couleur de background de la catégorie finissant*/
 }
 
+/*Variables couleurs de la section recherche*/
+:root {
+  --background-color-recherche: linear-gradient(177deg, #1B77BD 11.95%, #1B77BD 28.39%, #21212100 82.04%); /*Couleur de background de la section recherche*/
+  
+  --bouton-recherche-color: #1b77bd; /*Couleur du bouton de la section recherche*/
+}
+
 h1, h2, h3, h4, h5, h6, a, .arcade-details p {
   /*font-family: var(--title-font);*/
   letter-spacing: var(--title-letter-spacing);
 }
 
-h2 {
-  letter-spacing: var(--title-letter-spacing);
-}
 

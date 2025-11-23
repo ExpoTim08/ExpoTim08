@@ -233,10 +233,11 @@
   .header-margin { height: 20px; }
 }
 
+
 /*------------- HEADER DESKTOP --------------*/
 @media screen and (min-width: 767.02px) {
 
-   body {
+  body {
     margin: 0;
   }
 
@@ -322,7 +323,7 @@
     color: var(--border-color);
     text-decoration: none;
     font-family: var(--title-font);
-    font-size: 13px;
+    font-size: 12px;
     transition: color 0.2s ease, transform 0.2s ease-out;
   }
 
@@ -341,7 +342,7 @@
     margin: 0;
     padding: 8px 0;
     border: 1px solid var(--border-color);
-    min-width: 180px;
+    min-width: 170px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     opacity: 0;
     visibility: hidden;
@@ -350,12 +351,13 @@
     z-index: 1005;
     display: flex;
     flex-direction: column;
+    translate: 0px -12px;
+    border-top: none;
   }
 
   .menu li:hover > .sub-menu {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -395,7 +397,8 @@
     padding: 4px 10px;
     background-color: #2B2B2B;
     margin-left: auto;
-    width: 200px;
+    max-width: 200px;
+    min-width: 100px;
     padding-right: 25px;
   }
 
@@ -419,17 +422,145 @@
     display: none !important;
   }
 
-  /* Centrer la barre de recherche dans le header desktop, partout */
-header form.search-form {
-  margin-left: auto;
-  margin-right: auto;      /* centre horizontalement */
-  place-self: unset;       /* annule tout place-self venant d'autres styles */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    /* Centrer la barre de recherche dans le header desktop, partout */
+  header form.search-form {
+    margin-left: auto;
+    margin-right: auto;      /* centre horizontalement */
+    place-self: unset;       /* annule tout place-self venant d'autres styles */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  
+  @media screen and (min-width: 767.02px) and (max-width: 1024px) {
+
+    .menu li a{
+      font-size: 10px;
+    }
+
+    /* --- Search bar --- */
+    form.search-form {
+      display: flex;
+      align-items: center;
+      border: 1px solid #444;
+      padding: 4px 10px;
+      background-color: #2B2B2B;
+      margin-left: auto;
+      width: 200px;
+      padding-right: 25px;
+    }
+
+    .menu-search-desktop {
+      position: absolute;
+      right: 3em;
+      z-index: 1010;
+    }
+
+    /* --- Expanding search styles (collapsed by default, expanded when JS adds .expanded) --- */
+    .menu-search-desktop .search-form {
+      /* smoother, GPU-driven transitions */
+      transition: width 420ms cubic-bezier(.16,.84,.24,1),
+                  padding 340ms cubic-bezier(.16,.84,.24,1),
+                  box-shadow 300ms cubic-bezier(.16,.84,.24,1),
+                  background-color 260ms ease,
+                  border-radius 260ms ease;
+      width: 70vw; /* expanded target width */
+      max-width: 680px;
+      box-sizing: border-box;
+      overflow: visible;
+      border-radius: 8px;
+      background-clip: padding-box;
+      position: relative;
+      /* reserve space on the right for the fixed icon so it doesn't shift */
+      padding-right: 44px;
+      will-change: width, box-shadow, transform, opacity;
+      transform: translateZ(0); /* promote to its own layer */
+    }
+
+    /* collapsed: small rounded pill with only icon visible */
+    .menu-search-desktop .search-form.collapsed {
+      width: 40px;
+      padding-left: 6px;
+      padding-right: 6px;
+      border-radius: 20px;
+      background: transparent;
+      border: none;
+    }
+
+    /* animate the input using transform (scaleX) and opacity for smooth GPU-accelerated animation */
+    .menu-search-desktop .search-form .search-field {
+      display: inline-block;
+      transform-origin: left center;
+      transition: transform 360ms cubic-bezier(.22,.9,.2,1),
+                  opacity 240ms cubic-bezier(.2,.8,.2,1),
+                  padding 220ms ease;
+      transform: scaleX(1);
+      opacity: 1;
+      width: calc(100% - 52px);
+      padding-left: 8px;
+      box-sizing: border-box;
+      will-change: transform, opacity;
+      backface-visibility: hidden;
+    }
+
+    /* closed input: scaleX close to 0 (avoid exact 0) and fade out */
+    .menu-search-desktop .search-form.collapsed .search-field {
+      opacity: 0;
+      padding: 0;
+      pointer-events: none;
+    }
+
+    .menu-search-desktop .search-form button {
+      width: 32px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border-radius: 6px;
+      z-index: 3;
+      /* keep the icon visually fixed — pin it to the right inside the form */
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    /* when expanded, add a gentle shadow and ensure input is interactive */
+    .menu-search-desktop .search-form.expanded {
+      width: 70vw;
+      padding-left: 12px;
+      /* maintain reserved space for the pinned icon while expanded */
+      padding-right: 0px;
+      border-radius: 9px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.32);
+      background-color: rgba(30,30,30,0.98);
+    }
+
+    .menu-search-desktop .search-form.expanded .search-field {
+      transform: scaleX(1);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Tablet-specific: make the top-level menu indicator (square) a bit smaller
+       and adjust left/padding so it remains aligned visually on tablet widths */
+    .menu > li > a::before {
+      width: 4px;
+      height: 4px;
+    }
+
+    .menu > li > a {
+      padding-left: 24px;
+    }
+
+    .menu-page {
+      padding-right: 4em;
+    }
+  }
 }
-}
-/*------------- FIN HEADER DESKTOP --------------*/
+
 
 /* ------------------- Indicateur carré niveau supérieur (CSS uniquement) ------------------- */
 /* Affiche un petit indicateur carré uniquement pour les liens du menu de premier niveau
@@ -518,5 +649,7 @@ header form.search-form {
   .menu > li > a::before { left: 12px; }
   .menu > li > a { padding-left: 36px; }
 }
+
+
 
 
