@@ -32,6 +32,12 @@ h1, h2 {
   margin-bottom: 5vh;
 }
 
+/* svg img pour button voir plus */
+/*.svg-action {
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;;
+}*/
+
 /*-------------- MOBILE ARCADE --------------*/
 @media screen and (max-width: 576px) {
 
@@ -698,7 +704,7 @@ h1, h2 {
   white-space: nowrap;
 }
 
-/* Select (dark-friendly) */
+
 #filter-select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -717,13 +723,13 @@ h1, h2 {
   border-radius: 2px;
 }
 
-/* disabled / subtle state if needed */
+/* état désactivé / état discret si nécessaire */
 #filter-select:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-/* Focus / keyboard users */
+/* Focus / utilisateurs clavier */
 #filter-select:focus,
 .filter-bar label:focus {
   outline: 3px solid rgba(63,50,255,0.14);
@@ -732,7 +738,7 @@ h1, h2 {
   border-radius: 8px;
 }
 
-/* Compact layout for very small screens */
+/* Mise en page compacte pour très petits écrans */
 @media (max-width: 420px) {
   .filter-bar {
     gap: 0.4rem;
@@ -743,28 +749,28 @@ h1, h2 {
 
 #filter-select {
   color: var(--font-color);
-  background-color: #2f2f2f; /* matches page dark surface */
+  background-color: #2f2f2f; /* s'accorde avec la surface sombre de la page */
   -webkit-text-fill-color: var(--font-color);
 }
 
-/* General option styling (limited browser support) */
+/* Style général des <option> (support navigateurs limité) */
 #filter-select option {
   background-color: #2f2f2f;
   color: var(--font-color);
   padding: 0.25rem 0.5rem;
 }
 
-/* Selected / highlighted option */
+/* Option sélectionnée / surlignée */
 #filter-select option:checked,
 #filter-select option[selected] {
   background-color: rgba(64,50,255,0.14);
   color: #ffffff;
 }
 
-/* Hide native arrow in some browsers if you want to use a custom icon */
+/* Masquer la flèche native dans certains navigateurs si vous utilisez une icône personnalisée */
 #filter-select::-ms-expand { display: none; }
 
-/* Accessible focus ring consistent with theme */
+/* Anneau de focus accessible, cohérent avec le thème */
 #filter-select:focus {
   box-shadow: 0 0 0 4px rgba(64,50,255,0.12);
   border-color: rgba(28, 21, 139, 0.911);

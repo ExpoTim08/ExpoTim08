@@ -783,7 +783,6 @@ p, .recherche-resultats, .aucun-projet {
  
 }
 
-
   .projet-card::after {
     content: "";
     position: absolute;
@@ -796,8 +795,10 @@ p, .recherche-resultats, .aucun-projet {
     mix-blend-mode: screen;
     opacity: 0;
     transform: translateY(6px);
-    transition: opacity 260ms ease,
-                transform 260ms cubic-bezier(.2, .8, .2, 1);
+    /* animation plus fluide */
+    transition: opacity 360ms cubic-bezier(.16,.84,.24,1),
+          transform 360ms cubic-bezier(.16,.84,.24,1);
+    will-change: opacity, transform;
     -webkit-mask-image: linear-gradient(to top,
       rgba(0,0,0,1) 0%,
       rgba(0,0,0,0.4) 50%,
@@ -821,6 +822,17 @@ p, .recherche-resultats, .aucun-projet {
     border-radius: 14px;
     color: thistle;
   }
+
+  /* Transitions animations pour les .projet-card avec ::after */
+  .projet-card {
+    transition: transform 360ms cubic-bezier(.16,.84,.24,1),
+                box-shadow 360ms cubic-bezier(.16,.84,.24,1),
+                border-radius 360ms cubic-bezier(.16,.84,.24,1),
+                color 240ms ease;
+    will-change: transform, box-shadow, border-radius, color;
+  }
+
+
 
   .recherche-section {
   background-image: var(--background-color-recherche);  
