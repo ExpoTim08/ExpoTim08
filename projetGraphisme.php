@@ -50,18 +50,13 @@ $nom_affiche = $nom ?: 'Projet Graphisme';
       </a>
     </p>
 
+    <!-- Description -->
+    <div class="description-projet">
+
     <!-- Image du projet -->
     <?php if ($image && !empty($image['url'])): ?>
       <div class="image-projet">
         <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($nom_affiche); ?>" class="image-projet-graphisme">
-      </div>
-    <?php endif; ?>
-
-    <!-- Description -->
-    <?php if ($description): ?>
-      <div class="conteneur-description-graphisme">
-        <p class="description-titre">Description</p>
-        <p class="description-texte"><?php echo esc_html($description); ?></p>
       </div>
     <?php endif; ?>
 
@@ -74,12 +69,22 @@ $nom_affiche = $nom ?: 'Projet Graphisme';
         foreach ($etudiants as $etudiant) {
           $prenom = get_field('prenom', $etudiant->ID);
           $nomEtu = get_field('nom_etudiant', $etudiant->ID);
-          $liste[] = esc_html(trim("$prenom $nomEtu"));
+          $fullName = trim("$prenom $nomEtu");
+
+          $liste[] = '<span class="nom-etudiant">' . esc_html($fullName) . '</span>';
         }
         echo implode(', ', $liste);
         ?>
       </div>
     <?php endif; ?>
+
+    <?php if ($description): ?>
+      <div class="conteneur-description">
+        <p class="description-titre">Description</p>
+        <p class="description-texte"><?php echo esc_html($description); ?></p>
+      </div>
+    <?php endif; ?>
+    </div>
 
     <!-- Infos cours / année -->
     <div class="infos-cours-annee">

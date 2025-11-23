@@ -369,32 +369,26 @@
   .carroussel-apropos img:nth-child(3) { --start-angle: 240deg; }
 
   @keyframes spin {
-    /* Image 1 — stay still */
     0%, 20% {
     transform: rotateY(var(--start-angle));
     }
 
-    /* Transition toward image 2 */
     33% {
       transform: rotateY(calc(var(--start-angle) + 120deg));
     }
 
-    /* Pause on image 2 */
     33%, 53% {
       transform: rotateY(calc(var(--start-angle) + 120deg));
     }
 
-    /* Transition toward image 3 */
     66% {
       transform: rotateY(calc(var(--start-angle) + 240deg));
     }
 
-    /* Pause on image 3 */
     66%, 86% {
       transform: rotateY(calc(var(--start-angle) + 240deg));
     }
 
-    /* Return to starting image 1 */
     100% {
       transform: rotateY(calc(var(--start-angle) + 360deg));
     }
@@ -952,15 +946,6 @@
     right: 40%;
   }
 
-  .carroussel-apropos img {
-    height: 40vh;
-    transform: scale(4);
-    width: 30vw;
-    border: 2px solid var(--border-color);
-    top: 5%;
-    z-index: 1;
-  }
-
   .a-propos > .sous-titre {
     font-size: 40px;
     font-family: var(--title-font);
@@ -979,8 +964,8 @@
     position: absolute;
     top: 20%;
     left: 50%;
-    width: 220px;
-    height: 220px;
+    width: 30em;
+    height: 30em;
     object-fit: cover;
     border-radius: 12px;
     transform-style: preserve-3d;
