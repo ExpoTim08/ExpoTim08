@@ -47,9 +47,26 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    margin-top: 5px;
+    /* Le motif est rendu via ::before pour n'affecter que le fond (permets un masque dégradé) */
+  }
+
+  .carroussel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
     background-image: url("data:image/svg+xml,%3Csvg width='25%25' height='25%25' opacity='0.1' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 7.8C3 6.11984 3 5.27976 3.32698 4.63803C3.6146 4.07354 4.07354 3.6146 4.63803 3.32698C5.27976 3 6.11984 3 7.8 3H16.2C17.8802 3 18.7202 3 19.362 3.32698C19.9265 3.6146 20.3854 4.07354 20.673 4.63803C21 5.27976 21 6.11984 21 7.8V16.2C21 17.8802 21 18.7202 20.673 19.362C20.3854 19.9265 19.9265 20.3854 19.362 20.673C18.7202 21 17.8802 21 16.2 21H7.8C6.11984 21 5.27976 21 4.63803 20.673C4.07354 20.3854 3.6146 19.9265 3.32698 19.362C3 18.7202 3 17.8802 3 16.2V7.8Z' stroke='white' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     background-repeat: repeat;
-    background-size: 40px;
+    background-size: 40px 40px;
+    /* Masque pour faire un fondu descendant uniquement sur le motif */
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.45) 70%, rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.45) 60%, rgba(0,0,0,0) 100%);
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
   }
 
   #image-carroussel {
@@ -306,11 +323,33 @@
 
 
 /*************************************** CSS Section À Propos ******************************************************/
-
+/*
 .a-propos-background, .partenaires {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' viewBox='0 0 800 800' opacity='0.38' width='800' height='800'%3E%3Cg stroke-width='3' stroke='hsla(0, 0%25, 100%25, 1.00)' fill='none'%3E%3Crect width='400' height='400' x='0' y='0'%3E%3C/rect%3E%3Crect width='400' height='400' x='400' y='0'%3E%3C/rect%3E%3Crect width='400' height='400' x='800' y='0'%3E%3C/rect%3E%3Crect width='400' height='400' x='0' y='400'%3E%3C/rect%3E%3Crect width='400' height='400' x='400' y='400'%3E%3C/rect%3E%3Crect width='400' height='400' x='800' y='400'%3E%3C/rect%3E%3Crect width='400' height='400' x='0' y='800'%3E%3C/rect%3E%3Crect width='400' height='400' x='400' y='800'%3E%3C/rect%3E%3Crect width='400' height='400' x='800' y='800'%3E%3C/rect%3E%3C/g%3E%3C/svg%3E");
     background-repeat: repeat;
     background-size: 40px;
+  }*/
+
+  .a-propos-background, .partenaires {
+    position: relative; /* conteneur pour le pseudo-élément motif */
+  }
+
+  .a-propos-background::before,
+  .partenaires::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' viewBox='0 0 800 800' opacity='0.38' width='800' height='800'%3E%3Cg stroke-width='3' stroke='hsla(0, 0%25, 100%25, 1.00)' fill='none'%3E%3Crect width='400' height='400' x='0' y='0'%3E%3C/rect%3E%3Crect width='400' height='400' x='400' y='0'%3E%3C/rect%3E%3Crect width='400' height='400' x='800' y='0'%3E%3C/rect%3E%3Crect width='400' height='400' x='0' y='400'%3E%3C/rect%3E%3Crect width='400' height='400' x='400' y='400'%3E%3C/rect%3E%3Crect width='400' height='400' x='800' y='400'%3E%3C/rect%3E%3Crect width='400' height='400' x='0' y='800'%3E%3C/rect%3E%3Crect width='400' height='400' x='400' y='800'%3E%3C/rect%3E%3Crect width='400' height='400' x='800' y='800'%3E%3C/rect%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 40px 40px;
+    z-index: 0;
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.45) 60%, rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.45) 60%, rgba(0,0,0,0) 100%);
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
   }
 
   .a-propos-background {
@@ -418,7 +457,7 @@
     width: 60vw;
     text-align: left;
     border: 1px solid var(--border-color);
-    background-color: rgb(38 36 36);
+    background-color: rgba(38, 36, 36, 0.415);
     padding: 2em;
   }
 
@@ -429,6 +468,9 @@
     background-color: var(--font-color);
     color: black;
     border-radius: 5px;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 12px;
   }
 
 /********************************** CSS Section Projets Populaire **********************************/
@@ -685,7 +727,12 @@
     height: 100%;
   }
 
-  /******************************** CSS Section Carroussel Tablette **************************************************/
+  /******************************** CSS Section Carroussel **************************************************/
+
+  .carroussel {
+      margin-top: 0px;
+  }
+
   .arcade-details > .description {
     background-color: #2b2b2bc1;
     font-weight: bold;
@@ -856,7 +903,7 @@
   /*margin: 30px 0 0 0; top 50px, left 5vw pour le décalage vers la gauche */
   padding: 30px 0 0 0;
   border-top: none;
-  width: 100vw;
+  width: 100%;
   background-size: 40px;
 }
 
@@ -961,7 +1008,7 @@
 .bouton-arcade > .arcade,
 .bouton-graphisme > .jour-terre,
 .bouton-finissants > .finissants {
-  font-size: clamp(1rem, 2vw, x-large); /* taille min 1rem, idéale 2vw, max x-large */
+  font-size: clamp(1rem, 2vw, 1.44rem); /* taille min 1rem, idéale 2vw, max x-large */
   margin: 0;
 }
 
@@ -1133,7 +1180,8 @@
 
   .carroussel-apropos {
     right: 20vw;
-    scale: 1.3;
+    transform-origin: center center;
+    transform: scale(calc(clamp(220px, 25vw, 440px) / 300px));
   }
 
   .carroussel-apropos img {
@@ -1151,12 +1199,15 @@
   }
 
   .a-propos > .description {
-    width: 20vw;
-    font-size: 1.3vw;
+    width: 30vw;
+    font-size: clamp(17px, 1.3vw, 1.24vw);
     justify-items: end;
     text-align: left;
-    margin-left: 30rem;
+    /*margin-left: 33vw;*/
     margin-top: -16rem;
+    padding-left: 40vw;
+    border: none;
+    background-color: #1b1b1b8c;
   }
 
   .carroussel-apropos img {
@@ -1171,6 +1222,11 @@
     transform-origin: center center -180px; 
     animation: spin 10s linear infinite;
     border: 2px solid var(--border-color);
+  }
+
+  .infos-a-propos > * {
+    background-color: #f1e2cccc;
+    margin-top: 20px;
   }
 
   /******************************** CSS Section Projets Populaire Desktop ********************************************/

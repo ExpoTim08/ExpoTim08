@@ -431,6 +431,7 @@ h1, h2 {
     justify-content: center;
     border-bottom: 1px solid var(--border-color);
     background-image: linear-gradient(177deg, #4032FF 11.95%, #362CB6 28.39%, #21212100 82.04%);
+    padding: 2% 10%;
   }
 
   .liste-projet-arcade {
