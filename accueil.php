@@ -48,6 +48,7 @@ get_header();
     <!-------------------------------- Accroche -------------------------------->
     <div class="accroche-conteneur">
       <p class="numeration">1234567</p>
+      <p class="numeration-short">123</p>
       <div class="ligne-parallele"></div>
       <p class="accroche">Découvrez l’univers créatif des étudiants de la Technique d’intégration multimédia!</p>
     </div>
@@ -62,6 +63,11 @@ get_header();
           <img class="image-a-propos3" src="<?php echo get_template_directory_uri(); ?>/Images/Arcade-404-3.png" alt="">
         </div>
         <p class="description">« TimVision », c’est la grande célébration annuelle qui met en lumière la diversité et la qualité des projets réalisés par les étudiants. De la première à la troisième année, une exposition unique vous attend : jeux vidéo, sites web, expériences interactives, concepts visuels et bien plus encore. Venez à la rencontre du talent, de l’audace et de l’innovation de la relève. </p>
+        <div class="infos-a-propos">
+          <p id="date">Date:</p>
+          <p id="heure">Heure:</p>
+          <p id="lieu">Lieu:</p>
+        </div>
       </div>
     </div>
 
@@ -112,32 +118,42 @@ get_header();
       <h1>Crédits</h1>
       <div class="cartes">
         <div class="carte-equipe">
-          <span class="photo"></span>
-          <span class="nom">Nom</span>
+          <span class="photo">
+            <img class="img-personne" src="<?php echo get_template_directory_uri(); ?>/Images/PlaceholderPersonne.png" alt="Photo de Lîna Bensenouci">
+          </span>
+          <span class="nom">Lîna Bensenouci</span>
           <span class="role">Rôle</span>
           <span class="petits-carre"></span>
         </div>
         <div class="carte-equipe-2">
           <span class="photo"></span>
-          <span class="nom">Nom</span>
+          <span class="nom">Peterson Germain</span>
           <span class="role">Rôle</span>
-          <span class="petits-carre"></span>
+          <span class="petits-carre">
+            <img class="img-personne" src="<?php echo get_template_directory_uri(); ?>/Images/PlaceholderPersonne.png" alt="Photo de Peterson Germain">
+          </span>
         </div>
         <div class="carte-equipe-3">
-          <span class="photo"></span>
-          <span class="nom">Nom</span>
+          <span class="photo">
+            <img class="img-personne" src="<?php echo get_template_directory_uri(); ?>/Images/PlaceholderPersonne.png" alt="Photo de Matilda Kang">
+          </span>
+          <span class="nom">Matilda Kang</span>
           <span class="role">Rôle</span>
           <span class="petits-carre"></span>
         </div>
         <div class="carte-equipe-4">
           <span class="photo"></span>
-          <span class="nom">Nom</span>
+          <span class="nom">Rémy Roger</span>
           <span class="role">Rôle</span>
-          <span class="petits-carre"></span>
+          <span class="petits-carre">
+            <img class="img-personne" src="<?php echo get_template_directory_uri(); ?>/Images/PlaceholderPersonne.png" alt="Photo de Rémy Roger">
+          </span>
         </div>
         <div class="carte-equipe-5">
-          <span class="photo"></span>
-          <span class="nom">Nom</span>
+          <span class="photo">
+            <img class="img-personne" src="<?php echo get_template_directory_uri(); ?>/Images/PlaceholderPersonne.png" alt="Photo de Alexis David">
+          </span>
+          <span class="nom">Alexis David</span>
           <span class="role">Rôle</span>
           <span class="petits-carre"></span>
         </div>

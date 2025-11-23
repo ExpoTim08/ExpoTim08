@@ -552,6 +552,10 @@ h1, h2 {
     width: 80%;
     max-width: none;
   }
+  
+  main{
+    padding-bottom: 15vh;
+  }
 }
 
 /*-------------- Effet halftone + hover carte graphisme desktop --------------*/
@@ -563,7 +567,7 @@ h1, h2 {
 
     /* halftone + tint */
     background-image:
-      linear-gradient(rgba(0,151,143,0.06), rgba(0,151,143,0.06)),
+      linear-gradient(rgba(0,151,143,0.06), rgba(11, 171, 163, 0.194)),
       radial-gradient(circle, rgba(255,255,255,0.12) 1.5px, transparent 1px);
     background-size: auto, 12px 12px; /* change second value for dot density */
     mix-blend-mode: screen;
@@ -594,7 +598,6 @@ h1, h2 {
                 border-radius 260ms ease;
     will-change: transform, box-shadow;
     transform-origin: center;
-    margin-bottom: 70px;
   }
 
   .carte-projet-graphisme--desktop:hover::after {

@@ -200,8 +200,6 @@ function truncate_no_cut($text, $max_chars = 200) {
                             <a href="<?php echo esc_url($lien_projet); ?>">
                                 <img src="<?php echo esc_url($data['image']); ?>" alt="<?php echo esc_attr($data['title']); ?>">
                             </a>
-                            <!-- Toggle button positioned inside the figure (bottom-right) -->
-                            <button class="button-toggle-desc" aria-expanded="false" aria-controls="desc-<?php echo $data['id']; ?>">Détails</button>
                         </figure>
 
                         <!-- Actions container keeps the 'voir projet' button (navigation) -->
@@ -216,17 +214,21 @@ function truncate_no_cut($text, $max_chars = 200) {
                                 <?php echo esc_html($data['title']); ?>
                             </a>
                         </h2>
-                        <?php if (!empty($data['desc'])): ?>
-                            <p id="desc-<?php echo $data['id']; ?>" class="projet-description"><?php echo esc_html(truncate_no_cut($data['desc'], 200)); ?></p>
-                        <?php endif; ?>
 
                         <?php if (!empty($data['etudiants'])): ?>
                             <p class="projet-equipe">
                                 <strong>Équipe :</strong>
                                 <?php echo esc_html(implode(', ', $data['etudiants'])); ?>
                             </p>
-                        <?php endif; ?>
+                        <?php endif; ?>                        
 
+                        <!-- Toggle button positioned inside the figure (bottom-right) -->
+                        <div class="projet-toggle-desc">
+                            <button class="button-toggle-desc" aria-expanded="false" aria-controls="desc-<?php echo $data['id']; ?>">+</button>
+                        </div>
+                        <?php if (!empty($data['desc'])): ?>
+                        <p id="desc-<?php echo $data['id']; ?>" class="projet-description"><?php echo esc_html(truncate_no_cut($data['desc'], 200)); ?></p>
+                        <?php endif; ?>
                     </section>
 
                 </article>

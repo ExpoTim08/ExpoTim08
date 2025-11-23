@@ -321,7 +321,7 @@ h1, h2 {
     overflow: hidden;
     box-shadow: 10px 10px 0px var(--border-color-project);
     border: 2px solid var(--border-color-project);
-    margin-bottom: 70px;
+    margin-bottom: 70px;  
   }
 
   .carte-projet-arcade--desktop .conteneur-carte-haut {
@@ -356,8 +356,7 @@ h1, h2 {
     box-sizing: border-box;
     display: flex;
     flex-flow: column nowrap;
-    align-self: center;
-    
+    align-self: center; 
   }
 
   .carte-projet-arcade--desktop .carte-arcade-titre-description {
@@ -527,7 +526,11 @@ h1, h2 {
 
   .header-container form.search-form {
     transform: translateY(0px); 
-}
+  }
+
+  main{
+    padding-bottom: 15vh;
+  }
 
   /*les projets*/
   .liste-projet-arcade {
@@ -551,7 +554,6 @@ h1, h2 {
     height: 320px;
     overflow: hidden;
     background-color: #2c2c2f;
-    margin-bottom: 70px;
   }
 
   .presentation-arcade {
@@ -576,7 +578,7 @@ h1, h2 {
 
     /* halftone + tint */
     background-image:
-      linear-gradient(rgba(64,50,255,0.06), rgba(64,50,255,0.06)),
+      linear-gradient(rgba(64,50,255,0.06), rgba(53, 40, 236, 0.272)),
       radial-gradient(circle, rgba(255,255,255,0.12) 1.5px, transparent 1px);
     background-size: auto, 12px 12px; /* change second value for dot density */
     mix-blend-mode: screen;

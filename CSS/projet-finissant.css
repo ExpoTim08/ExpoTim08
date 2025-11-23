@@ -38,6 +38,10 @@ h1, h2 {
     margin: 0;
   }
 
+  .pattern-background {
+    background-attachment: scroll;
+  }
+
   .border {
     position: fixed;
     top: 0;

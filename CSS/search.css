@@ -32,6 +32,10 @@ h1, h2, a {
   font-family: var(--title-font);
 }
 
+p, .recherche-resultats, .aucun-projet {
+  color: var(--font-color);
+  font-family: var(--general-font);
+}
 
 
 .titre-recherche-base { -webkit-text-fill-color: var(--title-color); }
@@ -39,15 +43,11 @@ h1, h2, a {
 .titre-recherche-layer--2 { opacity: 0.5; }
 .titre-recherche-layer--3 { opacity: 0.3; }
 
-.recherche-resultats,
-.aucun-projet {
-  color: var(--font-color);
-  font-family: var(--general-font);
-}
-
 .aucun-projet {
   display: flex;
   justify-content: center;
+  margin: 0;
+  padding: 2rem;
 }
 
 
@@ -58,10 +58,8 @@ h1, h2, a {
 
 /* ---------------- Mobile ---------------- */
 @media screen and (max-width: 576px) {
-
- 
   .recherche-section {
-  background-image: linear-gradient(177deg, #1b77bd 11.95%, #1b77bd 28.39%, #21212100 82.04%);
+  background-image: var(--background-color-recherche);
   border: 1px solid var(--border-color-side);
   display: flex;
   align-items: center;
@@ -161,12 +159,16 @@ h1, h2, a {
     border-top-right-radius: 8px;
     z-index: 12;
     box-sizing: border-box;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
   }
 
   .projet-actions {
     position: absolute;
-    top: 0.35rem;
-    right: 0.5rem;
+    top: 0.2rem;
+    right: 0rem;
     z-index: 14;
     display: flex !important;
     justify-content: flex-end;
@@ -178,8 +180,8 @@ h1, h2, a {
   .button-voir-projet {
     display: inline-flex !important;
     align-items: center;
-    background: #1b77bd;
-    border: 1px solid var(--border-color-project);
+    background: var(--bouton-recherche-color);
+    border: 2px solid var(--border-color-project);
     color: var(--font-color);
     padding: 0.3rem 0.6rem;
     cursor: pointer;
@@ -198,21 +200,30 @@ h1, h2, a {
     display: block !important;
   }
 
+  .projet-toggle-desc {
+    width: 100%;
+    border: 2px solid var(--border-color-project);
+    border-left: none;
+    border-right: none;
+    justify-content: end;
+    display: flex;
+  }
+
   /* Toggle button (mobile only) */
   .button-toggle-desc {
     display: flex;
-    margin-top: 5px;
-    justify-content: center;
-    background: #1b77bd;
+    justify-content: flex-end;
+    background: var(--bouton-recherche-color);
     font-family: var(--general-font);
-    border: 1px solid rgba(0, 0, 0, 0.08);
     color: var(--font-color);
     padding: 0.2rem 0.45rem;
     cursor: pointer;
-    height: 32px;
     font-size: 0.85rem;
-    margin-right: 0.4rem;
     box-sizing: border-box;
+    border-top: none;
+    border-bottom: none;
+    border-right: none;
+    border-left: 2px solid var(--border-color-project);
   }
   
   /* keep the 'voir projet' button visually at the top-right of the title (mobile only)
@@ -241,7 +252,6 @@ h1, h2, a {
 
 .projet-section {
   display: block !important;
-  padding: 0.5rem 0.6rem;
   box-sizing: border-box;
 }
 
@@ -252,6 +262,13 @@ h1, h2, a {
   color: var(--font-color);
 }
 
+.projet-description {
+  padding: 1em;
+}
+
+.projet-equipe {
+  margin: 0 1em;
+}
 /* Actions container: place button under the image, centered */
 .projet-actions {
   display: flex !important;
@@ -262,6 +279,8 @@ h1, h2, a {
 }
 
 .projet-card { position: relative; }
+
+
 .border {
     position: fixed;
     background: var(--border-color-side);
@@ -282,13 +301,23 @@ h1, h2, a {
     height: 100%;
   }
 
+  .projet-equipe {
+    margin-top: 1rem;
+    color: var(--font-color);
+    font-size: 0.9rem;
+    font-family: var(--general-font);
+    font-weight: 200;
+    font-style: italic;
+    opacity: 0.9;
+  }
+
 }
 
 /* ---------------- Tablet ---------------- */
-@media screen and (min-width: 577px) and (max-width: 1023px) {
+@media screen and (min-width: 576.02px) and (max-width: 1023px) {
 
   .recherche-section {
-  background-image: linear-gradient(177deg, #1b77bd 11.95%, #1b77bd 28.39%, #21212100 82.04%);
+  background-image: var(--background-color-recherche);
   border: 1px solid var(--border-color-side);
   display: flex;
   align-items: center;
@@ -348,8 +377,8 @@ h1, h2, a {
 
   .projet-card {
     margin-top: 30px;
-    width: 100%;
-    max-width: 500px;
+    width: 80vw;
+    max-width: 600px;
     height: 360px;
     position: relative;
     background: var(--background-color);
@@ -367,7 +396,180 @@ h1, h2, a {
     align-items: center;
     box-sizing: border-box;
     background: var(--background-color);
-    width: 230px;
+  }
+
+  .projet-figure img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  .projet-figure a {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+
+  .projet-actions {
+    position: absolute;
+    bottom: 0rem;
+    right: 0rem;
+    z-index: 20;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .button-voir-projet {
+    border-radius: 0;
+    border: 1px solid var(--border-color-project);
+    border-bottom: none;
+    border-right: none;
+    width: 40px;
+    height: 40px;
+    background-color: var(--bouton-recherche-color);
+  }
+
+  .projet-title, .projet-description {
+    margin: 0;
+  }
+
+  .projet-section {
+    flex: 1 1 40%;
+    padding: 0.6rem 0.8rem 0.6rem 0.4rem;
+    overflow: auto;
+    display: flex;
+    flex-direction: column; 
+    padding: 2rem;
+    height: min-content;
+    place-self: center;
+  }
+
+  .projet-equipe {
+    margin-top: 1rem;
+    color: var(--font-color);
+    font-size: 0.9rem;
+    font-family: var(--general-font);
+    font-weight: 200;
+    font-style: italic;
+    opacity: 0.9;
+  }
+}
+
+/* ---------------- Laptop/petit écran ---------------- */
+@media screen and (min-width: 1023.02px) and (max-width: 1300px) {
+  .recherche-section {
+  background-image: var(--background-color-recherche);
+  border: 1px solid var(--border-color-side);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  padding: 3rem;
+  margin-left: 2em;
+  margin-right: 2em;
+}
+
+.titre-recherche {
+  color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(16px, 10vw, 50px);
+  text-transform: uppercase;
+  margin: 0;
+  font-weight: lighter;
+  -webkit-text-stroke-width: 0.7px;
+  -webkit-text-stroke-color: #fff;
+  line-height: 0.65;
+}
+
+  .titre-recherche {
+    font-size: clamp(18px, 10vw, 40px);
+    
+  }
+  .border {
+    position: fixed;
+    background: var(--border-color-side);
+    z-index: 9999;
+  }
+
+  .border.gauche {
+    top: 0;
+    left: 2em;
+    width: 1px;
+    height: 100%;
+  }
+
+  .border.droite {
+    top: 0;
+    right: 2em;
+    width: 1px;
+    height: 100%;
+  }
+
+  .results-container {
+    padding: 7vh 0 15vh 0;
+  }
+
+  .projets-grid {
+    grid-template-columns: 1fr; /* force single column on tablet */
+    justify-items: center;
+    gap: 1rem;
+  }
+
+  .projet-card {
+    margin-top: 30px;
+    width: 70vw;
+    max-width: 800px;
+    height: 320px;
+    position: relative;
+    background: var(--background-color);
+    display: flex;
+    box-shadow: 10px 10px 0px var(--border-color-project);
+    align-items: stretch;
+    box-sizing: border-box;
+    border: 2px solid var(--border-color-project);
+    overflow: hidden;
+  }
+
+  /* position the 'voir projet' control at bottom-right for large screens */
+  .projet-actions {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 20;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .button-voir-projet {
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0;
+    border: 1px solid var(--border-color-project);
+    border-right: none;
+    border-bottom: none;
+    background: var(--bouton-recherche-color);
+  }
+
+  .projet-figure {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    background: var(--background-color);
   }
 
   .projet-figure img {
@@ -385,17 +587,33 @@ h1, h2, a {
 
   .projet-section {
     flex: 1 1 40%;
-    padding: 0.6rem 0.8rem 0.6rem 0.4rem;
+    padding: 2rem;
     overflow: auto;
-    background: linear-gradient(90deg, rgba(255,255,255,0.02), transparent);
     display: flex;
     flex-direction: column;
-    
+    height: min-content;
+    place-self: center;
+
+  }
+
+  .projet-title, .projet-description, .projet-equipe {
+    margin: 0;
+  }
+
+  .projet-equipe {
+    margin-top: 1rem;
+    color: var(--font-color);
+    font-size: 0.9rem;
+    font-family: var(--general-font);
+    font-weight: 200;
+    font-style: italic;
+    opacity: 0.9;
   }
 }
 
-/* ---------------- Desktop ---------------- */
-@media screen and (min-width: 1300px) {
+
+/* ---------------- Desktop/Grand écran ---------------- */
+@media screen and (min-width: 1300.02px) {
   .border {
     position: fixed;
     background: var(--border-color-side);
@@ -415,8 +633,12 @@ h1, h2, a {
     width: 1px;
     height: 100%;
   }
+
+  .results-container {
+    padding: 15vh 0;
+  }
   .recherche-section {
-  background-image: linear-gradient(177deg, #1b77bd 11.95%, #1b77bd 28.39%, #21212100 82.04%);
+  background-image: var(--background-color-recherche);
   border: 1px solid var(--border-color-side);
   display: flex;
   align-items: center;
@@ -444,19 +666,18 @@ h1, h2, a {
 
   .projets-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(320px, 1fr));
-    justify-items: center;
+    grid-template-columns: repeat(2, minmax(0, 0.4fr));
+    gap: 5rem;
+    row-gap: 6rem;
     width: 100%;
-    padding-top: 3em;
-    margin-bottom: 20px;
-    
+    margin: 0 auto;
+    align-items: start;
+    justify-content: center;
   }
 
   .projet-card {
-    margin-top: 50px;
     width: 100%;
-    max-width: 600px;
-    height: 360px;
+    height: 320px;
     position: relative;
     background: var(--background-color);
     display: flex;
@@ -465,9 +686,103 @@ h1, h2, a {
     box-sizing: border-box;
     border: 2px solid var(--border-color-project);
     overflow: hidden;
-    margin-bottom: 70px;
-  
   }
+
+  .projet-figure {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    background: var(--background-color);
+    width: 230px;
+    
+  }
+
+  .projet-figure img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    
+
+  }
+
+  .projet-figure a {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    width: 230px;
+
+  }
+
+  .projet-section {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    height: min-content;
+    align-self: center;
+    padding: 2rem;
+    padding-left: 0px;
+  }
+
+  .projet-title {
+    font-size: 1.1rem;
+    color: var(--font-color);
+    margin-bottom: 0px;
+  }
+
+  .projet-description {
+    margin: 0;
+    color: var(--font-color);
+    line-height: 1.45;
+    font-size: 0.95rem;
+    font-family: var(--general-font);
+    flex: 1 1 auto;
+    overflow: auto;
+  }
+
+  .projet-equipe {
+    margin-top: 1rem;
+    color: var(--font-color);
+    font-size: 0.9rem;
+    font-family: var(--general-font);
+    font-weight: 200;
+    font-style: italic;
+    opacity: 0.9;
+  }
+
+  .projet-actions {
+    /* place the action button at the bottom-right of the card on large screens */
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 20;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .button-voir-projet {
+    background: var(--bouton-recherche-color);
+    border: 1px solid var(--border-color-project);
+    border-right: none;
+    border-bottom: none;
+    color: var(--font-color);
+    padding: 0.4rem 0.6rem;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+    
+  }
+ 
+}
+
 
   .projet-card::after {
     content: "";
@@ -475,7 +790,7 @@ h1, h2, a {
     inset: 0;
     pointer-events: none;
     background-image:
-      linear-gradient(rgba(64,50,255,0.06), rgba(64,50,255,0.06)),
+      linear-gradient(rgba(50, 125, 255, 0.06), rgba(20, 88, 165, 0.187)),
       radial-gradient(circle, rgba(255,255,255,0.12) 1.5px, transparent 1px);
     background-size: auto, 12px 12px;
     mix-blend-mode: screen;
@@ -507,229 +822,22 @@ h1, h2, a {
     color: thistle;
   }
 
-  .projet-figure {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    box-sizing: border-box;
-    background: var(--background-color);
-    width: 230px;
-    
-  }
-
-  .projet-figure img {
-    display: block;
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    
-
-  }
-
-  .projet-figure a {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    width: 230px;
-
-  }
-
-  .projet-section {
-    overflow: auto;
-    display: flex;
-    flex-direction: column;
-    
-  }
-
-  .projet-title {
-    margin-top: 4rem;
-    margin-left: 50px;
-    font-size: 1.1rem;
-    color: var(--font-color);
-    
-  }
-
-  .projet-description {
-    margin: 0;
-    color: var(--font-color);
-    line-height: 1.45;
-    font-size: 0.95rem;
-    font-family: var(--general-font);
-    flex: 1 1 auto;
-    overflow: auto;
-    margin-left: 50px;
-    margin-right: 20px;
+  .recherche-section {
+  background-image: var(--background-color-recherche);  
   }
 
   .projet-equipe {
-    margin-top: 0.5rem;
-    color: var(--font-color);
-    font-size: 0.9rem;
-    font-family: var(--general-font);
-    display: none;
+    padding: 0.5em 1em;
+    margin-bottom: 1em;
+    background-color: #1c1c24b6;
+    border-radius: 10px;
   }
 
-  .projet-actions {
-    /* place the action button at the bottom-right of the card on large screens */
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
-    z-index: 20;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin: 0;
-    padding: 0;
+  img {
+    image-rendering: optimizeSpeed;             /* LEGACY - Safari, Android 2.1-4.0 */
+    image-rendering: -moz-crisp-edges;          /* Firefox */
+    image-rendering: -o-crisp-edges;            /* Opera */
+    image-rendering: -webkit-optimize-contrast; /* Chrome (and Safari) */
+    image-rendering: optimize-contrast;         /* CSS3 Proposed */
+    -ms-interpolation-mode: nearest-neighbor;   /* IE (non-standard property) */
   }
-
-  .button-voir-projet {
-    background: #1b77bd;
-    border: 1px solid var(--border-color-project);
-    color: var(--font-color);
-    padding: 0.4rem 0.6rem;
-    cursor: pointer;
-    width: 50px;
-    height: 50px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 6px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
-    
-  }
- 
-}
-
-
-/* ---------------- Medium-large (copy of Tablet styles) ---------------- */
-@media screen and (min-width: 1023px) and (max-width: 1299px) {
-  .recherche-section {
-  background-image: linear-gradient(177deg, #1b77bd 11.95%, #1b77bd 28.39%, #21212100 82.04%);
-  border: 1px solid var(--border-color-side);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-  padding: 3rem;
-  margin-left: 2em;
-  margin-right: 2em;
-}
-
-.titre-recherche {
-  color: transparent;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: clamp(16px, 10vw, 50px);
-  text-transform: uppercase;
-  margin: 0;
-  font-weight: lighter;
-  -webkit-text-stroke-width: 0.7px;
-  -webkit-text-stroke-color: #fff;
-  line-height: 0.65;
-}
-  .titre-recherche {
-    font-size: clamp(18px, 10vw, 40px);
-    
-  }
-  .border {
-    position: fixed;
-    background: var(--border-color-side);
-    z-index: 9999;
-  }
-
-  .border.gauche {
-    top: 0;
-    left: 2em;
-    width: 1px;
-    height: 100%;
-  }
-
-  .border.droite {
-    top: 0;
-    right: 2em;
-    width: 1px;
-    height: 100%;
-  }
-
-
-  .projets-grid {
-    grid-template-columns: 1fr; /* force single column on tablet */
-    justify-items: center;
-    gap: 1rem;
-  }
-
-  .projet-card {
-    margin-top: 30px;
-    width: 100%;
-    max-width: 600px;
-    height: 360px;
-    position: relative;
-    background: var(--background-color);
-    display: flex;
-    box-shadow: 10px 10px 0px var(--border-color-project);
-    align-items: stretch;
-    box-sizing: border-box;
-    border: 2px solid var(--border-color-project);
-    overflow: hidden;
-  }
-
-  /* position the 'voir projet' control at bottom-right for large screens */
-  .projet-actions {
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
-    z-index: 20;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-  }
-
-  .button-voir-projet {
-    width: 48px;
-    height: 48px;
-    padding: 0;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 6px;
-  }
-
-  .projet-figure {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    box-sizing: border-box;
-    background: var(--background-color);
-    width: 230px;
-  }
-
-  .projet-figure img {
-    display: block;
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-  }
-
-  .projet-figure a {
-    display: flex;
-    width: 100%;
-    height: 100%;
-  }
-
-  .projet-section {
-    flex: 1 1 40%;
-    padding: 0.6rem 0.8rem 0.6rem 0.4rem;
-    overflow: auto;
-    background: linear-gradient(90deg, rgba(255,255,255,0.02), transparent);
-    display: flex;
-    flex-direction: column;
-  }
-  
-}
-
-
-
