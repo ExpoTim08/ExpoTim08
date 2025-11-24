@@ -76,38 +76,97 @@ get_header();
       <h1>PROJETS Découvertes</h1>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident minus sit exercitationem...</p>
       <div class="projets">
+
+      <?php
+      // Get 2 random UNIQUE arcade projects
+      $arcade_query = new WP_Query([
+      'post_type'      => 'projet-arcade',
+      'posts_per_page' => 2,      // two posts
+      'orderby'        => 'rand', // random order
+      ]);
+
+      $arcadeItems = [];
+
+      if ($arcade_query->have_posts()) :
+      while ($arcade_query->have_posts()) : $arcade_query->the_post();
+
+      $nom   = get_field('nom_du_projet');
+      $image = get_field('image_du_projet');
+
+      if ($image) {
+        $arcadeItems[] = [
+          'title' => $nom,
+          'url'   => $image['url']
+        ];
+      }
+
+      endwhile;
+      endif;
+
+      wp_reset_postdata();
+      ?>
+
+      <?php
+      // Get 2 random UNIQUE graphisme projects
+      $graphisme_query = new WP_Query([
+      'post_type'      => 'projet-graphisme',
+      'posts_per_page' => 2,      // pick two
+      'orderby'        => 'rand', // random order
+      ]);
+
+      $graphismeItems = [];
+
+      if ($graphisme_query->have_posts()) :
+      while ($graphisme_query->have_posts()) : $graphisme_query->the_post();
+
+      $titre       = get_the_title();
+      $image       = get_field('affiche'); // ACF field
+
+      if ($image) {
+      $graphismeItems[] = [
+        'title' => $titre,
+        'url'   => $image['url'],
+      ];
+      }
+
+      endwhile;
+      endif;
+
+      wp_reset_postdata();
+      ?>
+
         <!-- Exemple projet Arcade -->
         <div class="projet-populaire-arcade">
-          <span class="titre">TITRE</span>
+          <span class="titre"><?php echo $arcadeItems[0]['title']; ?></span>
           <span class="bouton">>></span>
           <span class="categorie">Catégorie</span>
           <span class="categorie-nom">ARCADE</span>
-          <img class="image-populaire-arcade" src="<?php echo random_image_from('Affiche-Arcade'); ?>" alt="">
+          <img class="image-populaire-arcade" src="<?php echo $arcadeItems[0]['url']; ?>" alt="">
         </div>
 
         <!-- Projet Jour de la Terre -->
         <div class="projet-populaire-jour-terre">
-          <span class="titre">TITRE</span>
+          <span class="titre"><?php echo $graphismeItems[0]['title']; ?></span>
           <span class="bouton">>></span>
           <span class="categorie">Catégorie</span>
           <span class="categorie-nom">JOUR DE LA TERRE</span>
-          <img class="image-populaire-jour-terre" src="<?php echo random_image_from('ImageGraphisme'); ?>" alt="">
+          <img class="image-populaire-jour-terre" src="<?php echo $graphismeItems[0]['url']; ?>" alt="">
         </div>
 
         <div class="projet-populaire-arcade">
-          <span class="titre">TITRE</span>
+          <span class="titre"><?php echo $arcadeItems[1]['title']; ?></span>
           <span class="bouton">>></span>
           <span class="categorie">Catégorie</span>
           <span class="categorie-nom">ARCADE</span>
-          <img class="image-populaire-arcade" src="<?php echo random_image_from('Affiche-Arcade'); ?>" alt="">
+          <img class="image-populaire-arcade" src="<?php echo $arcadeItems[1]['url']; ?>" alt="">
         </div>
 
         <div class="projet-populaire-jour-terre">
-          <span class="titre">TITRE</span>
+          <span class="titre"><?php echo $graphismeItems[1]['title']; ?></span>
           <span class="bouton">>></span>
           <span class="categorie">Catégorie</span>
           <span class="categorie-nom">JOUR DE LA TERRE</span>
-          <img class="image-populaire-jour-terre" src="<?php echo random_image_from('ImageGraphisme'); ?>" alt="">
+          <img class="image-populaire-jour-terre" src="<?php echo $graphismeItems[1]['url']; ?>" alt="">
         </div>
 
         <!-- Projet Finissants

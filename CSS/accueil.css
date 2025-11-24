@@ -92,7 +92,6 @@
     flex-direction: column;
     position: absolute;
     top: 20%;
-    left: 20%;
     max-width: 80%;
     min-width: 50%;
     font-family: var(--general-font);
@@ -115,12 +114,13 @@
     margin-left: 2rem;
   }
 
-  .arcade-details > .description {
+  .arcade-details .description {
     background-color: #2b2b2bc1;
     font-weight: bold;
     width: 75%;
     padding: 1em;
     font-size: 3vw;
+    line-height: 20px;
   }
 
   .sous-titre-carroussel {
@@ -946,23 +946,21 @@
   background-color: rgba(25, 26, 25, 0.85);
   border-radius: 15px;
   padding: 1.2rem;
-
   width: 65vw;
   height: 150px;
   max-width: 90%;             
   box-sizing: border-box;
-
   display: flex;              
   flex-direction: row;
   align-items: center;        
   justify-content: center;    
   gap: 0.5rem;
-
   transform: translateY(160%);
   opacity: 0;          
   transition: opacity 0.4s ease, transform 0.4s ease;
   z-index: 3;
   pointer-events: none; /* le bloc ne bloque pas les hover sur les boutons */
+  margin-left: 10vw;
 }
 
 /* Affichage uniquement quand on survole les boutons */
@@ -1256,13 +1254,19 @@
     font-size: small;
   }
 
-  /* .projet-populaire-arcade {
-
+  .projet-populaire-arcade:hover {
+    transform: translateY(-10px);
+    box-shadow: 16px 16px 0px rgb(15, 13, 50);
+    border-radius: 40px;
+    color: thistle;
   }
 
-  .projet-populaire-finissant {
-    
-  } */
+  .projet-populaire-jour-terre:hover {
+    transform: translateY(-10px);
+    box-shadow: 16px 16px 0px rgb(5, 25, 28);
+    border-radius: 80px;
+    color: thistle;
+  }
 
   /*************************** CSS Section Partenaires Desktop***************************************/
   .partenaires {

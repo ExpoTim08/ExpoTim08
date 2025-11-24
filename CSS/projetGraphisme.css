@@ -123,13 +123,11 @@ h1 {
   margin-top: 2em;
   width: 70vw;
   border: 2px solid var(--border-color-side);
-  border-radius: 25px;
 }
 
 .infos-etudiants strong {
   border-bottom: 2px solid var(--border-color-side);
     background-image: linear-gradient(177deg, var(--bouton-projet-jt-color) 11.95%, var(--bouton-projet-jt-color) 28.39%, #21212100 82.04%);
-    border-radius: 20px;
 }
 
 .infos-etudiants strong, .nom-etudiant {
@@ -141,13 +139,11 @@ h1 {
   flex-direction: column;
   justify-self: center;
   margin-top: 2em;
-  border-radius: 25px;
   border: 2px solid var(--border-color-side);
 }
 
 .image-projet-graphisme {
   width: 70vw;
-  border-radius: 22px;
 }
 
 .conteneur-description {
@@ -157,7 +153,6 @@ h1 {
   justify-self: center;
   margin-top: 2em;
   border: 2px solid var(--border-color-side);
-  border-radius: 25px;
 
 }
 
@@ -165,9 +160,10 @@ h1 {
   background-image: 
     linear-gradient(177deg, var(--bouton-projet-jt-color) 11.95%, var(--bouton-projet-jt-color) 28.39%, #21212100 82.04%);
   border-bottom: 2px solid var(--border-color-side);
-  padding-left: 10px;
+  padding: 15px;
   font-weight: bold;
-}
+  margin: 0;
+  }
 
 .conteneur-description .description-texte {
   padding-left: 10px;
@@ -182,7 +178,6 @@ h1 {
   justify-self: center;
   margin-top: 2em;
   border: 2px solid var(--border-color-side);
-  border-radius: 40px;
   font-weight: bold;
 }
 
@@ -217,13 +212,85 @@ h1 {
 	  grid-template-columns: repeat(2, 1fr);
     background-color: rgb(48,48,48);
     border: 2px solid var(--border-color-side);
-    border-radius: 40px;
     width: 80%;
     justify-self: center;
+    position: relative; 
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: transform 260ms cubic-bezier(.2,.8,.2,1),
+                box-shadow 260ms ease,
+                filter 260ms ease,
+                border-radius 260ms ease;
+    will-change: transform, box-shadow;
+    transform-origin: center;
+  }
+
+  .description-projet::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: 60px;
+
+    /* halftone + tint */
+    background-image:
+      linear-gradient(rgba(64,50,255,0.06), rgba(11, 171, 163, 0.194)),
+      radial-gradient(circle, rgba(255,255,255,0.12) 1.5px, transparent 1px);
+    background-size: auto, 12px 12px; /* change second value for dot density */
+    mix-blend-mode: screen;
+
+    /* commencer par être caché et animer au survol */
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 260ms ease, transform 260ms cubic-bezier(.2,.8,.2,1);
+
+    /* estomper le demi-ton vers le haut */
+    -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
+
+    z-index: 2;
+
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+  }
+
+  .description-projet:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .description-projet:hover {
+    transform: translateY(-10px);
+    box-shadow: 16px 16px 0px rgb(5, 25, 28);
+    border-radius: 40px;
+    color: thistle;
+  }
+
+  .description-projet:hover > .image-projet,
+  .description-projet:hover > .image-projet img,
+  .description-projet:hover > .infos-etudiants, 
+  .description-projet:hover > .conteneur-description {
+    border-radius: 40px;
+  }
+
+  .description-projet:hover > .infos-etudiants strong, .description-projet:hover > .conteneur-description .description-titre {
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+  }
+
+  .image-projet,
+  .image-projet img,
+  .infos-etudiants,
+  .conteneur-description,
+  .infos-etudiants strong,
+   .conteneur-description .description-titre{
+    transition: border-radius 260ms;
   }
 
   .description-projet .image-projet {
     grid-area: 1 / 1 / 3 / 2;
+    height: fit-content;
   }
 
   .description-projet .infos-etudiants {
@@ -236,10 +303,6 @@ h1 {
     grid-area: 2/2/3/3;
     width: 100%;
 
-  }
-
-  .conteneur-description .description-titre {
-    border-radius: 25px;
   }
 
   .description-projet .description, .nom-etudiant {

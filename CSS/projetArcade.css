@@ -140,7 +140,6 @@ iframe {
   margin-top: 2em;
   width: 70vw;
   border: 2px solid var(--border-color-side);
-  border-radius: 31px;
 }
 
 .titre-equipe {
@@ -149,7 +148,6 @@ iframe {
   color: #ffffff;
   padding: 8px;
   border-bottom: 2px solid var(--border-color-side);
-  border-radius: 30px;
 }
 
 .nom-etudiant {
@@ -165,7 +163,6 @@ iframe {
   flex-direction: column;
   justify-self: center;
   margin-top: 2em;
-  border-radius: 25px;
   border: 2px solid var(--border-color-side);
 }
 
@@ -175,7 +172,6 @@ iframe {
   width: 20vw;
   padding: 10px;
   border: 2px solid var(--border-color-side);
-  border-radius: 40px;
 }
 
 .image-projet span {
@@ -186,8 +182,6 @@ iframe {
 
 .image-projet-arcade {
   width: 70vw;
-  border-bottom-left-radius: 28px;
-  border-bottom-right-radius: 28px;
 }
 
 .description-projet {
@@ -197,7 +191,6 @@ iframe {
   justify-self: center;
   margin-top: 2em;
   border: 2px solid var(--border-color-side);
-  border-radius: 25px;
   height: fit-content;
 }
 
@@ -210,7 +203,6 @@ iframe {
 }
 
 .description-projet > .description {
-  border-radius: 40px;
   padding: 20px;
 }
 
@@ -246,9 +238,89 @@ iframe {
 	  grid-template-columns: repeat(2, 1fr);
     background-color: rgb(48,48,48);
     border: 2px solid var(--border-color-side);
-    border-radius: 40px;
     width: 80%;
     justify-self: center;
+    position: relative; 
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: transform 260ms cubic-bezier(.2,.8,.2,1),
+                box-shadow 260ms ease,
+                filter 260ms ease,
+                border-radius 260ms ease;
+    will-change: transform, box-shadow;
+    transform-origin: center;
+  }
+
+  .description-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: 60px;
+
+    /* halftone + tint */
+    background-image:
+      linear-gradient(rgba(64,50,255,0.06), rgba(53, 40, 236, 0.272)),
+      radial-gradient(circle, rgba(255,255,255,0.12) 1.5px, transparent 1px);
+    background-size: auto, 12px 12px; /* change second value for dot density */
+    mix-blend-mode: screen;
+
+    /* commencer par être caché et animer au survol */
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 260ms ease, transform 260ms cubic-bezier(.2,.8,.2,1);
+
+    /* estomper le demi-ton vers le haut */
+    -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
+
+    z-index: 2;
+
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+  }
+
+  .description-image:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .description-image:hover {
+    transform: translateY(-10px);
+    box-shadow: 16px 16px 0px rgb(15, 13, 50);
+    border-radius: 40px;
+    color: thistle;
+  }
+
+  .description-image:hover > .image-projet, 
+  .description-image:hover > .infos-etudiants,
+  .description-image:hover > .description,
+  .description-image:hover > .description-projet {
+    border-radius: 40px;
+  }
+
+  .description-image:hover > .infos-etudiants .titre-equipe,
+  .description-image:hover > .image-projet span,
+  .description-image:hover > .description-projet .description-titre {
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+  }
+
+  .description-image:hover > .image-projet img {
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+  }
+
+  .image-projet,
+  .infos-etudiants,
+  .description,
+  .description-projet,
+  .infos-etudiants .titre-equipe,
+  .image-projet span,
+  .description-projet .description-titre,
+  .image-projet img {
+    transition: border-radius 260ms;
   }
 
   .description-image .image-projet {
@@ -264,7 +336,6 @@ iframe {
   .description-image .description-projet {
     grid-area: 2/2/3/3;
     width: 40vw;
-
   }
 
   .description-projet .description, .nom-etudiant {
