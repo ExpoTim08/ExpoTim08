@@ -1169,7 +1169,7 @@
 
 /********************************* CSS Section À Propos Desktop ****************************************************/
 
-  .a-propos {
+.a-propos {
     justify-items: center;
     /*border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);*/
@@ -1182,6 +1182,15 @@
     right: 20vw;
     transform-origin: center center;
     transform: scale(calc(clamp(220px, 25vw, 440px) / 300px));
+  }
+
+  .carroussel-apropos img {
+    height: 40vh;
+    transform: scale(4);
+    width: 30vw;
+    border: 2px solid var(--border-color);
+    top: 5%;
+    z-index: 1;
   }
 
   .a-propos > .sous-titre {
@@ -1205,8 +1214,8 @@
     position: absolute;
     top: 20%;
     left: 50%;
-    width: 30em;
-    height: 30em;
+    width: 220px;
+    height: 220px;
     object-fit: cover;
     border-radius: 12px;
     transform-style: preserve-3d;
@@ -1219,6 +1228,7 @@
     background-color: #f1e2cccc;
     margin-top: 20px;
   }
+
 
   /******************************** CSS Section Projets Populaire Desktop ********************************************/
 
