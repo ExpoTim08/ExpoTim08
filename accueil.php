@@ -82,7 +82,7 @@ get_header();
           <span class="bouton">>></span>
           <span class="categorie">Catégorie</span>
           <span class="categorie-nom">ARCADE</span>
-          <img class="image-populaire-arcade" src="<?php echo get_template_directory_uri(); ?>/Images/Affiche-Arcade/Affiche-Hachiman.jpg" alt="">
+          <img class="image-populaire-arcade" src="<?php echo random_image_from('Affiche-Arcade'); ?>" alt="">
         </div>
 
         <!-- Projet Jour de la Terre -->
@@ -91,17 +91,33 @@ get_header();
           <span class="bouton">>></span>
           <span class="categorie">Catégorie</span>
           <span class="categorie-nom">JOUR DE LA TERRE</span>
-          <img class="image-populaire-jour-terre" src="<?php echo get_template_directory_uri(); ?>/Images/EcotidienJourTerre.png" alt="">
+          <img class="image-populaire-jour-terre" src="<?php echo random_image_from('ImageGraphisme'); ?>" alt="">
         </div>
 
-        <!-- Projet Finissants -->
+        <div class="projet-populaire-arcade">
+          <span class="titre">TITRE</span>
+          <span class="bouton">>></span>
+          <span class="categorie">Catégorie</span>
+          <span class="categorie-nom">ARCADE</span>
+          <img class="image-populaire-arcade" src="<?php echo random_image_from('Affiche-Arcade'); ?>" alt="">
+        </div>
+
+        <div class="projet-populaire-jour-terre">
+          <span class="titre">TITRE</span>
+          <span class="bouton">>></span>
+          <span class="categorie">Catégorie</span>
+          <span class="categorie-nom">JOUR DE LA TERRE</span>
+          <img class="image-populaire-jour-terre" src="<?php echo random_image_from('ImageGraphisme'); ?>" alt="">
+        </div>
+
+        <!-- Projet Finissants
         <div class="projet-populaire-finissant">
           <span class="titre">TITRE</span>
           <span class="bouton">>></span>
           <span class="categorie">Catégorie</span>
           <span class="categorie-nom">PROJETS DES FINISSANTS</span>
           <img class="image-populaire-finissants" src="<?php echo get_template_directory_uri(); ?>/Images/FinissantsPopulaire.png" alt="">
-        </div>
+        </div> -->
       </div>
     </div>
 

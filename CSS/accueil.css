@@ -575,9 +575,10 @@
     border-left: 1px solid var(--border-color);
   }
 
-  .image-populaire-arcade {
+  .image-populaire-arcade, .image-populaire-jour-terre {
     width: 335px;
     height: 478px;
+    border: 1px solid var(--border-color-side);
   }
 
 /*********************************** CSS Section Partenaires*****************************************/
@@ -1236,7 +1237,8 @@
   }
 
   .projets {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 per row */
   }
 
   .projets > p {

@@ -114,4 +114,19 @@ if (!function_exists('normalize_string')) {
         return trim($str);
     }
 }
+
+function random_image_from($subfolder) {
+    $directory = get_template_directory() . "/Images/$subfolder/";
+    $webpath   = get_template_directory_uri() . "/Images/$subfolder/";
+
+    // Find any JPG/PNG/SVG/etc
+    $images = glob($directory . "*.{jpg,jpeg,png,svg,webp}", GLOB_BRACE);
+
+    if (!$images) return ""; // no image found
+
+    // Pick one random file
+    $random_file = basename($images[array_rand($images)]);
+
+    return $webpath . $random_file;
+}
 ?>
