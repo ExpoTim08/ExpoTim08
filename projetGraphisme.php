@@ -88,7 +88,7 @@ $nom_affiche = $nom ?: get_the_title($projet_id);
 
       <?php if ($description): ?>
         <div class="conteneur-description">
-          <p class="description-titre">Description</p>
+          <p class="description-titre">Description :</p>
           <p class="description-texte"><?php echo esc_html($description); ?></p>
         </div>
       <?php endif; ?>

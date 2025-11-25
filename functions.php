@@ -26,20 +26,25 @@ function expo_enqueue_assets() {
         'themeUrl' => $theme_uri,
         'pageArcade' => site_url('/index.php/arcade/'),
         'pageJourTerre' => site_url('/index.php/graphisme/'),
-        'pageFinissants' => site_url('/index.php/projets-finissants/')
+        'pageFinissants' => site_url('/index.php/finissants/')
     ));
 
     // --- CSS spécifique à la page d'accueil ---
     if (is_front_page()) wp_enqueue_style('style-accueil', $theme_uri . '/CSS/accueil.css');
 
-    // --- CSS spécifique aux autres pages ---
+    // --- CSS normalize ---
+    if (file_exists(get_template_directory() . '/CSS/normalize.css')) wp_enqueue_style('style-normalize', $theme_uri . '/CSS/normalize.css');
+
+    // --- CSS spécifique aux pages de finissant ---
+    if (is_page_template('finissants.php') || is_page_template('ar.php')) wp_enqueue_style('style-finissant', $theme_uri . '/CSS/finissant.css');
+    if (is_page_template('projetFinissant.php')) wp_enqueue_style('style-projet-finissant', $theme_uri . '/CSS/projetFinissant.css');
+
+    // --- CSS spécifique aux pages d'arcade ---
     if (is_page_template('arcade.php') || is_page_template('ar.php')) wp_enqueue_style('style-arcade', $theme_uri . '/CSS/arcade.css');
     if (is_page_template('projetArcade.php')) wp_enqueue_style('style-projet-arcade', $theme_uri . '/CSS/projetArcade.css');
-    if (file_exists(get_template_directory() . '/CSS/normalize.css')) wp_enqueue_style('style-normalize', $theme_uri . '/CSS/normalize.css');
-    if (is_page_template('projets-des-finissants.php') || is_page_template('ar.php')) wp_enqueue_style('style-projet-finissant', $theme_uri . '/CSS/projet-finissant.css');
-    if (is_page_template('graphisme.php')) wp_enqueue_style('style-graphisme', $theme_uri . '/CSS/graphisme.css');
 
-    // --- CSS spécifique à un projet individuel de graphisme ---
+    // --- CSS spécifique aux pages de graphisme ---
+    if (is_page_template('graphisme.php')) wp_enqueue_style('style-graphisme', $theme_uri . '/CSS/graphisme.css');
     if (is_page_template('projetGraphisme.php')) wp_enqueue_style('style-projet-graphisme', $theme_uri . '/CSS/projetGraphisme.css');
 
     if (is_search()) wp_enqueue_style('style-search', $theme_uri . '/CSS/search.css');
