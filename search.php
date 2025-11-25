@@ -26,7 +26,6 @@ $too_short = empty($search_query) || mb_strlen($search_query) < 2;
     </section>
 
 <?php if ($too_short): ?>
-    <!--CAS : moins de 2 lettres -->    
     <section class="no-results">
         <p class="aucun-projet">Veuillez entrer au moins 2 lettres.</p>
     </section>
@@ -35,8 +34,17 @@ $too_short = empty($search_query) || mb_strlen($search_query) < 2;
 
 <?php
 // =========================
-//     RECHERCHE PROJETS
+// Normalisation de chaînes pour recherche
 // =========================
+if (!function_exists('normalize_string')) {
+    function normalize_string($str) {
+        if (!is_string($str)) return '';
+        $str = strtolower(remove_accents($str));
+        $str = preg_replace('/[^a-z0-9 ]+/u', ' ', $str);
+        $str = preg_replace('/\s+/', ' ', $str);
+        return trim($str);
+    }
+}
 
 $project_types = ['projet-arcade', 'projet-finissant', 'projet-graphisme'];
 $normalized_query = normalize_string($search_query);
@@ -57,7 +65,6 @@ foreach ($all_projects as $projet) {
     $title = get_field('nom_du_projet', $projet_id) ?: get_the_title($projet_id);
     $normalized_title = normalize_string($title);
 
-    // Vérifie correspondance titre
     $match = $normalized_title && mb_stripos($normalized_title, $normalized_query) !== false;
 
     // Étudiants associés
@@ -68,10 +75,10 @@ foreach ($all_projects as $projet) {
         foreach ($etudiants as $etu) {
             $etu_id = is_object($etu) ? $etu->ID : $etu;
             if (!$etu_id) continue;
-            
+
             $prenom = get_field('prenom', $etu_id);
             $nom = get_field('nom_etudiant', $etu_id);
-            
+
             $fullName = trim("$prenom $nom");
             if ($fullName) $liste_etudiants[] = $fullName;
 
@@ -81,8 +88,21 @@ foreach ($all_projects as $projet) {
         }
     }
 
-    if ($match) {
+    // Catégories associées (toutes les taxonomies du type de post)
+    $taxonomies = get_object_taxonomies($projet->post_type, 'names');
+    foreach ($taxonomies as $taxonomy) {
+        $terms = wp_get_post_terms($projet_id, $taxonomy, ['fields' => 'names']);
+        if (!empty($terms)) {
+            foreach ($terms as $term_name) {
+                if (mb_stripos(normalize_string($term_name), $normalized_query) !== false) {
+                    $match = true;
+                    break 2; // stop les deux boucles dès qu'on trouve
+                }
+            }
+        }
+    }
 
+    if ($match) {
         // Récupération image projet
         $image_field = get_field('image', $projet_id) ?: get_field('image_du_projet', $projet_id) ?: get_field('affiche', $projet_id);
         $image = '';
@@ -130,7 +150,6 @@ $seen_titles = [];
 
 foreach ($results_temp as $item) {
     $norm_title = normalize_string($item['title']);
-
     if (!isset($seen_titles[$norm_title])) {
         $results[$norm_title] = $item;
         $seen_titles[$norm_title] = true;
@@ -140,13 +159,9 @@ foreach ($results_temp as $item) {
         }
     }
 }
-
 $results = array_values($results);
-?>
 
-<?php if (!empty($results)): ?>
-    <?php
-// Couper le texte sans couper les mots
+// Fonction pour tronquer description
 function truncate_no_cut($text, $max_chars = 200) {
     $text = trim($text);
     if ($text === '') return '';
@@ -154,30 +169,23 @@ function truncate_no_cut($text, $max_chars = 200) {
         if (mb_strlen($text) <= $max_chars) return $text;
         $trunc = mb_substr($text, 0, $max_chars);
         $last_space = mb_strrpos($trunc, ' ');
-        if ($last_space !== false) {
-            $trunc = mb_substr($trunc, 0, $last_space);
-        }
+        if ($last_space !== false) $trunc = mb_substr($trunc, 0, $last_space);
         return rtrim($trunc) . '…';
     } else {
         if (strlen($text) <= $max_chars) return $text;
         $trunc = substr($text, 0, $max_chars);
         $last_space = strrpos($trunc, ' ');
-        if ($last_space !== false) {
-            $trunc = substr($trunc, 0, $last_space);
-        }
+        if ($last_space !== false) $trunc = substr($trunc, 0, $last_space);
         return rtrim($trunc) . '…';
     }
 }
 ?>
 
-    <!--Résultats -->
+<?php if (!empty($results)): ?>
     <section class="results-container">
         <div class="projets-grid">
-
             <?php foreach ($results as $data): ?>
-
                 <?php
-                // Déterminer le lien du projet selon son type
                 switch ($data['type']) {
                     case 'projet-arcade':
                         $lien_projet = add_query_arg('projet_id', $data['id'], get_permalink(get_page_by_path('projet-arcade')));
@@ -192,65 +200,50 @@ function truncate_no_cut($text, $max_chars = 200) {
                         $lien_projet = get_permalink($data['id']);
                 }
                 ?>
-
                 <article class="projet-card">
-
                     <?php if (!empty($data['image'])): ?>
                         <figure class="projet-figure">
                             <a href="<?php echo esc_url($lien_projet); ?>">
                                 <img src="<?php echo esc_url($data['image']); ?>" alt="<?php echo esc_attr($data['title']); ?>">
                             </a>
                         </figure>
-
-                        <!-- Actions container keeps the 'voir projet' button (navigation) -->
                         <div class="projet-actions">
                             <button class="button-voir-projet" onclick="window.location.href='<?php echo esc_url($lien_projet); ?>'">&gt;&gt;</button>
                         </div>
                     <?php endif; ?>
-
                     <section class="projet-section">
                         <h2 class="projet-title">
                             <a href="<?php echo esc_url($lien_projet); ?>">
                                 <?php echo esc_html($data['title']); ?>
                             </a>
                         </h2>
-
                         <?php if (!empty($data['etudiants'])): ?>
                             <p class="projet-equipe">
                                 <strong>Équipe :</strong>
                                 <?php echo esc_html(implode(', ', $data['etudiants'])); ?>
                             </p>
-                        <?php endif; ?>                        
-
-                        <!-- Toggle button positioned inside the figure (bottom-right) -->
+                        <?php endif; ?>
                         <div class="projet-toggle-desc">
                             <button class="button-toggle-desc" aria-expanded="false" aria-controls="desc-<?php echo $data['id']; ?>">+</button>
                         </div>
                         <?php if (!empty($data['desc'])): ?>
-                        <p id="desc-<?php echo $data['id']; ?>" class="projet-description"><?php echo esc_html(truncate_no_cut($data['desc'], 200)); ?></p>
+                            <p id="desc-<?php echo $data['id']; ?>" class="projet-description"><?php echo esc_html(truncate_no_cut($data['desc'], 200)); ?></p>
                         <?php endif; ?>
                     </section>
-
                 </article>
             <?php endforeach; ?>
-
         </div>
     </section>
-
 <?php else: ?>
-
-    <!--Aucun projet trouvé -->
     <section class="no-results">
         <p class="aucun-projet">Aucun projet trouvé.</p>
     </section>
-
 <?php endif; ?>
 
 <?php endif; ?>
 
-                </main>
-        </div>
-
+        </main>
+    </div>
 
 </body>
 <?php get_footer(); ?>
