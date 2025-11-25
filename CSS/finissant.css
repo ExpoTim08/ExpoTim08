@@ -129,7 +129,7 @@ h1, h2 {
     position: relative; 
     overflow: hidden;
     display: flex;
-    flex-direction: row nowrap;
+    flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
     margin: 0px 0.5rem;
