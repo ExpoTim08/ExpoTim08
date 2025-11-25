@@ -4,13 +4,13 @@ Template Name: Projets finissants
 */
 require("global.php");
 ?>
-
-<body> 
-<div class="pattern-background">
-
 <?php
 get_header();
 ?>
+<body> 
+<div class="pattern-background">
+
+
 <main class="page-finissant">
   <div class="border gauche"></div>
   <div class="border droite"></div>
@@ -157,9 +157,10 @@ get_header();
 
 </main>
 
-<?php 
-get_footer();
-?>
+
 
 </div>
 </body>
+<?php 
+get_footer();
+?>

@@ -5,13 +5,13 @@ Template Name: Graphisme
 require("global.php");
 ?>
 
-
-<body> 
-<div class="pattern-background">
-
 <?php 
 get_header(); 
 ?>
+<body> 
+<div class="pattern-background">
+
+
 
 <main class="page-graphisme">
   <div class="border gauche"></div>
@@ -215,6 +215,7 @@ get_header();
   </section>
 </main>
 
-  <?php get_footer(); ?>
+  
 </div>
 </body>
+<?php get_footer(); ?>
