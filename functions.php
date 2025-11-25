@@ -87,7 +87,17 @@ add_action('wp_footer', 'ajuster_menu_mobile');
 // =========================================================
 if (!function_exists('normalize_string')) {
     function normalize_string($str) {
-        if (!$str) return '';
+        // Si ce n'est pas une string, tenter de récupérer le premier élément si c'est un tableau
+        if (is_array($str)) {
+            if (isset($str[0]) && is_string($str[0])) {
+                $str = $str[0];
+            } else {
+                return '';
+            }
+        }
+
+        if (!$str || !is_string($str)) return '';
+
         $str = mb_strtolower($str, 'UTF-8'); // minuscules
         $accents = [
             'à'=>'a','â'=>'a','ä'=>'a','á'=>'a','ã'=>'a','å'=>'a',
@@ -114,4 +124,4 @@ if (!function_exists('normalize_string')) {
         return trim($str);
     }
 }
-?>
+
