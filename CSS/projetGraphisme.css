@@ -178,7 +178,13 @@ h1 {
   justify-self: center;
   margin-top: 2em;
   border: 2px solid var(--border-color-side);
+  border-radius: 60px;
+  background-color: rgba(49, 49, 49, 0.842);
   font-weight: bold;
+}
+
+.behance-projet a {
+  color: white;
 }
 
 /********************************************** CSS Desktop ********************************************************/
@@ -223,6 +229,7 @@ h1 {
                 border-radius 260ms ease;
     will-change: transform, box-shadow;
     transform-origin: center;
+    padding-bottom: 70px;
   }
 
   .description-projet::after {

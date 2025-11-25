@@ -81,7 +81,7 @@ $nom_affiche = $nom ?: get_the_title($projet_id);
             $fullName = trim("$prenom $nomEtu");
             $liste[] = '<span class="nom-etudiant">' . esc_html($fullName) . '</span>';
           }
-          echo implode(', ', $liste);
+          echo implode($liste);
           ?>
         </div>
       <?php endif; ?>

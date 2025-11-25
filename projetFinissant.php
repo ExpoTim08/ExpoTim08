@@ -48,8 +48,8 @@ if (is_array($image) && isset($image['url'])) $image = $image['url'];
       <span class="titre-graphisme-layer titre-graphisme-layer-3"><?php echo esc_html($nom); ?></span>
 
       <!-- Bouton retour Finissants -->
-      <p class="retour-graphisme">
-        <a href="<?php echo esc_url(get_permalink(get_page_by_path('projets-finissants'))); ?>" class="lien-retour">
+      <p class="retour-finissant">
+        <a href="<?php echo esc_url(get_permalink(get_page_by_path('finissants'))); ?>" class="lien-retour">
           &lt; Finissants
         </a>
       </p>

@@ -85,7 +85,6 @@ if ($video) {
     <div class="description-image">
       <?php if ($image): ?>
         <div class="image-projet">
-          <span>Affiche</span>
           <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($nom); ?>" class="image-projet-arcade">
         </div>
       <?php endif; ?>
