@@ -581,18 +581,6 @@
     border: 1px solid var(--border-color-side);
   }
 
-/*********************************** CSS Section Partenaires*****************************************/
-  .partenaires {
-    border-top: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
-    margin-top: 2em;
-  }
-
-  .partenaires > img {
-    padding-top: 2em;
-    padding-bottom: 1em;
-  }
-
 /******************************************* CSS Section Équipe ************************************/
 
   .equipe {
@@ -695,6 +683,51 @@
   .carte-equipe-4 > .petits-carre {
     grid-area: 1 / 2 / 5 / 3;
     border: 1px var(--border-color-special) solid;
+  }
+
+
+  .carte-equipe {
+    box-shadow: 5px 5px 17px 5px rgb(1, 1, 125);
+  }
+  .carte-equipe .nom {
+    background-color: rgb(1, 1, 125);
+    color: white;
+  }
+
+  .carte-equipe-2 {
+    box-shadow: 5px 5px 17px 5px rgb(124, 0, 124);
+  }
+
+  .carte-equipe-2 .nom {
+    background-color: rgb(124, 0, 124);
+    color: white;
+  }
+
+  .carte-equipe-3 {
+    box-shadow: 5px 5px 17px 5px rgb(244, 75, 213);
+  }
+
+  .carte-equipe-3 .nom {
+    background-color: rgb(244, 75, 213);
+    color: white;
+  }
+
+  .carte-equipe-4 {
+    box-shadow: 5px 5px 17px 5px red;
+  }
+
+  .carte-equipe-4 .nom {
+    background-color: red;
+    color: white;
+  }
+
+  .carte-equipe-5 {
+    box-shadow: 5px 5px 17px 5px rgb(180, 180, 0);
+  }
+
+  .carte-equipe-5 .nom {
+    background-color: rgb(180, 180, 0);
+    color: white;
   }
 
   .img-personne {
@@ -1289,41 +1322,6 @@
   
   .equipe {
     margin-top: 3rem;
-  }
-
-  .carte-equipe {
-    box-shadow: 5px 5px 17px 5px rgb(1, 1, 125);
-  }
-  .carte-equipe .nom {
-    background-color: rgb(1, 1, 125);
-    color: white;
-  }
-
-  .carte-equipe-2 {
-    box-shadow: 5px 5px 17px 5px rgb(124, 0, 124);
-  }
-
-  .carte-equipe-2 .nom {
-    background-color: rgb(124, 0, 124);
-    color: white;
-  }
-
-  .carte-equipe-3 {
-    box-shadow: 5px 5px 17px 5px rgb(244, 75, 213);
-  }
-
-  .carte-equipe-3 .nom {
-    background-color: rgb(244, 75, 213);
-    color: white;
-  }
-
-  .carte-equipe-4 {
-    box-shadow: 5px 5px 17px 5px red;
-  }
-
-  .carte-equipe-4 .nom {
-    background-color: red;
-    color: white;
   }
 }
 

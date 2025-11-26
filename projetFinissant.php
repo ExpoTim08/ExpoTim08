@@ -94,7 +94,7 @@ if (is_array($image) && isset($image['url'])) $image = $image['url'];
               $nomEtu = get_field('nom_etudiant', $id);
               $list[] = '<span class="nom-etudiant">' . esc_html(trim("$prenom $nomEtu")) . '</span>';
           }
-          echo implode(', ', $list);
+          echo implode($list);
           ?>
         </div>
       <?php endif; ?>
