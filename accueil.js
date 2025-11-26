@@ -1,21 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => {
   const Images = [
     {
-      src: `${themeVars.themeUrl}/Images/Finissants.jpg`,
+      src: `${themeVars.themeUrl}/Images/Finissants.png`,
       Titre: "FINISSANTS",
       ClassName: "finissants",
       Description: "Les finissants de la Technique d’intégration multimédia présentent le projet synthèse de leur parcours. Après avoir exploré toutes les dimensions du multimédia – Jeu, web, design, programmation, création de médias, interactivité et plus encore – chaque étudiant a choisi le sujet qui le passionne le plus et a développé un projet original qui reflète son expertise et sa créativité.",
       Lien: themeVars.pageFinissants
     },
     {
-      src: `${themeVars.themeUrl}/Images/Affiche-Arcade/Arcade-404.jpg`,
+      src: `${themeVars.themeUrl}/Images/ExpoTim.png`,
       Titre: "ARCADE",
       ClassName: "arcade",
       Description: "L’Arcade de l’expoTIM présente les prototypes de jeux vidéo créés par les étudiants de deuxième année en Technique d’intégration multimédia. Réalisés dans le cadre du cours Création de jeu en équipe, ces projets sont le fruit d’un processus de production complet : de la conception et la planification à la création des médias, de la programmation aux tests de qualité jusqu’au produit fini.",
       Lien: themeVars.pageArcade
     },
     {
-      src: `${themeVars.themeUrl}/Images/EcotidienArcade.png`,
+      src: `${themeVars.themeUrl}/Images/ImageGraphisme/Graphisme.png`,
       Titre: "GRAPHISME",
       ClassName: "jour-terre",
       Description: "Dans le cours Conception graphique et imagerie vectorielle, les étudiants de première année ont réalisé une recherche sur un enjeu environnemental. À partir de cette recherche, ils ont imaginé un jeu vidéo ou une application permettant de sensibiliser la population à cet enjeu. Ils en ont conçu l’identité visuelle et l’ont présentée sous forme d’affiche. Le code QR présent sur chaque affiche donne accès à une présentation détaillant le projet proposé.",

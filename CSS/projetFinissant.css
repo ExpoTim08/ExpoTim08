@@ -292,7 +292,10 @@ h1 {
 
   .description-projet .image-projet {
     grid-area: 1 / 1 / 3 / 2;
-    height: fit-content;
+  }
+
+  .image-projet img {
+    height: 100%;
   }
 
   .description-projet .infos-etudiants {
@@ -304,11 +307,16 @@ h1 {
   .description-projet .conteneur-description {
     grid-area: 2/2/3/3;
     width: 100%;
+    align-self: flex-end;
 
   }
 
   .description-projet .description, .nom-etudiant {
     font-size: 1.5vw;
+  }
+
+  .conteneur-description, .infos-etudiants {
+    margin-right: 60px;
   }
 
   .behance-projet {

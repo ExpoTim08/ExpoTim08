@@ -110,7 +110,7 @@ if ($video) {
       <!-- Description -->
       <?php if ($description): ?>
         <div class="description-projet">
-          <span class="description-titre">Description</span>
+          <span class="description-titre">Description :</span>
           <span class="description"><?php echo esc_html($description); ?></span>
         </div>
       <?php endif; ?>

@@ -16,7 +16,7 @@ get_header();
 
 <div class="carroussel">
   <div class="image-wrap">
-    <img id="image-carroussel" src="<?php echo get_template_directory_uri(); ?>/Images/Finissants.jpg" alt="">
+    <img id="image-carroussel" src="<?php echo get_template_directory_uri(); ?>/Images/Finissants.png" alt="">
   </div>
 
   <div class="carroussel-choix">
