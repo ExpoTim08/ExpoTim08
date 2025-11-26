@@ -1175,11 +1175,15 @@
     max-height: 600px;
   }
 
-  .carroussel-apropos {
-    right: 20vw;
-    transform-origin: center center;
-    transform: scale(calc(clamp(220px, 25vw, 440px) / 300px));
-  }
+.carroussel-apropos {
+  --size: clamp(220px, 25vw, 440px);
+  --scale: calc(var(--size) / 300);
+
+  right: 20vw;
+  transform-origin: center center;
+  transform: scale(var(--scale));
+}
+
 
   .carroussel-apropos img {
     height: 40vh;

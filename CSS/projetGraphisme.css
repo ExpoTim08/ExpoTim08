@@ -55,7 +55,7 @@ h1 {
 .titre-graphisme-layer {
   display: flex;
   justify-content: center;
-  margin: 0. auto;
+  margin: 0 auto;
   font-size: 8vw;
   font-family: var(--title-font);
 }
