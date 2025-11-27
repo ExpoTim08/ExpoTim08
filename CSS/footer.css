@@ -267,6 +267,7 @@
 @media screen and (min-width: 1200.02px) {
   .footer-border {
     border-top: 1px solid var(--border-color-side);
+    margin: 0 3em;
   }
 
   .site-footer {
