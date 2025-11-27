@@ -2,6 +2,7 @@
 /*
 Template Name: Contact
 */
+require("global.php");
 ?>
 
 <?php get_header(); //appelle le header ?>

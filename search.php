@@ -1,3 +1,7 @@
+<?php 
+require("global.php");
+?>
+
 <?php get_header(); ?>
 <body>
     <div class="pattern-background">
