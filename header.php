@@ -38,7 +38,7 @@
         <label for="search-mobile" class="screen-reader-text">Recherche</label>
         <input type="hidden" name="post_type" value="projet">
         <input type="search" id="search-mobile" class="search-field" placeholder="Recherche projet ou étudiant..." value="<?php echo get_search_query(); ?>" name="s">
-        <button type="submit">
+        <button type="submit" aria-label="Rechercher">
           <svg xmlns="http://www.w3.org/2000/svg" fill="beige" width="15" height="15" viewBox="0 0 16 16">
             <path d="M13.438,15.563l-2.665-2.664 C9.684,13.598,8.388,14.002,7,14.002c-3.865,0-7-3.135-7-7c0-3.864,3.135-7,7-7c3.864,0,7,3.136,7,7 c0,1.391-0.407,2.687-1.105,3.776l2.665,2.664c0.585,0.585,0.585,1.536,0,2.121C14.974,16.148,14.024,16.148,13.438,15.563z M12,7.002c0-2.759-2.241-5-5-5c-2.76,0-5,2.241-5,5c0,2.76,2.24,5,5,5C9.759,12.002,12,9.762,12,7.002z"></path>
           </svg>
@@ -62,11 +62,11 @@
       <label for="search-desktop" class="screen-reader-text">Recherche</label>
       <input type="hidden" name="post_type" value="projet">
       <input type="search" id="search-desktop" class="search-field" placeholder="Rechercher" value="<?php echo get_search_query(); ?>" name="s">
-      <button type="submit">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="beige" width="15" height="15" viewBox="0 0 16 16">
-          <path d="M13.438,15.563l-2.665-2.664 C9.684,13.598,8.388,14.002,7,14.002c-3.865,0-7-3.135-7-7c0-3.864,3.135-7,7-7c3.864,0,7,3.136,7,7 c0,1.391-0.407,2.687-1.105,3.776l2.665,2.664c0.585,0.585,0.585,1.536,0,2.121C14.974,16.148,14.024,16.148,13.438,15.563z M12,7.002c0-2.759-2.241-5-5-5c-2.76,0-5,2.241-5,5c0,2.76,2.24,5,5,5C9.759,12.002,12,9.762,12,7.002z"></path>
-        </svg>
-      </button>
+      <button type="submit" aria-label="Rechercher">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="beige" width="15" height="15" viewBox="0 0 16 16">
+            <path d="M13.438,15.563l-2.665-2.664 C9.684,13.598,8.388,14.002,7,14.002c-3.865,0-7-3.135-7-7c0-3.864,3.135-7,7-7c3.864,0,7,3.136,7,7 c0,1.391-0.407,2.687-1.105,3.776l2.665,2.664c0.585,0.585,0.585,1.536,0,2.121C14.974,16.148,14.024,16.148,13.438,15.563z M12,7.002c0-2.759-2.241-5-5-5c-2.76,0-5,2.241-5,5c0,2.76,2.24,5,5,5C9.759,12.002,12,9.762,12,7.002z"></path>
+          </svg>
+        </button>
     </form>
   </div>
 </div>
