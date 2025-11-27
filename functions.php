@@ -130,3 +130,9 @@ if (!function_exists('normalize_string')) {
     }
 }
 
+function expo_theme_support() {
+    add_theme_support('title-tag'); // Active la gestion automatique du <title>
+}
+add_action('after_setup_theme', 'expo_theme_support');
+
+
