@@ -4,8 +4,9 @@ Template Name: Contact
 */
 ?>
 
+<?php get_header(); //appelle le header ?>
 <body>
-    <?php get_header(); //appelle le header ?>
+    
 
     <div class="pattern-background">
     <div class="border gauche"></div>
