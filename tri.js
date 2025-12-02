@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const selectTri = document.getElementById("filter-select");
+    const selectTri = document.getElementById("tri-select");
     const urlParams = new URLSearchParams(window.location.search);
     const triActuel = urlParams.get("tri");
 

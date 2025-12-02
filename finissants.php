@@ -38,8 +38,8 @@ get_header();
   </section>
 
   <!-- ===================== Barre de filtre ===================== -->
-  <div class="filter-bar">
-  <select id="filter-select" name="filter-select" aria-label="Filtrer projets par type">
+  <div class="tri-bar">
+  <select id="tri-select" name="tri-select" aria-label="Filtrer projets par type">
     <option value="random">Tous</option>
     <option value="asc">A à Z</option>
     <option value="desc">Z à A</option>

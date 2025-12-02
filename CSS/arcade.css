@@ -239,7 +239,7 @@ h1, h2 {
   .filtre { margin: 0; font-size: 14px; }
   .icone-filtre { width: 20px; height: 20px; }
 
-  .filter-bar{
+  .tri-bar{
     margin: 1rem 0rem 3rem 0rem;
     place-self: center;
   }
@@ -414,7 +414,7 @@ h1, h2 {
   .filtre { margin: 0; font-size: 14px; }
   .icone-filtre { width: 20px; height: 20px; }
 
-  .filter-bar{
+  .tri-bar{
     margin: 1rem 0rem 3rem 0rem;
     place-self: center;
     width: 80%;
@@ -521,7 +521,7 @@ h1, h2 {
     border-width: 2px 1px 1px 2px;
   }
 
-  .filter-bar{
+  .tri-bar{
     margin: 1rem 0;
     place-self: center;
     width: 74%;
@@ -569,7 +569,7 @@ h1, h2 {
     padding: 3vh 0px;
   }
 
-  .filter-bar{
+  .tri-bar{
     margin: 1rem 0;
     place-self: center;
     width: 80%;
@@ -688,7 +688,7 @@ h1, h2 {
 
   /*-------------- FILTRE --------------*/
 
-.filter-bar {
+.tri-bar {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -698,7 +698,7 @@ h1, h2 {
   color: var(--font-color);
 }
 
-.filter-bar label {
+.tri-bar label {
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--font-color);
@@ -706,7 +706,7 @@ h1, h2 {
 }
 
 
-#filter-select {
+#tri-select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -726,14 +726,14 @@ h1, h2 {
 }
 
 /* état désactivé / état discret si nécessaire */
-#filter-select:disabled {
+#tri-select:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
 /* Focus / utilisateurs clavier */
-#filter-select:focus,
-.filter-bar label:focus {
+#tri-select:focus,
+.tri-bar label:focus {
   outline: 3px solid rgba(63,50,255,0.14);
   outline-offset: 2px;
   border-color: rgba(64,50,255,0.6);
@@ -742,38 +742,38 @@ h1, h2 {
 
 /* Mise en page compacte pour très petits écrans */
 @media (max-width: 420px) {
-  .filter-bar {
+  .tri-bar {
     gap: 0.4rem;
     padding: 0.25rem;
   }
-  #filter-select { min-width: 110px; font-size: 0.9rem; }
+  #tri-select { min-width: 110px; font-size: 0.9rem; }
 }
 
-#filter-select {
+#tri-select {
   color: var(--font-color);
   background-color: #2f2f2f; /* s'accorde avec la surface sombre de la page */
   -webkit-text-fill-color: var(--font-color);
 }
 
 /* Style général des <option> (support navigateurs limité) */
-#filter-select option {
+#tri-select option {
   background-color: #2f2f2f;
   color: var(--font-color);
   padding: 0.25rem 0.5rem;
 }
 
 /* Option sélectionnée / surlignée */
-#filter-select option:checked,
-#filter-select option[selected] {
+#tri-select option:checked,
+#tri-select option[selected] {
   background-color: rgba(64,50,255,0.14);
   color: #ffffff;
 }
 
 /* Masquer la flèche native dans certains navigateurs si vous utilisez une icône personnalisée */
-#filter-select::-ms-expand { display: none; }
+#tri-select::-ms-expand { display: none; }
 
 /* Anneau de focus accessible, cohérent avec le thème */
-#filter-select:focus {
+#tri-select:focus {
   box-shadow: 0 0 0 4px rgba(64,50,255,0.12);
   border-color: rgba(28, 21, 139, 0.911);
   border-width: 1px;
