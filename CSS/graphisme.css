@@ -704,6 +704,8 @@ h1, h2 {
   min-width: 140px;
   cursor: pointer;
   box-shadow: none;
+  font-family: var(--general-font);
+
 }
 
 #filter-select:disabled {

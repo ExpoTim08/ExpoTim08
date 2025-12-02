@@ -39,14 +39,43 @@ get_header();
 
   <!-- ===================== Barre de filtre ===================== -->
   <div class="filter-bar">
-    <select id="filter-select" name="filter-select" aria-label="Filtrer projets types d'option">
-      <option value="all">Tous</option>
-      <option value="A">Option 1</option>
-      <option value="B">Option 2</option>
-      <option value="C">Option 3</option>
-      <option value="D">Option 4</option>
-    </select>
-  </div>
+  <select id="filter-select" name="filter-select" aria-label="Filtrer projets par type">
+    <option value="random">Tous</option>
+    <option value="asc">A à Z</option>
+    <option value="desc">Z à A</option>
+</select>
+</div>
+
+<?php
+// Valeurs par défaut
+$orderby = 'rand';
+$order   = 'ASC';
+
+// Vérifie le paramètre GET ?tri=
+if (isset($_GET['tri'])) {
+    switch ($_GET['tri']) {
+        case 'asc':
+            // A → Z
+            $orderby = 'title';
+            $order   = 'ASC';
+            break;
+
+        case 'desc':
+            // Z → A
+            $orderby = 'title';
+            $order   = 'DESC';
+            break;
+
+        default:
+            // Random
+            $orderby = 'rand';
+            $order   = 'ASC';
+            break;
+    }
+}
+
+
+?>
 
   <!-- ===================== Liste des projets ===================== -->
     <section class="liste-projet-finissant">
@@ -54,10 +83,10 @@ get_header();
         // 1. Définir le type de publication pour les projets finissants.
         // Assurez-vous que 'projet-finissants' correspond à votre Post Type dans WordPress.
         $projets_finissants = new WP_Query([
-            'post_type' => 'projet-finissant', // **À AJUSTER** si votre CPT a un slug différent
+            'post_type'      => 'projet-finissant',
             'posts_per_page' => -1,
-            'orderby' => 'title',
-            'order' => 'ASC'
+            'orderby'        => $orderby,
+            'order'          => $order
         ]);
 
         if ($projets_finissants->have_posts()) :

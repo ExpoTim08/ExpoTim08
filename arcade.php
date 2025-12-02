@@ -40,6 +40,7 @@ get_header();
       </p>
     </div>
   </section>
+  
 <div class="filter-bar">
   <select id="filter-select" name="filter-select" aria-label="Filtrer projets par type">
     <option value="random">Tous</option>
@@ -48,8 +49,6 @@ get_header();
 </select>
 </div>
 
-
-  
 
 <?php
 // Valeurs par défaut

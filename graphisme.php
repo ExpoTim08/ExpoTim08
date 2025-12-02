@@ -62,25 +62,54 @@ get_header();
   </section>
 
   <!-- ===================== Barre de filtre ===================== -->
-  <div class="filter-bar">
-    <select id="filter-select" name="filter-select" aria-label="Filtrer projets types d'option">
-      <option value="all">Tous</option>
-      <option value="A">Option 1</option>
-      <option value="B">Option 2</option>
-      <option value="C">Option 3</option>
-      <option value="D">Option 4</option>
-    </select>
-  </div>
+<div class="filter-bar">
+  <select id="filter-select" name="filter-select" aria-label="Filtrer projets par type">
+    <option value="random">Tous</option>
+    <option value="asc">A à Z</option>
+    <option value="desc">Z à A</option>
+</select>
+</div>
+
+<?php
+// Valeurs par défaut
+$orderby = 'rand';
+$order   = 'ASC';
+
+// Vérifie le paramètre GET ?tri=
+if (isset($_GET['tri'])) {
+    switch ($_GET['tri']) {
+        case 'asc':
+            // A → Z
+            $orderby = 'title';
+            $order   = 'ASC';
+            break;
+
+        case 'desc':
+            // Z → A
+            $orderby = 'title';
+            $order   = 'DESC';
+            break;
+
+        default:
+            // Random
+            $orderby = 'rand';
+            $order   = 'ASC';
+            break;
+    }
+}
+
+$projets = new WP_Query([
+    'post_type'      => 'projet-graphisme',
+    'posts_per_page' => -1,
+    'orderby'        => $orderby,
+    'order'          => $order
+]);
+?>
 
   <!-- ===================== Liste des projets ===================== -->
   <section class="liste-projet-graphisme">
     <?php
-    $projets = new WP_Query([
-      'post_type'      => 'projet-graphisme',
-      'posts_per_page' => -1,
-      'orderby'        => 'title',
-      'order'          => 'ASC'
-    ]);
+  
 
     if ($projets->have_posts()) :
       while ($projets->have_posts()) :
