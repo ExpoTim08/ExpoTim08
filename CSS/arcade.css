@@ -233,6 +233,7 @@ h1, h2 {
     display: flex;
     flex-flow: nowrap row;
     align-items: center;
+    
   }
 
   .filtre { margin: 0; font-size: 14px; }
@@ -721,6 +722,7 @@ h1, h2 {
   cursor: pointer;
   box-shadow: none;
   border-radius: 2px;
+  font-family: var(--general-font);
 }
 
 /* état désactivé / état discret si nécessaire */

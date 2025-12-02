@@ -44,10 +44,9 @@ get_header();
   <div class="filter-bar">
     <select id="filter-select" name="filter-select" aria-label="Filtrer projets par type">
       <option value="all">Tous</option>
-      <option value="A">Option 1</option>
-      <option value="B">Option 2</option>
-      <option value="C">Option 3</option>
-      <option value="D">Option 4</option>
+      <option value="A">A à Z</option>
+      <option value="B">Z à A</option>
+      
     </select>
   </div>
 
@@ -73,9 +72,16 @@ get_header();
         $video       = get_field('lien_de_la_video');
         $short_desc = wp_trim_words( wp_strip_all_tags( $description ), 40, '...' );
     ?>
-
+<?php
+    $filtre = get_field('projet-arcade'); // ADAPTE LE NOM ICI si ton champ s'appelle autrement
+    if (!$filtre) {
+      $filtre = 'none'; // fallback pour debug si champ vide
+    }
+?>
     <!--================== Carte Projet Desktop ======================-->
-    <article class="carte-projet-arcade--desktop">
+    <article class="carte-projet-arcade--desktop"
+         data-nom="<?php echo esc_attr($nom); ?>"
+         data-filtre="<?php echo esc_attr($filtre); ?>">
       <?php if ($image): ?>
         <img class="image-projet-arcade" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($nom); ?>">
       <?php endif; ?>

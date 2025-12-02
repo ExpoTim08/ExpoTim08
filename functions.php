@@ -136,3 +136,17 @@ function expo_theme_support() {
 add_action('after_setup_theme', 'expo_theme_support');
 
 
+
+function arcade_enqueue_scripts() {
+    wp_enqueue_script(
+        'projets-arcade-js',
+        get_template_directory_uri() . '/tri.js', // chemin vers ton fichier
+        array(), 
+        false, 
+        true   // chargement dans le footer
+    );
+}
+add_action('wp_enqueue_scripts', 'arcade_enqueue_scripts');
+
+
+
