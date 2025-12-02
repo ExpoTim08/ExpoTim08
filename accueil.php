@@ -140,6 +140,48 @@ get_header();
   wp_reset_postdata();
   ?>
 
+  <?php
+  // Get 2 random UNIQUE finissant projects
+  $finissants_query = new WP_Query([
+    'post_type'      => 'projet-finissant',
+    'posts_per_page' => 2,      // pick two
+    'orderby'        => 'rand', // random order
+  ]);
+
+  $finissantItems = [];
+
+  if ($finissants_query->have_posts()) :
+    while ($finissants_query->have_posts()) : $finissants_query->the_post();
+
+    // ACF fields
+    $titre = get_field('nom_du_projet');
+    $image = get_field('image'); // ACF Image field
+
+    if ($image) {
+      $finissantItems[] = [
+        'title' => $titre,
+        'url'   => $image['url'],
+        'id'    => get_the_ID()
+      ];
+    }
+
+  endwhile;
+  endif;
+
+  wp_reset_postdata();
+  ?>
+
+    <!-- Projet Finissants -->
+    <div class="projet-populaire-finissant">
+      <span class="titre"><?php echo $finissantItems[0]['title']; ?></span>
+      <span class="bouton">
+        <a href="<?php echo site_url('/index.php/projet-finissants/'); ?>">>></a>
+      </span>
+      <span class="categorie">Catégorie</span>
+      <span class="categorie-nom">FINISSANTS</span>
+      <img class="image-populaire-finissants" src="<?php echo $finissantItems[0]['url']; ?>" alt="">
+    </div>
+
     <!-- Exemple projet Arcade -->
     <div class="projet-populaire-arcade">
       <span class="titre"><?php echo $arcadeItems[0]['title']; ?></span>
@@ -161,37 +203,6 @@ get_header();
       <span class="categorie-nom">GRAPHISME</span>
       <img class="image-populaire-jour-terre" src="<?php echo $graphismeItems[0]['url']; ?>" alt="">
     </div>
-
-    <div class="projet-populaire-arcade">
-      <span class="titre"><?php echo $arcadeItems[1]['title']; ?></span>
-      <span class="bouton">
-        <a href="<?php echo site_url('/index.php/projet-arcade/?projet_id=' . $arcadeItems[1]['id']); ?>">>></a>
-      </span>
-      <span class="categorie">Catégorie</span>
-      <span class="categorie-nom">ARCADE</span>
-      <img class="image-populaire-arcade" src="<?php echo $arcadeItems[1]['url']; ?>" alt="">
-    </div>
-
-    <div class="projet-populaire-jour-terre">
-      <span class="titre"><?php echo $graphismeItems[1]['title']; ?></span>
-      <span class="bouton">
-        <a href="<?php echo site_url('/index.php/projet-graphisme/?projet_id=' . $graphismeItems[1]['id']); ?>">>></a>
-      </span>
-      <span class="categorie">Catégorie</span>
-      <span class="categorie-nom">GRAPHISME</span>
-      <img class="image-populaire-jour-terre" src="<?php echo $graphismeItems[1]['url']; ?>" alt="">
-    </div>
-
-    <!-- Projet Finissants
-    <div class="projet-populaire-finissant">
-      <span class="titre">TITRE</span>
-      <span class="bouton">
-        <a href="<?php echo site_url('/index.php/projet-finissants/'); ?>">>></a>
-      </span>
-      <span class="categorie">Catégorie</span>
-      <span class="categorie-nom">PROJETS DES FINISSANTS</span>
-      <img class="image-populaire-finissants" src="<?php echo get_template_directory_uri(); ?>/Images/FinissantsPopulaire.png" alt="">
-    </div> -->
   </div>
 </div>
 

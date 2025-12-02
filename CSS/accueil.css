@@ -514,8 +514,9 @@
   .projet-populaire-jour-terre > .titre,
   .projet-populaire-finissant > .titre {
     grid-area: 1 / 1 / 2 / 3;
-    font-size: x-large;
+    font-size: 6.2vw;
     height: 2rem;
+    border-bottom: 2px solid var(--border-color-side);
   }
 
   .projet-populaire-arcade > .bouton,
@@ -524,6 +525,13 @@
     grid-area: 1/3/2/4;
     font-size: x-large;
     height: 2rem;
+  }
+
+  .projet-populaire-arcade > .bouton a,
+  .projet-populaire-jour-terre > .bouton a,
+  .projet-populaire-finissant > .bouton a {
+    color: white;
+    text-decoration: none;
   }
 
   .projet-populaire-arcade > .categorie,
@@ -575,7 +583,7 @@
     border-left: 1px solid var(--border-color);
   }
 
-  .image-populaire-arcade, .image-populaire-jour-terre {
+  .image-populaire-arcade, .image-populaire-jour-terre,  .image-populaire-finissants{
     width: 335px;
     height: 478px;
     border: 1px solid var(--border-color-side);
@@ -1281,8 +1289,7 @@
   }
 
   .projets {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 per row */
+    display: flex;
   }
 
   .projets > p {
@@ -1290,17 +1297,27 @@
     font-size: small;
   }
 
+  .projet-populaire-arcade > .titre,
+  .projet-populaire-jour-terre > .titre,
+  .projet-populaire-finissant > .titre {
+    font-size: 1.5vw;
+  }
+
   .projet-populaire-arcade:hover {
     transform: translateY(-10px);
     box-shadow: 16px 16px 0px rgb(15, 13, 50);
-    border-radius: 40px;
     color: thistle;
   }
 
   .projet-populaire-jour-terre:hover {
     transform: translateY(-10px);
     box-shadow: 16px 16px 0px rgb(5, 25, 28);
-    border-radius: 80px;
+    color: thistle;
+  }
+
+  .projet-populaire-finissant:hover {
+    transform: translateY(-10px);
+    box-shadow: 16px 16px 0px rgb(61, 68, 7);
     color: thistle;
   }
 

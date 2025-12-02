@@ -461,9 +461,9 @@ h1, h2 {
   }
 
   .carte-projet-finissant--desktop .image-projet-finissant {
-    width: min-content;
+    width: 45%;
     height: auto;
-    object-fit: contain;
+    object-fit: cover;
   }
 
   .carte-projet-finissant--desktop .conteneur-carte-bas {
