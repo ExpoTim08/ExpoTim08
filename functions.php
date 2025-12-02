@@ -29,27 +29,49 @@ function expo_enqueue_assets() {
         'pageFinissants' => site_url('/index.php/finissants/')
     ));
 
-    // --- CSS spécifique à la page d'accueil ---
-    if (is_front_page()) wp_enqueue_style('style-accueil', $theme_uri . '/CSS/accueil.css');
+    // --- CSS spécifique à la front-page (Intro) ---
+    if (is_front_page()) {
+        wp_enqueue_style('style-intro', $theme_uri . '/CSS/intro.css');
+        // intro.js dans le thème à la racine, pas dans un dossier
+        wp_enqueue_script('intro-js', $theme_uri . '/intro.js', array(), null, true);
+    }
+
+    // --- CSS spécifique à la page Accueil ---
+    // Chargé si la page est 'accueil' ou si c'est la front-page (où on affiche Accueil derrière l'intro)
+    if (is_page('accueil') || is_front_page()) {
+        wp_enqueue_style('style-accueil', $theme_uri . '/CSS/accueil.css', array(), null);
+    }
 
     // --- CSS normalize ---
-    if (file_exists(get_template_directory() . '/CSS/normalize.css')) wp_enqueue_style('style-normalize', $theme_uri . '/CSS/normalize.css');
+    if (file_exists(get_template_directory() . '/CSS/normalize.css')) {
+        wp_enqueue_style('style-normalize', $theme_uri . '/CSS/normalize.css');
+    }
 
-    // --- CSS spécifique aux pages de finissant ---
-    if (is_page_template('finissants.php') || is_page_template('ar.php')) wp_enqueue_style('style-finissant', $theme_uri . '/CSS/finissant.css');
-    if (is_page_template('projetFinissant.php')) wp_enqueue_style('style-projet-finissant', $theme_uri . '/CSS/projetFinissant.css');
-
-    // --- CSS spécifique aux pages d'arcade ---
-    if (is_page_template('arcade.php') || is_page_template('ar.php')) wp_enqueue_style('style-arcade', $theme_uri . '/CSS/arcade.css');
-    if (is_page_template('projetArcade.php')) wp_enqueue_style('style-projet-arcade', $theme_uri . '/CSS/projetArcade.css');
-
-    // --- CSS spécifique aux pages de graphisme ---
-    if (is_page_template('graphisme.php')) wp_enqueue_style('style-graphisme', $theme_uri . '/CSS/graphisme.css');
-    if (is_page_template('projetGraphisme.php')) wp_enqueue_style('style-projet-graphisme', $theme_uri . '/CSS/projetGraphisme.css');
-
+    // --- CSS spécifiques aux autres pages (finissant, arcade, graphisme, etc.) ---
+    if (is_page_template('finissants.php') || is_page_template('ar.php')) {
+        wp_enqueue_style('style-finissant', $theme_uri . '/CSS/finissant.css');
+    }
+    if (is_page_template('projetFinissant.php')) {
+        wp_enqueue_style('style-projet-finissant', $theme_uri . '/CSS/projetFinissant.css');
+    }
+    if (is_page_template('arcade.php') || is_page_template('ar.php')) {
+        wp_enqueue_style('style-arcade', $theme_uri . '/CSS/arcade.css');
+    }
+    if (is_page_template('projetArcade.php')) {
+        wp_enqueue_style('style-projet-arcade', $theme_uri . '/CSS/projetArcade.css');
+    }
+    if (is_page_template('graphisme.php')) {
+        wp_enqueue_style('style-graphisme', $theme_uri . '/CSS/graphisme.css');
+    }
+    if (is_page_template('projetGraphisme.php')) {
+        wp_enqueue_style('style-projet-graphisme', $theme_uri . '/CSS/projetGraphisme.css');
+    }
     if (is_search()) wp_enqueue_style('style-search', $theme_uri . '/CSS/search.css');
     if (is_page_template('contact.php') || is_page_template('ar.php')) wp_enqueue_style('style-contact', $theme_uri . '/CSS/contact.css');
     if (is_404() || is_page_template('ar.php')) wp_enqueue_style('style-404', $theme_uri . '/CSS/404.css');
+
+    // --- Script tri.js spécifique à l'arcade ---
+    wp_enqueue_script('projets-arcade-js', $theme_uri . '/tri.js', array(), false, true);
 }
 add_action('wp_enqueue_scripts', 'expo_enqueue_assets');
 
@@ -88,65 +110,35 @@ function ajuster_menu_mobile() {
 add_action('wp_footer', 'ajuster_menu_mobile');
 
 // =========================================================
-// Normalisation des chaînes pour la recherche (accents, minuscules, espaces)
+// Normalisation des chaînes pour la recherche
 // =========================================================
 if (!function_exists('normalize_string')) {
     function normalize_string($str) {
-        // Si ce n'est pas une string, tenter de récupérer le premier élément si c'est un tableau
         if (is_array($str)) {
-            if (isset($str[0]) && is_string($str[0])) {
-                $str = $str[0];
-            } else {
-                return '';
-            }
+            if (isset($str[0]) && is_string($str[0])) $str = $str[0];
+            else return '';
         }
-
         if (!$str || !is_string($str)) return '';
 
-        $str = mb_strtolower($str, 'UTF-8'); // minuscules
+        $str = mb_strtolower($str, 'UTF-8');
         $accents = [
             'à'=>'a','â'=>'a','ä'=>'a','á'=>'a','ã'=>'a','å'=>'a',
-            'ç'=>'c',
-            'è'=>'e','é'=>'e','ê'=>'e','ë'=>'e',
-            'ì'=>'i','í'=>'i','î'=>'i','ï'=>'i',
-            'ñ'=>'n',
+            'ç'=>'c','è'=>'e','é'=>'e','ê'=>'e','ë'=>'e',
+            'ì'=>'i','í'=>'i','î'=>'i','ï'=>'i','ñ'=>'n',
             'ò'=>'o','ó'=>'o','ô'=>'o','ö'=>'o','õ'=>'o',
-            'ù'=>'u','ú'=>'u','û'=>'u','ü'=>'u',
-            'ý'=>'y','ÿ'=>'y',
-            'œ'=>'oe','æ'=>'ae',
-            'ß'=>'ss'
+            'ù'=>'u','ú'=>'u','û'=>'u','ü'=>'u','ý'=>'y','ÿ'=>'y',
+            'œ'=>'oe','æ'=>'ae','ß'=>'ss'
         ];
-
-        // Remplacement des accents
         $str = strtr($str, $accents);
-
-        // Enlever tout caractère non alphanumérique (sauf espace)
         $str = preg_replace('/[^a-z0-9 ]+/u', '', $str);
-
-        // Espaces multiples → un seul
         $str = preg_replace('/\s+/', ' ', $str);
-
         return trim($str);
     }
 }
 
+// =========================================================
+// Support pour le <title>
 function expo_theme_support() {
-    add_theme_support('title-tag'); // Active la gestion automatique du <title>
+    add_theme_support('title-tag');
 }
 add_action('after_setup_theme', 'expo_theme_support');
-
-
-
-function arcade_enqueue_scripts() {
-    wp_enqueue_script(
-        'projets-arcade-js',
-        get_template_directory_uri() . '/tri.js', // chemin vers ton fichier
-        array(), 
-        false, 
-        true   // chargement dans le footer
-    );
-}
-add_action('wp_enqueue_scripts', 'arcade_enqueue_scripts');
-
-
-

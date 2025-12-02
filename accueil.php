@@ -1,7 +1,8 @@
 <?php
 /* 
- * Template principal du thème ThemeExpo
+ Template Name: Page accueil
  */
+
 require("global.php");
 get_header();
 ?>

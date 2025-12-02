@@ -17,11 +17,11 @@
 
 <div class="header-container">
   <header class="site-header">
-    <h1 class="logo">
-      <a href="<?php echo home_url(); ?>">
-        <img class="header-logo-img" src="<?php echo get_template_directory_uri(); ?>/Images/Texte.png" alt="Logo de l'expo TIM">
-      </a>
-    </h1>
+  <h1 class="logo">
+  <a href="<?php echo get_permalink( get_page_by_path('accueil') ); ?>">
+    <img class="header-logo-img" src="<?php echo get_template_directory_uri(); ?>/Images/Texte.png" alt="Logo de l'expo TIM">
+  </a>
+</h1>
 
     <!-- menu burger -->
     <div class="menu-burger">

@@ -1,0 +1,37 @@
+/* Contenu accueil derrière rideaux */
+#accueil-content {
+  opacity: 0; /* on commence invisible */
+  transition: opacity 2s ease; /* apparaît progressivement */
+}
+
+/* Rideaux */
+.rideau {
+  position: fixed;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: #1B1B1B;
+  z-index: 100;
+  transition: transform 2s ease;
+}
+
+.rideau.gauche { left: 0; transform: translateX(0); }
+.rideau.droite { right: 0; transform: translateX(0); }
+
+.rideau.open.gauche { transform: translateX(-100%); }
+.rideau.open.droite { transform: translateX(100%); }
+
+/* Texte intro */
+.intro-text {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 3em;
+  z-index: 101;
+  opacity: 1;
+  transition: opacity 2s ease;
+}
+
+.intro-text.fade-out { opacity: 0; }
