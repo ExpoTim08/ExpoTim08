@@ -1,12 +1,18 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const selectTri = document.getElementById("tri-projets");
+    const selectTri = document.getElementById("filter-select");
+    const urlParams = new URLSearchParams(window.location.search);
+    const triActuel = urlParams.get("tri");
+
+    if (triActuel) selectTri.value = triActuel;
 
     selectTri.addEventListener("change", function() {
-        const order = this.value;
+        const tri = this.value;
         const url = new URL(window.location.href);
-
-        url.searchParams.set("order", order);
-
+        if (tri === "random") {
+            url.searchParams.delete("tri"); // random si pas de tri
+        } else {
+            url.searchParams.set("tri", tri);
+        }
         window.location.href = url.toString();
     });
 });
