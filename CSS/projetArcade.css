@@ -231,6 +231,7 @@ iframe {
 
   .image-projet img {
     width: 30vw;
+    height: 40vw;
   }
 
   .image-projet {
@@ -244,6 +245,7 @@ iframe {
     background-color: rgb(48,48,48);
     border: 2px solid var(--border-color-side);
     width: 80%;
+    /* height: 70vw; */
     justify-self: center;
     position: relative; 
     -webkit-font-smoothing: antialiased;
@@ -336,6 +338,7 @@ iframe {
   .description-image .infos-etudiants {
     grid-area: 1/2/2/3;
     width: 100%;
+    height: fit-content;
   }
 
   .description-image .image-projet img {

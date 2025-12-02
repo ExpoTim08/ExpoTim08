@@ -205,7 +205,7 @@ h1 {
   }
 
   .image-projet span, .infos-etudiants .titre-equipe,  .description-projet{
-    font-size: 1.8vw;
+    font-size: 1.5vw;
   }
 
   .image-projet-graphisme  {
@@ -219,6 +219,7 @@ h1 {
     background-color: rgb(48,48,48);
     border: 2px solid var(--border-color-side);
     width: 80%;
+    height: 50vw;
     justify-self: center;
     position: relative; 
     -webkit-font-smoothing: antialiased;
@@ -304,16 +305,14 @@ h1 {
     grid-area: 1/2/2/3;
     width: 100%;
     height: fit-content;
+    margin-right: 60px;
   }
 
   .description-projet .conteneur-description {
     grid-area: 2/2/3/3;
     width: 100%;
-
-  }
-
-  .description-projet .description, .nom-etudiant {
-    font-size: 1.5vw;
+    margin-right: 60px;
+    align-self: flex-end;
   }
 
   .behance-projet {

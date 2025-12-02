@@ -213,6 +213,7 @@ h1 {
     background-color: rgb(48,48,48);
     border: 2px solid var(--border-color-side);
     width: 80%;
+    height: 70vw;
     justify-self: center;
     position: relative; 
     -webkit-font-smoothing: antialiased;
