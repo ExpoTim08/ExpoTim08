@@ -10,5 +10,5 @@ document.addEventListener("DOMContentLoaded", () => {
       rideauD.classList.add('open');
       introText.classList.add('fade-out');
       accueil.style.opacity = 1; // révèle progressivement le contenu
-  }, 500);
+  }, 3000);
 });
