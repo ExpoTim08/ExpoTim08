@@ -2,6 +2,8 @@ body {
   background: linear-gradient(180deg, #1B1B1B 0%, #2B2B2B 44.23%, #323232 77.88%, #1B1B1B 100%);
   background-attachment: fixed;
   background-size: cover;
+  margin: 0;
+  padding: 0;
 }
 
 span, p, strong {
@@ -15,48 +17,52 @@ h1 {
 }
 
 .border {
-    position: fixed;
-    background: var(--border-color-side); /* couleur des bords */
-    z-index: 9999;
-  }
+  position: fixed;
+  background: var(--border-color-side);
+  z-index: 9999;
+}
 
-  .border.gauche {
-    top: 0;
-    left: 1em;
-    width: 1px; /* épaisseur du bord gauche */
-    height: 100%;
-  }
+.border.gauche {
+  top: 0;
+  left: 1em;
+  width: 1px;
+  height: 100%;
+}
 
-  .border.droite {
-    top: 0;
-    right: 1em;
-    width: 1px; /* épaisseur du bord droit */
-    height: 100%;
-  }
+.border.droite {
+  top: 0;
+  right: 1em;
+  width: 1px;
+  height: 100%;
+}
 
-  main {
+main {
   background-image: linear-gradient(#4e4b4194 1px, transparent 1px), linear-gradient(to right, #4e4b4194 1px, #71718300 1px);
   background-size: 40px 40px;
   background-attachment: fixed;
-  }
+  position: relative; /* référence pour les éléments absolus */
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-/*************************Présentation du projet*******************************************/
+/************************* Présentation du projet *******************************************/
 .titre-graphisme {
-  background-image: 
-    linear-gradient(177deg, var(--bouton-projet-finissant-color) 11.95%, var(--bouton-projet-finissant-color) 28.39%, #21212100 82.04%);
+  background-image: linear-gradient(177deg, var(--bouton-projet-finissant-color) 11.95%, var(--bouton-projet-finissant-color) 28.39%, #21212100 82.04%);
   position: relative;
   line-height: 0.7;
   padding: 3vw;
   border-top: 2px solid var(--border-color-side);
   border-bottom: 2px solid var(--border-color-side);
   font-family: var(--title-font);
+  text-align: center; /* centrage du texte */
 }
 
 .titre-graphisme-layer {
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  font-size: 8vw;
+  font-size: 6vw;
   font-family: var(--title-font);
 }
 
@@ -74,7 +80,7 @@ h1 {
   -webkit-text-stroke-color: var(--font-color);
 }
 
-.titre-graphisme-layer-3{
+.titre-graphisme-layer-3 {
   opacity: 0.5;
   color: transparent;
   -webkit-text-stroke-width: 0.4px;
@@ -87,13 +93,13 @@ h1 {
 }
 
 .lien-retour {
-  color: #ffffff; /* texte blanc */
+  color: #ffffff;
   text-decoration: none;
   font-weight: bold;
   font-size: 16px;
   display: inline-flex;
   align-items: center;
-  gap: 5px; /* espace entre la flèche et le texte */
+  gap: 5px;
 }
 
 .lien-retour:hover {
@@ -101,33 +107,36 @@ h1 {
   cursor: pointer;
 }
 
+/* Correction centrage student */
 .student {
   position: absolute;
-  margin-left: 70vw;
-  margin-top: -40vw;
-  width: 20vw;
+  left: 80%;
+  top: 40%;
+  width: 17vw;
   transform: rotateZ(-35deg);
 }
 
 .video-projet {
   border: 2px solid var(--border-color-side);
   border-radius: 40px;
-  width: 80vw;
-  justify-self: center;
+  width: 80%;
+  max-width: 800px;
+  margin: 2em auto;
+  display: block;
 }
 
 .infos-etudiants {
   display: flex;
   flex-direction: column;
-  justify-self: center;
-  margin-top: 2em;
-  width: 70vw;
+  margin: 2em auto;
+  width: 80%;
+  max-width: 800px;
   border: 2px solid var(--border-color-side);
 }
 
 .infos-etudiants strong {
   border-bottom: 2px solid var(--border-color-side);
-    background-image: linear-gradient(177deg, var(--bouton-projet-finissant-color) 11.95%, var(--bouton-projet-finissant-color) 28.39%, #21212100 82.04%);
+  background-image: linear-gradient(177deg, var(--bouton-projet-finissant-color) 11.95%, var(--bouton-projet-finissant-color) 28.39%, #21212100 82.04%);
 }
 
 .infos-etudiants strong, .nom-etudiant {
@@ -137,33 +146,32 @@ h1 {
 .image-projet {
   display: flex;
   flex-direction: column;
-  justify-self: center;
-  margin-top: 2em;
+  margin: 2em auto;
+  width: 80%;
+  max-width: 800px;
   border: 2px solid var(--border-color-side);
 }
 
 .image-projet-graphisme {
-  width: 70vw;
+  width: 100%;
 }
 
 .conteneur-description {
   display: flex;
   flex-direction: column;
-  width: 70vw;
-  justify-self: center;
-  margin-top: 2em;
+  margin: 2em auto;
+  width: 80%;
+  max-width: 800px;
   border: 2px solid var(--border-color-side);
-
 }
 
- .conteneur-description .description-titre {
-  background-image: 
-    linear-gradient(177deg, var(--bouton-projet-finissant-color) 11.95%, var(--bouton-projet-finissant-color) 28.39%, #21212100 82.04%);
+.conteneur-description .description-titre {
+  background-image: linear-gradient(177deg, var(--bouton-projet-finissant-color) 11.95%, var(--bouton-projet-finissant-color) 28.39%, #21212100 82.04%);
   border-bottom: 2px solid var(--border-color-side);
   padding: 15px;
   font-weight: bold;
   margin: 0;
-  }
+}
 
 .conteneur-description .description-texte {
   padding-left: 10px;
@@ -171,50 +179,67 @@ h1 {
 
 .behance-projet {
   text-align: center;
-  background-image: 
-    linear-gradient(177deg, var(--bouton-projet-finissant-color) 11.95%, #362CB6 28.39%, #21212100 82.04%);
-  width: 40vw;
+  background-image: linear-gradient(177deg, var(--bouton-projet-finissant-color) 11.95%, #362CB6 28.39%, #21212100 82.04%);
+  width: 60%;
+  max-width: 400px;
   padding: 4vw;
-  justify-self: center;
-  margin-top: 2em;
+  margin: 2em auto;
   border: 2px solid var(--border-color-side);
   font-weight: bold;
 }
 
+
 /********************************************** CSS Desktop ********************************************************/
 @media screen and (min-width: 994px) {
+  /* Main container */
+  main {
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* Titre graphisme */
   .titre-graphisme-layer {
     font-size: 4vw;
+    justify-content: center;
   }
- .student {
+
+  /* Student position */
+  .student {
     width: 10vw;
     right: 15%;
     bottom: 0;
+    left: auto;
+    top: auto;
+    transform: rotateZ(-35deg);
   }
 
+  /* Infos cours année */
   .infos-cours-annee {
     width: 20vw;
     padding: 2vw;
     font-size: 2vw;
   }
 
-  .image-projet span, .infos-etudiants .titre-equipe,  .description-projet{
+  /* Textes dans image projet / infos étudiants / description */
+  .image-projet span,
+  .infos-etudiants .titre-equipe,
+  .description-projet {
     font-size: 1.8vw;
   }
 
-  .image-projet img {
-    width: 30vw;
-  }
-
+  /* Description projet layout */
   .description-projet {
     display: grid;
-    grid-template-rows: repeat(2, 1fr);
-	  grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr; /* colonne gauche = image, droite = infos + description */
+    grid-template-rows: 1fr auto;   /* image prend tout l'espace restant, description prend sa hauteur */
+    gap: 2em;                       /* espace entre colonnes et lignes */
+    width: 80%;
+    margin: 0 auto 70px;
+    padding: 1em;                   /* marge interne */
     background-color: rgb(48,48,48);
     border: 2px solid var(--border-color-side);
-    width: 80%;
-    height: 70vw;
-    justify-self: center;
     position: relative; 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -224,35 +249,27 @@ h1 {
                 border-radius 260ms ease;
     will-change: transform, box-shadow;
     transform-origin: center;
-    margin-bottom: 70px;
-    padding-bottom: 70px;
+    box-sizing: border-box;
   }
 
+  /* Halftone overlay */
   .description-projet::after {
     content: "";
     position: absolute;
     inset: 0;
     pointer-events: none;
     border-radius: 60px;
-
-    /* halftone + tint */
     background-image:
       linear-gradient(rgba(64,50,255,0.06), rgba(97, 94, 8, 0.447)),
       radial-gradient(circle, rgba(255,255,255,0.12) 1.5px, transparent 1px);
-    background-size: auto, 12px 12px; /* change second value for dot density */
+    background-size: auto, 12px 12px;
     mix-blend-mode: screen;
-
-    /* commencer par être caché et animer au survol */
     opacity: 0;
     transform: translateY(6px);
     transition: opacity 260ms ease, transform 260ms cubic-bezier(.2,.8,.2,1);
-
-    /* estomper le demi-ton vers le haut */
     -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
     mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
-
     z-index: 2;
-
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
     image-rendering: pixelated;
@@ -263,6 +280,7 @@ h1 {
     transform: translateY(0);
   }
 
+  /* Hover effects */
   .description-projet:hover {
     transform: translateY(-10px);
     box-shadow: 16px 16px 0px rgb(61, 68, 7);
@@ -277,7 +295,8 @@ h1 {
     border-radius: 40px;
   }
 
-  .description-projet:hover > .infos-etudiants strong, .description-projet:hover > .conteneur-description .description-titre {
+  .description-projet:hover > .infos-etudiants strong,
+  .description-projet:hover > .conteneur-description .description-titre {
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
   }
@@ -287,28 +306,39 @@ h1 {
   .infos-etudiants,
   .conteneur-description,
   .infos-etudiants strong,
-   .conteneur-description .description-titre{
+  .conteneur-description .description-titre {
     transition: border-radius 260ms;
   }
 
-  .description-projet .image-projet {
-    grid-area: 1 / 1 / 3 / 2;
+  /* Image project left column */
+  .image-projet {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3; /* occupe 2 lignes pour descendre jusqu'à la description */
+    width: 100%;
+    display: block;
+    overflow: hidden;
+    border-radius: 10px;
   }
 
   .image-projet img {
+    width: 100%;
     height: 100%;
+    object-fit: cover;   /* remplit tout le bloc */
+    object-position: center;
+    display: block;
   }
 
-  .description-projet .infos-etudiants {
-    grid-area: 1/2/2/3;
-    width: 100%;
-    height: fit-content;
+  /* Infos étudiants et description (right column) */
+  .infos-etudiants {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+
+    margin-bottom: 1em;     /* espace vertical avec description */
   }
 
-  .description-projet .conteneur-description {
-    grid-area: 2/2/3/3;
-    width: 100%;
-    align-self: flex-end;
+  .conteneur-description {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
 
   }
 
@@ -316,11 +346,16 @@ h1 {
     font-size: 1.5vw;
   }
 
+  /* Marges internes pour la colonne droite */
   .conteneur-description, .infos-etudiants {
     margin-right: 60px;
   }
 
+  /* Behance project */
   .behance-projet {
+    width: auto;
+    max-width: none;
+    margin: 0;
     padding: 20px;
   }
 }
