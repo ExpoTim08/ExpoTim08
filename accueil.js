@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
       src: `${themeVars.themeUrl}/Images/Finissants.png`,
       Titre: "FINISSANTS",
       ClassName: "finissants",
-      Description: "Les finissants de la Technique d’intégration multimédia présentent le projet synthèse de leur parcours. ",
+      Description: "Les finissants de la Technique d’intégration multimédia présentent le projet synthèse de leur parcours.",
       Lien: themeVars.pageFinissants
     },
     {
@@ -51,6 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (currentChoice) currentChoice.classList.add(`${ClassName}-click`);
   }
 
+  // Démarre l'autoplay
   function startAuto() {
     clearInterval(intervalID);
     intervalID = setInterval(() => {
@@ -63,19 +64,19 @@ document.addEventListener("DOMContentLoaded", () => {
     clearInterval(intervalID);
   }
 
+  // Initialisation
   ChangeImage(CurrentIndex);
   startAuto();
 
   // Gestion hover uniquement desktop >1024px
   function setupHover() {
-    // Supprimer anciens listeners
     hoverListeners.forEach(({ elm, enter, leave }) => {
       elm.removeEventListener("mouseenter", enter);
       elm.removeEventListener("mouseleave", leave);
     });
     hoverListeners.length = 0;
 
-    if (window.innerWidth <= 1024) return; // pas de hover en mobile/tablette
+    if (window.innerWidth <= 1024) return;
 
     ChoixElements.forEach((elm, i) => {
       const enter = () => {
@@ -87,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
           Details.style.display = 'flex';
           requestAnimationFrame(() => {
             Details.style.opacity = '1';
-            Details.style.transform = 'translateY(130%)';
+            Details.style.transform = 'translateY(100%)';
           });
         }
 
@@ -103,15 +104,19 @@ document.addEventListener("DOMContentLoaded", () => {
           Details.style.transform = 'translateY(160%)';
         }
 
+        if (hoverTimeout) clearTimeout(hoverTimeout);
+
+        // Reprise immédiate : avance une image et relance l'autoplay
         hoverTimeout = setTimeout(() => {
-          startAuto(); // relance l'autoplay mais ne change pas la catégorie
+          CurrentIndex = (CurrentIndex + 1) % Images.length;
+          ChangeImage(CurrentIndex);
+          startAuto();
           hoverTimeout = null;
-        }, 2000);
+        }, 1000); // petit délai pour laisser l'animation CSS se terminer
       };
 
       elm.addEventListener("mouseenter", enter);
       elm.addEventListener("mouseleave", leave);
-
       hoverListeners.push({ elm, enter, leave });
     });
   }
@@ -123,27 +128,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Gère l'état des détails selon écran
+  // Gestion responsive du bloc détails
   function handleResponsiveDetails() {
     if (!Details) return;
     if (window.innerWidth <= 1024) {
-      // Mobile/tablette : description visible
       Details.style.display = 'flex';
       Details.style.opacity = '1';
       Details.style.transform = 'none';
     } else {
-      // Desktop : description cachée par défaut, position bas
       Details.style.display = 'flex';
       Details.style.opacity = '0';
       Details.style.transform = 'translateY(160%)';
     }
   }
 
-  // Initialisation
   setupHover();
   handleResponsiveDetails();
 
-  // Recalcul au resize
   window.addEventListener("resize", () => {
     ChangeImage(CurrentIndex);
     setupHover();
