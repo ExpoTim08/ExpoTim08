@@ -274,3 +274,227 @@ function handle_arcade_tri() {
 }
 add_action('wp_ajax_arcade_tri', 'handle_arcade_tri');
 add_action('wp_ajax_nopriv_arcade_tri', 'handle_arcade_tri');
+
+/**
+ * Gestionnaire AJAX pour le tri graphisme
+ */
+function handle_graphisme_tri() {
+    check_ajax_referer('tri_nonce', 'nonce');
+
+    $tri = isset($_POST['tri']) ? sanitize_text_field($_POST['tri']) : 'random';
+    
+    $orderby = 'rand';
+    $order   = 'ASC';
+    
+    switch ($tri) {
+        case 'asc':
+            $orderby = 'title';
+            $order   = 'ASC';
+            break;
+        case 'desc':
+            $orderby = 'title';
+            $order   = 'DESC';
+            break;
+        default:
+            $orderby = 'rand';
+            $order   = 'ASC';
+            break;
+    }
+    
+    $projets = new WP_Query([
+        'post_type'      => 'projet-graphisme',
+        'posts_per_page' => -1,
+        'orderby'        => $orderby,
+        'order'          => $order
+    ]);
+
+    // Mélange manuel pour garantir un vrai ordre aléatoire
+    if ($tri === 'random') {
+        $posts = $projets->posts;
+        shuffle($posts);
+        $projets->posts = $posts;
+    }
+
+    ob_start();
+    if ($projets->have_posts()) :
+        while ($projets->have_posts()) : $projets->the_post();
+            $titre       = get_the_title();
+            $image       = get_field('affiche');
+            $description = get_field('description');
+            $short_desc = wp_trim_words( wp_strip_all_tags( $description ), 40, '...' );
+            ?>
+    <!-- ===== Carte Projet Desktop ===== -->
+    <article class="carte-projet-graphisme carte-projet-graphisme--desktop">
+      <?php if (!empty($image) && !empty($image['url'])) : ?>
+          <img class="image-projet-graphisme"
+               src="<?php echo esc_url($image['url']); ?>"
+               alt="<?php echo esc_attr($image['alt'] ?: $titre); ?>">
+      <?php endif; ?>
+
+      <div class="conteneur-carte-bas">
+        <h2 class="titre-projet-graphisme"><?php echo esc_html($titre); ?></h2>
+        <p class="carte-graphisme-titre-description">Description</p>
+        <p class="description-projet"><?php echo esc_html($short_desc); ?></p>
+
+        <button class="button-projet-graphisme"
+          onclick="window.location.href='<?php echo esc_url(add_query_arg('projet_id', get_the_ID(), get_permalink(get_page_by_path('projet-graphisme')))); ?>'">
+          >>
+        </button>
+      </div>
+    </article>
+
+    <!-- ===== Carte Projet Mobile ===== -->
+   <article class="carte-projet-graphisme carte-projet-graphisme--mobile">
+      <div class="bloc-titre">
+        <h2 class="titre-projet-graphisme"><?php echo esc_html($titre); ?></h2>
+        <button class="button-projet-graphisme"
+            onclick="window.location.href='<?php echo esc_url(add_query_arg('projet_id', get_the_ID(), get_permalink(get_page_by_path('projet-graphisme')))); ?>'">
+            &gt;&gt;
+          </button>
+      </div>
+
+      <?php if ($image): ?>
+        <img class="image-projet-graphisme" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($titre); ?>">
+        
+        <span class="conteneur-button-dropdown-graphisme">
+          <p class="carte-graphisme-titre-description">Description</p>
+          <button
+            class="button-dropdown-graphisme"
+            aria-expanded="false"
+            aria-controls="<?php echo 'dropdown-'.get_the_ID(); ?>">
+            +
+          </button>
+        </span>
+
+        <div id="<?php echo 'dropdown-'.get_the_ID(); ?>" class="dropdown-carte-graphisme" aria-hidden="true">
+          <p class="description-projet"><?php echo esc_html($short_desc); ?></p>
+        </div>
+      <?php endif; ?>
+    </article>
+    <?php
+        endwhile;
+        wp_reset_postdata();
+    else:
+        echo '<p class="message-aucun-projet">Aucun projet trouvé pour le moment.</p>';
+    endif;
+    
+    $html = ob_get_clean();
+    wp_send_json_success($html);
+}
+add_action('wp_ajax_graphisme_tri', 'handle_graphisme_tri');
+add_action('wp_ajax_nopriv_graphisme_tri', 'handle_graphisme_tri');
+
+/**
+ * Gestionnaire AJAX pour le tri finissants
+ */
+function handle_finissants_tri() {
+    check_ajax_referer('tri_nonce', 'nonce');
+
+    $tri = isset($_POST['tri']) ? sanitize_text_field($_POST['tri']) : 'random';
+    
+    $orderby = 'rand';
+    $order   = 'ASC';
+    
+    switch ($tri) {
+        case 'asc':
+            $orderby = 'title';
+            $order   = 'ASC';
+            break;
+        case 'desc':
+            $orderby = 'title';
+            $order   = 'DESC';
+            break;
+        default:
+            $orderby = 'rand';
+            $order   = 'ASC';
+            break;
+    }
+    
+    $args = [
+        'post_type'      => 'projet-finissant',
+        'posts_per_page' => -1,
+        'orderby'        => $orderby,
+        'order'          => $order
+    ];
+
+    // Si un filtre de catégorie est sélectionné
+    if (!empty($_POST['cat'])) {
+        $args['cat'] = intval($_POST['cat']);
+    }
+
+    $projets_finissants = new WP_Query($args);
+
+    // Mélange manuel pour garantir un vrai ordre aléatoire
+    if ($tri === 'random') {
+        $posts = $projets_finissants->posts;
+        shuffle($posts);
+        $projets_finissants->posts = $posts;
+    }
+
+    ob_start();
+    if ($projets_finissants->have_posts()) :
+        while ($projets_finissants->have_posts()) : $projets_finissants->the_post();
+            $titre       = get_field('nom_du_projet');
+            $description = get_field('description');
+            $image       = get_field('image');
+            $short_desc = wp_trim_words(wp_strip_all_tags($description), 40, '...');
+            ?>
+       <!-- ===== Carte Projet Desktop ===== -->
+        <article class="carte-projet-finissant carte-projet-finissant--desktop">
+            <?php if (!empty($image) && !empty($image['url'])) : ?>
+            <img class="image-projet-finissant"
+                src="<?php echo esc_url($image['url']); ?>"
+                alt="<?php echo esc_attr($image['alt'] ?: $titre); ?>">
+            <?php endif; ?>
+
+            <div class="conteneur-carte-bas">
+                <h2 class="titre-projet-finissant"><?php echo esc_html($titre); ?></h2>
+                <p class="carte-finissant-titre-description">Description</p>
+                <p class="description-projet"><?php echo esc_html($short_desc); ?></p>
+            
+            <button class="button-projet-finissant"
+            onclick="window.location.href='<?php echo esc_url(add_query_arg('projet_id', get_the_ID(), get_permalink(get_page_by_path('projet-finissant')))); ?>'">
+            >>
+            </button>
+        </article>
+
+        <!-- ===== Carte Projet Mobile ===== -->
+        <article class="carte-projet-finissant carte-projet-finissant--mobile">
+            <div class="bloc-titre">
+                <h2 class="titre-projet-finissant"><?php echo esc_html($titre); ?></h2>
+                <button class="button-projet-finissant"
+                    onclick="window.location.href='<?php echo esc_url(add_query_arg('projet_id', get_the_ID(), get_permalink(get_page_by_path('projet-finissant')))); ?>'">
+                    &gt;&gt;
+                </button>
+            </div>
+
+            <?php if ($image): ?>
+                <img class="image-projet-finissant" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($titre); ?>">
+                
+                <span class="conteneur-button-dropdown-finissant">
+                <p class="carte-finissant-titre-description">Description</p>
+                <button
+                    class="button-dropdown-finissant"
+                    aria-expanded="false"
+                    aria-controls="<?php echo 'dropdown-'.get_the_ID(); ?>">
+                    +
+                </button>
+                </span>
+
+                <div id="<?php echo 'dropdown-'.get_the_ID(); ?>" class="dropdown-carte-finissant" aria-hidden="true">
+                <p class="description-projet"><?php echo esc_html($short_desc); ?></p>
+                </div>
+            <?php endif; ?>
+        </article>
+    <?php
+        endwhile;
+        wp_reset_postdata();
+    else:
+        echo '<p>Aucun projet de finissants pour le moment.</p>';
+    endif;
+    
+    $html = ob_get_clean();
+    wp_send_json_success($html);
+}
+add_action('wp_ajax_finissants_tri', 'handle_finissants_tri');
+add_action('wp_ajax_nopriv_finissants_tri', 'handle_finissants_tri');

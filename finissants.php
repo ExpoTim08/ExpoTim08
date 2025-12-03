@@ -79,37 +79,30 @@ get_header();
   </div>
 
 <?php
-// Valeurs par défaut
+// Tri asynchrone finissants
+$tri = isset($_GET['tri']) ? sanitize_text_field($_GET['tri']) : 'random';
 $orderby = 'rand';
 $order   = 'ASC';
 
-// Vérifie le paramètre GET ?tri=
-if (isset($_GET['tri'])) {
-    switch ($_GET['tri']) {
-        case 'asc':
-            // A → Z
-            $orderby = 'title';
-            $order   = 'ASC';
-            break;
-
-        case 'desc':
-            // Z → A
-            $orderby = 'title';
-            $order   = 'DESC';
-            break;
-
-        default:
-            // Random
-            $orderby = 'rand';
-            $order   = 'ASC';
-            break;
-    }
+switch ($tri) {
+    case 'asc':
+        $orderby = 'title';
+        $order   = 'ASC';
+        break;
+    case 'desc':
+        $orderby = 'title';
+        $order   = 'DESC';
+        break;
+    default:
+        $orderby = 'rand';
+        $order   = 'ASC';
+        break;
 }
 ?>
 
 
   <!-- ===================== Liste des projets ===================== -->
-    <section class="liste-projet-finissant">
+    <section class="liste-projet-finissant" id="liste-projet-finissant">
         <?php
         // 1. Définir le type de publication pour les projets finissants.
         // Assurez-vous que 'projet-finissants' correspond à votre Post Type dans WordPress.
@@ -126,6 +119,13 @@ if (!empty($_GET['cat'])) {
 }
 
 $projets_finissants = new WP_Query($args);
+
+// Mélange manuel pour garantir un vrai ordre aléatoire
+if ($tri === 'random') {
+    $posts = $projets_finissants->posts;
+    shuffle($posts);
+    $projets_finissants->posts = $posts;
+}
 
 
         if ($projets_finissants->have_posts()) :
