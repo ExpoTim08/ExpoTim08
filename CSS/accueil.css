@@ -91,31 +91,27 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 20%;
-    max-width: 80%;
-    min-width: 50%;
+    justify-content: center;
+    align-items: center;
     font-family: var(--general-font);
+    left: 0%;
+    top: 35%;
+    background-color: #2b2b2bc1;
+    min-width: 80%;
+    text-align: center;
   }
 
   .arcade-details > .sous-titre {
     width: 65%;
     font-size: 35px;
     font-family: var(--title-font);
-    -webkit-text-stroke: 2px black;
+    text-align: center;
     margin-left: 0.2rem;
   }
 
-  .arcade-details > .plus {
-    border: 2px solid var(--border-color);
-    padding: 0.5em;
-    width: 100px;
-    text-align: center;
-    font-weight: bolder;
-    margin-left: 2rem;
-  }
 
   .arcade-details .description {
-    background-color: #2b2b2bc1;
+
     font-weight: bold;
     width: 75%;
     padding: 1em;
@@ -981,26 +977,23 @@
 /* ================== ARCADE DETAILS ================== */
 .arcade-details {
   position: absolute;
-  bottom: 0;                 
-  left: 8%;                   /* positionné à gauche */
+  bottom: 0%;
+  left: 10%;
   background-color: rgba(25, 26, 25, 0.85);
   border-radius: 15px;
-  padding: 1.2rem;
-  width: 65vw;
-  height: 150px;
-  max-width: 90%;             
-  box-sizing: border-box;
-  display: flex;              
+  width: 180px; /* largeur fixe plus petite */
+  height: 120px; /* hauteur adaptée */
+  display: flex;
   flex-direction: row;
-  align-items: center;        
-  justify-content: center;    
-  gap: 0.5rem;
+  align-items: center;
+  justify-content: space-between; /* espace entre sous-titre et description */
+  padding: 10px; /* espace interne */
   transform: translateY(160%);
-  opacity: 0;          
+  opacity: 0;
   transition: opacity 0.4s ease, transform 0.4s ease;
   z-index: 3;
-  pointer-events: none; /* le bloc ne bloque pas les hover sur les boutons */
-  margin-left: 10vw;
+  pointer-events: none;
+  overflow: hidden; /* empêche le bloc de s’agrandir */
 }
 
 /* Affichage uniquement quand on survole les boutons */
@@ -1011,17 +1004,20 @@
 /* Titre */
 .arcade-details > .sous-titre-carroussel {
   margin: 0;                 
-  font-size: 2.5vw;
+  font-size: 2.8vw;
   -webkit-text-stroke: 1px #fff;
   text-shadow: 0px 25px 0px rgba(255, 255, 255, 0.5);
+  width: 50%;
 }
 
 /* Description */
 .arcade-details > .description {
   margin: 0;                 
-  font-size: 0.9vw;
   line-height: 1.1;        
   background: none;
+  width: 80%;        /* prend toute la largeur du parent */
+  font-size: 0.9rem;    /* ou réduire la taille */
+  white-space: normal;
 }
 
 

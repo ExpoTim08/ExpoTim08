@@ -175,7 +175,7 @@ get_header();
     <div class="projet-populaire-finissant">
       <span class="titre"><?php echo $finissantItems[0]['title']; ?></span>
       <span class="bouton">
-        <a href="<?php echo site_url('/index.php/projet-finissants/'); ?>">>></a>
+        <a href="<?php echo site_url('/index.php/projet-finissant/?projet_id=' . $finissantItems[0]['id']); ?>">>></a>
       </span>
       <span class="categorie">Catégorie</span>
       <span class="categorie-nom">FINISSANTS</span>
