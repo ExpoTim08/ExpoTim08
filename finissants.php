@@ -37,14 +37,46 @@ get_header();
     </div>
   </section>
 
-  <!-- ===================== Barre de filtre ===================== -->
-  <div class="tri-bar">
-  <select id="tri-select" name="tri-select" aria-label="Filtrer projets par type">
-    <option value="random">Tous</option>
-    <option value="asc">A à Z</option>
-    <option value="desc">Z à A</option>
-</select>
-</div>
+  <!-- ===================== Barre de filtres ===================== -->
+  <div class="filtres-container">
+    <?php
+    // Récupérer la catégorie parent "Projet des finissants"
+    $parent_cat = get_category_by_slug('projet-des-finissants'); 
+
+    if ($parent_cat) :
+        // Récupérer les catégories enfants
+        $child_categories = get_categories([
+            'parent'     => $parent_cat->term_id,
+            'hide_empty' => false
+        ]);
+    ?>
+    <form method="GET" id="filtre-categorie-form" class="filtre-categorie">
+        <select name="cat" onchange="document.getElementById('filtre-categorie-form').submit()" aria-label="Filtrer par catégorie">
+            <option value="">Filtrer (Tous)</option>
+
+            <?php foreach ($child_categories as $cat) : ?>
+                <option value="<?php echo $cat->term_id; ?>"
+                    <?php selected(isset($_GET['cat']) && $_GET['cat'] == $cat->term_id); ?>>
+                    <?php echo esc_html($cat->name); ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+
+        <!-- Garde aussi la valeur du tri -->
+        <?php if (isset($_GET['tri'])) : ?>
+            <input type="hidden" name="tri" value="<?php echo esc_attr($_GET['tri']); ?>">
+        <?php endif; ?>
+    </form>
+    <?php endif; ?>
+
+    <div class="tri-bar">
+      <select id="tri-select" name="tri-select" aria-label="Filtrer projets par type">
+        <option value="random">Trier (Tous)</option>
+        <option value="asc">A à Z</option>
+        <option value="desc">Z à A</option>
+    </select>
+    </div>
+  </div>
 
 <?php
 // Valeurs par défaut
@@ -73,21 +105,28 @@ if (isset($_GET['tri'])) {
             break;
     }
 }
-
-
 ?>
+
 
   <!-- ===================== Liste des projets ===================== -->
     <section class="liste-projet-finissant">
         <?php
         // 1. Définir le type de publication pour les projets finissants.
         // Assurez-vous que 'projet-finissants' correspond à votre Post Type dans WordPress.
-        $projets_finissants = new WP_Query([
-            'post_type'      => 'projet-finissant',
-            'posts_per_page' => -1,
-            'orderby'        => $orderby,
-            'order'          => $order
-        ]);
+       $args = [
+    'post_type'      => 'projet-finissant',
+    'posts_per_page' => -1,
+    'orderby'        => $orderby,
+    'order'          => $order
+];
+
+// Si un filtre de catégorie est sélectionné
+if (!empty($_GET['cat'])) {
+    $args['cat'] = intval($_GET['cat']);
+}
+
+$projets_finissants = new WP_Query($args);
+
 
         if ($projets_finissants->have_posts()) :
             while ($projets_finissants->have_posts()) : $projets_finissants->the_post();

@@ -31,6 +31,15 @@ h1, h2 {
 /*-------------- MOBILE FINISSANT --------------*/
 @media screen and (max-width: 576px) {
 
+  .filtres-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+    
+}
   /* style generale + border */
   .site-header {
     padding: 20px 2em 1em 2em;
@@ -213,11 +222,20 @@ h1, h2 {
     margin: 1rem 0rem 3rem 0rem;
     place-self: center;
   }
+
 }
 
 /*-------------- TABLET / PETIT ECRAN finissant --------------*/
 @media screen and (min-width: 576.02px) {
-
+  .filtres-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+    
+}
   body { overflow-x: hidden; }
   img { max-width: 100%; height: auto; display: block; object-fit: contain; }
 
@@ -366,32 +384,35 @@ h1, h2 {
     margin-top: 50px;
     margin-bottom: 20px;
     padding: 0.2em 0.7em 0.3em 0.5em;
-    margin-left: 10%;
+    
     width: fit-content;
     background-color: rgb(48,48,48);
     border: 1px solid var(--border-color);
     display: flex;
     flex-flow: nowrap row;
     align-items: center;
+    
   }
 
 
   .filtre { margin: 0; font-size: 14px; }
   .icone-filtre { width: 20px; height: 20px; }
 
-  .tri-bar{
-    margin: 1rem 0rem 3rem 0rem;
-    place-self: center;
-    width: 80%;
-    max-width: 600px;
-    justify-content: end;
-  }
+  
 }
 
 /*-------------- DESKTOP FINISSANT --------------*/
 @media screen and (min-width: 1024px) {
 
-  
+  .filtres-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+    
+}
   .border { position: fixed; background: var(--border-color-side); z-index: 9999; }
   .border.gauche { top: 0; left: 3em; width: 1px; height: 100%; }
   .border.droite { top: 0; right: 3em; width: 1px; height: 100%; }
@@ -490,9 +511,10 @@ h1, h2 {
   .tri-bar{
     margin: 1rem 0;
     place-self: center;
-    width: 74%;
+    
     max-width: none;
   }
+  
 }
 
 /*-------------- GRAND ECRAN FINISSANT --------------*/
@@ -532,10 +554,19 @@ h1, h2 {
   .tri-bar{
     margin: 1rem 0;
     place-self: center;
-    width: 80%;
     max-width: none;
   }
+  .filtres-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+  margin-right: 8.5rem;
 }
+}
+
 
 /*-------------- Effet halftone + hover carte finissant desktop --------------*/
 .carte-projet-finissant--desktop::after {
@@ -649,11 +680,66 @@ h1, h2 {
 
   /*-------------- FILTRE --------------*/
 
+/* Container for both filters (category + tri) */
+
+
+.filtre-categorie {
+  display: flex;
+  align-items: center;
+}
+
+.filtre-categorie select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0.45rem 0.9rem 0.45rem 0.6rem;
+  border-radius: 2px;
+  border: 1px solid var(--border-color);
+  background:
+    linear-gradient(rgba(255,255,255,0.02), rgba(255,255,255,0.02)),
+    url("data:image/svg+xml;charset=UTF-8,%3Csvg width='12' height='8' viewBox='0 0 12 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23FFFFFF' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E") no-repeat right 10px center;
+  background-size: auto, 12px 8px;
+  color: var(--font-color);
+  font-size: 0.95rem;
+  min-width: 140px;
+  cursor: pointer;
+  box-shadow: none;
+  font-family: var(--general-font);
+  background-color: #2f2f2f;
+  -webkit-text-fill-color: var(--font-color);
+}
+
+.filtre-categorie select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.filtre-categorie select option {
+  background-color: #2f2f2f;
+  color: var(--font-color);
+  padding: 0.25rem 0.5rem;
+}
+
+.filtre-categorie select option:checked,
+.filtre-categorie select option[selected] {
+  background-color: rgba(255, 200, 50, 0.14);
+  color: #ffffff;
+}
+
+.filtre-categorie select::-ms-expand { display: none; }
+
+.filtre-categorie select:focus {
+  outline: 3px solid rgba(166, 106, 3, 0.14);
+  outline-offset: 2px;
+  border-color: rgba(214, 148, 6, 0.733);
+  border-radius: 8px;
+}
+
 .tri-bar {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin: 1rem 0;
+  margin: 0;
   padding: 0.35rem;
   background: transparent;
   color: var(--font-color);
@@ -729,3 +815,5 @@ h1, h2 {
   border-color: rgba(214, 148, 6, 0.733);
   border-radius: 8px;
 }
+
+
