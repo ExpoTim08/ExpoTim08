@@ -391,6 +391,7 @@ function handle_finissants_tri() {
     check_ajax_referer('tri_nonce', 'nonce');
 
     $tri = isset($_POST['tri']) ? sanitize_text_field($_POST['tri']) : 'random';
+    $cat = isset($_POST['cat']) ? intval($_POST['cat']) : 0;
     
     $orderby = 'rand';
     $order   = 'ASC';
@@ -418,8 +419,8 @@ function handle_finissants_tri() {
     ];
 
     // Si un filtre de catégorie est sélectionné
-    if (!empty($_POST['cat'])) {
-        $args['cat'] = intval($_POST['cat']);
+    if (!empty($cat)) {
+        $args['cat'] = $cat;
     }
 
     $projets_finissants = new WP_Query($args);

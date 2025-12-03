@@ -43,7 +43,7 @@ get_header();
   
 <div class="tri-bar">
   <select id="tri-select" name="tri-select" aria-label="Filtrer projets par type">
-    <option value="random">Tous</option>
+    <option value="random">Trier (Tous)</option>
     <option value="asc">A à Z</option>
     <option value="desc">Z à A</option>
   </select>

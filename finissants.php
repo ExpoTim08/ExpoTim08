@@ -50,37 +50,31 @@ get_header();
             'hide_empty' => false
         ]);
     ?>
-    <form method="GET" id="filtre-categorie-form" class="filtre-categorie">
-        <select name="cat" onchange="document.getElementById('filtre-categorie-form').submit()" aria-label="Filtrer par catégorie">
-            <option value="">Filtrer (Tous)</option>
+    <select id="filtre-categorie-select" name="cat" aria-label="Filtrer par catégorie">
+        <option value="">Filtrer (Tous)</option>
 
-            <?php foreach ($child_categories as $cat) : ?>
-                <option value="<?php echo $cat->term_id; ?>"
-                    <?php selected(isset($_GET['cat']) && $_GET['cat'] == $cat->term_id); ?>>
-                    <?php echo esc_html($cat->name); ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
-
-        <!-- Garde aussi la valeur du tri -->
-        <?php if (isset($_GET['tri'])) : ?>
-            <input type="hidden" name="tri" value="<?php echo esc_attr($_GET['tri']); ?>">
-        <?php endif; ?>
-    </form>
+        <?php foreach ($child_categories as $cat) : ?>
+            <option value="<?php echo $cat->term_id; ?>"
+                <?php selected(isset($_GET['cat']) && $_GET['cat'] == $cat->term_id); ?>>
+                <?php echo esc_html($cat->name); ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
     <?php endif; ?>
 
     <div class="tri-bar">
       <select id="tri-select" name="tri-select" aria-label="Filtrer projets par type">
-        <option value="random">Trier (Tous)</option>
-        <option value="asc">A à Z</option>
-        <option value="desc">Z à A</option>
+        <option value="random" <?php selected(isset($_GET['tri']) ? sanitize_text_field($_GET['tri']) : 'random', 'random'); ?>>Trier (Tous)</option>
+        <option value="asc" <?php selected(isset($_GET['tri']) ? sanitize_text_field($_GET['tri']) : '', 'asc'); ?>>A à Z</option>
+        <option value="desc" <?php selected(isset($_GET['tri']) ? sanitize_text_field($_GET['tri']) : '', 'desc'); ?>>Z à A</option>
     </select>
     </div>
   </div>
 
 <?php
-// Tri asynchrone finissants
+// Tri asynchrone finissants avec catégorie
 $tri = isset($_GET['tri']) ? sanitize_text_field($_GET['tri']) : 'random';
+$cat = isset($_GET['cat']) ? intval($_GET['cat']) : 0;
 $orderby = 'rand';
 $order   = 'ASC';
 
@@ -114,8 +108,8 @@ switch ($tri) {
 ];
 
 // Si un filtre de catégorie est sélectionné
-if (!empty($_GET['cat'])) {
-    $args['cat'] = intval($_GET['cat']);
+if (!empty($cat)) {
+    $args['cat'] = $cat;
 }
 
 $projets_finissants = new WP_Query($args);

@@ -771,7 +771,32 @@ h1, h2 {
   font-family: var(--general-font);
 }
 
+#tri-select,
+#filtre-categorie-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0.45rem 0.9rem 0.45rem 0.6rem;
+  border-radius: 2px;
+  border: 1px solid var(--border-color);
+  background:
+    linear-gradient(rgba(255,255,255,0.02), rgba(255,255,255,0.02)),
+    url("data:image/svg+xml;charset=UTF-8,%3Csvg width='12' height='8' viewBox='0 0 12 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23FFFFFF' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E") no-repeat right 10px center;
+  background-size: auto, 12px 8px;
+  color: var(--font-color);
+  font-size: 0.95rem;
+  min-width: 140px;
+  cursor: pointer;
+  box-shadow: none;
+  font-family: var(--general-font);
+}
+
 #tri-select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#filtre-categorie-select:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
@@ -791,8 +816,20 @@ h1, h2 {
   -webkit-text-fill-color: var(--font-color);
 }
 
+#filtre-categorie-select {
+  color: var(--font-color);
+  background-color: #2f2f2f; /* matches page dark surface */
+  -webkit-text-fill-color: var(--font-color);
+}
+
 
 #tri-select option {
+  background-color: #2f2f2f;
+  color: var(--font-color);
+  padding: 0.25rem 0.5rem;
+}
+
+#filtre-categorie-select option {
   background-color: #2f2f2f;
   color: var(--font-color);
   padding: 0.25rem 0.5rem;
@@ -805,8 +842,16 @@ h1, h2 {
   color: #ffffff;
 }
 
+#filtre-categorie-select option:checked,
+#filtre-categorie-select option[selected] {
+  background-color: rgba(255, 200, 50, 0.14);
+  color: #ffffff;
+}
+
 /* Hide native arrow in some browsers if you want to use a custom icon */
 #tri-select::-ms-expand { display: none; }
+
+#filtre-categorie-select::-ms-expand { display: none; }
 
 #tri-select:focus,
 .tri-bar label:focus {
