@@ -161,7 +161,14 @@ function enqueue_tri_script() {
 }
 add_action('wp_enqueue_scripts', 'enqueue_tri_script');
 
-function render_arcade_projects($tri = 'random') {
+/**
+ * Gestionnaire AJAX pour le tri arcade
+ */
+function handle_arcade_tri() {
+    check_ajax_referer('tri_nonce', 'nonce');
+
+    $tri = isset($_POST['tri']) ? sanitize_text_field($_POST['tri']) : 'random';
+    
     $orderby = 'rand';
     $order   = 'ASC';
     
@@ -180,21 +187,21 @@ function render_arcade_projects($tri = 'random') {
             break;
     }
     
-   $projets = new WP_Query([
-    'post_type'      => 'projet-arcade',
-    'posts_per_page' => -1,
-    'orderby'        => $orderby,
-    'order'          => $order
-]);
+    $projets = new WP_Query([
+        'post_type'      => 'projet-arcade',
+        'posts_per_page' => -1,
+        'orderby'        => $orderby,
+        'order'          => $order
+    ]);
 
-// 🔥 Mélange manuel pour garantir un vrai ordre aléatoire
-if ($tri === 'random') {
-    $posts = $projets->posts;
-    shuffle($posts);
-    $projets->posts = $posts;
-}
+    // Mélange manuel pour garantir un vrai ordre aléatoire
+    if ($tri === 'random') {
+        $posts = $projets->posts;
+        shuffle($posts);
+        $projets->posts = $posts;
+    }
 
-    
+    ob_start();
     if ($projets->have_posts()) :
         while ($projets->have_posts()) : $projets->the_post();
             $nom         = get_field('nom_du_projet');
@@ -253,33 +260,17 @@ if ($tri === 'random') {
       <div id="<?php echo 'dropdown-'.get_the_ID(); ?>" class="dropdown-carte-arcade" aria-hidden="true">
         <p class="description-projet"><?php echo esc_html( wp_trim_words( wp_strip_all_tags( $description ), 40, '...' ) ); ?></p>
       </div>
-      </article>
-    <?php endif; ?>
-
+      <?php endif; ?>
+    </article>
     <?php
         endwhile;
         wp_reset_postdata();
     else:
         echo '<p>Aucun projet d\'arcade pour le moment.</p>';
     endif;
-}
-
-/**
- * Gestionnaire AJAX pour le tri arcade
- */
-function handle_arcade_tri() {
-    check_ajax_referer('tri_nonce', 'nonce');
-
-    $tri = isset($_POST['tri']) ? sanitize_text_field($_POST['tri']) : 'random';
-
-    ob_start();
-    render_arcade_projects($tri);
+    
     $html = ob_get_clean();
-
     wp_send_json_success($html);
 }
 add_action('wp_ajax_arcade_tri', 'handle_arcade_tri');
 add_action('wp_ajax_nopriv_arcade_tri', 'handle_arcade_tri');
-
-// Note: Les handlers pour graphisme et finissants peuvent être ajoutés de la même façon
-// si ces pages utilisent aussi le tri asynchrone
