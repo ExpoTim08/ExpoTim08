@@ -59,7 +59,6 @@ main {
   border-top: 2px solid var(--border-color-side);
   border-bottom: 2px solid var(--border-color-side);
   font-family: var(--title-font);
-  text-align: center;
   background-image: linear-gradient(
     177deg, 
     var(--bouton-projet-finissant-color) 11.95%, 
