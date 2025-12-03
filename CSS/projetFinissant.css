@@ -47,24 +47,35 @@ main {
 }
 
 /************************* Présentation du projet *******************************************/
+/* Mobile first */
 .titre-graphisme {
-  background-image: linear-gradient(177deg, var(--bouton-projet-finissant-color) 11.95%, var(--bouton-projet-finissant-color) 28.39%, #21212100 82.04%);
   position: relative;
-  line-height: 0.7;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw; /* largeur totale de l'écran */
+  box-sizing: border-box;
   padding: 3vw;
+  line-height: 0.7;
   border-top: 2px solid var(--border-color-side);
   border-bottom: 2px solid var(--border-color-side);
   font-family: var(--title-font);
-  text-align: center; /* centrage du texte */
+  text-align: center;
+  background-image: linear-gradient(
+    177deg, 
+    var(--bouton-projet-finissant-color) 11.95%, 
+    var(--bouton-projet-finissant-color) 28.39%, 
+    #21212100 82.04%
+  );
 }
 
+
 .titre-graphisme-layer {
-  display: flex;
-  justify-content: center;
-  margin: 0 auto;
-  font-size: 6vw;
-  font-family: var(--title-font);
+  display: block;
+  width: 100%;
+  font-size: 8vw;             /* mobile */
+  text-align: center;
 }
+
 
 .titre-graphisme-layer-1 {
   color: transparent;

@@ -40,152 +40,92 @@ h1 {
   background-attachment: fixed;
   }
 
-/*************************Présentation du projet*******************************************/
+/************************* Présentation Graphisme - Mobile First *******************************************/
 .titre-graphisme {
-  background-image: 
-    linear-gradient(177deg, var(--bouton-projet-jt-color) 11.95%, var(--bouton-projet-jt-color) 28.39%, #21212100 82.04%);
+  background-image: linear-gradient(177deg, var(--bouton-projet-jt-color) 11.95%, var(--bouton-projet-jt-color) 28.39%, #21212100 82.04%);
   position: relative;
   line-height: 0.7;
   padding: 3vw;
   border-top: 2px solid var(--border-color-side);
   border-bottom: 2px solid var(--border-color-side);
   font-family: var(--title-font);
+  text-align: center;
 }
 
-.titre-graphisme-layer {
-  display: flex;
-  justify-content: center;
-  margin: 0 auto;
-  font-size: 8vw;
-  font-family: var(--title-font);
-}
+.titre-graphisme-layer { display: flex; justify-content: center; font-size: 8vw; }
 
-.titre-graphisme-layer-1 {
-  color: transparent;
-  opacity: 0.8;
-  -webkit-text-stroke-width: 0.8px;
-  -webkit-text-stroke-color: var(--font-color);
-}
+.titre-graphisme-layer-1 { color: transparent; opacity: 0.8; -webkit-text-stroke: 0.8px var(--font-color); }
+.titre-graphisme-layer-2 { color: transparent; opacity: 0.5; -webkit-text-stroke: 0.6px var(--font-color); }
+.titre-graphisme-layer-3 { color: transparent; opacity: 0.5; -webkit-text-stroke: 0.4px var(--font-color); }
 
-.titre-graphisme-layer-2 {
-  opacity: 0.5;
-  color: transparent;
-  -webkit-text-stroke-width: 0.6px;
-  -webkit-text-stroke-color: var(--font-color);
-}
+.lien-retour { color: #fff; text-decoration: none; font-weight: bold; font-size: 16px; display: inline-flex; align-items: center; gap: 5px; }
+.lien-retour:hover { text-decoration: underline; cursor: pointer; }
 
-.titre-graphisme-layer-3{
-  opacity: 0.5;
-  color: transparent;
-  -webkit-text-stroke-width: 0.4px;
-  -webkit-text-stroke-color: var(--font-color);
-}
+.tree { display: none; } /* cacher sur mobile pour compacité */
 
-.retour-graphisme {
-  margin-top: 20px;
-  margin-left: 20px;
-}
-
-.lien-retour {
-  color: #ffffff; /* texte blanc */
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 16px;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px; /* espace entre la flèche et le texte */
-}
-
-.lien-retour:hover {
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-.tree {
-  position: absolute;
-  margin-left: 70vw;
-  margin-top: -40vw;
-  width: 20vw;
-  transform: rotateZ(-35deg);
-}
-
-.video-projet {
+.video-projet, .image-projet, .conteneur-description {
+  width: 70%;
+  max-width: 400px;
+  margin: 1.5em auto;
   border: 2px solid var(--border-color-side);
-  border-radius: 40px;
-  width: 80vw;
-  justify-self: center;
+
 }
 
-.infos-etudiants {
-  display: flex;
-  flex-direction: column;
-  justify-self: center;
-  margin-top: 2em;
-  width: 70vw;
-  border: 2px solid var(--border-color-side);
-}
-
-.infos-etudiants strong {
-  border-bottom: 2px solid var(--border-color-side);
-    background-image: linear-gradient(177deg, var(--bouton-projet-jt-color) 11.95%, var(--bouton-projet-jt-color) 28.39%, #21212100 82.04%);
-}
-
-.infos-etudiants strong, .nom-etudiant {
-  padding: 15px;
+.image-projet-graphisme { 
+  width: 100%; 
 }
 
 .image-projet {
   display: flex;
   flex-direction: column;
-  justify-self: center;
-  margin-top: 2em;
+  margin: 2em auto;
+  width: 70%;
+  max-width: 800px;
   border: 2px solid var(--border-color-side);
 }
 
-.image-projet-graphisme {
-  width: 70vw;
-}
-
-.conteneur-description {
+.infos-etudiants {
   display: flex;
   flex-direction: column;
-  width: 70vw;
-  justify-self: center;
-  margin-top: 2em;
+  width: 70%;
+  max-width: 400px;
+  margin: 1em auto;
   border: 2px solid var(--border-color-side);
 
 }
 
- .conteneur-description .description-titre {
-  background-image: 
-    linear-gradient(177deg, var(--bouton-projet-jt-color) 11.95%, var(--bouton-projet-jt-color) 28.39%, #21212100 82.04%);
+.infos-etudiants strong {
   border-bottom: 2px solid var(--border-color-side);
-  padding: 15px;
+  background-image: linear-gradient(177deg, var(--bouton-projet-jt-color) 11.95%, var(--bouton-projet-jt-color) 28.39%, #21212100 82.04%);
+  padding: 10px;
+}
+
+.nom-etudiant { padding: 10px; }
+
+.conteneur-description .description-titre {
+  background-image: linear-gradient(177deg, var(--bouton-projet-jt-color) 11.95%, var(--bouton-projet-jt-color) 28.39%, #21212100 82.04%);
+  border-bottom: 2px solid var(--border-color-side);
+  padding: 10px;
   font-weight: bold;
   margin: 0;
-  }
-
-.conteneur-description .description-texte {
-  padding-left: 10px;
 }
 
+.conteneur-description .description-texte { padding-left: 10px; }
+
 .behance-projet {
+  width: 50%;
+  max-width: 250px;
+  margin: 1.5em auto;
   text-align: center;
-  background-image: 
-    linear-gradient(177deg, var(--bouton-projet-graphisme-color) 11.95%, #362CB6 28.39%, #21212100 82.04%);
-  width: 40vw;
-  padding: 4vw;
-  justify-self: center;
-  margin-top: 2em;
   border: 2px solid var(--border-color-side);
-  border-radius: 60px;
-  background-color: rgba(49, 49, 49, 0.842);
+  border-radius: 50px;
+  padding: 3vw;
+  background-color: rgba(49,49,49,0.84);
   font-weight: bold;
 }
 
-.behance-projet a {
-  color: white;
-}
+.behance-projet a { color: white; }
+
 
 /********************************************** CSS Desktop ********************************************************/
 @media screen and (min-width: 994px) {
