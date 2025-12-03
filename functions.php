@@ -142,3 +142,144 @@ function expo_theme_support() {
     add_theme_support('title-tag');
 }
 add_action('after_setup_theme', 'expo_theme_support');
+
+// =========================================================
+// AJAX Handlers pour le tri asynchrone des projets
+// =========================================================
+
+/**
+ * Fonction helper pour afficher les cartes projet arcade
+ */
+
+function enqueue_tri_script() {
+    wp_enqueue_script('tri-script', get_stylesheet_directory_uri() . '/js/tri.js', [], false, true);
+
+    wp_localize_script('tri-script', 'TriAjax', [
+        'ajaxurl' => admin_url('admin-ajax.php'),
+        'nonce'   => wp_create_nonce('tri_nonce')
+    ]);
+}
+add_action('wp_enqueue_scripts', 'enqueue_tri_script');
+
+function render_arcade_projects($tri = 'random') {
+    $orderby = 'rand';
+    $order   = 'ASC';
+    
+    switch ($tri) {
+        case 'asc':
+            $orderby = 'title';
+            $order   = 'ASC';
+            break;
+        case 'desc':
+            $orderby = 'title';
+            $order   = 'DESC';
+            break;
+        default:
+            $orderby = 'rand';
+            $order   = 'ASC';
+            break;
+    }
+    
+   $projets = new WP_Query([
+    'post_type'      => 'projet-arcade',
+    'posts_per_page' => -1,
+    'orderby'        => $orderby,
+    'order'          => $order
+]);
+
+// 🔥 Mélange manuel pour garantir un vrai ordre aléatoire
+if ($tri === 'random') {
+    $posts = $projets->posts;
+    shuffle($posts);
+    $projets->posts = $posts;
+}
+
+    
+    if ($projets->have_posts()) :
+        while ($projets->have_posts()) : $projets->the_post();
+            $nom         = get_field('nom_du_projet');
+            $description = get_field('description');
+            $image       = get_field('image_du_projet');
+            $short_desc = wp_trim_words( wp_strip_all_tags( $description ), 40, '...' );
+            
+            $filtre = get_field('projet-arcade');
+            if (!$filtre) {
+                $filtre = 'none';
+            }
+            ?>
+    <!--================== Carte Projet Desktop ======================-->
+    <article class="carte-projet-arcade--desktop"
+         data-nom="<?php echo esc_attr($nom); ?>"
+         data-filtre="<?php echo esc_attr($filtre); ?>">
+      <?php if ($image): ?>
+        <img class="image-projet-arcade" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($nom); ?>">
+      <?php endif; ?>
+
+      <div class="conteneur-carte-bas">
+        <h2 class="titre-projet-arcade"><?php echo esc_html($nom); ?></h2>
+        <p class="carte-arcade-titre-description">Description</p>
+        <p class="description-projet"><?php echo esc_html($short_desc); ?></p>
+
+        <button class="button-projet-arcade"
+          onclick="window.location.href='<?php echo esc_url(add_query_arg('projet_id', get_the_ID(), get_permalink(get_page_by_path('projet-arcade')))); ?>'">
+          >>
+        </button>
+      </div>
+    </article>
+
+    <!--================== Carte Projet Mobile =================-->
+    <article class="carte-projet-arcade">
+      <div class="conteneur-carte-haut">
+        <h2 class="titre-projet-arcade"><?php echo esc_html($nom); ?></h2>
+        <button class="button-projet-arcade"
+          onclick="window.location.href='<?php echo esc_url(add_query_arg('projet_id', get_the_ID(), get_permalink(get_page_by_path('projet-arcade')))); ?>'">
+          >>
+        </button>
+      </div>
+        
+      <?php if ($image): ?>
+      <img class="image-projet-arcade" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($nom); ?>">
+      
+      <span class="conteneur-button-dropdown-arcade">
+        <p class="carte-arcade-titre-description">Description</p>
+        <button
+          class="button-dropdown-arcade"
+          aria-expanded="false"
+          aria-controls="<?php echo 'dropdown-'.get_the_ID(); ?>">
+          +
+        </button>
+      </span>
+
+      <div id="<?php echo 'dropdown-'.get_the_ID(); ?>" class="dropdown-carte-arcade" aria-hidden="true">
+        <p class="description-projet"><?php echo esc_html( wp_trim_words( wp_strip_all_tags( $description ), 40, '...' ) ); ?></p>
+      </div>
+      </article>
+    <?php endif; ?>
+
+    <?php
+        endwhile;
+        wp_reset_postdata();
+    else:
+        echo '<p>Aucun projet d\'arcade pour le moment.</p>';
+    endif;
+}
+
+/**
+ * Gestionnaire AJAX pour le tri arcade
+ */
+function handle_arcade_tri() {
+    check_ajax_referer('tri_nonce', 'nonce');
+
+    $tri = isset($_POST['tri']) ? sanitize_text_field($_POST['tri']) : 'random';
+
+    ob_start();
+    render_arcade_projects($tri);
+    $html = ob_get_clean();
+
+    wp_send_json_success($html);
+}
+add_action('wp_ajax_arcade_tri', 'handle_arcade_tri');
+add_action('wp_ajax_nopriv_arcade_tri', 'handle_arcade_tri');
+
+// Note: Les handlers pour graphisme et finissants peuvent être ajoutés de la même façon
+// si ces pages utilisent aussi le tri asynchrone
