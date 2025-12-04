@@ -39,7 +39,7 @@ h1, h2 {
 }
 
 .forumContact form input{
-  width: 18.75rem; /*11rem*/
+  width: 16.75rem; /*11rem*/
   height: 3rem; /*2rem*/
   outline: none;
   border: none;
@@ -52,6 +52,7 @@ h1, h2 {
 
 .forumContact form h1{
   color: var(--font-color);
+  font-size: clamp(19px, 6vw, 32px);
 }
 
 .forumContact form input::placeholder{
@@ -200,10 +201,18 @@ h1, h2 {
   }
 
   .forumContact form textarea{
-    min-width: 420px;
-    max-width: 576px;
+    min-width: 370px;
+    max-width: 370px;
   }
   
+  .forumContact form h4{
+    padding-left: 24px;
+  }
+
+  .forumContact form h1{
+    padding-left: 40px;
+    padding-right: 40px;
+  }
 }
 
 @media screen and (min-width: 576.02px) {

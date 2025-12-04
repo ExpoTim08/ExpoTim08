@@ -26,7 +26,7 @@ require("global.php");
         <form>
 
             <div class="messagePageContact">
-                <h1>Contactez un des membres de</h1>
+                <h1>Contactez les gens en charge de</h1>
                 <img class="footer-logo-img" src="<?php echo get_template_directory_uri(); ?>/Images/Texte.png" alt="Logo de l'expo TIM">
             </div>
 
