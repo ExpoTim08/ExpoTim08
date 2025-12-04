@@ -77,7 +77,7 @@ get_header();
     <!-------------------------------- Projets Découvertes -------------------------------->
 <div class="projets-populaire">
   <h1>Voici des projets à découvrir</h1>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident minus sit exercitationem...</p>
+  
   <div class="projets">
 
   <?php

@@ -152,7 +152,7 @@ add_action('after_setup_theme', 'expo_theme_support');
  */
 
 function enqueue_tri_script() {
-    wp_enqueue_script('tri-script', get_stylesheet_directory_uri() . '/js/tri.js', [], false, true);
+    wp_enqueue_script('tri-script', get_stylesheet_directory_uri() . '/tri.js', [], false, true);
 
     wp_localize_script('tri-script', 'TriAjax', [
         'ajaxurl' => admin_url('admin-ajax.php'),
