@@ -27,21 +27,20 @@ h1, h2 {
 
 /*------------- Section description + titre --------------*/
 .presentation-graphisme {
-  background-image: var(--background-color-graphisme);
+  background-image: var(--background-color-graphisme); /* conserve le vert Graphisme */
   margin-bottom: 5vh;
 }
 
 /*-------------- MOBILE GRAPHISME --------------*/
 @media screen and (max-width: 576px) {
 
-  /* FIX MOBILE : enlever background-attachment: fixed */
-  body {
-    background-attachment: scroll !important;
-    background-size: cover;
-  }
-
-  .pattern-background {
-    background-attachment: scroll !important;
+  .filtres-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    margin: 1rem 0;
+    flex-wrap: wrap;
   }
 
   /* style generale + border */
@@ -49,6 +48,10 @@ h1, h2 {
     padding: 20px 2em 1em 2em;
     border-bottom: 1px solid var(--border-color);
     margin: 0;
+  }
+
+  .pattern-background {
+    background-attachment: scroll !important;
   }
 
   .border {
@@ -88,19 +91,19 @@ h1, h2 {
   .page-graphisme section { width: 100%; }
 
   .presentation-graphisme {
-    position: relative; /* garde le contexte pour le contenu */
-    z-index: 1;         /* faible */
-    overflow: visible;  /* assure que les enfants absolus ne sont pas masqués */
+    position: relative;
+    z-index: 1;
+    overflow: visible;
   }
   
   .logo-graphisme {
     position: absolute;
     right: -15px;
     top: 110px;
-    z-index: 9999;      /* assure qu’il passe au-dessus */
+    z-index: 10;
     mix-blend-mode: normal;
-    width: 90px;
-    height: 90px;
+    width: auto;
+    height: auto;
     max-width: 150px;
   }
 
@@ -121,7 +124,7 @@ h1, h2 {
 
   .carte-projet-graphisme--mobile { 
     display: block; 
-    background-color: rgb(48,48,48);
+    background-color: rgb(48,48,48); /* couleur Graphisme */
     border: 2px solid var(--border-color-project);
     margin: 0 47px;
     box-shadow: 6px 6px 0px var(--border-color-project);
@@ -158,7 +161,7 @@ h1, h2 {
     right: 0;
     z-index: 10;
     height: 24px;
-    background-color: var(--bouton-projet-jt-color);
+    background-color: var(--bouton-projet-jt-color); /* bouton Graphisme */
     color: #ffffff;
     font-size: 10px;
     border: 1px solid var(--font-color);
@@ -208,7 +211,7 @@ h1, h2 {
     margin-top: 50px;
     margin-bottom: 20px;
     width: fit-content;
-    background-color: rgb(48, 48, 48);
+    background-color: rgb(48, 48, 48); /* couleur Graphisme */
     border: 1px solid var(--border-color);
     padding: 0.2em 0.7em 0.3em 0.5em;
     margin-left: 47px;
@@ -229,6 +232,15 @@ h1, h2 {
 
 /*-------------- TABLET / PETIT ECRAN graphisme --------------*/
 @media screen and (min-width: 576.02px) {
+
+  .filtres-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+  }
 
   .header-container form.search-form {
     transform: translateY(0px); 
@@ -271,14 +283,14 @@ h1, h2 {
     overflow: hidden;
   }
 
-  /*deco titre graphisme*/
+  /* deco titre graphisme */
   .presentation-graphisme {
     position: relative;
   }
 
   .logo-graphisme {
     position: absolute;
-    left: -30px;
+    left: -50px;
     bottom: 30%;
     z-index: 10;
     mix-blend-mode: normal;
@@ -334,6 +346,7 @@ h1, h2 {
     width: 45%;
     height: auto;
     object-fit: contain;
+    border-right: 2px solid var(--border-color-project);
   }
 
   .carte-projet-graphisme--desktop .conteneur-carte-bas {
@@ -344,7 +357,6 @@ h1, h2 {
     display: flex;
     flex-flow: column nowrap;
     align-self: center;
-    
   }
 
   .carte-projet-graphisme--desktop .carte-graphisme-titre-description {
@@ -359,7 +371,7 @@ h1, h2 {
     line-height: 1.45;
     font-size: 14px;
   }
-  
+
   .carte-projet-graphisme--desktop button.button-projet-graphisme {
     z-index: 10;
     height: 24px;
@@ -372,17 +384,13 @@ h1, h2 {
     margin-top: 10%;
   }
 
-  .carte-projet-graphisme--desktop .image-projet-graphisme {
-      border-right: 2px solid var(--border-color-project);
-    }
-
   .button-dropdown-graphisme, .carte-graphisme-titre-description { display: none; }
 
   .conteneur-graphisme-filtre {
     margin-top: 50px;
     margin-bottom: 20px;
     padding: 0.2em 0.7em 0.3em 0.5em;
-    margin-left: 10%;
+    margin-left: 47px;
     width: fit-content;
     background-color: rgb(48,48,48);
     border: 1px solid var(--border-color);
@@ -390,7 +398,6 @@ h1, h2 {
     flex-flow: nowrap row;
     align-items: center;
   }
-
 
   .filtre { margin: 0; font-size: 14px; }
   .icone-filtre { width: 20px; height: 20px; }
@@ -404,11 +411,17 @@ h1, h2 {
   }
 }
 
+
 /*-------------- DESKTOP GRAPHISME --------------*/
 @media screen and (min-width: 1024px) {
-  
-  .header-container form.search-form {
-    transform: translateY(0px);
+
+  .filtres-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    margin: 1rem 0;
+    flex-wrap: wrap;
   }
 
   .border { position: fixed; background: var(--border-color-side); z-index: 9999; }
@@ -425,6 +438,7 @@ h1, h2 {
     border-bottom: 1px solid var(--border-color);
     background-image: var(--background-color-graphisme);
     padding: 2% 10%;
+    position: relative;
   }
 
   .liste-projet-graphisme {
@@ -437,23 +451,17 @@ h1, h2 {
     align-items: start;
   }
 
-  .presentation-graphisme {
-    position: relative;
-    z-index: 1; /* s’assure que le fond reste derrière le logo */
-  }
-  
+  /* deco titre graphisme */
   .logo-graphisme {
     position: absolute;
-    left: -25px;
-    bottom: -30%;
+    left: -85px;
+    bottom: -40%;
+    z-index: 10;
     mix-blend-mode: normal;
-  
-    width: 140px;
-    height: 140px;
-    max-width: 100px;
-    min-width: 80px;
-  
-    z-index: 10; /* bien au-dessus de la présentation */
+    height: auto;
+    width: 10vw;
+    max-width: 250px;
+    min-width: 200px;
   }
 
   .conteneur-description-graphisme { background-color: transparent; border: none; }
@@ -481,14 +489,12 @@ h1, h2 {
   }
 
   .carte-projet-graphisme--desktop .image-projet-graphisme {
-    width: min-content;
+    width: 45%;
     height: auto;
-    object-fit: contain;
+    object-fit: cover;
   }
 
-  .carte-projet-graphisme--desktop .conteneur-carte-bas {
-    width: max-content;
-  }
+  .carte-projet-graphisme--desktop .conteneur-carte-bas { width: max-content; }
 
   .conteneur-description-graphisme .description-titre { display: none; }
 
@@ -498,7 +504,6 @@ h1, h2 {
     position: absolute;   
     bottom: 0px;
     right: 0px;
-
     margin-top: 5%;
     width: 47px;
     height: 50px;
@@ -510,15 +515,17 @@ h1, h2 {
   .tri-bar{
     margin: 1rem 0;
     place-self: center;
-    width: 74%;
     max-width: none;
   }
 }
 
+
 /*-------------- GRAND ECRAN GRAPHISME --------------*/
 @media screen and (min-width: 1300px) { 
 
-  /*les projets*/
+  main { padding-bottom: 15vh; }
+
+  /* Les projets */
   .liste-projet-graphisme {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 0.4fr));
@@ -527,7 +534,7 @@ h1, h2 {
       width: 100%;
       margin: 0 auto;
       align-items: start;
-    }
+  }
     
   .carte-projet-graphisme--desktop {
     width: 100%;
@@ -550,12 +557,17 @@ h1, h2 {
   .tri-bar{
     margin: 1rem 0;
     place-self: center;
-    width: 80%;
     max-width: none;
   }
-  
-  main{
-    padding-bottom: 15vh;
+
+  .filtres-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+    margin-right: 8.5rem;
   }
 }
 
@@ -570,26 +582,23 @@ h1, h2 {
     background-image:
       linear-gradient(rgba(0,151,143,0.06), rgba(11, 171, 163, 0.194)),
       radial-gradient(circle, rgba(255,255,255,0.12) 1.5px, transparent 1px);
-    background-size: auto, 12px 12px; /* change second value for dot density */
+    background-size: auto, 12px 12px;
     mix-blend-mode: screen;
 
-    /* commencer par être caché et animer au survol */
     opacity: 0;
     transform: translateY(6px);
     transition: opacity 260ms ease, transform 260ms cubic-bezier(.2,.8,.2,1);
 
-    /* estomper le demi-ton vers le haut */
     -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
     mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
-
     z-index: 2;
 
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
     image-rendering: pixelated;
-  }
+}
 
-  .carte-projet-graphisme--desktop {
+.carte-projet-graphisme--desktop {
     position: relative; 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -599,95 +608,67 @@ h1, h2 {
                 border-radius 260ms ease;
     will-change: transform, box-shadow;
     transform-origin: center;
-  }
+}
 
-  .carte-projet-graphisme--desktop:hover::after {
+.carte-projet-graphisme--desktop:hover::after {
     opacity: 1;
     transform: translateY(0);
-  }
+}
 
-  .carte-projet-graphisme--desktop:hover {
+.carte-projet-graphisme--desktop:hover {
     transform: translateY(-10px);
     box-shadow: 16px 16px 0px rgb(5, 25, 28);
     border-color: rgb(1, 11, 13);
     border-radius: 14px;
     color: thistle;
-  }
+}
 
-  .carte-projet-graphisme--desktop .image-projet-graphisme {
+.carte-projet-graphisme--desktop .image-projet-graphisme {
     transition: transform 400ms cubic-bezier(.2,.8,.2,1);
     will-change: transform;
-  }
+}
 
-  .carte-projet-graphisme--desktop:hover .image-projet-graphisme {
+.carte-projet-graphisme--desktop:hover .image-projet-graphisme {
     transform: scale(1.05);
-  }
+}
 
-
-  /*------------- Titre graphisme --------------*/
-  .titre-graphisme--base {
+/*------------- Titre graphisme --------------*/
+.titre-graphisme--base {
     -webkit-text-fill-color: var(--title-color);
-  }
+}
 
-  .titre-graphisme {
+.titre-graphisme {
     color: transparent;               
     -webkit-font-smoothing: antialiased;
     -webkit-text-stroke: 0px transparent;
-  }
 
-  .titre-graphisme {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
     font-size: clamp(20px, 9vw, 45px);
-    line-height: 0.78;
+    line-height: 0.6;
     text-transform: uppercase;
     margin: 0;
     -webkit-text-stroke-width: 0.8px;
     -webkit-text-stroke-color: rgb(255, 255, 255);
-
-    line-height: 0.6;
     letter-spacing: 1px;
     height: 220px;
     font-weight: lighter;
-  }
+}
 
-  .titre-graphisme-layer--1 {
-    opacity: 0.8;
-    -webkit-text-stroke-width: 0.8px;
-  }
+.titre-graphisme-layer--1 { opacity: 0.8; -webkit-text-stroke-width: 0.8px; }
+.titre-graphisme-layer--2 { opacity: 0.5; -webkit-text-stroke-width: 0.5px; }
+.titre-graphisme-layer--3 { opacity: 0.3; -webkit-text-stroke-width: 0.2px; }
 
-  .titre-graphisme-layer--2 {
-    opacity: 0.5;
-    -webkit-text-stroke-width: 0.5px;
-  }
-
-  .titre-graphisme-layer--3 {
-    opacity: 0.3;
-    -webkit-text-stroke-width: 0.2px;
-  }
-
-  /*-------------- FILTRE --------------*/
-
-.tri-bar {
+/*-------------- FILTRE --------------*/
+.filtre-categorie {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin: 1rem 0;
-  padding: 0.35rem;
-  background: transparent;
-  color: var(--font-color);
 }
 
-.tri-bar label {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--font-color);
-  white-space: nowrap;
-}
-
+.filtre-categorie select,
 #tri-select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -705,50 +686,42 @@ h1, h2 {
   cursor: pointer;
   box-shadow: none;
   font-family: var(--general-font);
-
-}
-
-#tri-select:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-/* pour petit ecran */
-@media (max-width: 420px) {
-  .tri-bar {
-    gap: 0.4rem;
-    padding: 0.25rem;
-  }
-  #tri-select { min-width: 110px; font-size: 0.9rem; }
-}
-
-#tri-select {
-  color: var(--font-color);
-  background-color: #2f2f2f; /* matches page dark surface */
+  background-color: #2f2f2f;
   -webkit-text-fill-color: var(--font-color);
 }
 
-
+.filtre-categorie select option,
 #tri-select option {
   background-color: #2f2f2f;
   color: var(--font-color);
   padding: 0.25rem 0.5rem;
 }
 
-/* si selectionner*/
+.filtre-categorie select option:checked,
+.filtre-categorie select option[selected],
 #tri-select option:checked,
 #tri-select option[selected] {
   background-color: rgba(50, 255, 245, 0.14);
   color: #ffffff;
 }
 
-/* Hide native arrow in some browsers if you want to use a custom icon */
+.filtre-categorie select:disabled,
+#tri-select:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.filtre-categorie select::-ms-expand,
 #tri-select::-ms-expand { display: none; }
 
+.filtre-categorie select:focus,
 #tri-select:focus,
 .tri-bar label:focus {
-  outline: 3px solid rgba(0,151,143,0.14); 
+  outline: 3px solid rgba(0,151,143,0.14);
   outline-offset: 2px;
   border-color: rgba(0,151,143,0.6);
   border-radius: 8px;
+}
+
+/* pour petit écran */
+@media (max-width: 420px) {
+  .tri-bar { gap: 0.4rem; padding: 0.25rem; }
+  #tri-select { min-width: 110px; font-size: 0.9rem; }
 }

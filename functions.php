@@ -29,15 +29,12 @@ function expo_enqueue_assets() {
         'pageFinissants' => site_url('/index.php/finissants/')
     ));
 
-    // --- CSS spécifique à la front-page (Intro) ---
+    // --- CSS front-page ---
     if (is_front_page()) {
         wp_enqueue_style('style-intro', $theme_uri . '/CSS/intro.css');
-        // intro.js dans le thème à la racine, pas dans un dossier
         wp_enqueue_script('intro-js', $theme_uri . '/intro.js', array(), null, true);
     }
 
-    // --- CSS spécifique à la page Accueil ---
-    // Chargé si la page est 'accueil' ou si c'est la front-page (où on affiche Accueil derrière l'intro)
     if (is_page('accueil') || is_front_page()) {
         wp_enqueue_style('style-accueil', $theme_uri . '/CSS/accueil.css', array(), null);
     }
@@ -47,7 +44,7 @@ function expo_enqueue_assets() {
         wp_enqueue_style('style-normalize', $theme_uri . '/CSS/normalize.css');
     }
 
-    // --- CSS spécifiques aux autres pages (finissant, arcade, graphisme, etc.) ---
+    // --- CSS pages spécifiques ---
     if (is_page_template('finissants.php') || is_page_template('ar.php')) {
         wp_enqueue_style('style-finissant', $theme_uri . '/CSS/finissant.css');
     }
@@ -70,13 +67,17 @@ function expo_enqueue_assets() {
     if (is_page_template('contact.php') || is_page_template('ar.php')) wp_enqueue_style('style-contact', $theme_uri . '/CSS/contact.css');
     if (is_404() || is_page_template('ar.php')) wp_enqueue_style('style-404', $theme_uri . '/CSS/404.css');
 
-    // --- Script tri.js spécifique à l'arcade ---
-    wp_enqueue_script('projets-arcade-js', $theme_uri . '/tri.js', array(), false, true);
+    // --- Script tri.js pour AJAX ---
+    wp_enqueue_script('tri-script', $theme_uri . '/tri.js', array('jquery'), null, true);
+    wp_localize_script('tri-script', 'TriAjax', array(
+        'ajaxurl' => admin_url('admin-ajax.php'),
+        'nonce'   => wp_create_nonce('tri_nonce')
+    ));
 }
 add_action('wp_enqueue_scripts', 'expo_enqueue_assets');
 
 // =========================================================
-// Enregistrer le menu principal
+// Menu principal
 // =========================================================
 function expo_register_menus() {
     register_nav_menus(array('main-menu' => 'Menu principal'));
@@ -84,13 +85,13 @@ function expo_register_menus() {
 add_action('after_setup_theme', 'expo_register_menus');
 
 // =========================================================
-// Support pour les images mises en avant
+// Support images mises en avant
 // =========================================================
 add_theme_support('post-thumbnails');
 add_image_size('arcade-thumb', 400, 300, true);
 
 // =========================================================
-// Ajustement automatique du menu burger sur mobile
+// Ajustement menu burger mobile
 // =========================================================
 function ajuster_menu_mobile() {
     ?>
@@ -110,7 +111,7 @@ function ajuster_menu_mobile() {
 add_action('wp_footer', 'ajuster_menu_mobile');
 
 // =========================================================
-// Normalisation des chaînes pour la recherche
+// Normalisation chaînes pour recherche
 // =========================================================
 if (!function_exists('normalize_string')) {
     function normalize_string($str) {
@@ -137,23 +138,20 @@ if (!function_exists('normalize_string')) {
 }
 
 // =========================================================
-// Support pour le <title>
+// Support <title>
+// =========================================================
 function expo_theme_support() {
     add_theme_support('title-tag');
 }
 add_action('after_setup_theme', 'expo_theme_support');
 
 // =========================================================
-// AJAX Handlers pour le tri asynchrone des projets
+// ================= Gestionnaires AJAX ===================
 // =========================================================
 
-/**
- * Fonction helper pour afficher les cartes projet arcade
- */
-
+// --- Helper pour tri.js ---
 function enqueue_tri_script() {
-    wp_enqueue_script('tri-script', get_stylesheet_directory_uri() . '/tri.js', [], false, true);
-
+    wp_enqueue_script('tri-script', get_stylesheet_directory_uri() . '/tri.js', ['jquery'], null, true);
     wp_localize_script('tri-script', 'TriAjax', [
         'ajaxurl' => admin_url('admin-ajax.php'),
         'nonce'   => wp_create_nonce('tri_nonce')
@@ -161,40 +159,23 @@ function enqueue_tri_script() {
 }
 add_action('wp_enqueue_scripts', 'enqueue_tri_script');
 
-/**
- * Gestionnaire AJAX pour le tri arcade
- */
+// =========================================================
+// Gestionnaire AJAX Arcade
+// =========================================================
 function handle_arcade_tri() {
     check_ajax_referer('tri_nonce', 'nonce');
 
     $tri = isset($_POST['tri']) ? sanitize_text_field($_POST['tri']) : 'random';
-    
-    $orderby = 'rand';
-    $order   = 'ASC';
-    
-    switch ($tri) {
-        case 'asc':
-            $orderby = 'title';
-            $order   = 'ASC';
-            break;
-        case 'desc':
-            $orderby = 'title';
-            $order   = 'DESC';
-            break;
-        default:
-            $orderby = 'rand';
-            $order   = 'ASC';
-            break;
-    }
-    
+    $orderby = $tri === 'asc' ? 'title' : ($tri === 'desc' ? 'title' : 'rand');
+    $order = $tri === 'desc' ? 'DESC' : 'ASC';
+
     $projets = new WP_Query([
-        'post_type'      => 'projet-arcade',
+        'post_type' => 'projet-arcade',
         'posts_per_page' => -1,
-        'orderby'        => $orderby,
-        'order'          => $order
+        'orderby' => $orderby,
+        'order' => $order
     ]);
 
-    // Mélange manuel pour garantir un vrai ordre aléatoire
     if ($tri === 'random') {
         $posts = $projets->posts;
         shuffle($posts);
@@ -202,113 +183,49 @@ function handle_arcade_tri() {
     }
 
     ob_start();
-    if ($projets->have_posts()) :
-        while ($projets->have_posts()) : $projets->the_post();
-            $nom         = get_field('nom_du_projet');
-            $description = get_field('description');
-            $image       = get_field('image_du_projet');
-            $short_desc = wp_trim_words( wp_strip_all_tags( $description ), 40, '...' );
-            
-            $filtre = get_field('projet-arcade');
-            if (!$filtre) {
-                $filtre = 'none';
-            }
+    if ($projets->have_posts()):
+        while ($projets->have_posts()): $projets->the_post();
+            $nom = get_field('nom_du_projet');
+            $desc = get_field('description');
+            $img = get_field('image_du_projet');
+            $short_desc = wp_trim_words(strip_tags($desc), 40, '...');
             ?>
-    <!--================== Carte Projet Desktop ======================-->
-    <article class="carte-projet-arcade--desktop"
-         data-nom="<?php echo esc_attr($nom); ?>"
-         data-filtre="<?php echo esc_attr($filtre); ?>">
-      <?php if ($image): ?>
-        <img class="image-projet-arcade" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($nom); ?>">
-      <?php endif; ?>
-
-      <div class="conteneur-carte-bas">
-        <h2 class="titre-projet-arcade"><?php echo esc_html($nom); ?></h2>
-        <p class="carte-arcade-titre-description">Description</p>
-        <p class="description-projet"><?php echo esc_html($short_desc); ?></p>
-
-        <button class="button-projet-arcade"
-          onclick="window.location.href='<?php echo esc_url(add_query_arg('projet_id', get_the_ID(), get_permalink(get_page_by_path('projet-arcade')))); ?>'">
-          >>
-        </button>
-      </div>
-    </article>
-
-    <!--================== Carte Projet Mobile =================-->
-    <article class="carte-projet-arcade">
-      <div class="conteneur-carte-haut">
-        <h2 class="titre-projet-arcade"><?php echo esc_html($nom); ?></h2>
-        <button class="button-projet-arcade"
-          onclick="window.location.href='<?php echo esc_url(add_query_arg('projet_id', get_the_ID(), get_permalink(get_page_by_path('projet-arcade')))); ?>'">
-          >>
-        </button>
-      </div>
-        
-      <?php if ($image): ?>
-      <img class="image-projet-arcade" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($nom); ?>">
-      
-      <span class="conteneur-button-dropdown-arcade">
-        <p class="carte-arcade-titre-description">Description</p>
-        <button
-          class="button-dropdown-arcade"
-          aria-expanded="false"
-          aria-controls="<?php echo 'dropdown-'.get_the_ID(); ?>">
-          +
-        </button>
-      </span>
-
-      <div id="<?php echo 'dropdown-'.get_the_ID(); ?>" class="dropdown-carte-arcade" aria-hidden="true">
-        <p class="description-projet"><?php echo esc_html( wp_trim_words( wp_strip_all_tags( $description ), 40, '...' ) ); ?></p>
-      </div>
-      <?php endif; ?>
-    </article>
-    <?php
+            <article class="carte-projet-arcade">
+                <?php if ($img): ?>
+                <img src="<?php echo esc_url($img['url']); ?>" alt="<?php echo esc_attr($nom); ?>">
+                <?php endif; ?>
+                <h2><?php echo esc_html($nom); ?></h2>
+                <p><?php echo esc_html($short_desc); ?></p>
+            </article>
+            <?php
         endwhile;
         wp_reset_postdata();
     else:
-        echo '<p>Aucun projet d\'arcade pour le moment.</p>';
+        echo '<p>Aucun projet arcade pour le moment.</p>';
     endif;
-    
-    $html = ob_get_clean();
-    wp_send_json_success($html);
+
+    wp_send_json_success(ob_get_clean());
 }
 add_action('wp_ajax_arcade_tri', 'handle_arcade_tri');
 add_action('wp_ajax_nopriv_arcade_tri', 'handle_arcade_tri');
 
-/**
- * Gestionnaire AJAX pour le tri graphisme
- */
+// =========================================================
+// Gestionnaire AJAX Graphisme
+// =========================================================
 function handle_graphisme_tri() {
     check_ajax_referer('tri_nonce', 'nonce');
 
     $tri = isset($_POST['tri']) ? sanitize_text_field($_POST['tri']) : 'random';
-    
-    $orderby = 'rand';
-    $order   = 'ASC';
-    
-    switch ($tri) {
-        case 'asc':
-            $orderby = 'title';
-            $order   = 'ASC';
-            break;
-        case 'desc':
-            $orderby = 'title';
-            $order   = 'DESC';
-            break;
-        default:
-            $orderby = 'rand';
-            $order   = 'ASC';
-            break;
-    }
-    
+    $orderby = $tri === 'asc' ? 'title' : ($tri === 'desc' ? 'title' : 'rand');
+    $order = $tri === 'desc' ? 'DESC' : 'ASC';
+
     $projets = new WP_Query([
-        'post_type'      => 'projet-graphisme',
+        'post_type' => 'projet-graphisme',
         'posts_per_page' => -1,
-        'orderby'        => $orderby,
-        'order'          => $order
+        'orderby' => $orderby,
+        'order' => $order
     ]);
 
-    // Mélange manuel pour garantir un vrai ordre aléatoire
     if ($tri === 'random') {
         $posts = $projets->posts;
         shuffle($posts);
@@ -316,186 +233,83 @@ function handle_graphisme_tri() {
     }
 
     ob_start();
-    if ($projets->have_posts()) :
-        while ($projets->have_posts()) : $projets->the_post();
-            $titre       = get_the_title();
-            $image       = get_field('affiche');
-            $description = get_field('description');
-            $short_desc = wp_trim_words( wp_strip_all_tags( $description ), 40, '...' );
+    if ($projets->have_posts()):
+        while ($projets->have_posts()): $projets->the_post();
+            $titre = get_the_title();
+            $img = get_field('affiche');
+            $desc = get_field('description');
+            $short_desc = wp_trim_words(strip_tags($desc), 40, '...');
             ?>
-    <!-- ===== Carte Projet Desktop ===== -->
-    <article class="carte-projet-graphisme carte-projet-graphisme--desktop">
-      <?php if (!empty($image) && !empty($image['url'])) : ?>
-          <img class="image-projet-graphisme"
-               src="<?php echo esc_url($image['url']); ?>"
-               alt="<?php echo esc_attr($image['alt'] ?: $titre); ?>">
-      <?php endif; ?>
-
-      <div class="conteneur-carte-bas">
-        <h2 class="titre-projet-graphisme"><?php echo esc_html($titre); ?></h2>
-        <p class="carte-graphisme-titre-description">Description</p>
-        <p class="description-projet"><?php echo esc_html($short_desc); ?></p>
-
-        <button class="button-projet-graphisme"
-          onclick="window.location.href='<?php echo esc_url(add_query_arg('projet_id', get_the_ID(), get_permalink(get_page_by_path('projet-graphisme')))); ?>'">
-          >>
-        </button>
-      </div>
-    </article>
-
-    <!-- ===== Carte Projet Mobile ===== -->
-   <article class="carte-projet-graphisme carte-projet-graphisme--mobile">
-      <div class="bloc-titre">
-        <h2 class="titre-projet-graphisme"><?php echo esc_html($titre); ?></h2>
-        <button class="button-projet-graphisme"
-            onclick="window.location.href='<?php echo esc_url(add_query_arg('projet_id', get_the_ID(), get_permalink(get_page_by_path('projet-graphisme')))); ?>'">
-            &gt;&gt;
-          </button>
-      </div>
-
-      <?php if ($image): ?>
-        <img class="image-projet-graphisme" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($titre); ?>">
-        
-        <span class="conteneur-button-dropdown-graphisme">
-          <p class="carte-graphisme-titre-description">Description</p>
-          <button
-            class="button-dropdown-graphisme"
-            aria-expanded="false"
-            aria-controls="<?php echo 'dropdown-'.get_the_ID(); ?>">
-            +
-          </button>
-        </span>
-
-        <div id="<?php echo 'dropdown-'.get_the_ID(); ?>" class="dropdown-carte-graphisme" aria-hidden="true">
-          <p class="description-projet"><?php echo esc_html($short_desc); ?></p>
-        </div>
-      <?php endif; ?>
-    </article>
-    <?php
+            <article class="carte-projet-graphisme">
+                <?php if ($img): ?>
+                <img src="<?php echo esc_url($img['url']); ?>" alt="<?php echo esc_attr($titre); ?>">
+                <?php endif; ?>
+                <h2><?php echo esc_html($titre); ?></h2>
+                <p><?php echo esc_html($short_desc); ?></p>
+            </article>
+            <?php
         endwhile;
         wp_reset_postdata();
     else:
-        echo '<p class="message-aucun-projet">Aucun projet trouvé pour le moment.</p>';
+        echo '<p>Aucun projet graphisme pour le moment.</p>';
     endif;
-    
-    $html = ob_get_clean();
-    wp_send_json_success($html);
+
+    wp_send_json_success(ob_get_clean());
 }
 add_action('wp_ajax_graphisme_tri', 'handle_graphisme_tri');
 add_action('wp_ajax_nopriv_graphisme_tri', 'handle_graphisme_tri');
 
-/**
- * Gestionnaire AJAX pour le tri finissants
- */
+// =========================================================
+// Gestionnaire AJAX Finissants
+// =========================================================
 function handle_finissants_tri() {
     check_ajax_referer('tri_nonce', 'nonce');
 
     $tri = isset($_POST['tri']) ? sanitize_text_field($_POST['tri']) : 'random';
     $cat = isset($_POST['cat']) ? intval($_POST['cat']) : 0;
-    
-    $orderby = 'rand';
-    $order   = 'ASC';
-    
-    switch ($tri) {
-        case 'asc':
-            $orderby = 'title';
-            $order   = 'ASC';
-            break;
-        case 'desc':
-            $orderby = 'title';
-            $order   = 'DESC';
-            break;
-        default:
-            $orderby = 'rand';
-            $order   = 'ASC';
-            break;
-    }
-    
+
+    $orderby = $tri === 'asc' ? 'title' : ($tri === 'desc' ? 'title' : 'rand');
+    $order = $tri === 'desc' ? 'DESC' : 'ASC';
+
     $args = [
-        'post_type'      => 'projet-finissant',
+        'post_type' => 'projet-finissant',
         'posts_per_page' => -1,
-        'orderby'        => $orderby,
-        'order'          => $order
+        'orderby' => $orderby,
+        'order' => $order
     ];
+    if ($cat) $args['cat'] = $cat;
 
-    // Si un filtre de catégorie est sélectionné
-    if (!empty($cat)) {
-        $args['cat'] = $cat;
-    }
+    $projets = new WP_Query($args);
 
-    $projets_finissants = new WP_Query($args);
-
-    // Mélange manuel pour garantir un vrai ordre aléatoire
     if ($tri === 'random') {
-        $posts = $projets_finissants->posts;
+        $posts = $projets->posts;
         shuffle($posts);
-        $projets_finissants->posts = $posts;
+        $projets->posts = $posts;
     }
 
     ob_start();
-    if ($projets_finissants->have_posts()) :
-        while ($projets_finissants->have_posts()) : $projets_finissants->the_post();
-            $titre       = get_field('nom_du_projet');
-            $description = get_field('description');
-            $image       = get_field('image');
-            $short_desc = wp_trim_words(wp_strip_all_tags($description), 40, '...');
+    if ($projets->have_posts()):
+        while ($projets->have_posts()): $projets->the_post();
+            $titre = get_field('nom_du_projet');
+            $desc = get_field('description');
+            $img = get_field('image');
+            $short_desc = wp_trim_words(strip_tags($desc), 40, '...');
             ?>
-       <!-- ===== Carte Projet Desktop ===== -->
-        <article class="carte-projet-finissant carte-projet-finissant--desktop">
-            <?php if (!empty($image) && !empty($image['url'])) : ?>
-            <img class="image-projet-finissant"
-                src="<?php echo esc_url($image['url']); ?>"
-                alt="<?php echo esc_attr($image['alt'] ?: $titre); ?>">
-            <?php endif; ?>
-
-            <div class="conteneur-carte-bas">
-                <h2 class="titre-projet-finissant"><?php echo esc_html($titre); ?></h2>
-                <p class="carte-finissant-titre-description">Description</p>
-                <p class="description-projet"><?php echo esc_html($short_desc); ?></p>
-            
-            <button class="button-projet-finissant"
-            onclick="window.location.href='<?php echo esc_url(add_query_arg('projet_id', get_the_ID(), get_permalink(get_page_by_path('projet-finissant')))); ?>'">
-            >>
-            </button>
-        </article>
-
-        <!-- ===== Carte Projet Mobile ===== -->
-        <article class="carte-projet-finissant carte-projet-finissant--mobile">
-            <div class="bloc-titre">
-                <h2 class="titre-projet-finissant"><?php echo esc_html($titre); ?></h2>
-                <button class="button-projet-finissant"
-                    onclick="window.location.href='<?php echo esc_url(add_query_arg('projet_id', get_the_ID(), get_permalink(get_page_by_path('projet-finissant')))); ?>'">
-                    &gt;&gt;
-                </button>
-            </div>
-
-            <?php if ($image): ?>
-                <img class="image-projet-finissant" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($titre); ?>">
-                
-                <span class="conteneur-button-dropdown-finissant">
-                <p class="carte-finissant-titre-description">Description</p>
-                <button
-                    class="button-dropdown-finissant"
-                    aria-expanded="false"
-                    aria-controls="<?php echo 'dropdown-'.get_the_ID(); ?>">
-                    +
-                </button>
-                </span>
-
-                <div id="<?php echo 'dropdown-'.get_the_ID(); ?>" class="dropdown-carte-finissant" aria-hidden="true">
-                <p class="description-projet"><?php echo esc_html($short_desc); ?></p>
-                </div>
-            <?php endif; ?>
-        </article>
-    <?php
+            <article class="carte-projet-finissant">
+                <?php if ($img): ?>
+                <img src="<?php echo esc_url($img['url']); ?>" alt="<?php echo esc_attr($titre); ?>">
+                <?php endif; ?>
+                <h2><?php echo esc_html($titre); ?></h2>
+                <p><?php echo esc_html($short_desc); ?></p>
+            </article>
+            <?php
         endwhile;
         wp_reset_postdata();
     else:
-        echo '<p>Aucun projet de finissants pour le moment.</p>';
+        echo '<p>Aucun projet finissants pour le moment.</p>';
     endif;
-    
-    $html = ob_get_clean();
-    wp_send_json_success($html);
+
+    wp_send_json_success(ob_get_clean());
 }
 add_action('wp_ajax_finissants_tri', 'handle_finissants_tri');
 add_action('wp_ajax_nopriv_finissants_tri', 'handle_finissants_tri');

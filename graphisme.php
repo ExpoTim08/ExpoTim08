@@ -11,8 +11,6 @@ get_header();
 <body> 
 <div class="pattern-background">
 
-
-
 <main class="page-graphisme">
   <div class="border gauche"></div>
   <div class="border droite"></div>
@@ -27,26 +25,15 @@ get_header();
     </h1>
 
     <svg class="logo-graphisme" width="100" height="122" viewBox="0 0 100 122" xmlns="http://www.w3.org/2000/svg">
-
-    <!-- Outline blanc un peu épaissi pour combler les micro-coupes -->
-    <path
-        d="M97.0801 0.508789C102.803 39.1876 98.5018 112.756 35.5107 97.6006C41.8261 81.6158 63.3355 46.6873 77.5439 37.2148C82.2801 34.0574 72.8083 25.9666 68.6641 30.1104C55.8366 39.9774 25.6828 73.3285 12.4219 118.322C10.8512 123.65 -1.19508 119.506 1.17285 114.178L13.6055 85.1689C-6.72066 57.9359 -18.4827 2.87695 97.0801 0.508789Z"
-        fill="white"
-        stroke="white"
-        stroke-width="2.6"
-        stroke-linejoin="round"
-        stroke-linecap="round"
-    />
-
-    <!-- Feuille verte (même forme exacte), bouche la pointe pour éviter l’effet coupé -->
-    <path
-        d="M97.0801 0.508789C102.803 39.1876 98.5018 112.756 35.5107 97.6006C41.8261 81.6158 63.3355 46.6873 77.5439 37.2148C82.2801 34.0574 72.8083 25.9666 68.6641 30.1104C55.8366 39.9774 25.6828 73.3285 12.4219 118.322C10.8512 123.65 -1.19508 119.506 1.17285 114.178L13.6055 85.1689C-6.72066 57.9359 -18.4827 2.87695 97.0801 0.508789Z"
-        fill="#00978F"
-    />
-
-</svg>
-
-
+      <path d="M97.0801 0.508789C102.803 39.1876 98.5018 112.756 35.5107 97.6006C41.8261 81.6158 63.3355 46.6873 77.5439 37.2148C82.2801 34.0574 72.8083 25.9666 68.6641 30.1104C55.8366 39.9774 25.6828 73.3285 12.4219 118.322C10.8512 123.65 -1.19508 119.506 1.17285 114.178L13.6055 85.1689C-6.72066 57.9359 -18.4827 2.87695 97.0801 0.508789Z"
+          fill="white"
+          stroke="white"
+          stroke-width="2.6"
+          stroke-linejoin="round"
+          stroke-linecap="round"/>
+      <path d="M97.0801 0.508789C102.803 39.1876 98.5018 112.756 35.5107 97.6006C41.8261 81.6158 63.3355 46.6873 77.5439 37.2148C82.2801 34.0574 72.8083 25.9666 68.6641 30.1104C55.8366 39.9774 25.6828 73.3285 12.4219 118.322C10.8512 123.65 -1.19508 119.506 1.17285 114.178L13.6055 85.1689C-6.72066 57.9359 -18.4827 2.87695 97.0801 0.508789Z"
+          fill="#00978F"/>
+    </svg>
 
     <div class="conteneur-description-graphisme">
       <p class="description-titre">Description</p>
@@ -61,17 +48,16 @@ get_header();
     </div>
   </section>
 
-  <!-- ===================== Barre de filtre ===================== -->
-<div class="tri-bar">
-  <select id="tri-select" name="tri-select" aria-label="Filtrer projets par type">
-    <option value="random">Trier (Tous)</option>
-    <option value="asc">A à Z</option>
-    <option value="desc">Z à A</option>
-</select>
-</div>
+  <!-- ===================== Barre de tri ===================== -->
+  <div class="tri-bar">
+    <select id="tri-select" name="tri-select" aria-label="Filtrer projets par type">
+      <option value="random">Trier (Tous)</option>
+      <option value="asc">A à Z</option>
+      <option value="desc">Z à A</option>
+    </select>
+  </div>
 
 <?php
-// Tri asynchrone graphisme
 $tri = isset($_GET['tri']) ? sanitize_text_field($_GET['tri']) : 'random';
 $orderby = 'rand';
 $order   = 'ASC';
@@ -98,7 +84,6 @@ $projets = new WP_Query([
     'order'          => $order
 ]);
 
-// Mélange manuel pour garantir un vrai ordre aléatoire
 if ($tri === 'random') {
     $posts = $projets->posts;
     shuffle($posts);
@@ -108,143 +93,64 @@ if ($tri === 'random') {
 
   <!-- ===================== Liste des projets ===================== -->
   <section class="liste-projet-graphisme" id="liste-projet-graphisme">
-    <?php
-  
+    <?php if ($projets->have_posts()) : ?>
+      <?php while ($projets->have_posts()) : $projets->the_post(); ?>
+        <?php
+          $titre = get_the_title();
+          $image = get_field('affiche');
+          $description = get_field('description');
+          $short_desc = wp_trim_words(wp_strip_all_tags($description), 40, '...');
+        ?>
 
-    if ($projets->have_posts()) :
-      while ($projets->have_posts()) :
-        $projets->the_post();
-
-        $titre       = get_the_title();
-        $image       = get_field('affiche');
-        $description = get_field('description');
-        $etudiants   = get_field('etudiants_associes');
-        $behance     = get_field('liens_behance');
-      $short_desc = wp_trim_words( wp_strip_all_tags( $description ), 40, '...' );
-    ?>
-
-    <!-- ===== Carte Projet Desktop ===== -->
-    <article class="carte-projet-graphisme carte-projet-graphisme--desktop">
-      <?php if (!empty($image) && !empty($image['url'])) : ?>
-          <img class="image-projet-graphisme"
-               src="<?php echo esc_url($image['url']); ?>"
-               alt="<?php echo esc_attr($image['alt'] ?: $titre); ?>">
-      <?php endif; ?>
-
-      <div class="conteneur-carte-bas">
-        <h2 class="titre-projet-graphisme"><?php echo esc_html($titre); ?></h2>
-        <p class="carte-graphisme-titre-description">Description</p>
-        <p class="description-projet"><?php echo esc_html($short_desc); ?></p>
-
-        <?php /*
-          <?php if (!empty($etudiants)) : ?>
-            <p class="etudiants-projet">
-              <strong>Étudiants :</strong>
-              <?php
-              $liste = array_map(function ($etudiant) {
-                return get_the_title($etudiant->ID);
-              }, $etudiants);
-              echo esc_html(implode(', ', $liste));
-              ?>
-            </p>
+        <!-- ===== Carte Projet Desktop ===== -->
+        <article class="carte-projet-graphisme carte-projet-graphisme--desktop">
+          <?php if (!empty($image['url'])): ?>
+            <img class="image-projet-graphisme" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt'] ?: $titre); ?>">
           <?php endif; ?>
 
-          <?php if ($behance) : ?>
-            <p class="behance-projet">
-              <a href="<?php echo esc_url($behance); ?>" target="_blank" rel="noopener noreferrer">
-                Voir sur Behance
-              </a>
-            </p>
+          <div class="conteneur-carte-bas">
+            <h2 class="titre-projet-graphisme"><?php echo esc_html($titre); ?></h2>
+            <p class="carte-graphisme-titre-description">Description</p>
+            <p class="description-projet"><?php echo esc_html($short_desc); ?></p>
+
+            <button class="button-projet-graphisme"
+              onclick="window.location.href='<?php echo esc_url(add_query_arg('projet_id', get_the_ID(), get_permalink(get_page_by_path('projet-graphisme')))); ?>'">
+              >>
+            </button>
+          </div>
+        </article>
+
+        <!-- ===== Carte Projet Mobile ===== -->
+        <article class="carte-projet-graphisme carte-projet-graphisme--mobile">
+          <div class="bloc-titre">
+            <h2 class="titre-projet-graphisme"><?php echo esc_html($titre); ?></h2>
+            <button class="button-projet-graphisme"
+                onclick="window.location.href='<?php echo esc_url(add_query_arg('projet_id', get_the_ID(), get_permalink(get_page_by_path('projet-graphisme')))); ?>'">
+                &gt;&gt;
+            </button>
+          </div>
+
+          <?php if ($image): ?>
+            <img class="image-projet-graphisme" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($titre); ?>">
+
+            <span class="conteneur-button-dropdown-graphisme">
+              <p class="carte-graphisme-titre-description">Description</p>
+              <button class="button-dropdown-graphisme" aria-expanded="false" aria-controls="<?php echo 'dropdown-'.get_the_ID(); ?>">+</button>
+            </span>
+
+            <div id="<?php echo 'dropdown-'.get_the_ID(); ?>" class="dropdown-carte-graphisme" aria-hidden="true">
+              <p class="description-projet"><?php echo esc_html($short_desc); ?></p>
+            </div>
           <?php endif; ?>
-        */ ?>
+        </article>
 
-        <button class="button-projet-graphisme"
-          onclick="window.location.href='<?php echo esc_url(add_query_arg('projet_id', get_the_ID(), get_permalink(get_page_by_path('projet-graphisme')))); ?>'">
-          >>
-        </button>
-      </div>
-    </article>
-
-
-    
-    <!-- ===== Carte Projet Mobile ===== -->
-   <article class="carte-projet-graphisme carte-projet-graphisme--mobile">
-      <div class="bloc-titre">
-        <h2 class="titre-projet-graphisme"><?php echo esc_html($titre); ?></h2>
-        <button class="button-projet-graphisme"
-            onclick="window.location.href='<?php echo esc_url(add_query_arg('projet_id', get_the_ID(), get_permalink(get_page_by_path('projet-graphisme')))); ?>'">
-            &gt;&gt;
-          </button>
-      </div>
-
-      <?php if ($image): ?>
-        <img class="image-projet-graphisme" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($titre); ?>">
-        
-        <span class="conteneur-button-dropdown-graphisme">
-          <p class="carte-graphisme-titre-description">Description</p>
-          <button
-            class="button-dropdown-graphisme"
-            aria-expanded="false"
-            aria-controls="<?php echo 'dropdown-'.get_the_ID(); ?>">
-            +
-          </button>
-        </span>
-
-        <div id="<?php echo 'dropdown-'.get_the_ID(); ?>" class="dropdown-carte-graphisme" aria-hidden="true">
-          <p class="description-projet"><?php echo esc_html($short_desc); ?></p>
-        </div>
-        
-      <?php /* ?>
-        <?php if (!empty($image) && !empty($image['url'])) : ?>
-            <img class="image-projet-graphisme"
-                src="<?php echo esc_url($image['url']); ?>"
-                alt="<?php echo esc_attr($image['alt'] ?: $titre); ?>">
-        <?php endif; ?>
-
-        <div class="conteneur-carte-bas">
-          <h2 class="titre-projet-graphisme"><?php echo esc_html($titre); ?></h2>
-
-          <?php if ($description) : ?>
-          <p class="carte-graphisme-titre-description">Description</p>
-          <p class="description-projet"><?php echo esc_html($description); ?></p>
-          <?php endif; ?>
-
-          <?php if (!empty($etudiants)) : ?>
-            <p class="etudiants-projet">
-          <strong>Étudiants :</strong>
-          <?php
-          $liste = array_map(function ($etudiant) {
-            return get_the_title($etudiant->ID);
-          }, $etudiants);
-          echo esc_html(implode(', ', $liste));
-          ?>
-            </p>
-          <?php endif; ?>
-
-          <?php if ($behance) : ?>
-            <p class="behance-projet">
-          <a href="<?php echo esc_url($behance); ?>" target="_blank" rel="noopener noreferrer">
-            Voir sur Behance
-          </a>
-            </p>
-          <?php endif; ?>
-        </div>
-      <?php */ ?>
-
-    </article>
+      <?php endwhile; wp_reset_postdata(); ?>
+    <?php else: ?>
+      <p class="message-aucun-projet">Aucun projet trouvé pour le moment.</p>
     <?php endif; ?>
-
-    <?php
-      endwhile;
-      wp_reset_postdata();
-    else :
-      echo '<p class="message-aucun-projet">Aucun projet trouvé pour le moment.</p>';
-    endif;
-    ?>
   </section>
 </main>
 
-  
 </div>
 </body>
 <?php get_footer(); ?>

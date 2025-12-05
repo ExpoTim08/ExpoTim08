@@ -1,9 +1,4 @@
-/*-------------- CSS Arcade --------------*/
-
-.header-container form.search-form {
-  transform: translateY(13px); 
-}
-
+/*-------------- CSS GLOBAL Arcade --------------*/
 body {
   background: linear-gradient(180deg, #1B1B1B 0%, #2B2B2B 44.23%, #323232 77.88%, #1B1B1B 100%);
   background-attachment: fixed;
@@ -11,7 +6,8 @@ body {
 }
 
 .pattern-background {
-  background-image: linear-gradient(#4e4b4194 1px, transparent 1px), linear-gradient(to right, #4e4b4194 1px, #71718300 1px);
+  background-image: linear-gradient(#4e4b4194 1px, transparent 1px),
+                    linear-gradient(to right, #4e4b4194 1px, #71718300 1px);
   background-size: 40px 40px;
   background-attachment: fixed;
 }
@@ -21,6 +17,7 @@ h1, h2 {
   font-family: var(--title-font);
 }
 
+/* scope text for arcade pages */
 .page-arcade h3, .page-arcade p, .page-arcade a, .page-arcade li {
   font-family: var(--general-font);
   color: var(--font-color);
@@ -28,51 +25,42 @@ h1, h2 {
 
 /*------------- Section description + titre --------------*/
 .presentation-arcade {
-  background-image: linear-gradient(177deg, #4032FF 11.95%, #362CB6 28.39%, #21212100 82.04%);
+  background-image: var(--background-color-arcade);
   margin-bottom: 5vh;
+  position: relative;
 }
 
-/* svg img pour button voir plus */
-/*.svg-action {
-  width: -webkit-fill-available;
-  height: -webkit-fill-available;;
-}*/
+/* logo */
+.logo-arcade {
+  position: absolute;
+  right: -8px;
+  top: 90px;
+  z-index: 10;
+  mix-blend-mode: normal;
+  width: auto;
+  height: auto;
+  max-width: 140px;
+}
 
-/*-------------- MOBILE ARCADE --------------*/
+/*-------------- MOBILE Arcade (layout Finissants) --------------*/
 @media screen and (max-width: 576px) {
 
-  /* FIX MOBILE : background reste visible en scroll */
-  body {
-    background: none !important;
-  }
-
-  body::before {
-    content: "";
-    position: fixed;      /* reste en place au scroll */
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: linear-gradient(180deg, #1B1B1B 0%, #2B2B2B 44.23%, #323232 77.88%, #1B1B1B 100%);
-    z-index: -999;        /* derrière tout le contenu */
-  }
-
-  .pattern-background {
-    background-attachment: scroll !important;
-  }
-
-  /* style generale + border */
+  /* style générale + border */
   .site-header {
     padding: 20px 2em 1em 2em;
     border-bottom: 1px solid var(--border-color);
     margin: 0;
   }
 
+  .pattern-background {
+    background-attachment: scroll;
+  }
+
   .border {
     position: fixed;
     top: 0;
     height: 100vh;
-    width: 0;                
+    width: 0;
     background: transparent;
     z-index: 9999;
     pointer-events: none;
@@ -81,7 +69,7 @@ h1, h2 {
   .border.gauche { left: 1rem; border-left: 1px solid var(--border-color-side); }
   .border.droite { right: 1rem; border-left: 1px solid var(--border-color-side); }
 
-  /* CSS informations sur arcade titre + description */
+  /* section description Arcade */
   .conteneur-description-arcade {
     padding: 25px 35px 45px 35px;
     display: flex;
@@ -93,52 +81,21 @@ h1, h2 {
     border: 1px solid var(--border-color);
     width: auto;
     padding: 5px 100px 6px 11px;
+    color: var(--font-color);
   }
 
   .page-arcade {
     display: flex;
-    max-width: 1200px; 
-    margin: 0 1em; 
+    max-width: 1200px;
+    margin: 0 1em;
     flex-direction: column;
   }
-  
+
   .page-arcade section { width: 100%; }
 
-  /* ===== FIX DU PROBLÈME DE Z-INDEX ===== */
-  .presentation-arcade {
-    position: relative;
-    z-index: 1; /* garantit que le fond est derrière le logo */
-  }
-
-  .logo-arcade {
-    position: absolute;
-    right: -15px;
-    top: 85px;
-    z-index: 9999; /* AU-DESSUS DE TOUT, même WordPress */
-    mix-blend-mode: normal;
-    width: 120px;
-    height: 120px;
-    max-width: 300px;
-    pointer-events: none; /* évite interactions */
-  }
-  /* ====================================== */
-
-  /* -------------- Version mobile des cartes */
-
-  .carte-projet-arcade--desktop { display: none; }
-
-  .page-arcade img {
-    max-width: 100%;
-    height: auto;
+  /* cartes Desktop */
+  .carte-projet-arcade--desktop {
     display: block;
-    margin: 0 auto;
-    border-top: 2px solid var(--border-color-project);
-    border-bottom: 2px solid var(--border-color-project);
-    object-fit: contain;
-  }
-
-  .carte-projet-arcade { 
-    display: block; 
     background-color: rgb(48,48,48);
     border: 2px solid var(--border-color-project);
     margin: 0 47px;
@@ -148,15 +105,28 @@ h1, h2 {
     place-self: center;
   }
 
-  .titre-projet-arcade{
+  /* cartes Mobile */
+  .carte-projet-arcade--mobile {
+    display: block;
+    background-color: rgb(48,48,48);
+    border: 2px solid var(--border-color-project);
+    margin: 0 47px;
+    box-shadow: 6px 6px 0px var(--border-color-project);
+    margin-bottom: 10%;
+    max-width: 330px;
+    place-self: center;
+  }
+
+  .titre-projet-arcade {
     font-size: clamp(14px, 4.5vw, 20px);
     margin: 0.6rem 0 0.35rem;
     font-weight: 300;
     color: var(--font-color);
   }
 
-  .conteneur-carte-haut {
-    position: relative; 
+  /* bloc titre + bouton */
+  .bloc-titre {
+    position: relative;
     overflow: hidden;
     display: flex;
     flex-flow: row nowrap;
@@ -165,18 +135,18 @@ h1, h2 {
     margin: 0px 0.5rem;
   }
 
-  .conteneur-carte-haut .image-projet-arcade {
+  .bloc-titre .image-projet-arcade {
     display: block;
     width: 100%;
     height: auto;
     object-fit: contain;
   }
 
-  .conteneur-carte-haut .button-projet-arcade {
+  .bloc-titre .button-projet-arcade {
     right: 0;
     z-index: 10;
     height: 24px;
-    background-color: #4032FF;
+    background-color: #4032FF; /* couleur Arcade */
     color: #ffffff;
     font-size: 10px;
     border: 1px solid var(--font-color);
@@ -184,6 +154,7 @@ h1, h2 {
     text-align: center;
   }
 
+  /* dropdown + description */
   .conteneur-button-dropdown-arcade {
     width: 100%;
     display: flex;
@@ -201,15 +172,16 @@ h1, h2 {
     border-left: 2px solid var(--border-color-project);
   }
 
-  .carte-projet-arcade .dropdown-carte-arcade {
+  .carte-projet-arcade--mobile .dropdown-carte-arcade {
     max-height: 0;
     overflow: hidden;
     padding: 0 1rem;
     display: block;
+    transition: max-height 0.3s ease;
   }
 
-  .carte-projet-arcade.open-desc .dropdown-carte-arcade {
-    max-height: 800px; 
+  .carte-projet-arcade--mobile.open-desc .dropdown-carte-arcade {
+    max-height: 800px;
     font-size: 12px;
   }
 
@@ -222,36 +194,70 @@ h1, h2 {
 
   .conteneur-section-arcade-bas { padding-bottom: 4em; }
 
+  /* filtres */
   .conteneur-arcade-filtre {
     margin-top: 50px;
     margin-bottom: 20px;
     width: fit-content;
-    background-color: rgb(48, 48, 48);
+    background-color: rgb(48,48,48);
     border: 1px solid var(--border-color);
     padding: 0.2em 0.7em 0.3em 0.5em;
     margin-left: 47px;
     display: flex;
     flex-flow: nowrap row;
     align-items: center;
-    
   }
 
   .filtre { margin: 0; font-size: 14px; }
   .icone-filtre { width: 20px; height: 20px; }
 
-  .tri-bar{
-    margin: 1rem 0rem 3rem 0rem;
-    place-self: center;
+  .tri-bar {
+    margin: 1rem auto 3rem auto; /* centre horizontalement */
+    width: fit-content; /* ajuste au contenu */
+    display: flex;
+    justify-content: center;
+  }
+  
+  .tri-bar select {
+    padding: 0.4em 0.7em;
+    border: 1px solid var(--border-color); /* une seule bordure */
+    background-color: rgb(48,48,48);
+    color: var(--font-color);
+    font-family: var(--general-font);
+    cursor: pointer;
+  }
+
+  /* images */
+  .page-arcade img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-top: 2px solid var(--border-color-project);
+    border-bottom: 2px solid var(--border-color-project);
+    object-fit: contain;
+  }
+  .carte-projet-arcade--desktop {
+    display: none;
   }
 }
 
 
 
+
 /*-------------- TABLET / PETIT ECRAN ARCADE --------------*/
 @media screen and (min-width: 576.02px) {
-
-  .header-container form.search-form {
-    transform: translateY(0px); 
+  .conteneur-arcade-filtre {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+    padding: 0.2em 0.7em 0.3em 0.5em;
+    background-color: rgb(48,48,48);
+    border: 1px solid var(--border-color);
+    width: fit-content;
   }
 
   body { overflow-x: hidden; }
@@ -262,18 +268,17 @@ h1, h2 {
     background: var(--border-color-side);
     z-index: 9999;
   }
-
   .border.gauche { top: 0; left: 2em; width: 1px; height: 100%; }
   .border.droite { top: 0; right: 2em; width: 1px; height: 100%; }
 
   /* On cache la version mobile des cartes */
-  .carte-projet-arcade { display: none; }
+  .carte-projet-arcade--mobile { display: none; }
   .carte-projet-arcade--desktop { display: flex; }
 
   .conteneur-description-arcade {
     background-color: rgb(42, 42, 42);
-    border-top: 1px solid rgb(64, 50, 255);
-    border-bottom: 1px solid rgb(64, 50, 255);
+    border-top: 1px solid #4032FF; /* couleur Arcade */
+    border-bottom: 1px solid #4032FF;
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
@@ -291,14 +296,11 @@ h1, h2 {
     overflow: hidden;
   }
 
-  /*deco titre arcade*/
-  .presentation-arcade {
-    position: relative;
-  }
+  .presentation-arcade { position: relative; }
 
   .logo-arcade {
     position: absolute;
-    left: -30px;
+    left: -50px;
     bottom: 30%;
     z-index: 10;
     mix-blend-mode: normal;
@@ -328,10 +330,10 @@ h1, h2 {
     overflow: hidden;
     box-shadow: 10px 10px 0px var(--border-color-project);
     border: 2px solid var(--border-color-project);
-    margin-bottom: 70px;  
+    margin-bottom: 70px;
   }
 
-  .carte-projet-arcade--desktop .conteneur-carte-haut {
+  .carte-projet-arcade--desktop .bloc-titre {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -354,6 +356,7 @@ h1, h2 {
     width: 45%;
     height: auto;
     object-fit: contain;
+    border-right: 2px solid var(--border-color-project);
   }
 
   .carte-projet-arcade--desktop .conteneur-carte-bas {
@@ -391,40 +394,24 @@ h1, h2 {
     margin-top: 10%;
   }
 
-  .carte-projet-arcade--desktop .image-projet-arcade {
-      border-right: 2px solid var(--border-color-project);
-    }
 
-  .button-dropdown-arcade, .carte-arcade-titre-description { display: none; }
-
-  .conteneur-arcade-filtre {
-    margin-top: 50px;
-    margin-bottom: 20px;
-    padding: 0.2em 0.7em 0.3em 0.5em;
-    margin-left: 10%;
-    width: fit-content;
-    background-color: rgb(48,48,48);
-    border: 1px solid var(--border-color);
-    display: flex;
-    flex-flow: nowrap row;
-    align-items: center;
-  }
-
-
-  .filtre { margin: 0; font-size: 14px; }
-  .icone-filtre { width: 20px; height: 20px; }
-
-  .tri-bar{
-    margin: 1rem 0rem 3rem 0rem;
-    place-self: center;
-    width: 80%;
-    max-width: 600px;
-    justify-content: end;
-  }
 }
+
 
 /*-------------- DESKTOP ARCADE --------------*/
 @media screen and (min-width: 1024px) {
+
+  /* Filtre / tri centré comme Finissants */
+  .conteneur-arcade-filtre {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+    width: fit-content;
+  }
+
   .border { position: fixed; background: var(--border-color-side); z-index: 9999; }
   .border.gauche { top: 0; left: 3em; width: 1px; height: 100%; }
   .border.droite { top: 0; right: 3em; width: 1px; height: 100%; }
@@ -439,6 +426,7 @@ h1, h2 {
     border-bottom: 1px solid var(--border-color);
     background-image: linear-gradient(177deg, #4032FF 11.95%, #362CB6 28.39%, #21212100 82.04%);
     padding: 2% 10%;
+    position: relative;
   }
 
   .liste-projet-arcade {
@@ -451,22 +439,17 @@ h1, h2 {
     align-items: start;
   }
 
-  /*deco titre arcade*/
-  .presentation-arcade {
-    position: relative;
-  }
-
+  /* logo Arcade */
   .logo-arcade {
     position: absolute;
-    left: -55px;
-    bottom: -35%;
+    left: -85px;
+    bottom: -40%;
     z-index: 10;
     mix-blend-mode: normal;
-
-    width: 300px;
     height: auto;
-    max-width: 10vw;
-    min-width: 170px;
+    width: 10vw;
+    max-width: 250px;
+    min-width: 200px;
   }
 
   .conteneur-description-arcade { background-color: transparent; border: none; }
@@ -491,13 +474,13 @@ h1, h2 {
     overflow: hidden; 
     width: 75%; 
     max-width: none;
-    
   }
 
   .carte-projet-arcade--desktop .image-projet-arcade {
-    width: min-content;
+    width: 45%;
     height: auto;
-    object-fit: contain;
+    object-fit: cover;
+    border-right: 2px solid var(--border-color-project);
   }
 
   .carte-projet-arcade--desktop .conteneur-carte-bas {
@@ -506,13 +489,12 @@ h1, h2 {
 
   .conteneur-description-arcade .description-titre { display: none; }
 
-  .carte-projet-arcade { display: none; }
+  .carte-projet-arcade--mobile { display: none; }
 
   .carte-projet-arcade--desktop button.button-projet-arcade {
     position: absolute;   
     bottom: 0px;
     right: 0px;
-
     margin-top: 5%;
     width: 47px;
     height: 50px;
@@ -521,26 +503,22 @@ h1, h2 {
     border-width: 2px 1px 1px 2px;
   }
 
-  .tri-bar{
+  .tri-bar {
     margin: 1rem 0;
     place-self: center;
-    width: 74%;
     max-width: none;
   }
+
+    .carte-projet-arcade--mobile { display: none; }
 }
+
 
 /*-------------- GRAND ECRAN ARCADE --------------*/
 @media screen and (min-width: 1300px) { 
 
-  .header-container form.search-form {
-    transform: translateY(0px); 
-  }
+  main { padding-bottom: 15vh; }
 
-  main{
-    padding-bottom: 15vh;
-  }
-
-  /*les projets*/
+  /* Les projets */
   .liste-projet-arcade {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 0.4fr));
@@ -549,7 +527,7 @@ h1, h2 {
       width: 100%;
       margin: 0 auto;
       align-items: start;
-    }
+  }
     
   .carte-projet-arcade--desktop {
     width: 100%;
@@ -572,8 +550,17 @@ h1, h2 {
   .tri-bar{
     margin: 1rem 0;
     place-self: center;
-    width: 80%;
     max-width: none;
+  }
+
+  .filtres-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+    margin-right: 8.5rem;
   }
 }
 
@@ -588,26 +575,23 @@ h1, h2 {
     background-image:
       linear-gradient(rgba(64,50,255,0.06), rgba(53, 40, 236, 0.272)),
       radial-gradient(circle, rgba(255,255,255,0.12) 1.5px, transparent 1px);
-    background-size: auto, 12px 12px; /* change second value for dot density */
+    background-size: auto, 12px 12px;
     mix-blend-mode: screen;
 
-    /* commencer par être caché et animer au survol */
     opacity: 0;
     transform: translateY(6px);
     transition: opacity 260ms ease, transform 260ms cubic-bezier(.2,.8,.2,1);
 
-    /* estomper le demi-ton vers le haut */
     -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
     mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
-
     z-index: 2;
 
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
     image-rendering: pixelated;
-  }
+}
 
-  .carte-projet-arcade--desktop {
+.carte-projet-arcade--desktop {
     position: relative; 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -617,100 +601,72 @@ h1, h2 {
                 border-radius 260ms ease;
     will-change: transform, box-shadow;
     transform-origin: center;
-  }
+}
 
-  .carte-projet-arcade--desktop:hover::after {
+.carte-projet-arcade--desktop:hover::after {
     opacity: 1;
     transform: translateY(0);
-  }
+}
 
-  .carte-projet-arcade--desktop:hover {
+.carte-projet-arcade--desktop:hover {
     transform: translateY(-10px);
     box-shadow: 16px 16px 0px rgb(15, 13, 50);
     border-radius: 14px;
     color: thistle;
-  }
+}
 
-  .carte-projet-arcade--desktop .image-projet-arcade {
+.carte-projet-arcade--desktop .image-projet-arcade {
     transition: transform 400ms cubic-bezier(.2,.8,.2,1);
     will-change: transform;
-  }
+}
 
-  .carte-projet-arcade--desktop:hover .image-projet-arcade {
+.carte-projet-arcade--desktop:hover .image-projet-arcade {
     transform: scale(1.05);
-  }
+}
 
-
-  /*------------- Titre arcade --------------*/
-  .titre-arcade--base {
+/*------------- Titre arcade --------------*/
+.titre-arcade--base {
     -webkit-text-fill-color: var(--title-color);
-  }
+}
 
-  .titre-arcade {
+.titre-arcade {
     color: transparent;               
     -webkit-font-smoothing: antialiased;
     -webkit-text-stroke: 0px transparent;
-  }
 
-  .titre-arcade {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
     font-size: clamp(20px, 9vw, 45px);
-    line-height: 0.78;
+    line-height: 0.6;
     text-transform: uppercase;
     margin: 0;
     -webkit-text-stroke-width: 0.8px;
     -webkit-text-stroke-color: rgb(255, 255, 255);
-
-    line-height: 0.6;
     letter-spacing: 1px;
     height: 220px;
     font-weight: lighter;
-  }
+}
 
-  .titre-arcade-layer--1 {
-    opacity: 0.8;
-    -webkit-text-stroke-width: 0.8px;
-  }
+.titre-arcade-layer--1 { opacity: 0.8; -webkit-text-stroke-width: 0.8px; }
+.titre-arcade-layer--2 { opacity: 0.5; -webkit-text-stroke-width: 0.5px; }
+.titre-arcade-layer--3 { opacity: 0.3; -webkit-text-stroke-width: 0.2px; }
 
-  .titre-arcade-layer--2 {
-    opacity: 0.5;
-    -webkit-text-stroke-width: 0.5px;
-  }
-
-  .titre-arcade-layer--3 {
-    opacity: 0.3;
-    -webkit-text-stroke-width: 0.2px;
-  }
-
-  /*-------------- FILTRE --------------*/
-
-.tri-bar {
+/*-------------- FILTRE --------------*/
+.filtre-categorie {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin: 1rem 0;
-  padding: 0.35rem;
-  background: transparent;
-  color: var(--font-color);
 }
 
-.tri-bar label {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--font-color);
-  white-space: nowrap;
-}
-
-
+.filtre-categorie select,
 #tri-select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   padding: 0.45rem 0.9rem 0.45rem 0.6rem;
+  border-radius: 2px;
   border: 1px solid var(--border-color);
   background:
     linear-gradient(rgba(255,255,255,0.02), rgba(255,255,255,0.02)),
@@ -721,61 +677,43 @@ h1, h2 {
   min-width: 140px;
   cursor: pointer;
   box-shadow: none;
-  border-radius: 2px;
   font-family: var(--general-font);
-}
-
-/* état désactivé / état discret si nécessaire */
-#tri-select:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-/* Focus / utilisateurs clavier */
-#tri-select:focus,
-.tri-bar label:focus {
-  outline: 3px solid rgba(63,50,255,0.14);
-  outline-offset: 2px;
-  border-color: rgba(64,50,255,0.6);
-  border-radius: 8px;
-}
-
-/* Mise en page compacte pour très petits écrans */
-@media (max-width: 420px) {
-  .tri-bar {
-    gap: 0.4rem;
-    padding: 0.25rem;
-  }
-  #tri-select { min-width: 110px; font-size: 0.9rem; }
-}
-
-#tri-select {
-  color: var(--font-color);
-  background-color: #2f2f2f; /* s'accorde avec la surface sombre de la page */
+  background-color: #2f2f2f;
   -webkit-text-fill-color: var(--font-color);
 }
 
-/* Style général des <option> (support navigateurs limité) */
+.filtre-categorie select option,
 #tri-select option {
   background-color: #2f2f2f;
   color: var(--font-color);
   padding: 0.25rem 0.5rem;
 }
 
-/* Option sélectionnée / surlignée */
+.filtre-categorie select option:checked,
+.filtre-categorie select option[selected],
 #tri-select option:checked,
 #tri-select option[selected] {
   background-color: rgba(64,50,255,0.14);
   color: #ffffff;
 }
 
-/* Masquer la flèche native dans certains navigateurs si vous utilisez une icône personnalisée */
+.filtre-categorie select:disabled,
+#tri-select:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.filtre-categorie select::-ms-expand,
 #tri-select::-ms-expand { display: none; }
 
-/* Anneau de focus accessible, cohérent avec le thème */
-#tri-select:focus {
-  box-shadow: 0 0 0 4px rgba(64,50,255,0.12);
-  border-color: rgba(28, 21, 139, 0.911);
-  border-width: 1px;
+.filtre-categorie select:focus,
+#tri-select:focus,
+.tri-bar label:focus {
+  outline: 3px solid rgba(64,50,255,0.14);
+  outline-offset: 2px;
+  border-color: rgba(64,50,255,0.6);
+  border-radius: 8px;
 }
 
+/* pour petit écran */
+@media (max-width: 420px) {
+  .tri-bar { gap: 0.4rem; padding: 0.25rem; }
+  #tri-select { min-width: 110px; font-size: 0.9rem; }
+}
