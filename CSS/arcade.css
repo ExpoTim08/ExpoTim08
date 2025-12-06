@@ -300,8 +300,8 @@ h1, h2 {
 
   .logo-arcade {
     position: absolute;
-    left: -50px;
-    bottom: 30%;
+    left: -40px;
+    top: 45%;
     z-index: 10;
     mix-blend-mode: normal;
   }
@@ -442,14 +442,14 @@ h1, h2 {
   /* logo Arcade */
   .logo-arcade {
     position: absolute;
-    left: -85px;
-    bottom: -40%;
+    left: -50px;
+    top: 190px;
     z-index: 10;
     mix-blend-mode: normal;
     height: auto;
-    width: 10vw;
-    max-width: 250px;
-    min-width: 200px;
+    width: 150px;
+    max-width: 500px;
+    min-width: 20px;
   }
 
   .conteneur-description-arcade { background-color: transparent; border: none; }

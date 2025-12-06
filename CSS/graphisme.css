@@ -98,11 +98,11 @@ h1, h2 {
   
   .logo-graphisme {
     position: absolute;
-    right: -15px;
+    right: -5px;
     top: 110px;
     z-index: 10;
     mix-blend-mode: normal;
-    width: auto;
+    width: 90px;
     height: auto;
     max-width: 150px;
   }
@@ -290,8 +290,8 @@ h1, h2 {
 
   .logo-graphisme {
     position: absolute;
-    left: -50px;
-    bottom: 30%;
+    left: -20px;
+    bottom: 35%;
     z-index: 10;
     mix-blend-mode: normal;
   }
@@ -454,14 +454,14 @@ h1, h2 {
   /* deco titre graphisme */
   .logo-graphisme {
     position: absolute;
-    left: -85px;
-    bottom: -40%;
+    left: -40px;
+    bottom: -25%;
     z-index: 10;
     mix-blend-mode: normal;
     height: auto;
-    width: 10vw;
+    width: 7vw;
     max-width: 250px;
-    min-width: 200px;
+    min-width: 70px;
   }
 
   .conteneur-description-graphisme { background-color: transparent; border: none; }
