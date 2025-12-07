@@ -3,6 +3,14 @@
  * Header
  */
 ?>
+
+<?php 
+
+/*Customizer*/
+$logo = get_theme_mod('expoTim_logo');
+
+?>
+
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -19,7 +27,7 @@
   <header class="site-header">
   <h1 class="logo">
   <a href="<?php echo get_permalink( get_page_by_path('accueil') ); ?>">
-    <img class="header-logo-img" src="<?php echo get_template_directory_uri(); ?>/Images/Texte.png" alt="Logo de l'expo TIM">
+    <img class="header-logo-img" src="<?php echo esc_url($logo); ?>" alt="Logo de l'expo TIM">
   </a>
 </h1>
 

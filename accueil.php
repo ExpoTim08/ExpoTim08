@@ -53,7 +53,7 @@ get_header();
       <p class="numeration">1234567</p>
       <p class="numeration-short">123</p>
       <div class="ligne-parallele"></div>
-      <p class="accroche">Découvrez l’univers créatif des étudiants de la Technique d’intégration multimédia!</p>
+      <p class="accroche"><?php echo esc_html(get_theme_mod('expoTim_home_hook')); ?></p>
     </div>
 
     <!-------------------------------- À propos -------------------------------->
@@ -65,11 +65,11 @@ get_header();
           <img class="image-a-propos2" src="<?php echo get_template_directory_uri(); ?>/Images/Arcade-404-2.png" alt="">
           <img class="image-a-propos3" src="<?php echo get_template_directory_uri(); ?>/Images/Arcade-404-3.png" alt="">
         </div>
-        <p class="description">« TimVision », c’est la grande célébration annuelle qui met en lumière la diversité et la qualité des projets réalisés par les étudiants. De la première à la troisième année, une exposition unique vous attend : jeux vidéo, sites web, expériences interactives, concepts visuels et bien plus encore. Venez à la rencontre du talent, de l’audace et de l’innovation de la relève. </p>
+        <p class="description"><?php echo wp_kses_post(get_theme_mod('expoTim_home_about')); ?></p>
         <div class="infos-a-propos">
-          <p id="date">Date:</p>
-          <p id="heure">Heure:</p>
-          <p id="lieu">Lieu:</p>
+          <p id="date">Date: <?php echo esc_html(get_theme_mod('expoTim_home_date')); ?></p>
+          <p id="heure">Heure: <?php echo esc_html(get_theme_mod('expoTim_home_time')); ?> </p>
+          <p id="lieu">Lieu: <?php echo esc_html(get_theme_mod('expoTim_home_place')); ?></p>
         </div>
       </div>
     </div>
@@ -220,7 +220,7 @@ get_header();
       <div class="cartes">
         <div class="carte-equipe">
           <span class="photo">
-            <img class="img-personne" src="<?php echo get_template_directory_uri(); ?>/Images/PlaceholderPersonne.png" alt="Photo de Lîna Bensenouci">
+            <img class="img-personne" src="<?php echo esc_url( get_theme_mod('expoTim_home_credit_img_1') ); ?>" alt="Photo de Lîna Bensenouci">
           </span>
           <span class="nom">Lîna Bensenouci</span>
           <span class="role">Rôle</span>
@@ -231,12 +231,12 @@ get_header();
           <span class="nom">Peterson Germain</span>
           <span class="role">Rôle</span>
           <span class="petits-carre">
-            <img class="img-personne" src="<?php echo get_template_directory_uri(); ?>/Images/PlaceholderPersonne.png" alt="Photo de Peterson Germain">
+            <img class="img-personne" src="<?php echo esc_url( get_theme_mod('expoTim_home_credit_img_2') ); ?>" alt="Photo de Peterson Germain">
           </span>
         </div>
         <div class="carte-equipe-3">
           <span class="photo">
-            <img class="img-personne" src="<?php echo get_template_directory_uri(); ?>/Images/PlaceholderPersonne.png" alt="Photo de Matilda Kang">
+            <img class="img-personne" src="<?php echo esc_url( get_theme_mod('expoTim_home_credit_img_3') ); ?>" alt="Photo de Matilda Kang">
           </span>
           <span class="nom">Matilda Kang</span>
           <span class="role">Rôle</span>
@@ -247,12 +247,12 @@ get_header();
           <span class="nom">Rémy Roger</span>
           <span class="role">Rôle</span>
           <span class="petits-carre">
-            <img class="img-personne" src="<?php echo get_template_directory_uri(); ?>/Images/PlaceholderPersonne.png" alt="Photo de Rémy Roger">
+            <img class="img-personne" src="<?php echo esc_url( get_theme_mod('expoTim_home_credit_img_4') ); ?>" alt="Photo de Rémy Roger">
           </span>
         </div>
         <div class="carte-equipe-5">
           <span class="photo">
-            <img class="img-personne" src="<?php echo get_template_directory_uri(); ?>/Images/PlaceholderPersonne.png" alt="Photo de Alexis David">
+            <img class="img-personne" src="<?php echo esc_url( get_theme_mod('expoTim_home_credit_img_5') ); ?>" alt="Photo de Alexis David">
           </span>
           <span class="nom">Alexis David</span>
           <span class="role">Rôle</span>
