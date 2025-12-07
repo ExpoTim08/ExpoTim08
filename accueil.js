@@ -36,7 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!Image || !Subtitle || !DescriptionCategorie || ChoixElements.length === 0) return;
 
-  // Change l'image et met à jour le bouton actif
   function ChangeImage(index) {
     const { src, Titre, ClassName, Description } = Images[index];
     Image.src = src;
@@ -51,7 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (currentChoice) currentChoice.classList.add(`${ClassName}-click`);
   }
 
-  // Démarre l'autoplay
   function startAuto() {
     clearInterval(intervalID);
     intervalID = setInterval(() => {
@@ -64,11 +62,9 @@ document.addEventListener("DOMContentLoaded", () => {
     clearInterval(intervalID);
   }
 
-  // Initialisation
   ChangeImage(CurrentIndex);
   startAuto();
 
-  // Gestion hover uniquement desktop >1024px
   function setupHover() {
     hoverListeners.forEach(({ elm, enter, leave }) => {
       elm.removeEventListener("mouseenter", enter);
@@ -76,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     hoverListeners.length = 0;
 
-    if (window.innerWidth <= 1024) return;
+    if (window.innerWidth <= 1366) return;
 
     ChoixElements.forEach((elm, i) => {
       const enter = () => {
@@ -106,13 +102,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (hoverTimeout) clearTimeout(hoverTimeout);
 
-        // Reprise immédiate : avance une image et relance l'autoplay
         hoverTimeout = setTimeout(() => {
           CurrentIndex = (CurrentIndex + 1) % Images.length;
           ChangeImage(CurrentIndex);
           startAuto();
           hoverTimeout = null;
-        }, 1000); // petit délai pour laisser l'animation CSS se terminer
+        }, 1000);
       };
 
       elm.addEventListener("mouseenter", enter);
@@ -121,17 +116,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Click toujours actif
   ChoixElements.forEach((elm, i) => {
     elm.addEventListener("click", () => {
       window.location.href = Images[i].Lien;
     });
   });
 
-  // Gestion responsive du bloc détails
   function handleResponsiveDetails() {
     if (!Details) return;
-    if (window.innerWidth <= 1024) {
+
+    if (window.innerWidth <= 1366) {
       Details.style.display = 'flex';
       Details.style.opacity = '1';
       Details.style.transform = 'none';
@@ -151,7 +145,6 @@ document.addEventListener("DOMContentLoaded", () => {
     handleResponsiveDetails();
   });
 
-  // Carrousel "À PROPOS"
   const aproposImages = document.querySelectorAll('.carroussel-apropos img');
   if (aproposImages.length > 0) {
     let index = 0;
@@ -164,65 +157,64 @@ document.addEventListener("DOMContentLoaded", () => {
     updateFocus();
     setInterval(updateFocus, 3000);
   }
-  //Click pour changer randomly les images dans les projets aléatoires
+
   const refreshBtn = document.querySelector('.boutonRefresh');
   const container = document.getElementById('projets-container');
 
   if (refreshBtn && container) {
-  let isRefreshing = false;
+    let isRefreshing = false;
 
-  refreshBtn.addEventListener('click', () => {
-    if (isRefreshing) return;
+    refreshBtn.addEventListener('click', (e) => {
+      e.stopImmediatePropagation();       // 🔥 empêche tout double listener
+      if (refreshBtn.classList.contains('loading')) return; // 🔥 bloque double appel réel
 
-    isRefreshing = true;
-    refreshBtn.classList.add('loading');
+      isRefreshing = true;
+      refreshBtn.classList.add('loading');
 
-    fetch(`${themeVars.ajaxUrl}?action=refresh_projects&t=${Date.now()}`)
-      .then(res => res.json())
-      .then(response => {
-        if (!response.success) throw new Error('No projects found');
+      fetch(`${themeVars.ajaxUrl}?action=refresh_projects&t=${Date.now()}`)
+        .then(res => res.json())
+        .then(response => {
+          if (!response.success) throw new Error('No projects found');
 
-        const { arcade, graphisme, finissant } = response.data;
+          const { arcade, graphisme, finissant } = response.data;
 
-        container.innerHTML = `
-          <div class="projet-populaire-finissant">
-            <span class="titre">${finissant.title}</span>
-            <span class="bouton">
-              <a href="${themeVars.pageFinissants}?projet_id=${finissant.id}">>></a>
-            </span>
-            <span class="categorie">Catégorie</span>
-            <span class="categorie-nom">FINISSANTS</span>
-            <img class="image-populaire-finissants" src="${finissant.url}" alt="${finissant.title}">
-          </div>
+          container.innerHTML = `
+            <div class="projet-populaire-finissant">
+              <span class="titre">${finissant.title}</span>
+              <span class="bouton">
+                <a href="${themeVars.pageFinissants}?projet_id=${finissant.id}">>></a>
+              </span>
+              <span class="categorie">Catégorie</span>
+              <span class="categorie-nom">FINISSANTS</span>
+              <img class="image-populaire-finissants" src="${finissant.url}" alt="${finissant.title}">
+            </div>
 
-          <div class="projet-populaire-arcade">
-            <span class="titre">${arcade.title}</span>
-            <span class="bouton">
-              <a href="${themeVars.pageArcade}?projet_id=${arcade.id}">>></a>
-            </span>
-            <span class="categorie">Catégorie</span>
-            <span class="categorie-nom">ARCADE</span>
-            <img class="image-populaire-arcade" src="${arcade.url}" alt="${arcade.title}">
-          </div>
+            <div class="projet-populaire-arcade">
+              <span class="titre">${arcade.title}</span>
+              <span class="bouton">
+                <a href="${themeVars.pageArcade}?projet_id=${arcade.id}">>></a>
+              </span>
+              <span class="categorie">Catégorie</span>
+              <span class="categorie-nom">ARCADE</span>
+              <img class="image-populaire-arcade" src="${arcade.url}" alt="${arcade.title}">
+            </div>
 
-          <div class="projet-populaire-jour-terre">
-            <span class="titre">${graphisme.title}</span>
-            <span class="bouton">
-              <a href="${themeVars.pageJourTerre}?projet_id=${graphisme.id}">>></a>
-            </span>
-            <span class="categorie">Catégorie</span>
-            <span class="categorie-nom">GRAPHISME</span>
-            <img class="image-populaire-jour-terre" src="${graphisme.url}" alt="${graphisme.title}">
-          </div>
-        `;
-      })
-      .catch(console.error)
-      .finally(() => {
-        isRefreshing = false;
-        refreshBtn.classList.remove('loading');
-      });
-  });
-}
-
-
+            <div class="projet-populaire-jour-terre">
+              <span class="titre">${graphisme.title}</span>
+              <span class="bouton">
+                <a href="${themeVars.pageJourTerre}?projet_id=${graphisme.id}">>></a>
+              </span>
+              <span class="categorie">Catégorie</span>
+              <span class="categorie-nom">GRAPHISME</span>
+              <img class="image-populaire-jour-terre" src="${graphisme.url}" alt="${graphisme.title}">
+            </div>
+          `;
+        })
+        .catch(console.error)
+        .finally(() => {
+          isRefreshing = false;
+          refreshBtn.classList.remove('loading');
+        });
+    });
+  }
 });
