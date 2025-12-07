@@ -23,7 +23,7 @@ require("global.php");
     </section>
 
     <div class="forumContact">
-        <form>
+        <form action="https://formsubmit.co/alexis.david.111@gmail.com" method="POST">
 
             <div class="messagePageContact">
                 <h1>Contactez les gens en charge de</h1>
@@ -32,19 +32,19 @@ require("global.php");
 
             <!-- Champ prénom -->
             <label for="prenom" class="screen-reader-text">Votre prénom</label>
-            <input type="text" id="prenom" class="prenom" placeholder="Votre prénom">
+            <input type="text" id="prenom" class="prenom" placeholder="Votre prénom" required>
 
             <!-- Champ nom -->
             <label for="nom" class="screen-reader-text">Votre nom</label>
-            <input type="text" id="nom" class="nom" placeholder="Votre nom">
+            <input type="text" id="nom" class="nom" placeholder="Votre nom" required>
 
             <!-- Champ mobile -->
-            <label for="numeroMobile" class="screen-reader-text">Votre mobile</label>
-            <input type="text" id="numeroMobile" class="numeroMobile" placeholder="Votre mobile">
+            <label for="emailUser" class="screen-reader-text">Votre mobile</label>
+            <input type="email" id="emailUser" class="emailUser" placeholder="Email" required>
 
             <!-- Champ email -->
             <label for="emailContact" class="screen-reader-text">Personne à joindre</label>
-            <input type="email" id="emailContact" class="emailContact" placeholder="Qui voudriez-vous rejoindre?">
+            <input type="email" id="emailContact" class="emailContact" placeholder="Qui voudriez-vous rejoindre?" required>
 
             <h4>Votre message.</h4>
 

@@ -1,6 +1,10 @@
 /* ----------------------------- */
 /* GLOBAL DESKTOP STYLES */
 /* ----------------------------- */
+span, p {
+    font-family: var(--general-font);
+    color: var(--font-color);
+}
 
 body {
   background: linear-gradient(180deg, #1B1B1B 0%, #2B2B2B 44.23%, #323232 77.88%, #1B1B1B 100%);
@@ -146,6 +150,128 @@ h1, h2 {
   max-width: 150px;
 }
 
+/*************************  CSS Projet Découverte ****************************/
+.projets-populaire {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' viewBox='0 0 800 800' opacity='0.38' width='800' height='800'%3E%3Cg stroke-width='3' stroke='hsla(0, 0%25, 100%25, 1.00)' fill='none'%3E%3Ccircle r='3.6578947368421053' cx='0' cy='0' fill='hsla(0, 0%25, 100%25, 1.00)' stroke='none'%3E%3C/circle%3E%3Ccircle r='3.6578947368421053' cx='400' cy='0' fill='hsla(0, 0%25, 100%25, 1.00)' stroke='none'%3E%3C/circle%3E%3Ccircle r='3.6578947368421053' cx='800' cy='0' fill='hsla(0, 0%25, 100%25, 1.00)' stroke='none'%3E%3C/circle%3E%3Ccircle r='3.6578947368421053' cx='0' cy='400' fill='hsla(0, 0%25, 100%25, 1.00)' stroke='none'%3E%3C/circle%3E%3Ccircle r='3.6578947368421053' cx='400' cy='400' fill='hsla(0, 0%25, 100%25, 1.00)' stroke='none'%3E%3C/circle%3E%3Ccircle r='3.6578947368421053' cx='800' cy='400' fill='hsla(0, 0%25, 100%25, 1.00)' stroke='none'%3E%3C/circle%3E%3Ccircle r='3.6578947368421053' cx='0' cy='800' fill='hsla(0, 0%25, 100%25, 1.00)' stroke='none'%3E%3C/circle%3E%3Ccircle r='3.6578947368421053' cx='400' cy='800' fill='hsla(0, 0%25, 100%25, 1.00)' stroke='none'%3E%3C/circle%3E%3Ccircle r='3.6578947368421053' cx='800' cy='800' fill='hsla(0, 0%25, 100%25, 1.00)' stroke='none'%3E%3C/circle%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 100px;
+    padding: 98px 0;
+ }
+
+  .projets-populaire > h1,
+  .partenaires > h1,
+  .equipe > h1 {
+    text-align: center;
+  }
+
+  .projets-populaire > p {
+    font-family: var(--general-font);
+    width: 335px;
+    margin: auto;
+  }
+
+  .projet-populaire-arcade,
+  .projet-populaire-finissant,
+  .projet-populaire-jour-terre {
+    display: grid;
+	  grid-template-rows: auto 1fr auto;
+	  grid-template-columns: repeat(3, 1fr);
+    width: 335px;
+    margin: 0 auto;
+    margin-top: 1rem;
+  }
+
+  .projet-populaire-arcade > span,
+  .projet-populaire-jour-terre > span,
+  .projet-populaire-finissant > span {
+    border: 1px var(--border-color) solid;
+    padding: 0.4em;
+    text-align: center;
+  }
+
+  .projet-populaire-arcade > span {background-color: var(--bouton-projet-arcade-color);}
+  .projet-populaire-jour-terre > span {background-color: var(--bouton-projet-jt-color);}
+  .projet-populaire-finissant > span {background-color: var(--bouton-projet-finissant-color);}
+
+  .projet-populaire-arcade > .titre,
+  .projet-populaire-jour-terre > .titre,
+  .projet-populaire-finissant > .titre {
+    grid-area: 1 / 1 / 2 / 3;
+    font-size: 6.2vw;
+    height: 2rem;
+    border-bottom: 2px solid var(--border-color-side);
+  }
+
+  .projet-populaire-arcade > .bouton,
+  .projet-populaire-jour-terre > .bouton,
+  .projet-populaire-finissant > .bouton {
+    grid-area: 1/3/2/4;
+    font-size: x-large;
+    height: 2rem;
+  }
+
+  .projet-populaire-arcade > .bouton a,
+  .projet-populaire-jour-terre > .bouton a,
+  .projet-populaire-finissant > .bouton a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .projet-populaire-arcade > .categorie,
+  .projet-populaire-jour-terre > .categorie,
+  .projet-populaire-finissant > .categorie {
+    grid-area: 2/1/3/2;
+    height: 2rem;
+  }
+
+  .projet-populaire-arcade > .categorie-nom,
+  .projet-populaire-jour-terre > .categorie-nom,
+  .projet-populaire-finissant > .categorie-nom {
+    grid-area: 2 / 2 / 3 / 4;
+    height: 2rem;
+  }
+
+  .image-populaire-arcade,
+  .image-populaire-jour-terre,
+  .image-populaire-finissants,
+  .partenaires > img {
+    display: block;
+    justify-self: center;
+    grid-area: 3 / 1 / 4 / 4;
+  }
+
+  .description-populaire-arcade,
+  .description-populaire-jour-terre,
+  .description-populaire-finissants {
+    display: grid;
+    grid-template-columns: 3fr 1fr; 
+    grid-template-rows: 1fr;       
+    width: 335px; 
+    margin: auto;
+    border: 1px solid var(--border-color);
+    margin-bottom: 1rem;
+  }
+
+  .description-populaire-arcade > span,
+  .description-populaire-jour-terre > span,
+  .description-populaire-finissants > span {
+    padding: 0.4em;
+  }
+
+  .description-populaire-arcade > .moins,
+  .description-populaire-jour-terre > .moins,
+  .description-populaire-finissants > .moins {
+    width: 45px;
+    text-align: end;
+    border-left: 1px solid var(--border-color);
+  }
+
+  .image-populaire-arcade, .image-populaire-jour-terre,  .image-populaire-finissants{
+    width: 335px;
+    height: 478px;
+    border: 1px solid var(--border-color-side);
+  }
+
 /* ----------------------------- */
 /* MOBILE (max-width: 576px) */
 /* ----------------------------- */
@@ -207,7 +333,7 @@ h1, h2 {
     text-align: center;
     margin: 1em;
   }
-}
+} 
 
 /* ----------------------------- */
 /* TABLETTE (min-width: 576.02px) */
@@ -303,5 +429,54 @@ h1, h2 {
     margin-top: 180px;
     width: 90px;
     height: 90px;
+  }
+
+  /******************  CSS PROJET DÉCOUVERTE DESKTOP  ********************/
+
+  .projets-populaire {
+    margin-top: 5rem;
+    padding-top: 0;
+  }
+
+  .projets-populaire > h1, .projets-populaire p, .boutonRefresh {
+    justify-self: end;
+    margin-right: 10%;
+  }
+
+  .projets-populaire > p {
+    width: 40%;
+  }
+
+  .projets {
+    display: flex;
+  }
+
+  .projets > p {
+    width: 25%;
+    font-size: small;
+  }
+
+  .projet-populaire-arcade > .titre,
+  .projet-populaire-jour-terre > .titre,
+  .projet-populaire-finissant > .titre {
+    font-size: 1.5vw;
+  }
+
+  .projet-populaire-arcade:hover {
+    transform: translateY(-10px);
+    box-shadow: 16px 16px 0px rgb(15, 13, 50);
+    color: thistle;
+  }
+
+  .projet-populaire-jour-terre:hover {
+    transform: translateY(-10px);
+    box-shadow: 16px 16px 0px rgb(5, 25, 28);
+    color: thistle;
+  }
+
+  .projet-populaire-finissant:hover {
+    transform: translateY(-10px);
+    box-shadow: 16px 16px 0px rgb(61, 68, 7);
+    color: thistle;
   }
 }

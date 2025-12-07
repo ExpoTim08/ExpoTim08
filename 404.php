@@ -52,9 +52,131 @@ require("global.php");
             </section>
             <section class="section-projets-decouverte">
                 <h2 class="projet-decouvrir">Voici des projets à découvrir</h2>
-                <h2>Projet 1</h2>
-                <h2>Projet 2</h2>
-                <h2>Projet 3</h2>
+                <div class="projets">
+                    <?php
+                    // Get 2 random UNIQUE arcade projects
+                    $arcade_query = new WP_Query([
+                        'post_type'      => 'projet-arcade',
+                        'posts_per_page' => 2,      // two posts
+                        'orderby'        => 'rand', // random order
+                    ]);
+
+                    $arcadeItems = [];
+
+                    if ($arcade_query->have_posts()) :
+                        while ($arcade_query->have_posts()) : $arcade_query->the_post();
+
+                        $nom   = get_field('nom_du_projet');
+                        $image = get_field('image_du_projet');
+
+                        if ($image) {
+                            $arcadeItems[] = [
+                            'title' => $nom,
+                            'url'   => $image['url'],
+                            'id'    => get_the_ID()
+                            ];
+                        }
+
+                        endwhile;
+                    endif;
+
+                    wp_reset_postdata();
+                    ?>
+
+                    <?php
+                    // Get 2 random UNIQUE graphisme projects
+                    $graphisme_query = new WP_Query([
+                        'post_type'      => 'projet-graphisme',
+                        'posts_per_page' => 2,      // pick two
+                        'orderby'        => 'rand', // random order
+                    ]);
+
+                    $graphismeItems = [];
+
+                    if ($graphisme_query->have_posts()) :
+                        while ($graphisme_query->have_posts()) : $graphisme_query->the_post();
+
+                        $titre       = get_the_title();
+                        $image       = get_field('affiche'); // ACF field
+
+                        if ($image) {
+                            $graphismeItems[] = [
+                            'title' => $titre,
+                            'url'   => $image['url'],
+                            'id'    => get_the_ID()
+                            ];
+                        }
+
+                        endwhile;
+                    endif;
+
+                    wp_reset_postdata();
+                    ?>
+
+                    <?php
+                    // Get 2 random UNIQUE finissant projects
+                    $finissants_query = new WP_Query([
+                        'post_type'      => 'projet-finissant',
+                        'posts_per_page' => 2,      // pick two
+                        'orderby'        => 'rand', // random order
+                    ]);
+
+                    $finissantItems = [];
+
+                    if ($finissants_query->have_posts()) :
+                        while ($finissants_query->have_posts()) : $finissants_query->the_post();
+
+                        // ACF fields
+                        $titre = get_field('nom_du_projet');
+                        $image = get_field('image'); // ACF Image field
+
+                        if ($image) {
+                        $finissantItems[] = [
+                            'title' => $titre,
+                            'url'   => $image['url'],
+                            'id'    => get_the_ID()
+                        ];
+                        }
+
+                    endwhile;
+                    endif;
+
+                    wp_reset_postdata();
+                    ?>
+
+                        <!-- Projet Finissants -->
+                        <div class="projet-populaire-finissant">
+                        <span class="titre"><?php echo $finissantItems[0]['title']; ?></span>
+                        <span class="bouton">
+                            <a href="<?php echo site_url('/index.php/projet-finissant/?projet_id=' . $finissantItems[0]['id']); ?>">>></a>
+                        </span>
+                        <span class="categorie">Catégorie</span>
+                        <span class="categorie-nom">FINISSANTS</span>
+                        <img class="image-populaire-finissants" src="<?php echo $finissantItems[0]['url']; ?>" alt="">
+                        </div>
+
+                        <!-- Exemple projet Arcade -->
+                        <div class="projet-populaire-arcade">
+                        <span class="titre"><?php echo $arcadeItems[0]['title']; ?></span>
+                        <span class="bouton">
+                            <a href="<?php echo site_url('/index.php/projet-arcade/?projet_id=' . $arcadeItems[0]['id']); ?>">>></a>
+                        </span>
+                        <span class="categorie">Catégorie</span>
+                        <span class="categorie-nom">ARCADE</span>
+                        <img class="image-populaire-arcade" src="<?php echo $arcadeItems[0]['url']; ?>" alt="">
+                        </div>
+
+                        <!-- Projet Jour de la Terre -->
+                        <div class="projet-populaire-jour-terre">
+                        <span class="titre"><?php echo $graphismeItems[0]['title']; ?></span>
+                        <span class="bouton">
+                            <a href="<?php echo site_url('/index.php/projet-graphisme/?projet_id=' . $graphismeItems[0]['id']); ?>">>></a>
+                        </span>
+                        <span class="categorie">Catégorie</span>
+                        <span class="categorie-nom">GRAPHISME</span>
+                        <img class="image-populaire-jour-terre" src="<?php echo $graphismeItems[0]['url']; ?>" alt="">
+                        </div>
+                    </div>
             </section>
         </main>
     </div>
