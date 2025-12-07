@@ -232,7 +232,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // start typing
-  setTimeout(typeStep, 80); // small initial delay for effect
+  //setTimeout(typeStep, 80); // small initial delay for effect
 });
 
 
