@@ -795,10 +795,6 @@
     font-size: clamp(13px, 2vw, 24px);
   }
 
-  .arcade-details {
-    top: 50%;
-  }
-
   .finissants.finissants-click ~ .student, .arcade.arcade-click ~ .manette, .jour-terre.jour-terre-click ~ .tree {
     top: -12px;
   }
