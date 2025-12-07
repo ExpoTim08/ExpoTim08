@@ -83,4 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
             history.pushState({}, "", url);
         });
     }
+    sortAndFilterProjects("random");
 });
+

@@ -51,7 +51,7 @@ get_header();
   <!-- ===================== Barre de tri ===================== -->
   <div class="tri-bar">
     <select id="tri-select" name="tri-select" aria-label="Filtrer projets par type">
-      <option value="random">Trier (Tous)</option>
+      <option value="random">Tri (Aléatoire)</option>
       <option value="asc">A à Z</option>
       <option value="desc">Z à A</option>
     </select>

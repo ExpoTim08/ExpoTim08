@@ -44,7 +44,7 @@ get_header();
   <!-- ===================== Barre de tri ===================== -->
   <div class="tri-bar">
     <select id="tri-select" name="tri-select" aria-label="Trier projets">
-      <option value="random" <?php selected(isset($_GET['tri']) ? sanitize_text_field($_GET['tri']) : 'random', 'random'); ?>>Tri aléatoire</option>
+      <option value="random" <?php selected(isset($_GET['tri']) ? sanitize_text_field($_GET['tri']) : 'random', 'random'); ?>>Tri (Aléatoire)</option>
       <option value="asc" <?php selected(isset($_GET['tri']) ? sanitize_text_field($_GET['tri']) : '', 'asc'); ?>>A à Z</option>
       <option value="desc" <?php selected(isset($_GET['tri']) ? sanitize_text_field($_GET['tri']) : '', 'desc'); ?>>Z à A</option>
     </select>
