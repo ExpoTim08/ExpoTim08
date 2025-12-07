@@ -98,11 +98,11 @@ h1, h2 {
   
   .logo-graphisme {
     position: absolute;
-    right: -15px;
+    right: -5px;
     top: 110px;
     z-index: 10;
     mix-blend-mode: normal;
-    width: auto;
+    width: 90px;
     height: auto;
     max-width: 150px;
   }
@@ -223,9 +223,11 @@ h1, h2 {
   .filtre { margin: 0; font-size: 14px; }
   .icone-filtre { width: 20px; height: 20px; }
 
-  .tri-bar{
-    margin: 1rem 0rem 3rem 0rem;
-    place-self: center;
+  .tri-bar {
+    margin: 1rem auto 2rem auto; /* centre horizontalement */
+    width: fit-content; /* ajuste au contenu */
+    display: flex;
+    justify-content: center;
   }
 }
 
@@ -290,8 +292,8 @@ h1, h2 {
 
   .logo-graphisme {
     position: absolute;
-    left: -50px;
-    bottom: 30%;
+    left: -20px;
+    bottom: 35%;
     z-index: 10;
     mix-blend-mode: normal;
   }
@@ -402,12 +404,12 @@ h1, h2 {
   .filtre { margin: 0; font-size: 14px; }
   .icone-filtre { width: 20px; height: 20px; }
 
-  .tri-bar{
-    margin: 1rem 0rem 3rem 0rem;
+  .tri-bar {
+    width: 68vw;
     place-self: center;
-    width: 80%;
-    max-width: 600px;
+    display: flex;
     justify-content: end;
+    max-width: 600px;
   }
 }
 
@@ -454,14 +456,14 @@ h1, h2 {
   /* deco titre graphisme */
   .logo-graphisme {
     position: absolute;
-    left: -85px;
-    bottom: -40%;
+    left: -40px;
+    bottom: -25%;
     z-index: 10;
     mix-blend-mode: normal;
     height: auto;
-    width: 10vw;
+    width: 7vw;
     max-width: 250px;
-    min-width: 200px;
+    min-width: 70px;
   }
 
   .conteneur-description-graphisme { background-color: transparent; border: none; }
@@ -512,8 +514,8 @@ h1, h2 {
     border-width: 2px 1px 1px 2px;
   }
 
-  .tri-bar{
-    margin: 1rem 0;
+  .tri-bar {
+    width: 68vw;
     place-self: center;
     max-width: none;
   }
@@ -558,6 +560,7 @@ h1, h2 {
     margin: 1rem 0;
     place-self: center;
     max-width: none;
+    width: 75vw;
   }
 
   .filtres-container {

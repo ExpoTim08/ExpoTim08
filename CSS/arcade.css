@@ -23,6 +23,11 @@ h1, h2 {
   color: var(--font-color);
 }
 
+.btn-categorie {
+  width: 2vw;
+  height: 2vw;
+}
+
 /*------------- Section description + titre --------------*/
 .presentation-arcade {
   background-image: var(--background-color-arcade);
@@ -182,7 +187,6 @@ h1, h2 {
 
   .carte-projet-arcade--mobile.open-desc .dropdown-carte-arcade {
     max-height: 800px;
-    font-size: 12px;
   }
 
   .carte-arcade-titre-description {
@@ -212,7 +216,7 @@ h1, h2 {
   .icone-filtre { width: 20px; height: 20px; }
 
   .tri-bar {
-    margin: 1rem auto 3rem auto; /* centre horizontalement */
+    margin: 1rem auto 2rem auto; /* centre horizontalement */
     width: fit-content; /* ajuste au contenu */
     display: flex;
     justify-content: center;
@@ -260,6 +264,11 @@ h1, h2 {
     width: fit-content;
   }
 
+  .btn-categorie {
+    width: 1.5vw;
+    height: 1.5vw;
+  }
+
   body { overflow-x: hidden; }
   img { max-width: 100%; height: auto; display: block; object-fit: contain; }
 
@@ -300,8 +309,8 @@ h1, h2 {
 
   .logo-arcade {
     position: absolute;
-    left: -50px;
-    bottom: 30%;
+    left: -40px;
+    top: 45%;
     z-index: 10;
     mix-blend-mode: normal;
   }
@@ -357,6 +366,15 @@ h1, h2 {
     height: auto;
     object-fit: contain;
     border-right: 2px solid var(--border-color-project);
+    background-image: repeating-linear-gradient(
+        45deg,
+        var(--border-color-project) 0,
+        var(--border-color-project) 1px,
+        transparent 0,
+        transparent 50%
+    );
+    background-size: 10px 10px;
+    background-attachment: fixed;
   }
 
   .carte-projet-arcade--desktop .conteneur-carte-bas {
@@ -373,6 +391,7 @@ h1, h2 {
     margin: 0.6rem 0 0.35rem;
     font-weight: 700;
     color: var(--font-color);
+    display: none;
   }
 
   .carte-projet-arcade--desktop .description-projet {
@@ -384,7 +403,7 @@ h1, h2 {
   
   .carte-projet-arcade--desktop button.button-projet-arcade {
     z-index: 10;
-    height: 24px;
+    height: 26px;
     background-color: #4032FF;
     color: #ffffff;
     font-size: 10px;
@@ -394,6 +413,13 @@ h1, h2 {
     margin-top: 10%;
   }
 
+  .tri-bar {
+    width: 68vw;
+    place-self: center;
+    display: flex;
+    justify-content: end;
+    max-width: 600px;
+  }
 
 }
 
@@ -442,14 +468,14 @@ h1, h2 {
   /* logo Arcade */
   .logo-arcade {
     position: absolute;
-    left: -85px;
-    bottom: -40%;
+    left: -50px;
+    top: 190px;
     z-index: 10;
     mix-blend-mode: normal;
     height: auto;
-    width: 10vw;
-    max-width: 250px;
-    min-width: 200px;
+    width: 150px;
+    max-width: 500px;
+    min-width: 20px;
   }
 
   .conteneur-description-arcade { background-color: transparent; border: none; }
@@ -501,15 +527,17 @@ h1, h2 {
     place-self: start;
     border-color: var(--border-color-project);
     border-width: 2px 1px 1px 2px;
+    font-size: 16px;
+    color: var(--font-color);
   }
 
   .tri-bar {
-    margin: 1rem 0;
+    width: 68vw;
     place-self: center;
     max-width: none;
   }
 
-    .carte-projet-arcade--mobile { display: none; }
+  .carte-projet-arcade--mobile { display: none; }
 }
 
 
@@ -551,6 +579,7 @@ h1, h2 {
     margin: 1rem 0;
     place-self: center;
     max-width: none;
+    width: 75vw;
   }
 
   .filtres-container {
@@ -706,9 +735,9 @@ h1, h2 {
 .filtre-categorie select:focus,
 #tri-select:focus,
 .tri-bar label:focus {
-  outline: 3px solid rgba(64,50,255,0.14);
+  outline: 3px solid rgba(58, 48, 199, 0.662);
   outline-offset: 2px;
-  border-color: rgba(64,50,255,0.6);
+  border-color: rgb(39, 29, 177);
   border-radius: 8px;
 }
 

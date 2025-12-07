@@ -55,10 +55,6 @@
       margin: 0em 1em;
     }
 
-    .site-footer {
-      padding-top: 5em;
-    }
-
     .footer-top{
       display: flex;
       flex-flow: row;

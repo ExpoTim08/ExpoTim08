@@ -1,12 +1,12 @@
+/* ======================================================
+   Base globale
+====================================================== */
 body {
   background: linear-gradient(180deg, #1B1B1B 0%, #2B2B2B 44.23%, #323232 77.88%, #1B1B1B 100%);
   background-attachment: fixed;
   background-size: cover;
-}
-
-/* FIX – empêche le décalage horizontal en mobile */
-html, body {
-  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 span, p, strong {
@@ -19,6 +19,9 @@ h1 {
   font-family: var(--title-font);
 }
 
+/* ======================================================
+   Bordures fixes
+====================================================== */
 .border {
   position: fixed;
   background: var(--border-color-side);
@@ -39,70 +42,52 @@ h1 {
   height: 100%;
 }
 
+/* ======================================================
+   Conteneur principal
+====================================================== */
 main {
-  background-image: linear-gradient(#4e4b4194 1px, transparent 1px), linear-gradient(to right, #4e4b4194 1px, #71718300 1px);
+  background-image: linear-gradient(#4e4b4194 1px, transparent 1px),
+                    linear-gradient(to right, #4e4b4194 1px, #71718300 1px);
   background-size: 40px 40px;
-  background-attachment: fixed;
+  background-attachment: scroll;
+  position: relative;
+  padding: 0 1em;
+  margin: 0 auto;
 }
 
-/* ==========================
-   FIX MOBILE (max 768px)
-   ========================== */
-@media (max-width: 768px) {
-
-  /* FIX – mobile ne supporte pas background-attachment: fixed */
-  body {
-    background-attachment: scroll !important;
-  }
-
-  main {
-    background-attachment: scroll !important;
-  }
-
-  /* FIX – position: fixed décale le layout en mobile */
-  .border {
-    position: absolute !important;
-  }
-
-  /* FIX – centrer les éléments "justify-self" (inefficace en mobile) */
-  .video-projet,
-  .infos-cours-annee,
-  .infos-etudiants,
-  .image-projet,
-  .description-projet {
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-
-  /* FIX – la manette poussait tout à droite */
-  .manette {
-    display: none;
-  }
-
-  iframe {
-    width: 100% !important;
-  }
-}
-/* ========================== */
-
-
+/* ======================================================
+   Présentation projet
+====================================================== */
 .titre-arcade {
-  background-image: 
-    linear-gradient(177deg, var(--bouton-projet-arcade-color) 11.95%, #362CB6 28.39%, #21212100 82.04%);
+  background-image: linear-gradient(177deg, var(--bouton-projet-arcade-color) 11.95%, #362CB6 28.39%, #21212100 82.04%);
   position: relative;
   line-height: 0.7;
   padding: 3vw;
-  border-top: 2px solid var(--border-color-side);
   border-bottom: 2px solid var(--border-color-side);
+  font-family: var(--title-font);
+  text-align: center;
+  margin-top: 0;
+
+  line-height: 0.6;
+  text-transform: uppercase;
+  margin: 0;
+  -webkit-text-stroke-width: 0.8px;
+  -webkit-text-stroke-color: rgb(255, 255, 255);
+  letter-spacing: 1px;
+  height: auto;
+  font-weight: lighter;
+  place-content: center;
+  padding-top: 10vh;
+}
+
+.titre-arcade > * {
   font-family: var(--title-font);
 }
 
 .titre-arcade-layer {
-  display: flex;
-  justify-content: center;
-  margin: 0 auto;
-  font-size: 10vw;
-  font-family: var(--title-font);
+  display: block;
+  font-size: clamp(10px, 10vw, 4rem);
+  color: white;
 }
 
 .titre-arcade-layer1 {
@@ -134,7 +119,7 @@ main {
 .lien-retour {
   color: #ffffff;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 100;
   font-size: 16px;
   display: inline-flex;
   align-items: center;
@@ -146,102 +131,100 @@ main {
   cursor: pointer;
 }
 
+/* ======================================================
+   Manette
+====================================================== */
 .manette {
   position: absolute;
-  margin-left: 70vw;
-  margin-top: -20vw;
+  right: 15%;
   width: 20vw;
-  transform: rotateZ(-35deg);
+  bottom: 20vw;
+  transform: rotateZ(-20deg);
+  bottom: 17%;
+  right: 8%;
 }
 
+/* ======================================================
+   Vidéo et infos cours
+====================================================== */
 .video-projet {
-  border: 2px solid var(--border-color-side);
-  border-radius: 40px;
-  width: 80vw;
-  justify-self: center;
+  border-bottom: 2px solid var(--border-color-side);
+  display: block;
+  height: 40vh;
+  min-height: 200px;
 }
 
-iframe {
-  border-radius: 40px;
+.video-projet iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 
 .infos-cours-annee {
   text-align: center;
-  background-image: 
-    linear-gradient(177deg, var(--bouton-projet-arcade-color) 11.95%, #362CB6 28.39%, #21212100 82.04%);
-  width: 40vw;
-  padding: 4vw;
-  justify-self: center;
-  margin-top: 2em;
+  background-image: linear-gradient(177deg, var(--bouton-projet-arcade-color) 11.95%, #362CB6 28.39%, #21212100 82.04%);
+  width: 80%;
+  max-width: 400px;
+  padding: 2em;
+  margin: 2em auto;
   border: 2px solid var(--border-color-side);
   border-radius: 40px;
   font-weight: bold;
-  margin-bottom: 70px;
 }
 
+/* ======================================================
+   Infos étudiants
+====================================================== */
 .infos-etudiants {
   display: flex;
   flex-direction: column;
-  justify-self: center;
-  margin-top: 2em;
-  width: 70vw;
+  margin: 2em auto;
+  width: 80%;
+  max-width: 800px;
   border: 2px solid var(--border-color-side);
 }
 
 .titre-equipe {
-  background-image: 
-    linear-gradient(177deg, var(--bouton-projet-arcade-color) 11.95%, #362CB6 28.39%, #21212100 82.04%);
+  background-image: linear-gradient(177deg, var(--bouton-projet-arcade-color) 11.95%, #362CB6 28.39%, #21212100 82.04%);
   color: #ffffff;
-  padding: 8px;
+  padding: 15px;
   border-bottom: 2px solid var(--border-color-side);
 }
 
 .nom-etudiant {
-  padding: 10px;
-}
-
-.titre-equipe, .nom-etudiant {
   padding: 15px;
 }
 
+/* ======================================================
+   Image projet
+====================================================== */
 .image-projet {
   display: flex;
   flex-direction: column;
-  justify-self: center;
-  margin-top: 2em;
+  margin: 2em auto;
+  width: 80%;
+  max-width: 800px;
   border: 2px solid var(--border-color-side);
-  width: 70vw;
-  margin-left: auto;       
-  margin-right: auto;      
 }
 
 .image-projet > span, .description-projet > .description-titre {
-  background-image: 
-    linear-gradient(177deg, var(--bouton-projet-arcade-color) 11.95%, #362CB6 28.39%, #21212100 82.04%);
-  width: 20vw;
-  padding: 10px;
-  border: 2px solid var(--border-color-side);
-}
-
-.image-projet span {
+  background-image: linear-gradient(177deg, var(--bouton-projet-arcade-color) 11.95%, #362CB6 28.39%, #21212100 82.04%);
   width: auto;
-  font-weight: bold;
-  border-top: none;
+  padding: 10px;
+  border-bottom: 2px solid var(--border-color-side);
 }
 
-.image-projet-arcade {
-  width: 100%;
-  height: auto;
-  object-fit: cover;       
-}
-
+/* ======================================================
+   Description projet
+====================================================== */
 .description-projet {
   display: flex;
   flex-direction: column;
-  width: 70vw;
-  justify-self: center;
-  margin-top: 2em;
+  width: 80%;
+  max-width: 800px;
+  margin: 2em auto;
   border: 2px solid var(--border-color-side);
+  position: relative;
   height: fit-content;
 }
 
@@ -256,9 +239,43 @@ iframe {
   padding: 20px;
 }
 
+/* ======================================================
+   Tablette
+====================================================== */
+@media screen and (min-width: 576px) {
 
-/********************************************** CSS Desktop ********************************************************/
-@media screen and (min-width: 994px) {
+  main {
+  padding: 0 2em;
+  background-attachment: fixed;
+  }
+
+  .border {
+    position: fixed;
+    background: var(--border-color-side);
+    z-index: 9999;
+  }
+
+  .border.gauche { top: 0; left: 2em; width: 1px; height: 100%; }
+  .border.droite { top: 0; right: 2em; width: 1px; height: 100%; }
+
+  .video-projet {
+    height: 65vh;
+  }
+}
+
+/* ======================================================
+   Desktop
+====================================================== */
+@media screen and (min-width: 1024px) {
+
+  main {
+  padding: 0 3em;
+  }
+
+  .border { position: fixed; background: var(--border-color-side); z-index: 9999; }
+  .border.gauche { top: 0; left: 3em; width: 1px; height: 100%; }
+  .border.droite { top: 0; right: 3em; width: 1px; height: 100%; }
+
   .titre-arcade-layer {
     font-size: 4vw;
   }
@@ -266,7 +283,12 @@ iframe {
   .manette {
     width: 10vw;
     right: 30%;
-    bottom: 2%;
+    bottom: 7%;
+    top: auto;
+  }
+
+  .video-projet {
+    height: 70vh;
   }
 
   .infos-cours-annee {
@@ -275,165 +297,120 @@ iframe {
     font-size: 2vw;
   }
 
-  .image-projet span, .infos-etudiants .titre-equipe,  .description-projet{
+  .image-projet span,
+  .description-projet {
     font-size: 1.8vw;
   }
 
-  /* Conteneur de l'image */
-/* Empêche le div image de devenir énorme */
-.image-projet {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: fit-content;
-  max-width: 90vw;
-  margin-left: auto;
-  margin-right: auto;
-  overflow: hidden; /* essentiel pour cover */
-  border: 2px solid var(--border-color-side);
-}
+  .titre-equipe, .infos-etudiants {
+    font-size: 17px;
+  }
 
-.image-projet > span {
-  width: 100%;
-  text-align: center;
-  border-bottom: 2px solid var(--border-color-side);
-}
+  .image-projet {
+    border: none;
+    max-width: none;
+  }
 
-  /* ========== L’IMAGE elle-même ========== */
   .image-projet img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+    width: auto;
+    border: 2px solid var(--border-color-side);
+    height: 70vh;
   }
 
-  /* Ajustement du scale desktop comme tu avais */
-  .image-projet span,
-  .infos-etudiants .titre-equipe,
-  .description-projet {
-    font-size: 1.2vw;
-  }
-
+  /* Layout description + infos + image */
   .description-image {
     display: grid;
-    grid-template-rows: repeat(2, 1fr);
-	  grid-template-columns: repeat(2, 1fr);
-    background-color: rgb(48,48,48);
+    grid-template-columns: auto auto;
+    grid-template-rows: clamp(40%, 55%, 300px)auto;
+    gap: 2em;
+    /*width: 80%;*/
+    /*max-width: 1200px;*/
+    /*margin: 0 auto 70px;*/
+    padding: 4em;
+    background-color: rgba(48, 48, 48, 0);
     border: 2px solid var(--border-color-side);
-    width: 80%;
-    /* height: 70vw; */
-    justify-self: center;
-    position: relative; 
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    transition: transform 260ms cubic-bezier(.2,.8,.2,1),
-                box-shadow 260ms ease,
-                filter 260ms ease,
-                border-radius 260ms ease;
-    will-change: transform, box-shadow;
-    transform-origin: center;
-    padding-bottom: 70px;
-    margin-bottom: 70px;
+    position: relative;
+    box-sizing: border-box;
+    transition: all 260ms ease;
   }
 
-  .description-image::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    border-radius: 60px;
-
-    /* halftone + tint */
-    background-image:
-      linear-gradient(rgba(64,50,255,0.06), rgba(53, 40, 236, 0.272)),
-      radial-gradient(circle, rgba(255,255,255,0.12) 1.5px, transparent 1px);
-    background-size: auto, 12px 12px; /* change second value for dot density */
-    mix-blend-mode: screen;
-
-    /* commencer par être caché et animer au survol */
-    opacity: 0;
-    transform: translateY(6px);
-    transition: opacity 260ms ease, transform 260ms cubic-bezier(.2,.8,.2,1);
-
-    /* estomper le demi-ton vers le haut */
-    -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
-    mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
-
-    z-index: 2;
-
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
-    image-rendering: pixelated;
-  }
-
-  .description-image:hover::after {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .description-image:hover {
-    transform: translateY(-10px);
-    box-shadow: 16px 16px 0px rgb(15, 13, 50);
-    border-radius: 40px;
-    color: thistle;
-  }
-
-  .description-image:hover > .image-projet, 
-  .description-image:hover > .infos-etudiants,
-  .description-image:hover > .description,
-  .description-image:hover > .description-projet {
-    border-radius: 40px;
-  }
-
-  .description-image:hover > .infos-etudiants .titre-equipe,
-  .description-image:hover > .image-projet span,
-  .description-image:hover > .description-projet .description-titre {
-    border-top-left-radius: 40px;
-    border-top-right-radius: 40px;
-  }
-
-  .description-image:hover > .image-projet img {
-    border-radius: 40px;
-  }
-
-  .image-projet,
-  .infos-etudiants,
-  .description,
-  .description-projet,
-  .infos-etudiants .titre-equipe,
-  .image-projet span,
-  .description-projet .description-titre,
-  .image-projet img {
-    transition: border-radius 260ms;
+  .description-image > * {
+    margin: 0;
   }
 
   .description-image .image-projet {
-    grid-area: 1 / 1 / 3 / 2;
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+    display: block;
+    width: 100%;
+    display: flex;
+    align-items: end;
   }
 
   .description-image .infos-etudiants {
-    grid-area: 1/2/2/3;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    margin: 0;
     width: 100%;
-    height: fit-content;
+    font-size: 15px;
+    background: var(--background-color);
   }
 
-  .description-image .image-projet img {
-    width: 30vw;
-    height: 100%;
-}
+  .infos-etudiants {
+    margin: 0;
+    border-radius: 0 0 10px 10px;
+  }
+
+  .titre-equipe {
+    height: 15%;
+    color: var(--font-color);
+  }
+
+  .nom-etudiant {
+    flex-grow: 1;
+  }
+
+  .infos-etudiants > * {
+    place-content: center;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  
 
   .description-image .description-projet {
-    grid-area: 2/2/3/3;
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    font-size: 17px;
+    margin: 0;
+    height: auto;
     width: 100%;
-    align-self: flex-end;
+    background: var(--background-color);
+    max-height: 15vh;
+    min-height: 100%;
+    border-radius: 0 0 10px 10px;
   }
 
-  .description-projet .description, .nom-etudiant {
-    font-size: 1.5vw;
+  .description-projet .description {
+    overflow-x: hidden;
   }
 
-.description-projet, .infos-etudiants {
-    margin-right: 60px;
+  /* scroll bar de description */
+  .description-projet .description::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .description-projet .description::-webkit-scrollbar-track {
+    background: rgba(37, 36, 36, 0.984);
+    padding: 2px 0;
+  }
+
+  .description-projet .description::-webkit-scrollbar-thumb {
+    background: #cdcce3;
+    border-radius: 4px;
+    margin: 2px 0;
+  }
+
+  .description-projet .description::-webkit-scrollbar-thumb:hover {
+    background: #5542ff;
   }
 }

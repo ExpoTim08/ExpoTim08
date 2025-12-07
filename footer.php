@@ -7,19 +7,19 @@
   <!-- Section haute du footer (logo + icones) -->
   <div class="footer-top">
     <div class="footer-logo">
-      <img class="footer-logo-img" src="<?php echo get_template_directory_uri(); ?>/Images/Texte.png" alt="Logo de l'expo TIM">
+      <img class="footer-logo-img" src="<?php echo esc_url(get_theme_mod('expoTim_footer_logo')); ?>" alt="Logo de l'expo TIM">
     </div>
 
 
     
     <div class="footer-icones">
-      <a href="https://www.youtube.com/" target="_blank" aria-label="YouTube">
+      <a href="<?php echo esc_url(get_theme_mod('expoTim_footer_social_1')); ?>" target="_blank" aria-label="YouTube">
         <img src="<?php echo get_template_directory_uri(); ?>/Images/youtube.svg" alt="YouTube">
       </a>
-      <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram">
+      <a href="<?php echo esc_url(get_theme_mod('expoTim_footer_social_2')); ?>" target="_blank" aria-label="Instagram">
         <img src="<?php echo get_template_directory_uri(); ?>/Images/instagram.svg" alt="Instagram">
       </a>
-      <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook">
+      <a href="<?php echo esc_url(get_theme_mod('expoTim_footer_social_3')); ?>" target="_blank" aria-label="Facebook">
         <img src="<?php echo get_template_directory_uri(); ?>/Images/facebook.svg" alt="Facebook">
       </a>
     </div>
@@ -29,18 +29,18 @@
   <div class="footer-contact">
     <div class="footer-adresse">
       <img src="<?php echo get_template_directory_uri(); ?>/Images/MapLogo.svg" alt="Adresse">
-      <p>3800 Sherbrooke St E, Montréal, Québec H1X 2A2</p>
+      <p><?php echo esc_html(get_theme_mod('expoTim_footer_address')); ?></p>
     </div>
 
     <div class="footer-telephone">
         <img src="<?php echo get_template_directory_uri(); ?>/Images/CellLogo.svg" alt="Téléphone">
-      <p>+1 (514) 254 7131</p>
+      <p><?php echo esc_html(get_theme_mod('expoTim_footer_phone')); ?></p>
     </div>
   </div>
 
   <!-- Image logo TIM (seuleument en tablet et desktop)-->
   <div class="footer-tim">
-    <p>TIM</p>
+    <p><?php echo esc_url(get_theme_mod('expoTim_footer_logo_2')); ?>TIM</p>
   </div>
 
   <!-- Section bas du footer (menu + liens) -->
