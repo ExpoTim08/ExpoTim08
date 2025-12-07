@@ -22,12 +22,21 @@ function expo_enqueue_assets() {
     wp_enqueue_script('accueil-js', $theme_uri . '/accueil.js', array('jquery'), null, true);
 
     // --- Passage des variables JS depuis WordPress ---
+    // wp_localize_script('accueil-js', 'themeVars', array(
+    //     'themeUrl' => $theme_uri,
+    //     'pageArcade' => site_url('/index.php/arcade/'),
+    //     'pageJourTerre' => site_url('/index.php/graphisme/'),
+    //     'pageFinissants' => site_url('/index.php/finissants/')
+    // ));
+
+    // --- Passage des variables JS depuis WordPress ---
     wp_localize_script('accueil-js', 'themeVars', array(
-        'themeUrl' => $theme_uri,
-        'pageArcade' => site_url('/index.php/arcade/'),
-        'pageJourTerre' => site_url('/index.php/graphisme/'),
-        'pageFinissants' => site_url('/index.php/finissants/')
-    ));
+    'themeUrl' => $theme_uri,
+    'pageArcade' => site_url('/index.php/arcade/'),
+    'pageJourTerre' => site_url('/index.php/graphisme/'),
+    'pageFinissants' => site_url('/index.php/finissants/'),
+    'ajaxUrl' => admin_url('admin-ajax.php')
+));
 
     // --- CSS front-page ---
     if (is_front_page()) {
@@ -313,3 +322,56 @@ function handle_finissants_tri() {
 }
 add_action('wp_ajax_finissants_tri', 'handle_finissants_tri');
 add_action('wp_ajax_nopriv_finissants_tri', 'handle_finissants_tri');
+
+// =========================================================
+// Gestionnaire AJAX Projets aléatoire
+// =========================================================
+// add_action('wp_ajax_refresh_projects', 'refresh_home_projects');
+// add_action('wp_ajax_nopriv_refresh_projects', 'refresh_home_projects');
+
+function refresh_home_projects() {
+
+  // Helper to fetch 1 random post of a given post type
+  function get_random_project($post_type, $acf_image_field, $acf_title_field = null) {
+      $query = new WP_Query([
+          'post_type'      => $post_type,
+          'posts_per_page' => 1,
+          'orderby'        => 'rand'
+      ]);
+      if ($query->have_posts()) {
+          $query->the_post();
+          $img = get_field($acf_image_field);
+          $title = $acf_title_field ? get_field($acf_title_field) : get_the_title();
+          if ($img) {
+              $item = [
+                  'id'    => get_the_ID(),
+                  'title' => $title,
+                  'url'   => $img['url']
+              ];
+              wp_reset_postdata();
+              return $item;
+          }
+      }
+      wp_reset_postdata();
+      return null;
+  }
+
+  $arcadeItem = get_random_project('projet-arcade', 'image_du_projet', 'nom_du_projet');
+  $graphismeItem = get_random_project('projet-graphisme', 'affiche');
+  $finissantItem = get_random_project('projet-finissant', 'image', 'nom_du_projet');
+
+  if (!$arcadeItem || !$graphismeItem || !$finissantItem) {
+      wp_send_json_error('Not enough projects');
+  }
+
+  wp_send_json_success([
+      'arcade' => $arcadeItem,
+      'graphisme' => $graphismeItem,
+      'finissant' => $finissantItem
+  ]);
+}
+add_action('wp_ajax_refresh_projects', 'refresh_home_projects');
+add_action('wp_ajax_nopriv_refresh_projects', 'refresh_home_projects');
+
+
+

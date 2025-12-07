@@ -74,17 +74,20 @@ get_header();
       </div>
     </div>
 
-    <!-------------------------------- Projets Découvertes -------------------------------->
+<!-------------------------------- Projets Découvertes -------------------------------->
 <div class="projets-populaire">
   <h1>Voici des projets à découvrir</h1>
-  
-  <div class="projets">
+  <div class="boutonRefresh">
+    <img class="refresh" src="<?php echo get_template_directory_uri(); ?>/Images/Refresh.svg" alt="">
+    <span>Raffraichis les projets</span>
+  </div>
+  <div class="projets" id="projets-container">
 
   <?php
-  // Get 2 random UNIQUE arcade projects
+  // Get 1 random UNIQUE arcade projects
   $arcade_query = new WP_Query([
     'post_type'      => 'projet-arcade',
-    'posts_per_page' => 2,      // two posts
+    'posts_per_page' => 1,      // two posts
     'orderby'        => 'rand', // random order
   ]);
 
@@ -111,10 +114,10 @@ get_header();
   ?>
 
   <?php
-  // Get 2 random UNIQUE graphisme projects
+  // Get 1 random UNIQUE graphisme projects
   $graphisme_query = new WP_Query([
     'post_type'      => 'projet-graphisme',
-    'posts_per_page' => 2,      // pick two
+    'posts_per_page' => 1,      // pick two
     'orderby'        => 'rand', // random order
   ]);
 
@@ -141,10 +144,10 @@ get_header();
   ?>
 
   <?php
-  // Get 2 random UNIQUE finissant projects
+  // Get 1 random UNIQUE finissant projects
   $finissants_query = new WP_Query([
     'post_type'      => 'projet-finissant',
-    'posts_per_page' => 2,      // pick two
+    'posts_per_page' => 1,      // pick two
     'orderby'        => 'rand', // random order
   ]);
 
@@ -273,6 +276,10 @@ get_header();
 
   <!-- JS du carroussel -->
   <script src="<?php echo get_template_directory_uri(); ?>/accueil.js"></script>
+  <script>
+  var themeVars = themeVars || {};
+  themeVars.ajaxUrl = "<?php echo admin_url('admin-ajax.php'); ?>";
+</script>
 
 <?php get_footer(); ?>
 </body>
