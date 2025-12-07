@@ -27,6 +27,7 @@ $video       = get_field('video_du_projet', $projet_id);
 $image       = get_field('image', $projet_id);
 $affiche     = get_field('affiche', $projet_id);
 $etudiants   = get_field('etudiants_associes', $projet_id);
+$liens       = get_field('liens', $projet_id);
 
 // Fallback image
 if (!$image && $affiche) $image = $affiche;
@@ -85,7 +86,7 @@ $nom_affiche = $nom ?: get_the_title($projet_id);
     <!-- Équipe -->
     <?php if ($etudiants && is_array($etudiants)): ?>
       <div class="infos-etudiants">
-        <strong>Équipe :</strong>
+        <strong>Auteur(e) :</strong>
         <?php
         $list = [];
         foreach ($etudiants as $etu) {
@@ -107,6 +108,15 @@ $nom_affiche = $nom ?: get_the_title($projet_id);
       </div>
     <?php endif; ?>
 
+
+      <?php if ($liens): ?>
+        <div class="behance-projet">
+          <a href="<?php echo esc_url($liens); ?>" target="_blank" rel="noopener noreferrer">
+            Voir le projet ➜
+          </a>
+      </div>
+      <?php endif; ?>
+    </div>
   </div>
 
 </main>

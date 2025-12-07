@@ -186,11 +186,11 @@ h1, h2 {
     overflow: hidden;
     padding: 0 1rem;
     display: block;
+    transition: max-height 0.3s ease; 
   }
 
   .carte-projet-finissant--mobile.open-desc .dropdown-carte-finissant {
     max-height: 800px; 
-    font-size: 12px;
   }
 
   .carte-finissant-titre-description {
@@ -335,7 +335,9 @@ h1, h2 {
   .carte-projet-finissant--desktop .image-projet-finissant {
     width: 45%;
     height: auto;
-    object-fit: contain;
+    background-image: repeating-linear-gradient(45deg, var(--border-color-project) 0, var(--border-color-project) 1px, transparent 0, transparent 50%);
+    background-size: 10px 10px;
+    background-attachment: fixed;
   }
 
   .carte-projet-finissant--desktop .conteneur-carte-bas {
@@ -506,6 +508,8 @@ h1, h2 {
     place-self: start;
     border-color: var(--border-color-project);
     border-width: 2px 1px 1px 2px;
+    font-size: 16px;
+    color: var(--font-color);
   }
 
   .tri-bar{
@@ -557,14 +561,13 @@ h1, h2 {
     max-width: none;
   }
   .filtres-container {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  justify-content: flex-end;
-  margin: 1rem 0;
-  flex-wrap: wrap;
-  margin-right: 8.5rem;
-}
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    width: 90%;
+  }
 }
 
 
@@ -861,4 +864,6 @@ h1, h2 {
   border-radius: 8px;
 }
 
-
+.carte-projet-finissant--desktop:hover {
+  cursor: pointer;
+}

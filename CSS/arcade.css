@@ -746,3 +746,7 @@ h1, h2 {
   .tri-bar { gap: 0.4rem; padding: 0.25rem; }
   #tri-select { min-width: 110px; font-size: 0.9rem; }
 }
+
+.carte-projet-arcade--desktop:hover {
+  cursor: pointer;
+}

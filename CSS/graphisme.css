@@ -191,11 +191,11 @@ h1, h2 {
     overflow: hidden;
     padding: 0 1rem;
     display: block;
+    transition: max-height 0.3s ease; 
   }
 
   .carte-projet-graphisme--mobile.open-desc .dropdown-carte-graphisme {
     max-height: 800px; 
-    font-size: 12px;
   }
 
   .carte-graphisme-titre-description {
@@ -349,6 +349,11 @@ h1, h2 {
     height: auto;
     object-fit: contain;
     border-right: 2px solid var(--border-color-project);
+    object-fit: contain;
+    border-right: 2px solid var(--border-color-project);
+    background-image: repeating-linear-gradient(45deg, var(--border-color-project) 0, var(--border-color-project) 1px, transparent 0, transparent 50%);
+    background-size: 10px 10px;
+    background-attachment: fixed;
   }
 
   .carte-projet-graphisme--desktop .conteneur-carte-bas {
@@ -512,6 +517,8 @@ h1, h2 {
     place-self: start;
     border-color: var(--border-color-project);
     border-width: 2px 1px 1px 2px;
+    font-size: 16px;
+    color: var(--font-color);
   }
 
   .tri-bar {
@@ -727,4 +734,8 @@ h1, h2 {
 @media (max-width: 420px) {
   .tri-bar { gap: 0.4rem; padding: 0.25rem; }
   #tri-select { min-width: 110px; font-size: 0.9rem; }
+}
+
+.carte-projet-graphisme:hover {
+  cursor: pointer;
 }

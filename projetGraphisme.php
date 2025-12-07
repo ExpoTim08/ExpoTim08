@@ -92,6 +92,15 @@ $nom_affiche = $nom ?: get_the_title($projet_id);
           <p class="description-texte"><?php echo esc_html($description); ?></p>
         </div>
       <?php endif; ?>
+
+      
+      <?php if ($behance): ?>
+        <div class="behance-projet">
+          <a href="<?php echo esc_url($behance); ?>" target="_blank" rel="noopener noreferrer">
+            Voir sur Behance ➜
+          </a>
+      </div>
+      <?php endif; ?>
     </div>
 
     <!-- Infos cours / année -->
@@ -104,14 +113,7 @@ $nom_affiche = $nom ?: get_the_title($projet_id);
       <?php endif; ?>
     </div>
 
-    <!-- Lien Behance -->
-    <?php if ($behance): ?>
-      <p class="behance-projet">
-        <a href="<?php echo esc_url($behance); ?>" target="_blank" rel="noopener noreferrer">
-          Voir sur Behance
-        </a>
-      </p>
-    <?php endif; ?>
+    <!-- Behance link moved into the project description container -->
 
   </section>
 </main>

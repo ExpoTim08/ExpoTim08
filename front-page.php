@@ -43,7 +43,7 @@ get_header();
     
 
 <button class="intro-btn">
-    Explorer
+    Explorer le site
 </button>
 
 <?php get_footer(); ?>

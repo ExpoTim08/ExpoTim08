@@ -91,7 +91,8 @@ get_header();
     ?>
 
     <!-- ===== Carte Projet Desktop ===== -->
-    <article class="carte-projet-finissant carte-projet-finissant--desktop" data-filtre="<?php echo esc_attr($data_filtre); ?>">
+    <article class="carte-projet-finissant carte-projet-finissant--desktop" 
+    onclick="window.location.href='<?php echo esc_url(add_query_arg('projet_id', get_the_ID(), get_permalink(get_page_by_path('projet-finissant')))); ?>'" data-filtre="<?php echo esc_attr($data_filtre); ?>">
         <?php if (!empty($image) && !empty($image['url'])): ?>
             <img class="image-projet-finissant" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt'] ?: $titre); ?>">
         <?php endif; ?>
@@ -101,15 +102,19 @@ get_header();
             <p class="carte-finissant-titre-description">Description</p>
             <p class="description-projet"><?php echo esc_html($short_desc); ?></p>
             
-            <?php if ($liens): ?>
-                <p class="liens-projet">
-                    <a href="<?php echo esc_url($liens); ?>" target="_blank">Liens</a>
-                </p>
-            <?php endif; ?>
+            <?php
+            /*
+            if ($liens): ?>
+              <p class="liens-projet">
+                <a href="<?php echo esc_url($liens); ?>" target="_blank">Liens</a>
+              </p>
+            <?php endif;
+            */
+            ?>
 
             <button class="button-projet-finissant"
             onclick="window.location.href='<?php echo esc_url(add_query_arg('projet_id', get_the_ID(), get_permalink(get_page_by_path('projet-finissant')))); ?>'">
-            >>
+            ➜
             </button>
         </div>
     </article>
@@ -120,7 +125,7 @@ get_header();
             <h2 class="titre-projet-finissant"><?php echo esc_html($titre); ?></h2>
             <button class="button-projet-finissant"
                 onclick="window.location.href='<?php echo esc_url(add_query_arg('projet_id', get_the_ID(), get_permalink(get_page_by_path('projet-finissant')))); ?>'">
-                &gt;&gt;
+                ➜
             </button>
         </div>
 

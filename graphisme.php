@@ -103,7 +103,9 @@ if ($tri === 'random') {
         ?>
 
         <!-- ===== Carte Projet Desktop ===== -->
-        <article class="carte-projet-graphisme carte-projet-graphisme--desktop">
+        <article class="carte-projet-graphisme carte-projet-graphisme--desktop"
+        onclick="window.location.href='<?php echo esc_url(add_query_arg('projet_id', get_the_ID(), get_permalink(get_page_by_path('projet-graphisme')))); ?>'">
+              
           <?php if (!empty($image['url'])): ?>
             <img class="image-projet-graphisme" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt'] ?: $titre); ?>">
           <?php endif; ?>
@@ -115,7 +117,7 @@ if ($tri === 'random') {
 
             <button class="button-projet-graphisme"
               onclick="window.location.href='<?php echo esc_url(add_query_arg('projet_id', get_the_ID(), get_permalink(get_page_by_path('projet-graphisme')))); ?>'">
-              >>
+              ➜
             </button>
           </div>
         </article>
@@ -126,7 +128,7 @@ if ($tri === 'random') {
             <h2 class="titre-projet-graphisme"><?php echo esc_html($titre); ?></h2>
             <button class="button-projet-graphisme"
                 onclick="window.location.href='<?php echo esc_url(add_query_arg('projet_id', get_the_ID(), get_permalink(get_page_by_path('projet-graphisme')))); ?>'">
-                &gt;&gt;
+                ➜
             </button>
           </div>
 

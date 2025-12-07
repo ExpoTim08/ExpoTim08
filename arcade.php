@@ -91,7 +91,8 @@ get_header();
         ?>
 
         <!-- ===== Carte Projet Desktop ===== -->
-        <article class="carte-projet-arcade carte-projet-arcade--desktop">
+        <article class="carte-projet-arcade carte-projet-arcade--desktop"
+        onclick="window.location.href='<?php echo esc_url(add_query_arg('projet_id', get_the_ID(), get_permalink(get_page_by_path('projet-arcade')))); ?>'">
           <?php if ($image): ?>
             <img class="image-projet-arcade" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($nom); ?>">
           <?php endif; ?>
