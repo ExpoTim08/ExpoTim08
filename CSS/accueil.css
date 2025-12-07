@@ -538,7 +538,7 @@
   .projet-populaire-finissant > .bouton {
     grid-area: 1/3/2/4;
     font-size: x-large;
-    height: 2rem;
+    height: auto;
   }
 
   .projet-populaire-arcade > .bouton a,
@@ -782,7 +782,7 @@
     height: 100%;
   }
 
-  /******************************** CSS Section Carroussel **************************************************/
+  /******************************** CSS Section Carroussel Tablette **************************************************/
 
   .carroussel {
       margin-top: 0px;
@@ -803,7 +803,7 @@
     top: -12px;
   }
     
-  /****************************************** CSS Section Accroche ***************************************************/
+  /****************************************** CSS Section Accroche Tablette ***************************************************/
 
   .accroche {
     width: 45vw;
@@ -918,7 +918,7 @@
   }
 
 
-  /*************************************** CSS Section À Propos ******************************************************/
+  /*************************************** CSS Section À Propos Tablette ******************************************************/
 
   .infos-a-propos {
     display: flex;
@@ -928,6 +928,11 @@
 
   .infos-a-propos > * {
     width: 30%;
+  }
+
+  /**************************** CSS Section Projets Aléatoire Tablette ********************************/
+  .projets .titre {
+    font-size: 3vw;
   }
 }
 
