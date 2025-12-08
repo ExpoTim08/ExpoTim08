@@ -493,9 +493,9 @@
   }
 
   .boutonRefresh.loading {
-  opacity: 0.5;
-  pointer-events: none;
-}
+    opacity: 0.5;
+    pointer-events: none;
+  }
 
   .refresh {
     width: 40px;
@@ -553,6 +553,7 @@
   .projet-populaire-finissant > .categorie {
     grid-area: 2/1/3/2;
     height: 2rem;
+    align-content: center;
   }
 
   .projet-populaire-arcade > .categorie-nom,
@@ -560,6 +561,7 @@
   .projet-populaire-finissant > .categorie-nom {
     grid-area: 2 / 2 / 3 / 4;
     height: 2rem;
+    align-content: center;
   }
 
   .image-populaire-arcade,
@@ -931,6 +933,10 @@
   .projets .titre {
     font-size: 3vw;
   }
+
+  .projets a {
+    align-self: center;
+  }
 }
 
 /************************************* CSS Desktop *************************************************/
@@ -1232,8 +1238,6 @@
 
 .a-propos {
     justify-items: center;
-    /*border-top: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);*/
     padding: 2rem;
     height: 300px;
     max-height: 600px;
@@ -1309,6 +1313,10 @@
 
   .projets-populaire > p {
     width: 40%;
+  }
+
+  .boutonRefresh:hover {
+    cursor: pointer;
   }
 
   .projets {

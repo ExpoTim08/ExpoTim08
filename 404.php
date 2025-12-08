@@ -52,7 +52,11 @@ require("global.php");
             </section>
             <section class="section-projets-decouverte">
                 <h2 class="projet-decouvrir">Voici des projets à découvrir</h2>
-                <div class="projets">
+                <div class="boutonRefresh">
+                    <img class="refresh" src="<?php echo get_template_directory_uri(); ?>/Images/Refresh.svg" alt="">
+                    <span>Raffraichis les projets</span>
+                </div>
+                <div class="projets" id="projets-container">
                     <?php
                     // Get 2 random UNIQUE arcade projects
                     $arcade_query = new WP_Query([
@@ -181,5 +185,12 @@ require("global.php");
         </main>
     </div>
 </body>
+
+<!-- JS  -->
+  <script src="<?php echo get_template_directory_uri(); ?>/404.js"></script>
+  <script>
+    var themeVars = themeVars || {};
+    themeVars.ajaxUrl = "<?php echo admin_url('admin-ajax.php'); ?>";
+  </script>
 
 <?php get_footer(); ?>
