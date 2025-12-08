@@ -553,6 +553,7 @@
   .projet-populaire-finissant > .categorie {
     grid-area: 2/1/3/2;
     height: 2rem;
+    align-content: center;
   }
 
   .projet-populaire-arcade > .categorie-nom,
@@ -560,6 +561,7 @@
   .projet-populaire-finissant > .categorie-nom {
     grid-area: 2 / 2 / 3 / 4;
     height: 2rem;
+    align-content: center;
   }
 
   .image-populaire-arcade,
@@ -929,6 +931,10 @@
   /**************************** CSS Section Projets Aléatoire Tablette ********************************/
   .projets .titre {
     font-size: 3vw;
+  }
+
+  .projets a {
+    align-self: center;
   }
 }
 
