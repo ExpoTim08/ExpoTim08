@@ -22,6 +22,9 @@ function expo_enqueue_assets() {
     wp_enqueue_script('accueil-js', $theme_uri . '/accueil.js', array('jquery'), null, true);
     wp_enqueue_script('404-js', $theme_uri . '/404.js', array('jquery'), null, true);
 
+    // --- Script ajusteTitre.js ---
+    wp_enqueue_script('ajuste-titre', $theme_uri . '/ajusteTitre.js', array(), null, true);
+
     // --- Passage des variables JS depuis WordPress ---
     // wp_localize_script('accueil-js', 'themeVars', array(
     //     'themeUrl' => $theme_uri,
