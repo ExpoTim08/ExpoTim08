@@ -5,7 +5,7 @@ Template Name: Contact
 require("global.php");
 ?>
 
-<?php get_header(); // Appelle le header ?>
+<?php get_header(); ?>
 <body>
     <div class="pattern-background">
         <div class="border gauche"></div>
@@ -23,11 +23,11 @@ require("global.php");
 
         <!-- ==================== Section Formulaire de Contact ==================== -->
         <?php
-        // Compte expéditeur Gmail configuré dans WP Mail SMTP
+        // Expéditeur configuré dans WP Mail SMTP
         $from_email = "contacttimvisionexpo@gmail.com";
         $from_name  = "Équipe TIM Vision Expo";
 
-        // Liste des destinataires autorisés
+        // Destinataires depuis le Customizer
         $allowed_emails = array_filter([
             get_theme_mod('expoTim_contact_dest_email_1'),
             get_theme_mod('expoTim_contact_dest_email_2'),
@@ -61,7 +61,9 @@ require("global.php");
                 </body>
                 </html>";
 
+                // En-têtes : From = Gmail (SMTP), Reply-To = utilisateur
                 $headers = [
+                    "From: $from_name <$from_email>",
                     "Reply-To: $email_user",
                     "Content-Type: text/html; charset=UTF-8"
                 ];
@@ -92,10 +94,10 @@ require("global.php");
                 <input type="text" name="nom" required value="<?= htmlspecialchars($nom, ENT_QUOTES, 'UTF-8') ?>">
 
                 <label>Votre email</label>
-                <input type="text" name="email_user" required value="<?= htmlspecialchars($email_user, ENT_QUOTES, 'UTF-8') ?>">
+                <input type="email" name="email_user" required value="<?= htmlspecialchars($email_user, ENT_QUOTES, 'UTF-8') ?>">
 
                 <label>Destinataire</label>
-              <select name="to_email" required>
+                <select name="to_email" required>
                     <option value="" disabled <?= $to_email === '' ? 'selected' : '' ?>>-- Choisissez un destinataire --</option>
                     <?php foreach ($allowed_emails as $mail): ?>
                         <option value="<?= esc_attr($mail) ?>" <?= ($to_email === $mail) ? 'selected' : '' ?>>
@@ -103,7 +105,6 @@ require("global.php");
                         </option>
                     <?php endforeach; ?>
                 </select>
-
 
                 <label>Message</label>
                 <textarea name="message" rows="5" required><?= htmlspecialchars($message, ENT_QUOTES, 'UTF-8') ?></textarea>
