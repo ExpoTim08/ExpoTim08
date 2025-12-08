@@ -294,6 +294,74 @@ function expoTim_customize_register($wp_customize) {
         'sanitize_callback' => 'esc_url_raw',
     ));
 
+    /* -----------------------------
+    SECTION FINISSANTS
+    ------------------------------ */
+
+    $wp_customize->add_section('expoTim_finissants_section', array(
+        'title'       => __('Finissants', 'expoTim'),
+        'priority'    => 140,
+        'description' => __('Section pour afficher la description des finissants.', 'expoTim'),
+    ));
+
+    /* --- Champ : Description --- */
+    $wp_customize->add_setting('expoTim_finissants_description', array(
+        'default'           => '',
+        'sanitize_callback' => 'wp_kses_post',
+    ));
+
+    $wp_customize->add_control('expoTim_finissants_description_control', array(
+        'label'       => __('Description', 'expoTim'),
+        'section'     => 'expoTim_finissants_section',
+        'settings'    => 'expoTim_finissants_description',
+        'type'        => 'textarea',
+    ));
+
+    /* -----------------------------
+   SECTION ARCADE
+    ------------------------------ */
+
+    $wp_customize->add_section('expoTim_arcade_section', array(
+        'title'       => __('Arcade', 'expoTim'),
+        'priority'    => 150,
+        'description' => __('Section pour la partie Arcade du site.', 'expoTim'),
+    ));
+
+    /* --- Champ : Description --- */
+    $wp_customize->add_setting('expoTim_arcade_description', array(
+        'default'           => '',
+        'sanitize_callback' => 'wp_kses_post',
+    ));
+
+    $wp_customize->add_control('expoTim_arcade_description_control', array(
+        'label'       => __('Description', 'expoTim'),
+        'section'     => 'expoTim_arcade_section',
+        'settings'    => 'expoTim_arcade_description',
+        'type'        => 'textarea',
+    ));
+    /* -----------------------------
+   SECTION GRAPHISME
+    ------------------------------ */
+
+    $wp_customize->add_section('expoTim_graphisme_section', array(
+        'title'       => __('Graphisme', 'expoTim'),
+        'priority'    => 160,
+        'description' => __('Section dédiée au département de graphisme.', 'expoTim'),
+    ));
+
+    /* --- Champ : Description --- */
+    $wp_customize->add_setting('expoTim_graphisme_description', array(
+        'default'           => '',
+        'sanitize_callback' => 'wp_kses_post',
+    ));
+
+    $wp_customize->add_control('expoTim_graphisme_description_control', array(
+        'label'       => __('Description', 'expoTim'),
+        'section'     => 'expoTim_graphisme_section',
+        'settings'    => 'expoTim_graphisme_description',
+        'type'        => 'textarea',
+    ));
+
 
 
 }

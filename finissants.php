@@ -30,7 +30,7 @@ get_header();
     <div class="conteneur-description-finissant">
       <p class="description-titre">Description</p>
       <p class="description-texte">
-        Les finissants de la Technique d’intégration multimédia présentent le projet synthèse de leur parcours. Après avoir exploré toutes les dimensions du multimédia – Jeu, web, design, programmation, création de médias, interactivité et plus encore – chaque étudiant a choisi le sujet qui le passionne le plus et a développé un projet original qui reflète son expertise et sa créativité. 
+        <?php echo wp_kses_post(get_theme_mod('expoTim_finissants_description')); ?> 
       </p>
     </div>
   </section>
