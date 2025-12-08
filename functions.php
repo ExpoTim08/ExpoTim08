@@ -72,6 +72,9 @@ function expo_enqueue_assets() {
     if (is_page_template('projetGraphisme.php')) {
         wp_enqueue_style('style-projet-graphisme', $theme_uri . '/CSS/projetGraphisme.css');
     }
+    if (is_page_template('testContact.php') || is_page_template('ar.php')) {
+        wp_enqueue_style('style-contact', $theme_uri . '/CSS/testContact.css');
+    }
     if (is_search()) wp_enqueue_style('style-search', $theme_uri . '/CSS/search.css');
     if (is_page_template('contact.php') || is_page_template('ar.php')) wp_enqueue_style('style-contact', $theme_uri . '/CSS/contact.css');
     if (is_404() || is_page_template('ar.php')) wp_enqueue_style('style-404', $theme_uri . '/CSS/404.css');

@@ -1,0 +1,116 @@
+.contact-page {
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 20px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.btn {
+  display: inline-block;
+  background: #333;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 6px;
+  text-decoration: none;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.btn.teams {
+  background: #4b66ea; /* couleur Teams */
+}
+
+.success {
+  background: #d4ffd4;
+  padding: 10px;
+  border-left: 4px solid #27ae60;
+  margin-bottom: 20px;
+}
+
+/******************* CSS Formulaire Contact Centré et Champs Uniformes **********************/
+.formulaireContact {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centre le formulaire horizontalement */
+  margin: 2rem auto 3rem auto;
+  width: 100%;
+  max-width: 600px; /* Largeur fixe pour desktop */
+  padding: 1rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Le formulaire prend toute la largeur du conteneur */
+  gap: 1rem;
+}
+
+.contact-form label {
+  color: #ffffff; /* Titres des champs en blanc */
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form select,
+.contact-form textarea,
+.contact-form button.btn {
+  width: 100%; /* Tous les champs et le bouton ont la même largeur */
+  box-sizing: border-box; /* Inclut padding et border dans la largeur */
+  padding: 10px 12px;
+  border: 1px solid var(--border-color-side);
+  border-radius: 4px;
+  background-color: rgba(34, 34, 34, 0.5); /* Fond semi-transparent */
+  color: #ffffff;
+  font-family: var(--general-font);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+.contact-form input[type="text"]::placeholder,
+.contact-form input[type="email"]::placeholder,
+.contact-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.contact-form select {
+  cursor: pointer;
+  appearance: none;
+  background-color: rgba(34, 34, 34, 0.5);
+  color: #ffffff;
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  border-color: #580caa;
+  background-color: rgba(34, 34, 34, 0.7);
+}
+
+.contact-form button.btn {
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.contact-form button.btn:hover {
+  background-color: rgba(88, 12, 170, 0.7); /* Violet hover */
+  border-color: #580caa;
+}
+
