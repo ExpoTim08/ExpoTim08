@@ -274,7 +274,7 @@ get_header();
     themeVars.pageFinissants = "<?php echo get_permalink(get_page_by_path('projet-des-finissants')); ?>";
   </script>
 
-  <!-- JS du carroussel -->
+  <!-- JS Accueil -->
   <script src="<?php echo get_template_directory_uri(); ?>/accueil.js"></script>
   <script>
     var themeVars = themeVars || {};

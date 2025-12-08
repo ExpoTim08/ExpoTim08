@@ -179,6 +179,15 @@ h1, h2 {
     margin: auto;
   }
 
+  .boutonRefresh.loading {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .refresh {
+    width: 40px;
+  }
+
   .projet-populaire-arcade,
   .projet-populaire-finissant,
   .projet-populaire-jour-terre {
@@ -405,6 +414,15 @@ h1, h2 {
   .projets a {
     align-self: center;
   }
+
+  .boutonRefresh.loading {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .refresh {
+    width: 40px;
+  }
 }
 
 /* ----------------------------- */
@@ -469,6 +487,10 @@ h1, h2 {
 
   .boutonRefresh {
     justify-self: center;
+  }
+
+  .boutonRefresh:hover {
+    cursor: pointer;
   }
 
   .boutonRefresh > .span {

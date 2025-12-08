@@ -20,6 +20,7 @@ function expo_enqueue_assets() {
     wp_enqueue_script('menu-script', $theme_uri . '/menu.js', array('jquery'), null, true);
     wp_enqueue_script('projet-script', $theme_uri . '/projet.js', array('jquery'), null, true);
     wp_enqueue_script('accueil-js', $theme_uri . '/accueil.js', array('jquery'), null, true);
+    wp_enqueue_script('404-js', $theme_uri . '/404.js', array('jquery'), null, true);
 
     // --- Passage des variables JS depuis WordPress ---
     // wp_localize_script('accueil-js', 'themeVars', array(
@@ -36,7 +37,15 @@ function expo_enqueue_assets() {
     'pageJourTerre' => site_url('/index.php/graphisme/'),
     'pageFinissants' => site_url('/index.php/finissants/'),
     'ajaxUrl' => admin_url('admin-ajax.php')
-));
+    ));
+
+    wp_localize_script('404-js', 'themeVars', array(
+    'themeUrl' => $theme_uri,
+    'pageArcade' => site_url('/index.php/arcade/'),
+    'pageJourTerre' => site_url('/index.php/graphisme/'),
+    'pageFinissants' => site_url('/index.php/finissants/'),
+    'ajaxUrl' => admin_url('admin-ajax.php')
+    ));
 
     // --- CSS front-page ---
     if (is_front_page()) {

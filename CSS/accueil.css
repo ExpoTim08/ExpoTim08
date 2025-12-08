@@ -493,9 +493,9 @@
   }
 
   .boutonRefresh.loading {
-  opacity: 0.5;
-  pointer-events: none;
-}
+    opacity: 0.5;
+    pointer-events: none;
+  }
 
   .refresh {
     width: 40px;
@@ -1238,8 +1238,6 @@
 
 .a-propos {
     justify-items: center;
-    /*border-top: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);*/
     padding: 2rem;
     height: 300px;
     max-height: 600px;
@@ -1315,6 +1313,10 @@
 
   .projets-populaire > p {
     width: 40%;
+  }
+
+  .boutonRefresh:hover {
+    cursor: pointer;
   }
 
   .projets {

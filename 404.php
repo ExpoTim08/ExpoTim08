@@ -187,7 +187,7 @@ require("global.php");
 </body>
 
 <!-- JS  -->
-  <script src="<?php echo get_template_directory_uri(); ?>/accueil.js"></script>
+  <script src="<?php echo get_template_directory_uri(); ?>/404.js"></script>
   <script>
     var themeVars = themeVars || {};
     themeVars.ajaxUrl = "<?php echo admin_url('admin-ajax.php'); ?>";
