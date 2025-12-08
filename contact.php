@@ -28,10 +28,11 @@ require("global.php");
         $from_name  = "Équipe TIM Vision Expo";
 
         // Liste des destinataires autorisés
-        $allowed_emails = [
-            'e2364643@cmaisonneuve.qc.ca',
-            'lina.bensenouci@hotmail.com'
-        ];
+        $allowed_emails = array_filter([
+            get_theme_mod('expoTim_contact_dest_email_1'),
+            get_theme_mod('expoTim_contact_dest_email_2'),
+            get_theme_mod('expoTim_contact_dest_email_3')
+        ]);
 
         // Initialisation
         $message_sent = false;
@@ -94,7 +95,7 @@ require("global.php");
                 <input type="text" name="email_user" required value="<?= htmlspecialchars($email_user, ENT_QUOTES, 'UTF-8') ?>">
 
                 <label>Destinataire</label>
-                <select name="to_email" required>
+              <select name="to_email" required>
                     <option value="" disabled <?= $to_email === '' ? 'selected' : '' ?>>-- Choisissez un destinataire --</option>
                     <?php foreach ($allowed_emails as $mail): ?>
                         <option value="<?= esc_attr($mail) ?>" <?= ($to_email === $mail) ? 'selected' : '' ?>>
@@ -102,6 +103,7 @@ require("global.php");
                         </option>
                     <?php endforeach; ?>
                 </select>
+
 
                 <label>Message</label>
                 <textarea name="message" rows="5" required><?= htmlspecialchars($message, ENT_QUOTES, 'UTF-8') ?></textarea>
