@@ -627,6 +627,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 2em; 
+    width: 90%;
   }
 
 
