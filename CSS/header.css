@@ -268,7 +268,7 @@
   @media screen and (min-width: 767px) and (max-width: 1246px) {
 
     .menu-page.open .menu-search-mobile {
-      margin: 5.7em 0 0 0;
+      margin: 3.8em 0 0 0;
     }
 
     /* Ajuster la bordure droite lorsque le menu est ouvert */
@@ -330,9 +330,13 @@
     .menu li a {
       padding-left: 0.5em;
     }
+  }
 
-    @media screen and (min-width: 1024px) and (max-width: 1246px) {
-      
+  /* Ajuster le padding du header entre 1024px et 1246px */
+  @media screen and (min-width: 1024px) and (max-width: 1246px) {
+    .site-header
+    {
+        padding: 20px 3em 1em 3em;
     }
   }
 
