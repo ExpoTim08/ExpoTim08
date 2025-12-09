@@ -94,21 +94,21 @@ h1, h2, h3 {
 /******************* CSS Contact général **********************/
 .contactComplet{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
-  height: 350px;
+  height: 950px;
 }
 
 .conteneurProfils{
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 2rem;
 }
 
 .messagePageContact{
     text-align: center;
-    padding-bottom: 2rem;
 }
 
 .messagePageContact img{
@@ -128,10 +128,18 @@ h1, h2, h3 {
   border-radius: 3px;
 }
 
+.photo{
+  display: inline-block;
+  width: 300px;
+  height: 370px;
+  object-fit: cover;
+}
+
 .imgProf{
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 4px;
 }
 
 input[type="button"] {
@@ -219,10 +227,11 @@ input[type="button"] {
   
   .messagePageContact{
     width: 22rem;
+    padding-bottom: 3rem;
   }
 
   .contactComplet{
-    height: 920px;
+    height: 2400px;
   }
 
   .conteneurProfils{
@@ -305,12 +314,12 @@ input[type="button"] {
   }
 
   .conteneurProfils{
-    gap: 2rem;
     flex-wrap: wrap;
   }
 
   .profilCaroline, .profilStephanie, .profilManon, .profilCamille{
-  width: 20vw;
+    width: 200px;
+    height: 400px;
   }
 }
 
@@ -386,9 +395,7 @@ input[type="button"] {
     gap: 30px;
   }
 /********** Section contactComplet ***********/
-  .contactComplet{
-    padding-bottom: 4rem;
-  }  
+
 
   input[type="button"]:hover {
     background-color: rgb(34, 34, 34);
