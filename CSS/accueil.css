@@ -464,7 +464,18 @@
   }
 
 /********************************** CSS Section Projets Populaire **********************************/
+.projets .projet-populaire-finissant,
+.projets .projet-populaire-arcade,
+.projets .projet-populaire-jour-terre {
+  opacity: 0;
+  transform: scale(0.8) rotate(-5deg);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
 
+.projets .projet-visible {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
 
 
  .projets-populaire {
@@ -1009,51 +1020,70 @@
   padding: 1.5rem;
 }
 
+.image-wrap img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  filter: drop-shadow(15px -15px 0 var(--bouton-projet-arcade-color)) 
+          drop-shadow(15px -15px 0 var(--bouton-projet-jt-color)) 
+          drop-shadow(15px -15px 0 var(--bouton-projet-finissant-color));
+  position: relative;
+  z-index: 1; /* l'image derrière */
+}
 /* ================== ARCADE DETAILS ================== */
+
 .arcade-details {
   position: absolute;
-  bottom: 0%;
-  left: 10%;
-  background-color: rgba(25, 26, 25, 0.85);
+  bottom: 0;
+  left: 180px;
+  width: 100%;
+  max-width: 800px;
+  min-width: 180px;
+  height: 120px;
+  background-color: rgba(26, 26, 26, 0.687);
   border-radius: 15px;
-  width: 180px; /* largeur fixe plus petite */
-  height: 120px; /* hauteur adaptée */
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between; /* espace entre sous-titre et description */
-  padding: 10px; /* espace interne */
+  justify-content: space-between;
+  padding: 10px;
   transform: translateY(160%);
   opacity: 0;
+  pointer-events: none; /* ESSENTIEL pour ne pas bloquer les boutons */
   transition: opacity 0.4s ease, transform 0.4s ease;
-  z-index: 3;
-  pointer-events: none;
-  overflow: hidden; /* empêche le bloc de s’agrandir */
+  overflow: hidden;
+  z-index: 2;
 }
+
+.arcade-details.show {
+  opacity: 1;
+  transform: translateY(100%);
+}
+
+
+
+.arcade-details > .sous-titre-carroussel {
+  width: 50%;
+  margin: 0;
+  font-size: 2.8vw;
+  -webkit-text-stroke: 1px #fff;
+  text-shadow: 0px 25px 0px rgba(255, 255, 255, 0.5);
+}
+
+.arcade-details > .description {
+  width: 80%;
+  margin: 0;
+  line-height: 1.1;
+  font-size: 0.9rem;
+  white-space: normal;
+}
+
 
 /* Affichage uniquement quand on survole les boutons */
 .carroussel-choix:hover + .arcade-details {
   display: flex !important;
 }
 
-/* Titre */
-.arcade-details > .sous-titre-carroussel {
-  margin: 0;                 
-  font-size: 2.8vw;
-  -webkit-text-stroke: 1px #fff;
-  text-shadow: 0px 25px 0px rgba(255, 255, 255, 0.5);
-  width: 50%;
-}
-
-/* Description */
-.arcade-details > .description {
-  margin: 0;                 
-  line-height: 1.1;        
-  background: none;
-  width: 80%;        /* prend toute la largeur du parent */
-  font-size: 0.9rem;    /* ou réduire la taille */
-  white-space: normal;
-}
 
 
 /******************************************* Carroussel Choix *********************************** */

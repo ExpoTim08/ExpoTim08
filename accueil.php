@@ -16,12 +16,21 @@ get_header();
   <main>
     
 <!-------------------------------- Carroussel -------------------------------->
-
 <div class="carroussel">
+  <!-- Wrapper image uniquement pour l'image -->
   <div class="image-wrap">
     <img id="image-carroussel" src="<?php echo get_template_directory_uri(); ?>/Images/Finissants.png" alt="">
   </div>
 
+  <!-- arcade-details séparé, au-dessus de l'image mais sous les boutons -->
+  <div class="arcade-details">
+    <p class="sous-titre sous-titre-carroussel">ARCADE</p>
+    <p class="description">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    </p>
+  </div>
+
+  <!-- Choix des catégories -->
   <div class="carroussel-choix">
     <div class="bouton-finissants">
       <p class="finissants">FINISSANTS</p>
@@ -37,15 +46,10 @@ get_header();
       <p class="jour-terre">GRAPHISME</p>
       <img class="tree" src="<?php echo get_template_directory_uri(); ?>/Images/Tree.svg" alt="">
     </div>
-  </div> <!-- fin carroussel-choix -->
-
-  <div class="arcade-details">
-    <p class="sous-titre sous-titre-carroussel">ARCADE</p>
-    <p class="description">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate animi voluptate...
-    </p>
   </div>
 </div>
+
+
 
 
     <!-------------------------------- Accroche -------------------------------->

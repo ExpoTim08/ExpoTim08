@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!Image || !Subtitle || !DescriptionCategorie || ChoixElements.length === 0 || !container) return;
 
+  // ================= Fonction pour changer l'image =================
   function ChangeImage(index) {
     const { src, Titre, ClassName, Description } = Images[index];
     Image.src = src;
@@ -54,6 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (currentChoice) currentChoice.classList.add(`${ClassName}-click`);
   }
 
+  // ================= Auto rotation =================
   function startAuto() {
     clearInterval(intervalID);
     intervalID = setInterval(() => {
@@ -69,75 +71,43 @@ document.addEventListener("DOMContentLoaded", () => {
   ChangeImage(CurrentIndex);
   startAuto();
 
-  function setupHover() {
-    hoverListeners.forEach(({ elm, enter, leave }) => {
-      elm.removeEventListener("mouseenter", enter);
-      elm.removeEventListener("mouseleave", leave);
-    });
-    hoverListeners.length = 0;
-
-    if (window.innerWidth <= 1366) return;
-
-    ChoixElements.forEach((elm, i) => {
-      const enter = () => {
-        stopAuto();
-        CurrentIndex = i;
-        ChangeImage(CurrentIndex);
-        if (Details) {
-          Details.style.display = 'flex';
-          requestAnimationFrame(() => {
-            Details.style.opacity = '1';
-            Details.style.transform = 'translateY(100%)';
-          });
-        }
-        if (hoverTimeout) { clearTimeout(hoverTimeout); hoverTimeout = null; }
-      };
-      const leave = () => {
-        if (Details) {
-          Details.style.opacity = '0';
-          Details.style.transform = 'translateY(160%)';
-        }
-        if (hoverTimeout) clearTimeout(hoverTimeout);
-        hoverTimeout = setTimeout(() => {
-          CurrentIndex = (CurrentIndex + 1) % Images.length;
-          ChangeImage(CurrentIndex);
-          startAuto();
-          hoverTimeout = null;
-        }, 1000);
-      };
-      elm.addEventListener("mouseenter", enter);
-      elm.addEventListener("mouseleave", leave);
-      hoverListeners.push({ elm, enter, leave });
-    });
-  }
-
+  // ================= Hover arcade-details =================
   ChoixElements.forEach((elm, i) => {
-    elm.addEventListener("click", () => {
-      window.location.href = Images[i].Lien;
-    });
+    const enter = () => {
+      stopAuto();
+      CurrentIndex = i;
+      ChangeImage(CurrentIndex);
+      if (Details) Details.classList.add('show'); // juste opacity + transform
+      if (hoverTimeout) { clearTimeout(hoverTimeout); hoverTimeout = null; }
+    };
+
+    const leave = () => {
+      if (Details) Details.classList.remove('show');
+      if (hoverTimeout) clearTimeout(hoverTimeout);
+      hoverTimeout = setTimeout(() => {
+        CurrentIndex = (CurrentIndex + 1) % Images.length;
+        ChangeImage(CurrentIndex);
+        startAuto();
+        hoverTimeout = null;
+      }, 1000);
+    };
+
+    elm.addEventListener("mouseenter", enter);
+    elm.addEventListener("mouseleave", leave);
   });
 
+  // ================= Responsiveness arcade-details =================
   function handleResponsiveDetails() {
     if (!Details) return;
     if (window.innerWidth <= 1366) {
-      Details.style.display = 'flex';
-      Details.style.opacity = '1';
-      Details.style.transform = 'none';
+      Details.classList.add('show');
     } else {
-      Details.style.display = 'flex';
-      Details.style.opacity = '0';
-      Details.style.transform = 'translateY(160%)';
+      Details.classList.remove('show');
     }
   }
 
-  setupHover();
   handleResponsiveDetails();
-
-  window.addEventListener("resize", () => {
-    ChangeImage(CurrentIndex);
-    setupHover();
-    handleResponsiveDetails();
-  });
+  window.addEventListener("resize", handleResponsiveDetails);
 
   // ================= Animation PCA Projets =================
   function isMobileOrTablet() {
@@ -164,7 +134,6 @@ document.addEventListener("DOMContentLoaded", () => {
     projets.forEach(projet => observer.observe(projet));
   }
 
-  // Initial animation
   animateProjets();
 
   // ================= Bouton Rafraîchir =================
@@ -204,7 +173,6 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         `;
 
-        // Lancer l'animation après injection
         requestAnimationFrame(animateProjets);
       })
       .catch(console.error)
