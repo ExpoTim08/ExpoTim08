@@ -36,7 +36,8 @@ require("global.php");
             get_theme_mod('expoTim_contact_dest_email_5'),
             get_theme_mod('expoTim_contact_dest_email_6'),
             get_theme_mod('expoTim_contact_dest_email_7'),
-            get_theme_mod('expoTim_contact_dest_email_8')
+            get_theme_mod('expoTim_contact_dest_email_8'),
+            get_theme_mod('expoTim_contact_dest_email_9')
         ]);
 
         // Initialisation

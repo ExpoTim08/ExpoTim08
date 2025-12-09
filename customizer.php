@@ -407,8 +407,76 @@ function expoTim_customize_register($wp_customize) {
         'type'     => 'text',
     ));
 
+    /* Email 4 */
+    $wp_customize->add_setting('expoTim_contact_dest_email_4', array(
+        'default'           => '',
+        'sanitize_callback' => 'sanitize_email',
+    ));
+    $wp_customize->add_control('expoTim_contact_dest_email_4_control', array(
+        'label'    => __('Adresse courriel 4', 'expoTim'),
+        'section'  => 'expoTim_contact_destinataires_section',
+        'settings' => 'expoTim_contact_dest_email_4',
+        'type'     => 'text',
+    ));
 
+    /* Email 5 */
+    $wp_customize->add_setting('expoTim_contact_dest_email_5', array(
+        'default'           => '',
+        'sanitize_callback' => 'sanitize_email',
+    ));
+    $wp_customize->add_control('expoTim_contact_dest_email_5_control', array(
+        'label'    => __('Adresse courriel 5', 'expoTim'),
+        'section'  => 'expoTim_contact_destinataires_section',
+        'settings' => 'expoTim_contact_dest_email_5',
+        'type'     => 'text',
+    ));
 
+    /* Email 6 */
+    $wp_customize->add_setting('expoTim_contact_dest_email_6', array(
+        'default'           => '',
+        'sanitize_callback' => 'sanitize_email',
+    ));
+    $wp_customize->add_control('expoTim_contact_dest_email_6_control', array(
+        'label'    => __('Adresse courriel 6', 'expoTim'),
+        'section'  => 'expoTim_contact_destinataires_section',
+        'settings' => 'expoTim_contact_dest_email_6',
+        'type'     => 'text',
+    ));
 
+    /* Email 7 */
+    $wp_customize->add_setting('expoTim_contact_dest_email_7', array(
+        'default'           => '',
+        'sanitize_callback' => 'sanitize_email',
+    ));
+    $wp_customize->add_control('expoTim_contact_dest_email_7_control', array(
+        'label'    => __('Adresse courriel 7', 'expoTim'),
+        'section'  => 'expoTim_contact_destinataires_section',
+        'settings' => 'expoTim_contact_dest_email_7',
+        'type'     => 'text',
+    ));
+
+    /* Email 8 */
+    $wp_customize->add_setting('expoTim_contact_dest_email_8', array(
+        'default'           => '',
+        'sanitize_callback' => 'sanitize_email',
+    ));
+    $wp_customize->add_control('expoTim_contact_dest_email_8_control', array(
+        'label'    => __('Adresse courriel 8', 'expoTim'),
+        'section'  => 'expoTim_contact_destinataires_section',
+        'settings' => 'expoTim_contact_dest_email_8',
+        'type'     => 'text',
+    ));
+
+    /* Email 9 */
+    $wp_customize->add_setting('expoTim_contact_dest_email_9', array(
+        'default'           => '',
+        'sanitize_callback' => 'sanitize_email',
+    ));
+    $wp_customize->add_control('expoTim_contact_dest_email_9_control', array(
+        'label'    => __('Adresse courriel 9', 'expoTim'),
+        'section'  => 'expoTim_contact_destinataires_section',
+        'settings' => 'expoTim_contact_dest_email_9',
+        'type'     => 'text',
+    ));
 }
 add_action('customize_register', 'expoTim_customize_register');
