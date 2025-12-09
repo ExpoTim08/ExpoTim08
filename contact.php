@@ -150,6 +150,16 @@ require("global.php");
                         <input type="button" onclick="window.open('https://teams.microsoft.com/v2/');" target="blank" value="Rejoindre">
                     </span>
                 </div>
+
+                <div class="profilCamille">
+                    <span class="photo">
+                        <img class="img-personne" src="<?php echo get_template_directory_uri(); ?>/Images/Manon.png" alt="Photo Camille Lagace-Labonte">
+                    </span>
+                    <h3 class="nom">Camille Lagacé-Labonté</h3>
+                    <span class="conteneurBouton">
+                        <input type="button" onclick="window.open('https://teams.microsoft.com/v2/');" target="blank" value="Rejoindre">
+                    </span>
+                </div>
             </div>
         </section>
 

@@ -267,7 +267,7 @@ get_header();
             <img class="img-personne" src="<?php echo get_template_directory_uri(); ?>/Images/ImageSimpson/Alexis.png" alt="">
           </span>
           <span class="nom">Alexis David</span>
-          <span class="role">Virus</span>
+          <span class="role">Assistant Designer</span>
           <span class="petits-carre"></span>
         </div>
       </div>

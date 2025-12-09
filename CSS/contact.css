@@ -115,7 +115,7 @@ h1, h2, h3 {
     scale: 2;
 }
 
-.profilCaroline, .profilStephanie, .profilManon{
+.profilCaroline, .profilStephanie, .profilManon, .profilCamille{
   text-align: center;
   background-image: linear-gradient(177deg, #580caa 11.95%, #580caa 28.39%, #2b0553 82.04%);
   border: 1px solid var(--border-color-side);
