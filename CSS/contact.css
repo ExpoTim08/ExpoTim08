@@ -309,8 +309,13 @@ input[type="button"] {
     opacity: 0.3;
   }
 
+  .contactComplet{
+    height: 1500px;
+  }
+
   .messagePageContact{
     width: 32rem;
+    padding-bottom: 2rem;
   }
 
   .conteneurProfils{
@@ -318,8 +323,9 @@ input[type="button"] {
   }
 
   .profilCaroline, .profilStephanie, .profilManon, .profilCamille{
-    width: 200px;
-    height: 400px;
+    max-width: 350px;
+    min-width: 290px;
+    height: 500px;
   }
 }
 
@@ -396,6 +402,9 @@ input[type="button"] {
   }
 /********** Section contactComplet ***********/
 
+  .contactComplet{
+    height: 950px;
+  }
 
   input[type="button"]:hover {
     background-color: rgb(34, 34, 34);
@@ -404,6 +413,7 @@ input[type="button"] {
 
   .messagePageContact{
     width: auto;
+    padding-bottom: 0;
   }
 
   .conteneurProfils{
@@ -413,6 +423,8 @@ input[type="button"] {
   .profilCaroline, .profilStephanie, .profilManon, .profilCamille{
     width: 100%;
     height: 100%;
+    min-width: none;
+    max-width: none;
   }
   
 }
