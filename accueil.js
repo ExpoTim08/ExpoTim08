@@ -1,28 +1,24 @@
 document.addEventListener("DOMContentLoaded", () => {
   // ================= Carrousel Images =================
-  const Images = [
-    {
-      src: `${themeVars.themeUrl}/Images/Finissants.png`,
-      Titre: "FINISSANTS",
-      ClassName: "finissants",
-      Description: "Les finissants de la Technique d’intégration multimédia présentent le projet synthèse de leur parcours.",
-      Lien: themeVars.pageFinissants
-    },
-    {
-      src: `${themeVars.themeUrl}/Images/ExpoTim.png`,
-      Titre: "ARCADE",
-      ClassName: "arcade",
-      Description: "L’Arcade de l’expoTIM présente les prototypes de jeux vidéo créés par les étudiants de deuxième année en Technique d’intégration multimédia.",
-      Lien: themeVars.pageArcade
-    },
-    {
-      src: `${themeVars.themeUrl}/Images/ImageGraphisme/Graphisme.png`,
-      Titre: "GRAPHISME",
-      ClassName: "jour-terre",
-      Description: "Dans le cours Conception graphique et imagerie vectorielle, les étudiants de première année ont réalisé une recherche sur un enjeu environnemental.",
-      Lien: themeVars.pageJourTerre
-    }
-  ];
+  // On récupère les images et descriptions du Customizer via themeVars
+  const Images = themeVars.carrouselImages.map((src, index) => {
+    const Titles = ["FINISSANTS", "ARCADE", "GRAPHISME"];
+    const Classes = ["finissants", "arcade", "jour-terre"];
+    const Descriptions = themeVars.carrouselDescriptions; // <-- récupéré du Customizer
+    const Links = [
+      themeVars.pageFinissants,
+      themeVars.pageArcade,
+      themeVars.pageJourTerre
+    ];
+
+    return {
+      src: src,
+      Titre: Titles[index],
+      ClassName: Classes[index],
+      Description: Descriptions[index] || "", // fallback vide
+      Lien: Links[index]
+    };
+  });
 
   let CurrentIndex = 0;
   let intervalID = null;
@@ -76,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
       stopAuto();
       CurrentIndex = i;
       ChangeImage(CurrentIndex);
-      if (Details) Details.classList.add('show'); // opacity + transform
+      if (Details) Details.classList.add('show');
       if (hoverTimeout) { clearTimeout(hoverTimeout); hoverTimeout = null; }
     };
 
@@ -91,11 +87,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 1000);
     };
 
-    // Hover
     elm.addEventListener("mouseenter", enter);
     elm.addEventListener("mouseleave", leave);
 
-    // Clic
     elm.addEventListener("click", () => {
       window.location.href = Images[i].Lien;
     });

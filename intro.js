@@ -1,4 +1,222 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+  if  (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  introBtnReducedMotion();
+  fullPhraseEnd();
+  return;
+  } else {
+    typingNormal();
+  }
+});// INTRO BUTTON 
+
+
+function introBtnReducedMotion() {
+  const introText = document.querySelector('.intro-text');
+  const accueil = document.getElementById('accueil-content');
+  const introBtn = document.querySelector('.intro-btn');
+  const introBG = document.querySelector('.intro-gradient-bg') || document.getElementById('intro-bg') || document.querySelector('.intro-bg');
+  if (!introText || !accueil) return;
+
+  const primary = introText.querySelector('p') || document.createElement('p');
+  if (!introText.contains(primary)) introText.appendChild(primary);
+
+
+  // Show button so user can always skip
+  if (introBtn) { introBtn.classList.add('show'); introBtn.setAttribute('aria-hidden', 'false'); }
+
+  let stopped = false;
+  function openCurtains() {
+    if (stopped) return;
+    stopped = true;
+    document.body.classList.add('grid-visible');
+    document.body.classList.remove('intro-running');
+    if (introBG) introBG.classList.add('open');
+    accueil.style.opacity = 1;
+    if (introBtn) {
+      introBtn.classList.remove('show');
+      introBtn.setAttribute('aria-hidden', 'true');
+      try { introBtn.setAttribute('disabled', 'true'); } catch (e) {}
+      setTimeout(() => { introBtn.style.display = 'none'; }, 500);
+    }
+    console.log('[intro] dismissed');
+  }
+
+  // skip via button — add `hide` class so it can be visually hidden immediately
+  if (introBtn) introBtn.addEventListener('click', () => { 
+    console.log('[intro] button click'); try { introBtn.classList.add('hide'); } catch (e) {} openCurtains(); 
+  }, { once: true });
+
+  // keyboard skip
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') {
+      console.log('[intro] keyboard dismiss', e.key);
+      openCurtains();
+    }
+  });
+
+
+  // fallback: if something blocks animation or the typing interval, ensure user can dismiss
+  setTimeout(() => {
+    if (!stopped) {
+      console.warn('[intro] fallback: enabling forced dismiss');
+      // ensure button still works
+      if (introBtn) {
+        try { introBtn.style.display = 'block'; introBtn.classList.add('show'); } catch (e) {}
+      }
+    }
+  }, 4000);
+}
+
+//TYPING ANIMATION WITH DELETION AND MULTI-PHRASE CYCLE
+function fullPhraseEnd() {
+  const introText = document.querySelector('.intro-text');
+  const introBtn = document.querySelector('.intro-btn');
+  if (!introText) return;
+
+  // phrases to cycle through
+  const phrases = ["Bienvenue à", "l'ExpoTim", "2026"];
+  // final assembled lines (map to .fp-line-1, .fp-line-2, .fp-line-3)
+  const finalLines = ["Bienvenue à", "ExpoTim", "2026"];
+
+  const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // create container for typing if not present
+  let fullPhrase = introText.querySelector('.full-phrase');
+  if (!fullPhrase) {
+    fullPhrase = document.createElement('span');
+    fullPhrase.className = 'full-phrase';
+    // create lines
+    finalLines.forEach((line, idx) => {
+      const el = document.createElement('span');
+      el.className = `fp-line fp-line-${idx+1}`;
+      fullPhrase.appendChild(el);
+    });
+    introText.appendChild(fullPhrase);
+  }
+
+  // typing element (single-line visible while cycling)
+  let typingEl = introText.querySelector('.typing-line');
+  if (!typingEl) {
+    typingEl = document.createElement('p');
+    typingEl.className = 'typing-line';
+    // create a holder for the typed text and a separate caret so we don't wipe the caret when
+    // manipulating textContent
+    const textHolder = document.createElement('span');
+    textHolder.className = 'typing-text';
+    const caret = document.createElement('span');
+    caret.className = 'typing-caret';
+    caret.setAttribute('aria-hidden', 'true');
+    typingEl.appendChild(textHolder);
+    typingEl.appendChild(caret);
+    introText.insertBefore(typingEl, introText.firstChild);
+  }
+
+  // helper: sleep
+  const wait = (ms) => new Promise(r => setTimeout(r, ms));
+
+  // abort if intro dismissed (body.grid-visible)
+  const aborted = () => document.body.classList.contains('grid-visible');
+
+  async function typeText(holder, text, speed = 60) {
+    holder.textContent = '';
+    for (let i = 0; i < text.length; i++) {
+      if (aborted()) return false;
+      holder.textContent += text[i];
+      await wait(speed + Math.floor(Math.random() * 40));
+    }
+    return true;
+  }
+
+  async function deleteText(holder, speed = 40) {
+    while (holder.textContent.length > 0) {
+      if (aborted()) return false;
+      holder.textContent = holder.textContent.slice(0, -1);
+      await wait(speed + Math.floor(Math.random() * 30));
+    }
+    return true;
+  }
+
+  // per-character reveal for final lines
+  function revealFinal() {
+    // populate fp lines with span.char wrappers
+    const lines = fullPhrase.querySelectorAll('.fp-line');
+    lines.forEach((lineEl, idx) => {
+      const text = finalLines[idx] || '';
+      lineEl.innerHTML = '';
+      for (const ch of text) {
+        const span = document.createElement('span');
+        span.className = `char ${ch === ' ' ? 'space' : ''}`.trim();
+        span.textContent = ch;
+        lineEl.appendChild(span);
+      }
+    });
+
+    // show container (CSS handles animation)
+    requestAnimationFrame(() => fullPhrase.classList.add('show'));
+
+    // stagger reveal per char
+    const revealDelay = 26;
+    lines.forEach((lineEl, lIdx) => {
+      const chars = Array.from(lineEl.querySelectorAll('.char'));
+      chars.forEach((c, i) => {
+        const d = revealDelay * (i + (lIdx * 6));
+        setTimeout(() => c.classList.add('visible'), d);
+      });
+    });
+  }
+
+  async function runSequence() {
+    if (prefersReduced) {
+      // show final immediately
+      // ensure typing element hidden and final revealed
+      typingEl.style.display = 'none';
+      revealFinal();
+      return;
+    }
+    const holder = typingEl.querySelector('.typing-text') || typingEl;
+    const caret = typingEl.querySelector('.typing-caret');
+
+    for (let p = 0; p < phrases.length; p++) {
+      const ok = await typeText(holder, phrases[p]);
+      if (!ok) return;
+      // small pause after typing each word
+      await wait(600 + Math.floor(Math.random() * 300));
+      // delete the word completely (per-word deletion illusion)
+      const ok2 = await deleteText(holder);
+      if (!ok2) return;
+      // brief pause before next word
+      await wait(220);
+    }
+
+    // after cycling words, reveal assembled full phrase
+    typingEl.classList.add('fade-out');
+    await wait(360);
+    typingEl.style.display = 'none';
+    revealFinal();
+  }
+
+  // start animation, but stop if intro already dismissed
+  if (!aborted()) runSequence().catch((e) => console.error('[intro] typing error', e));
+
+  // ensure we don't keep timers running when user dismisses via skip
+  const observer = new MutationObserver(() => {
+    if (aborted()) {
+      // reveal final quickly
+      typingEl.style.display = 'none';
+      fullPhrase.classList.add('show');
+      // reveal all chars immediately
+      fullPhrase.querySelectorAll('.char').forEach(c => c.classList.add('visible'));
+      observer.disconnect();
+    }
+  });
+  observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+  introBtn.addEventListener('click', () => { 
+    fullPhrase.style.display = 'none';
+  });
+}
+
+function typingNormal() {
   const rideauG = document.querySelector('.rideau.gauche');
   const rideauD = document.querySelector('.rideau.droite');
   const introText = document.querySelector('.intro-text');
@@ -76,6 +294,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Attach an early click handler so users can skip the animation at any time
     if (introBtn) {
       introBtn.addEventListener('click', () => {
+        try { introBtn.classList.add('hide'); } catch (e) {}
         openCurtains();
       }, { once: true });
     }
@@ -233,16 +452,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // start typing
   //setTimeout(typeStep, 80); // small initial delay for effect
-});
-
-
-
-  /* Démarrer l'animation
-  setTimeout(() => {
-      rideauG.classList.add('open');
-      rideauD.classList.add('open');
-      introText.classList.add('fade-out');
-      accueil.style.opacity = 1; // révèle progressivement le contenu
-  }, 3000);
-}); */
+}
 

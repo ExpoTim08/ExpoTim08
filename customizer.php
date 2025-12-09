@@ -478,5 +478,53 @@ function expoTim_customize_register($wp_customize) {
         'settings' => 'expoTim_contact_dest_email_9',
         'type'     => 'text',
     ));
+
+   $wp_customize->add_section('expoTim_carrousel_section', array(
+    'title'       => __('Carrousel Images', 'expotim'),
+    'priority'    => 30,
+    'description' => __('Ajoutez les 3 images du carrousel et leurs descriptions.', 'expotim'),
+));
+
+for ($i = 1; $i <= 3; $i++) {
+
+    // =======================
+    // IMAGE
+    // =======================
+    $image_setting = "expotim_carrousel_image_$i";
+
+    $wp_customize->add_setting($image_setting, array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+
+    $wp_customize->add_control(new WP_Customize_Image_Control(
+        $wp_customize,
+        $image_setting,
+        array(
+            'label'    => sprintf(__('Image %d', 'expotim'), $i),
+            'section'  => 'expoTim_carrousel_section',
+            'settings' => $image_setting,
+        )
+    ));
+
+    // =======================
+    // DESCRIPTION
+    // =======================
+    $desc_setting = "expotim_carrousel_description_$i";
+
+    $wp_customize->add_setting($desc_setting, array(
+        'default'           => '',
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ));
+
+    $wp_customize->add_control($desc_setting, array(
+        'label'    => sprintf(__('Description %d', 'expotim'), $i),
+        'section'  => 'expoTim_carrousel_section',
+        'type'     => 'textarea',
+    ));
+}
+
 }
 add_action('customize_register', 'expoTim_customize_register');
+
+

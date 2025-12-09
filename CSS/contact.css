@@ -94,21 +94,21 @@ h1, h2, h3 {
 /******************* CSS Contact général **********************/
 .contactComplet{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
-  height: 350px;
+  height: 950px;
 }
 
 .conteneurProfils{
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 2rem;
 }
 
 .messagePageContact{
     text-align: center;
-    padding-bottom: 2rem;
 }
 
 .messagePageContact img{
@@ -126,6 +126,20 @@ h1, h2, h3 {
   padding-left: 4px;
   padding-right: 4px;
   border-radius: 3px;
+}
+
+.photo{
+  display: inline-block;
+  width: 300px;
+  height: 370px;
+  object-fit: cover;
+}
+
+.imgProf{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
 }
 
 input[type="button"] {
@@ -213,10 +227,11 @@ input[type="button"] {
   
   .messagePageContact{
     width: 22rem;
+    padding-bottom: 3rem;
   }
 
   .contactComplet{
-    height: 920px;
+    height: 2400px;
   }
 
   .conteneurProfils{
@@ -294,17 +309,23 @@ input[type="button"] {
     opacity: 0.3;
   }
 
+  .contactComplet{
+    height: 1500px;
+  }
+
   .messagePageContact{
     width: 32rem;
+    padding-bottom: 2rem;
   }
 
   .conteneurProfils{
-    gap: 2rem;
     flex-wrap: wrap;
   }
 
   .profilCaroline, .profilStephanie, .profilManon, .profilCamille{
-  width: 20vw;
+    max-width: 350px;
+    min-width: 290px;
+    height: 500px;
   }
 }
 
@@ -380,9 +401,10 @@ input[type="button"] {
     gap: 30px;
   }
 /********** Section contactComplet ***********/
+
   .contactComplet{
-    padding-bottom: 4rem;
-  }  
+    height: 950px;
+  }
 
   input[type="button"]:hover {
     background-color: rgb(34, 34, 34);
@@ -391,6 +413,7 @@ input[type="button"] {
 
   .messagePageContact{
     width: auto;
+    padding-bottom: 0;
   }
 
   .conteneurProfils{
@@ -400,6 +423,8 @@ input[type="button"] {
   .profilCaroline, .profilStephanie, .profilManon, .profilCamille{
     width: 100%;
     height: 100%;
+    min-width: none;
+    max-width: none;
   }
   
 }

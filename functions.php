@@ -386,5 +386,45 @@ function refresh_home_projects() {
 add_action('wp_ajax_refresh_projects', 'refresh_home_projects');
 add_action('wp_ajax_nopriv_refresh_projects', 'refresh_home_projects');
 
+function expotim_localize_carrousel_script() {
+
+    wp_enqueue_script(
+        'accueil',
+        get_template_directory_uri() . '/accueil.js', // note le slash avant le nom du fichier
+        array('jquery'),
+        null,
+        true
+    );
+
+    wp_localize_script('accueil', 'themeVars', array(
+        'ajaxUrl' => admin_url('admin-ajax.php'),
+
+        // Lien vers les pages (tu peux remplacer par l'URL complète si tu veux)
+        'pageFinissants' => get_permalink( get_page_by_path('finissants') ),
+        'pageArcade'      => get_permalink( get_page_by_path('arcade') ),
+        'pageJourTerre'   => get_permalink( get_page_by_path('graphisme') ),
+
+        // IMAGES DU CARROUSEL
+        'carrouselImages' => array(
+            get_theme_mod('expotim_carrousel_image_1', ''),
+            get_theme_mod('expotim_carrousel_image_2', ''),
+            get_theme_mod('expotim_carrousel_image_3', ''),
+        ),
+
+        // DESCRIPTIONS DU CARROUSEL
+        'carrouselDescriptions' => array(
+            get_theme_mod('expotim_carrousel_description_1', ''),
+            get_theme_mod('expotim_carrousel_description_2', ''),
+            get_theme_mod('expotim_carrousel_description_3', ''),
+        ),
+    ));
+}
+add_action('wp_enqueue_scripts', 'expotim_localize_carrousel_script');
+
+
+
+
+
+
 
 
