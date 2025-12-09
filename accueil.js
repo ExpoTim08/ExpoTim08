@@ -1,28 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
   // ================= Carrousel Images =================
-  const Images = [
-    {
-      src: `${themeVars.themeUrl}/Images/Finissants.png`,
-      Titre: "FINISSANTS",
-      ClassName: "finissants",
-      Description: "Les finissants de la Technique d’intégration multimédia présentent le projet synthèse de leur parcours.",
-      Lien: themeVars.pageFinissants
-    },
-    {
-      src: `${themeVars.themeUrl}/Images/ExpoTim.png`,
-      Titre: "ARCADE",
-      ClassName: "arcade",
-      Description: "L’Arcade de l’expoTIM présente les prototypes de jeux vidéo créés par les étudiants de deuxième année en Technique d’intégration multimédia.",
-      Lien: themeVars.pageArcade
-    },
-    {
-      src: `${themeVars.themeUrl}/Images/ImageGraphisme/Graphisme.png`,
-      Titre: "GRAPHISME",
-      ClassName: "jour-terre",
-      Description: "Dans le cours Conception graphique et imagerie vectorielle, les étudiants de première année ont réalisé une recherche sur un enjeu environnemental.",
-      Lien: themeVars.pageJourTerre
-    }
-  ];
+  // carrouselImages = ["url1", "url2", "url3"] venant du WP Customizer
+  const Images = carrouselImages.map((src, index) => {
+    const Titles = ["FINISSANTS", "ARCADE", "GRAPHISME"];
+    const Classes = ["finissants", "arcade", "jour-terre"];
+    const Descriptions = [
+      "Les finissants de la Technique d’intégration multimédia présentent le projet synthèse de leur parcours.",
+      "L’Arcade de l’expoTIM présente les prototypes de jeux vidéo créés par les étudiants de deuxième année en Technique d’intégration multimédia.",
+      "Dans le cours Conception graphique et imagerie vectorielle, les étudiants de première année ont réalisé une recherche sur un enjeu environnemental."
+    ];
+    const Links = [
+      themeVars.pageFinissants,
+      themeVars.pageArcade,
+      themeVars.pageJourTerre
+    ];
+
+    return {
+      src: src,                     // image du customizer
+      Titre: Titles[index],         // titres déjà existants
+      ClassName: Classes[index],    // classes existantes
+      Description: Descriptions[index],
+      Lien: Links[index]
+    };
+  });
 
   let CurrentIndex = 0;
   let intervalID = null;
@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
       stopAuto();
       CurrentIndex = i;
       ChangeImage(CurrentIndex);
-      if (Details) Details.classList.add('show'); // opacity + transform
+      if (Details) Details.classList.add('show');
       if (hoverTimeout) { clearTimeout(hoverTimeout); hoverTimeout = null; }
     };
 
@@ -91,11 +91,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 1000);
     };
 
-    // Hover
     elm.addEventListener("mouseenter", enter);
     elm.addEventListener("mouseleave", leave);
 
-    // Clic
     elm.addEventListener("click", () => {
       window.location.href = Images[i].Lien;
     });
@@ -199,31 +197,26 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function equalizeProjectHeights() {
-  const cards = document.querySelectorAll('.projet-populaire');
-  let maxHeight = 0;
+    const cards = document.querySelectorAll('.projet-populaire');
+    let maxHeight = 0;
 
-  // Reset height first (important for resize)
-  cards.forEach(card => {
-    card.style.height = 'auto';
-  });
+    cards.forEach(card => {
+      card.style.height = 'auto';
+    });
 
-  // Measure
-  cards.forEach(card => {
-    const height = card.offsetHeight;
-    if (height > maxHeight) {
-      maxHeight = height;
-    }
-  });
+    cards.forEach(card => {
+      const height = card.offsetHeight;
+      if (height > maxHeight) {
+        maxHeight = height;
+      }
+    });
 
-  // Apply
-  cards.forEach(card => {
-    card.style.height = maxHeight + 'px';
-  });
-}
+    cards.forEach(card => {
+      card.style.height = maxHeight + 'px';
+    });
+  }
 
-// Run on load
-window.addEventListener('load', equalizeProjectHeights);
+  window.addEventListener('load', equalizeProjectHeights);
+  window.addEventListener('resize', equalizeProjectHeights);
 
-// Run on resize
-window.addEventListener('resize', equalizeProjectHeights);
 });

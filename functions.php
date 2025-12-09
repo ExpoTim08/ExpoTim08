@@ -386,5 +386,31 @@ function refresh_home_projects() {
 add_action('wp_ajax_refresh_projects', 'refresh_home_projects');
 add_action('wp_ajax_nopriv_refresh_projects', 'refresh_home_projects');
 
+function expoTim_localize_carrousel_images() {
+
+    // Récupère les 3 images du Customizer
+    $images = array();
+    for ($i = 1; $i <= 3; $i++) {
+        $url = get_theme_mod("expotim_carrousel_image_$i", '');
+        if ($url) $images[] = esc_url($url);
+    }
+
+    // Charge le script si non chargé
+    if (!wp_script_is('accueil-js', 'enqueued')) {
+        wp_enqueue_script(
+            'accueil-js',
+            get_template_directory_uri() . '/js/accueil.js',
+            array(),
+            null,
+            true
+        );
+    }
+
+    // Injecte les images dans le JS
+    wp_localize_script('accueil-js', 'carrouselImages', $images);
+}
+add_action('wp_enqueue_scripts', 'expoTim_localize_carrousel_images');
+
+
 
 
