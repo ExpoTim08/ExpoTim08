@@ -1410,4 +1410,11 @@
     margin-top: 3rem;
   }
 }
+@media screen and (min-width: 1368px) {
+
+  .arcade-details {
+    left: 250px;
+  }
+}
+  
 
