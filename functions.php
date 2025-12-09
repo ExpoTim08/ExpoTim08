@@ -22,6 +22,9 @@ function expo_enqueue_assets() {
     wp_enqueue_script('accueil-js', $theme_uri . '/accueil.js', array('jquery'), null, true);
     wp_enqueue_script('404-js', $theme_uri . '/404.js', array('jquery'), null, true);
 
+    // --- Script ajusteTitre.js ---
+    wp_enqueue_script('ajuste-titre', $theme_uri . '/ajusteTitre.js', array(), null, true);
+
     // --- Passage des variables JS depuis WordPress ---
     // wp_localize_script('accueil-js', 'themeVars', array(
     //     'themeUrl' => $theme_uri,
@@ -81,6 +84,7 @@ function expo_enqueue_assets() {
     if (is_page_template('projetGraphisme.php')) {
         wp_enqueue_style('style-projet-graphisme', $theme_uri . '/CSS/projetGraphisme.css');
     }
+
     if (is_search()) wp_enqueue_style('style-search', $theme_uri . '/CSS/search.css');
     if (is_page_template('contact.php') || is_page_template('ar.php')) wp_enqueue_style('style-contact', $theme_uri . '/CSS/contact.css');
     if (is_404() || is_page_template('ar.php')) wp_enqueue_style('style-404', $theme_uri . '/CSS/404.css');

@@ -262,6 +262,84 @@
   }
 
   .header-margin { height: 0px; }
+
+
+  /*lorque le menu est ouvert, elle ne prend que 1/3 de la page en horizontale*/
+  @media screen and (min-width: 767px) and (max-width: 1246px) {
+
+    .menu-page.open .menu-search-mobile {
+      margin: 3.8em 0 0 0;
+    }
+
+    /* Ajuster la bordure droite lorsque le menu est ouvert */
+    body.menu-open .border.droite {
+      bottom: 0; /* leave header space (adjust if your header is taller) */
+      height: 0;
+      transition: top 300ms ease, height 300ms ease;
+    }
+
+    /* (Animation) Animer le menu bruger en tablette */
+    .menu-burger {
+      transform: translateX(0);
+      transition: transform 300ms cubic-bezier(.2,.8,.2,1), opacity 200ms ease;
+      will-change: transform, opacity;
+    }
+
+    /* (Animation) Lorsque le menu est ouvert, déplacer le burger vers la droite  */
+    body.menu-open .menu-burger {
+      transform: translateX(100%);
+    }
+
+    .site-header {
+      z-index: 10000;
+    }
+
+    /* Menu translation du coté avec animation on click avec le menu-burger  */
+    .menu-page {
+      width: clamp(300px, 33.333vw, 500px); 
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: auto;
+      height: 100vh;
+      box-shadow: -4px 0 20px rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      /* menu est caché */
+      transform: translateX(100%);
+      transition: transform 320ms cubic-bezier(.2,.8,.2,1);
+      pointer-events: none;
+      display: flex; /* ensure layout is preserved for transform */
+      flex-direction: column;
+    }
+
+    .menu-page.open {
+      transform: translateX(0);
+      pointer-events: auto;
+    }
+
+
+    .menu-content {
+      padding-top: 5em;
+    }
+
+    .menu li {
+      font-size: clamp(14px, 3.5vw, 24px);
+    }
+
+    .menu li a {
+      padding-left: 0.5em;
+    }
+  }
+
+  /* Ajuster le padding du header entre 1024px et 1246px */
+  @media screen and (min-width: 1024px) and (max-width: 1246px) {
+    .site-header
+    {
+        padding: 20px 3em 1em 3em;
+    }
+  }
+
 }
 
 /*------------- HEADER DESKTOP --------------*/

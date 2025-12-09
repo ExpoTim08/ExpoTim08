@@ -38,12 +38,7 @@ get_header();
     <div class="conteneur-description-graphisme">
       <p class="description-titre">Description</p>
       <p class="description-texte">
-        Dans le cours <strong><em>Conception graphique et imagerie vectorielle</em></strong>,
-        les étudiants de première année ont réalisé une recherche sur un enjeu environnemental.
-        À partir de cette recherche, ils ont imaginé un jeu vidéo ou une application permettant
-        de sensibiliser la population à cet enjeu. Ils en ont conçu l’identité visuelle et l’ont
-        présentée sous forme d’affiche. Le code QR présent sur chaque affiche donne accès à une
-        présentation détaillant le projet proposé.
+       <?php echo wp_kses_post(get_theme_mod('expoTim_graphisme_description')); ?>
       </p>
     </div>
   </section>

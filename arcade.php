@@ -36,7 +36,7 @@ get_header();
     <div class="conteneur-description-arcade">
       <p class="description-titre">Description</p>
       <p class="description-texte">
-        L’Arcade de l’expoTIM présente les prototypes de jeux vidéo créés par les étudiants de deuxième année en Technique d’intégration multimédia. Réalisés dans le cadre du cours <strong>Création de jeu en équipe</strong>, ces projets sont le fruit d’un processus de production complet : de la conception et la planification à la création des médias, de la programmation aux tests de qualité jusqu’au produit fini. 
+       <?php echo wp_kses_post(get_theme_mod('expoTim_arcade_description')); ?>
       </p>
     </div>
   </section>
