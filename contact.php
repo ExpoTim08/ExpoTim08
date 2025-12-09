@@ -129,41 +129,41 @@ require("global.php");
             <div class="conteneurProfils">
                 <div class="profilCaroline">
                     <span class="photo">
-                        <img class="img-personne" src="<?php echo get_template_directory_uri(); ?>/Images/Caroline.png" alt="Photo Caroline Martin">
+                        <img class="img-personne" src="<?php echo get_template_directory_uri(); ?>/Images/ImagesEnseignants/PhotoCaroline.png" alt="Photo Caroline Martin">
                     </span>
                     <h3 class="nom">Caroline Martin</h3>
                     <span class="conteneurBouton">
-                        <input type="button" onclick="window.open('https://teams.microsoft.com/v2/');" target="blank" value="Rejoindre">
+                        <input type="button" onclick="window.open('https://teams.microsoft.com/v2/');" target="blank" value="Rejoindre par Teams">
                     </span>
                 </div>
 
                 <div class="profilStephanie">
                     <span class="photo">
-                        <img class="img-personne" src="<?php echo get_template_directory_uri(); ?>/Images/Stéphanie.png" alt="Photo Stéphanie Pouliot">
+                        <img class="img-personne" src="<?php echo get_template_directory_uri(); ?>/Images/ImagesEnseignants/PhotoStephanie.png" alt="Photo Stéphanie Pouliot">
                     </span>
                     <h3 class="nom">Stéphanie Pouliot</h3>
                     <span class="conteneurBouton">
-                        <input type="button" onclick="window.open('https://teams.microsoft.com/v2/');" target="blank" value="Rejoindre">
+                        <input type="button" onclick="window.open('https://teams.microsoft.com/v2/');" target="blank" value="Rejoindre par Teams">
                     </span>
                 </div>
 
                 <div class="profilManon">
                     <span class="photo">
-                        <img class="img-personne" src="<?php echo get_template_directory_uri(); ?>/Images/Manon.png" alt="Photo Manon Bertrand">
+                        <img class="img-personne" src="<?php echo get_template_directory_uri(); ?>/Images/ImagesEnseignants/PhotoManon.png" alt="Photo Manon Bertrand">
                     </span>
                     <h3 class="nom">Manon Bertrand</h3>
                     <span class="conteneurBouton">
-                        <input type="button" onclick="window.open('https://teams.microsoft.com/v2/');" target="blank" value="Rejoindre">
+                        <input type="button" onclick="window.open('https://teams.microsoft.com/v2/');" target="blank" value="Rejoindre par Teams">
                     </span>
                 </div>
 
                 <div class="profilCamille">
                     <span class="photo">
-                        <img class="img-personne" src="<?php echo get_template_directory_uri(); ?>/Images/Manon.png" alt="Photo Camille Lagace-Labonte">
+                        <img class="img-personne" src="<?php echo get_template_directory_uri(); ?>/Images/ImagesEnseignants/Camille.png" alt="Photo Camille Lagace-Labonte">
                     </span>
                     <h3 class="nom">Camille Lagacé-Labonté</h3>
                     <span class="conteneurBouton">
-                        <input type="button" onclick="window.open('https://teams.microsoft.com/v2/');" target="blank" value="Rejoindre">
+                        <input type="button" onclick="window.open('https://teams.microsoft.com/v2/');" target="blank" value="Rejoindre par Teams">
                     </span>
                 </div>
             </div>
