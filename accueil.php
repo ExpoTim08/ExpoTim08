@@ -232,10 +232,14 @@ get_header();
           </span>
           <span class="nom">Lîna Bensenouci</span>
           <span class="role">Chargée de projet</span>
-          <span class="petits-carre"></span>
+          <span class="petits-carre">
+            <a href="https://www.behance.net/Linabens">Portfolio</a>
+          </span>
         </div>
         <div class="carte-equipe-2">
-          <span class="photo"></span>
+          <span class="photo">
+            <a href="https://www.behance.net/petersongermain">Portfolio</a>
+          </span>
           <span class="nom">Peterson Germain</span>
           <span class="role">CSS Designer</span>
           <span class="petits-carre">
@@ -250,10 +254,14 @@ get_header();
           </span>
           <span class="nom">Matilda Kang</span>
           <span class="role">Cheffe Design</span>
-          <span class="petits-carre"></span>
+          <span class="petits-carre">
+            <a href="https://www.behance.net/matildakang">Portfolio</a>
+          </span>
         </div>
         <div class="carte-equipe-4">
-          <span class="photo"></span>
+          <span class="photo">
+            <a href="https://www.behance.net/remyroger1">Portfolio</a>
+          </span>
           <span class="nom">Rémy Roger</span>
           <span class="role">Chef Programmation</span>
           <span class="petits-carre">
@@ -268,7 +276,9 @@ get_header();
           </span>
           <span class="nom">Alexis David</span>
           <span class="role">Assistant Designer</span>
-          <span class="petits-carre"></span>
+          <span class="petits-carre">
+            <a href="https://www.behance.net/gallery/235748411/Portfolio">Portfolio</a>
+          </span>
         </div>
       </div>
     </div>
