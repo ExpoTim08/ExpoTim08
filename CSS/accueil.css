@@ -465,18 +465,6 @@
 
 /********************************** CSS Section Projets Populaire **********************************/
 
-.projets .projet-populaire-finissant,
-.projets .projet-populaire-arcade,
-.projets .projet-populaire-jour-terre {
-  opacity: 0;
-  transform: scale(0.8) rotate(-5deg);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.projets .projet-visible {
-  opacity: 1;
-  transform: scale(1) rotate(0deg);
-}
 
 
  .projets-populaire {

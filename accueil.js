@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // ================= Carrousel Images =================
   const Images = [
     {
       src: `${themeVars.themeUrl}/Images/Finissants.png`,
@@ -138,7 +139,11 @@ document.addEventListener("DOMContentLoaded", () => {
     handleResponsiveDetails();
   });
 
-  // ================= Animation Projets =================
+  // ================= Animation PCA Projets =================
+  function isMobileOrTablet() {
+    return window.innerWidth <= 1366;
+  }
+
   let observer;
   function animateProjets() {
     const projets = container.querySelectorAll(":scope > div");
@@ -150,11 +155,11 @@ document.addEventListener("DOMContentLoaded", () => {
           projets.forEach((projet, i) => {
             setTimeout(() => projet.classList.add("projet-visible"), i * 150);
           });
-        } else {
+        } else if (!isMobileOrTablet()) {
           projets.forEach(projet => projet.classList.remove("projet-visible"));
         }
       });
-    }, { threshold: 0.2 });
+    }, { threshold: isMobileOrTablet() ? 0.1 : 0.2 });
 
     projets.forEach(projet => observer.observe(projet));
   }
@@ -198,6 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <img class="image-populaire-jour-terre" src="${graphisme.url}" alt="${graphisme.title}">
           </div>
         `;
+
         // Lancer l'animation après injection
         requestAnimationFrame(animateProjets);
       })
