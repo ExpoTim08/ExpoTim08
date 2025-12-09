@@ -1,14 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   // ================= Carrousel Images =================
-  // carrouselImages = ["url1", "url2", "url3"] venant du WP Customizer
-  const Images = carrouselImages.map((src, index) => {
+  // On récupère les images et descriptions du Customizer via themeVars
+  const Images = themeVars.carrouselImages.map((src, index) => {
     const Titles = ["FINISSANTS", "ARCADE", "GRAPHISME"];
     const Classes = ["finissants", "arcade", "jour-terre"];
-    const Descriptions = [
-      "Les finissants de la Technique d’intégration multimédia présentent le projet synthèse de leur parcours.",
-      "L’Arcade de l’expoTIM présente les prototypes de jeux vidéo créés par les étudiants de deuxième année en Technique d’intégration multimédia.",
-      "Dans le cours Conception graphique et imagerie vectorielle, les étudiants de première année ont réalisé une recherche sur un enjeu environnemental."
-    ];
+    const Descriptions = themeVars.carrouselDescriptions; // <-- récupéré du Customizer
     const Links = [
       themeVars.pageFinissants,
       themeVars.pageArcade,
@@ -16,10 +12,10 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     return {
-      src: src,                     // image du customizer
-      Titre: Titles[index],         // titres déjà existants
-      ClassName: Classes[index],    // classes existantes
-      Description: Descriptions[index],
+      src: src,
+      Titre: Titles[index],
+      ClassName: Classes[index],
+      Description: Descriptions[index] || "", // fallback vide
       Lien: Links[index]
     };
   });
