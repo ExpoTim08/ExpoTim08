@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let CurrentIndex = 0;
   let intervalID = null;
   let hoverTimeout = null;
-  const hoverListeners = [];
 
   const Image = document.getElementById("image-carroussel");
   const Subtitle = document.querySelector(".sous-titre-carroussel");
@@ -71,13 +70,13 @@ document.addEventListener("DOMContentLoaded", () => {
   ChangeImage(CurrentIndex);
   startAuto();
 
-  // ================= Hover arcade-details =================
+  // ================= Hover & Click arcade-details =================
   ChoixElements.forEach((elm, i) => {
     const enter = () => {
       stopAuto();
       CurrentIndex = i;
       ChangeImage(CurrentIndex);
-      if (Details) Details.classList.add('show'); // juste opacity + transform
+      if (Details) Details.classList.add('show'); // opacity + transform
       if (hoverTimeout) { clearTimeout(hoverTimeout); hoverTimeout = null; }
     };
 
@@ -92,8 +91,14 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 1000);
     };
 
+    // Hover
     elm.addEventListener("mouseenter", enter);
     elm.addEventListener("mouseleave", leave);
+
+    // Clic
+    elm.addEventListener("click", () => {
+      window.location.href = Images[i].Lien;
+    });
   });
 
   // ================= Responsiveness arcade-details =================
