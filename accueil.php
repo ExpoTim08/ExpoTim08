@@ -179,7 +179,7 @@ get_header();
   ?>
 
     <!-- Projet Finissants -->
-    <div class="projet-populaire-finissant">
+    <div class="projet-populaire-finissant projet-aléatoire">
       <span class="titre"><?php echo $finissantItems[0]['title']; ?></span>
       <span class="bouton">
         <a href="<?php echo site_url('/index.php/projet-finissant/?projet_id=' . $finissantItems[0]['id']); ?>">>></a>
@@ -190,7 +190,7 @@ get_header();
     </div>
 
     <!-- Exemple projet Arcade -->
-    <div class="projet-populaire-arcade">
+    <div class="projet-populaire-arcade projet-aléatoire">
       <span class="titre"><?php echo $arcadeItems[0]['title']; ?></span>
       <span class="bouton">
         <a href="<?php echo site_url('/index.php/projet-arcade/?projet_id=' . $arcadeItems[0]['id']); ?>">>></a>
@@ -201,7 +201,7 @@ get_header();
     </div>
 
     <!-- Projet Jour de la Terre -->
-    <div class="projet-populaire-jour-terre">
+    <div class="projet-populaire-jour-terre projet-aléatoire">
       <span class="titre"><?php echo $graphismeItems[0]['title']; ?></span>
       <span class="bouton">
         <a href="<?php echo site_url('/index.php/projet-graphisme/?projet_id=' . $graphismeItems[0]['id']); ?>">>></a>

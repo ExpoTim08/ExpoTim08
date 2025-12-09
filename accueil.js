@@ -197,4 +197,33 @@ document.addEventListener("DOMContentLoaded", () => {
     updateFocus();
     setInterval(updateFocus, 3000);
   }
+
+  function equalizeProjectHeights() {
+  const cards = document.querySelectorAll('.projet-populaire');
+  let maxHeight = 0;
+
+  // Reset height first (important for resize)
+  cards.forEach(card => {
+    card.style.height = 'auto';
+  });
+
+  // Measure
+  cards.forEach(card => {
+    const height = card.offsetHeight;
+    if (height > maxHeight) {
+      maxHeight = height;
+    }
+  });
+
+  // Apply
+  cards.forEach(card => {
+    card.style.height = maxHeight + 'px';
+  });
+}
+
+// Run on load
+window.addEventListener('load', equalizeProjectHeights);
+
+// Run on resize
+window.addEventListener('resize', equalizeProjectHeights);
 });
