@@ -129,7 +129,7 @@ require("global.php");
             <div class="conteneurProfils">
                 <div class="profilCaroline">
                     <span class="photo">
-                        <img class="img-personne" src="<?php echo get_template_directory_uri(); ?>/Images/ImagesEnseignants/PhotoCaroline.png" alt="Photo Caroline Martin">
+                        <img class="imgProf" src="<?php echo get_template_directory_uri(); ?>/Images/ImagesEnseignants/PhotoCarolineReframe.png" alt="Photo Caroline Martin">
                     </span>
                     <h3 class="nom">Caroline Martin</h3>
                     <span class="conteneurBouton">
@@ -139,7 +139,7 @@ require("global.php");
 
                 <div class="profilStephanie">
                     <span class="photo">
-                        <img class="img-personne" src="<?php echo get_template_directory_uri(); ?>/Images/ImagesEnseignants/PhotoStephanie.png" alt="Photo Stéphanie Pouliot">
+                        <img class="imgProf" src="<?php echo get_template_directory_uri(); ?>/Images/ImagesEnseignants/PhotoStephanieReframe.png" alt="Photo Stéphanie Pouliot">
                     </span>
                     <h3 class="nom">Stéphanie Pouliot</h3>
                     <span class="conteneurBouton">
@@ -149,7 +149,7 @@ require("global.php");
 
                 <div class="profilManon">
                     <span class="photo">
-                        <img class="img-personne" src="<?php echo get_template_directory_uri(); ?>/Images/ImagesEnseignants/PhotoManon.png" alt="Photo Manon Bertrand">
+                        <img class="imgProf" src="<?php echo get_template_directory_uri(); ?>/Images/ImagesEnseignants/PhotoManonReframe.png" alt="Photo Manon Bertrand">
                     </span>
                     <h3 class="nom">Manon Bertrand</h3>
                     <span class="conteneurBouton">
@@ -159,7 +159,7 @@ require("global.php");
 
                 <div class="profilCamille">
                     <span class="photo">
-                        <img class="img-personne" src="<?php echo get_template_directory_uri(); ?>/Images/ImagesEnseignants/Camille.png" alt="Photo Camille Lagace-Labonte">
+                        <img class="imgProf" src="<?php echo get_template_directory_uri(); ?>/Images/ImagesEnseignants/Camille.png" alt="Photo Camille Lagace-Labonte">
                     </span>
                     <h3 class="nom">Camille Lagacé-Labonté</h3>
                     <span class="conteneurBouton">
