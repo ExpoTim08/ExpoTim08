@@ -31,7 +31,12 @@ require("global.php");
         $allowed_emails = array_filter([
             get_theme_mod('expoTim_contact_dest_email_1'),
             get_theme_mod('expoTim_contact_dest_email_2'),
-            get_theme_mod('expoTim_contact_dest_email_3')
+            get_theme_mod('expoTim_contact_dest_email_3'),
+            get_theme_mod('expoTim_contact_dest_email_4'),
+            get_theme_mod('expoTim_contact_dest_email_5'),
+            get_theme_mod('expoTim_contact_dest_email_6'),
+            get_theme_mod('expoTim_contact_dest_email_7'),
+            get_theme_mod('expoTim_contact_dest_email_8')
         ]);
 
         // Initialisation
