@@ -663,6 +663,7 @@
     color: black;
     padding-top: 0.4em;
     padding-left: 0.4em;
+    text-align: center;
   }
 
   .carte-equipe > .role,
@@ -672,6 +673,8 @@
     border: 1px var(--border-color-special) solid;
     padding-top: 0.4em;
     padding-left: 0.4em;
+    text-align: center;
+    font-size: small;
   }
 
   .carte-equipe > .petits-carre,
@@ -694,6 +697,7 @@
     color: black;
     padding-top: 0.4em;
     padding-left: 0.4em;
+    text-align: center;
   }
 
   .carte-equipe-2 > .role,
@@ -702,6 +706,8 @@
     border: 1px var(--border-color-special) solid;
     padding-top: 0.4em;
     padding-left: 0.4em;
+    text-align: center;
+    font-size: small;
   }
 
   .carte-equipe-2 > .petits-carre,

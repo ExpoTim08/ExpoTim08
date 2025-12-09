@@ -223,42 +223,47 @@ get_header();
       <div class="cartes">
         <div class="carte-equipe">
           <span class="photo">
-            <img class="img-personne" src="<?php echo esc_url( get_theme_mod('expoTim_home_credit_img_1') ); ?>" alt="Photo de Lîna Bensenouci">
+            <!-- <img class="img-personne" src="<?php echo esc_url( get_theme_mod('expoTim_home_credit_img_1') ); ?>" alt="Photo de Lîna Bensenouci"> -->
+            <img class="img-personne" src="<?php echo get_template_directory_uri(); ?>/Images/ImageSimpson/Lina.png" alt="">
           </span>
           <span class="nom">Lîna Bensenouci</span>
-          <span class="role">Rôle</span>
+          <span class="role">Chargée de projet</span>
           <span class="petits-carre"></span>
         </div>
         <div class="carte-equipe-2">
           <span class="photo"></span>
           <span class="nom">Peterson Germain</span>
-          <span class="role">Rôle</span>
+          <span class="role">CSS Designer</span>
           <span class="petits-carre">
-            <img class="img-personne" src="<?php echo esc_url( get_theme_mod('expoTim_home_credit_img_2') ); ?>" alt="Photo de Peterson Germain">
+            <!-- <img class="img-personne" src="<?php echo esc_url( get_theme_mod('expoTim_home_credit_img_2') ); ?>" alt="Photo de Peterson Germain"> -->
+             <img class="img-personne" src="<?php echo get_template_directory_uri(); ?>/Images/ImageSimpson/Peterson.jpg" alt="">
           </span>
         </div>
         <div class="carte-equipe-3">
           <span class="photo">
-            <img class="img-personne" src="<?php echo esc_url( get_theme_mod('expoTim_home_credit_img_3') ); ?>" alt="Photo de Matilda Kang">
+            <!-- <img class="img-personne" src="<?php echo esc_url( get_theme_mod('expoTim_home_credit_img_3') ); ?>" alt="Photo de Matilda Kang"> -->
+             <img class="img-personne" src="<?php echo get_template_directory_uri(); ?>/Images/ImageSimpson/Matilda.png" alt="">
           </span>
           <span class="nom">Matilda Kang</span>
-          <span class="role">Rôle</span>
+          <span class="role">Cheffe Design</span>
           <span class="petits-carre"></span>
         </div>
         <div class="carte-equipe-4">
           <span class="photo"></span>
           <span class="nom">Rémy Roger</span>
-          <span class="role">Rôle</span>
+          <span class="role">Chef Programmation</span>
           <span class="petits-carre">
-            <img class="img-personne" src="<?php echo esc_url( get_theme_mod('expoTim_home_credit_img_4') ); ?>" alt="Photo de Rémy Roger">
+            <!-- <img class="img-personne" src="<?php echo esc_url( get_theme_mod('expoTim_home_credit_img_4') ); ?>" alt="Photo de Rémy Roger"> -->
+            <img class="img-personne" src="<?php echo get_template_directory_uri(); ?>/Images/ImageSimpson/Remy.jpg" alt="">
           </span>
         </div>
         <div class="carte-equipe-5">
           <span class="photo">
-            <img class="img-personne" src="<?php echo esc_url( get_theme_mod('expoTim_home_credit_img_5') ); ?>" alt="Photo de Alexis David">
+            <!-- <img class="img-personne" src="<?php echo esc_url( get_theme_mod('expoTim_home_credit_img_5') ); ?>" alt="Photo de Alexis David"> -->
+            <img class="img-personne" src="<?php echo get_template_directory_uri(); ?>/Images/ImageSimpson/Alexis.png" alt="">
           </span>
           <span class="nom">Alexis David</span>
-          <span class="role">Rôle</span>
+          <span class="role">Virus</span>
           <span class="petits-carre"></span>
         </div>
       </div>
