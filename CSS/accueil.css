@@ -1047,7 +1047,8 @@
 .arcade-details {
   position: absolute;
   bottom: 0;
-  left: 180px;
+  top: 40%;
+  left: 12%;
   width: 100%;
   max-width: 900px;
   min-width: 180px;
