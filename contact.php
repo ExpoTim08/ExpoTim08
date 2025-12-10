@@ -122,7 +122,7 @@ require("global.php");
         <!-- ==================== Section Profils ==================== -->
         <section class="contactComplet">
             <div class="messagePageContact">
-                <h1>Contactez les gens en charge de</h1>
+                <h1>Contactez les membres ainsi que les gens en charge de</h1>
                 <img class="footer-logo-img" src="<?php echo get_template_directory_uri(); ?>/Images/Texte.png" alt="Logo de l'expo TIM">
             </div>
 
@@ -132,6 +132,7 @@ require("global.php");
                         <img class="imgProf" src="<?php echo get_template_directory_uri(); ?>/Images/ImagesEnseignants/PhotoCarolineReframe.png" alt="Photo Caroline Martin">
                     </span>
                     <h3 class="nom">Caroline Martin</h3>
+                    <p>Enseignant cadre</p>
                     <span class="conteneurBouton">
                         <input type="button" onclick="window.open('https://teams.microsoft.com/v2/');" target="blank" value="Rejoindre par Teams">
                     </span>
@@ -168,7 +169,6 @@ require("global.php");
                 </div>
             </div>
         </section>
-
     </div> <!-- /.pattern-background -->
 
     <?php get_footer(); // Appelle le footer ?>

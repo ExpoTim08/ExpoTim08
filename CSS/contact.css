@@ -220,7 +220,13 @@ input[type="button"] {
     opacity: 0.3;
   }
 
-  /********* Secttion pour Forum Contact **********/
+  /************ Section pour Forum Contact ************/
+  .formulaireContact{
+    max-width: 370px;
+  }
+
+
+  /********* Section pour profilProf **********/
   .contactComplet{
     padding-bottom: 6rem;
   }
@@ -240,7 +246,96 @@ input[type="button"] {
   }
 }
 
-@media screen and (min-width: 576.02px) {
+@media screen and (min-width: 576.02px) and (max-width: 751px){
+  .border {
+    position: fixed;
+    background: var(--border-color-side);
+    z-index: 9999;
+  }
+
+  .border.gauche {
+    top: 0;
+    left: 2em;
+    width: 1px;
+    height: 100%;
+  }
+
+  .border.droite {
+    top: 0;
+    right: 2em;
+    width: 1px;
+    height: 100%;
+  }
+
+  .contact-section {
+    background-image: linear-gradient(177deg, #580caa 11.95%, #580caa 28.39%, #21212100 82.04%);
+    border: solid 1px var(--border-color-side);
+    margin-left: 2em;
+    margin-right: 2em;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Réduction intermédiaire du gap */
+    flex-direction: column; /* Empilement pour tablette */
+    padding: 15px;
+  }
+
+  /* Titres recherche */
+  .titre-contact {
+    color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(18px, 10vw, 40px); /* taille adaptée pour tablette */
+    text-transform: uppercase;
+    margin: 0;
+    -webkit-text-stroke-width: 0.7px;
+    -webkit-text-stroke-color: #fff;
+    line-height: 0.65;
+    letter-spacing: 1px;
+    height: auto;
+    font-weight: lighter;
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .titre-contact-base {
+  -webkit-text-fill-color: var(--title-color);
+  }
+  .titre-contact-layer--1 {
+    opacity: 0.8;
+  }
+
+  .titre-contact-layer--2 {
+    opacity: 0.5;
+  }
+
+  .titre-contact-layer--3 {
+    opacity: 0.3;
+  }
+
+  .contactComplet{
+    height: 2400px;
+  }
+
+  .messagePageContact{
+    width: 32rem;
+    padding-bottom: 2rem;
+  }
+
+  .conteneurProfils{
+    flex-wrap: wrap;
+  }
+
+  .profilCaroline, .profilStephanie, .profilManon, .profilCamille{
+    max-width: 350px;
+    min-width: 290px;
+    height: 500px;
+  }
+}
+
+@media screen and (min-width: 751.02px) {
   .border {
     position: fixed;
     background: var(--border-color-side);
@@ -329,7 +424,7 @@ input[type="button"] {
   }
 }
 
-@media screen and (min-width: 1024px){
+@media screen and (min-width: 1367px){
   .border {
     position: fixed;
     background: var(--border-color-side);
