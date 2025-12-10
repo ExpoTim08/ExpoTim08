@@ -35,6 +35,41 @@ h1, h2 {
   font-family: var(--title-font);
 }
 
+/* ================== Titre Erreur 404 par lettres ================== */
+.titre-erreur-layer {
+  visibility: hidden; /* caché au départ */
+}
+
+.titre-erreur-layer .letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateX(-20px); /* part de la gauche */
+  transition: opacity 1s ease, transform 1s ease;
+
+  font-family: var(--title-font);
+  color: inherit;
+  -webkit-text-stroke-width: inherit;
+  -webkit-text-stroke-color: inherit;
+}
+
+.titre-erreur-layer .letter.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ================== Message ================== */
+.message {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.message.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
 /* ----------------------------- */
 /* SECTION ERREUR (DESKTOP) */
 /* ----------------------------- */

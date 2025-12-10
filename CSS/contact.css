@@ -51,6 +51,29 @@
     color: var(--font-color);
     font-family: var(--general-font);
   }
+
+/* ================== Titre Contact animation par lettres ================== */
+.titre-contact-layer {
+  visibility: hidden; /* caché au départ */
+}
+
+.titre-contact-layer .letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateX(-20px); /* part de la gauche */
+  transition: opacity 1s ease, transform 1s ease;
+
+  font-family: var(--title-font);
+  color: inherit;
+  -webkit-text-stroke-width: inherit;
+  -webkit-text-stroke-color: inherit;
+}
+
+.titre-contact-layer .letter.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
   
   /******************* CSS Formulaire Contact Centré et Champs Uniformes **********************/
   .formulaireContact {

@@ -1,14 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  function animateSection(titreSelector, logoSelector, descSelector, retourSelector = null) {
+  function animateSection(titreSelector, logoSelector = null, descSelector = null, retourSelector = null) {
     const titreLayers = document.querySelectorAll(titreSelector);
-    const logo = document.querySelector(logoSelector);
-    const description = document.querySelector(descSelector);
+    const logo = logoSelector ? document.querySelector(logoSelector) : null;
+    const description = descSelector ? document.querySelector(descSelector) : null;
     const retour = retourSelector ? document.querySelector(retourSelector) : null;
 
     if (!titreLayers.length) return;
 
-    // Split lettres
+    // Split lettres en spans
     function splitLetters(span) {
       const text = span.textContent;
       span.textContent = '';
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     titreLayers.forEach(layer => splitLetters(layer));
 
-    // Animation lettres
+    // Animation lettres de gauche à droite
     titreLayers.forEach(layer => {
       const letters = layer.querySelectorAll('.letter');
       letters.forEach((letter, index) => {
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const delay = titreLayers[0].textContent.length * 150 + 200;
 
     setTimeout(() => {
-      if (logo) logo.classList.add('active');         // Logo / manette / student glisse depuis la gauche
+      if (logo) logo.classList.add('active');         // Logo / manette / student glisse
       if (description) description.classList.add('active'); // Description
       if (retour) retour.classList.add('active');     // Bouton retour
     }, delay);
@@ -56,7 +56,16 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- Page Projet Finissant ---
   animateSection('.titre-graphisme-layer', '.tree-wrapper', '.conteneur-description-graphisme', '.retour-finissant');
 
-  // --- Autres sections si nécessaire ---
+  // --- Page Finissants ---
   animateSection('.titre-finissant-layer', '.logo-finissant', '.conteneur-description-finissant');
+
+  // --- Logo Arcade ---
   animateSection('.titre-arcade-layer', '.logo-arcade', '.conteneur-description-arcade');
+
+  // --- Page Contact ---
+  animateSection('.titre-contact-layer');
+
+  // --- Page Erreur 404 ---
+  animateSection('.titre-erreur-layer', null, '.message');
+
 });
