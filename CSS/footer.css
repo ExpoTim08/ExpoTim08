@@ -417,6 +417,7 @@
 
   .footer-left > *, .footer-right > * {
     padding-left: 1.5em;
+    
   }
 
   .footer-left h3, .footer-right h3 {
@@ -425,6 +426,7 @@
     padding-left: 1.3em;
     padding-bottom: 0.5em;
     padding-top: 0.5em;
+    
   }
 
 
@@ -458,7 +460,9 @@
     align-self: center;
   }
 } /*-------------- FIN FOOTER DESKTOP --------------*/
-
+div.footer-right > ul > li > a {
+    color: red;
+}
 
 
 
