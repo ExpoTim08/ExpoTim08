@@ -421,6 +421,11 @@ function expotim_localize_carrousel_script() {
 }
 add_action('wp_enqueue_scripts', 'expotim_localize_carrousel_script');
 
+register_nav_menus(array(
+    'main-menu' => 'Menu principal',
+    'menu2-location' => 'Menu 2'
+));
+
 
 
 

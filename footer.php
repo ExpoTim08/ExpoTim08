@@ -53,7 +53,7 @@
       <h3>Navigation</h3>
       <div class="div-logo-tim"><?php
         wp_nav_menu(array(
-          'theme_location' => 'main-menu',
+          'theme_location' => 'menu2-location',
           'menu_class' => 'footer-menu',
           'container' => false
         ));
