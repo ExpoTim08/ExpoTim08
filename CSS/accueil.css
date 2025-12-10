@@ -570,7 +570,8 @@
   }
 
   .boutonRefresh {
-    justify-self: center;
+    display: flex;
+    align-items: center;
   }
 
   .boutonRefresh > .span {

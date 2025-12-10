@@ -42,6 +42,18 @@ function expoTim_customize_register($wp_customize) {
         'settings' => 'expoTim_home_hook',
         'type'     => 'text',
     ));
+    /* --- Titre À propos --- */
+    $wp_customize->add_setting('expoTim_home_about_title', array(
+        'default'           => '',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control('expoTim_home_about_title_control', array(
+        'label'    => __('Titre "À propos"', 'expoTim'),
+        'section'  => 'expoTim_home_section',
+        'settings' => 'expoTim_home_about_title',
+        'type'     => 'text',
+    ));
 
     /* --- Texte À propos --- */
     $wp_customize->add_setting('expoTim_home_about', array(
@@ -94,88 +106,33 @@ function expoTim_customize_register($wp_customize) {
         'settings' => 'expoTim_home_place',
         'type'     => 'text',
     ));
-
-    /* --- Images Crédits (5 images) --- */
-   /* --- Image Crédit 1 --- */
-    $wp_customize->add_setting('expoTim_home_credit_img_1', array(
+    /* --- Projet aléatoire --- */
+    $wp_customize->add_setting('expoTim_home_random_project', array(
         'default'           => '',
-        'sanitize_callback' => 'esc_url_raw',
+        'sanitize_callback' => 'sanitize_text_field',
     ));
 
-    $wp_customize->add_control(new WP_Customize_Image_Control(
-        $wp_customize,
-        'expoTim_home_credit_img_1_control',
-        array(
-            'label'    => __('Image crédit 1', 'expoTim'),
-            'section'  => 'expoTim_home_section',
-            'settings' => 'expoTim_home_credit_img_1',
-        )
+    $wp_customize->add_control('expoTim_home_random_project_control', array(
+        'label'    => __('Projet aléatoire', 'expoTim'),
+        'section'  => 'expoTim_home_section',
+        'settings' => 'expoTim_home_random_project',
+        'type'     => 'text',
     ));
-
-    /* --- Image Crédit 2 --- */
-    $wp_customize->add_setting('expoTim_home_credit_img_2', array(
+    /* --- Crédits --- */
+    $wp_customize->add_setting('expoTim_home_credits', array(
         'default'           => '',
-        'sanitize_callback' => 'esc_url_raw',
+        'sanitize_callback' => 'sanitize_text_field',
     ));
 
-    $wp_customize->add_control(new WP_Customize_Image_Control(
-        $wp_customize,
-        'expoTim_home_credit_img_2_control',
-        array(
-            'label'    => __('Image crédit 2', 'expoTim'),
-            'section'  => 'expoTim_home_section',
-            'settings' => 'expoTim_home_credit_img_2',
-        )
+    $wp_customize->add_control('expoTim_home_credits_control', array(
+        'label'    => __('Crédits', 'expoTim'),
+        'section'  => 'expoTim_home_section',
+        'settings' => 'expoTim_home_credits',
+        'type'     => 'text',
     ));
 
-    /* --- Image Crédit 3 --- */
-    $wp_customize->add_setting('expoTim_home_credit_img_3', array(
-        'default'           => '',
-        'sanitize_callback' => 'esc_url_raw',
-    ));
 
-    $wp_customize->add_control(new WP_Customize_Image_Control(
-        $wp_customize,
-        'expoTim_home_credit_img_3_control',
-        array(
-            'label'    => __('Image crédit 3', 'expoTim'),
-            'section'  => 'expoTim_home_section',
-            'settings' => 'expoTim_home_credit_img_3',
-        )
-    ));
 
-    /* --- Image Crédit 4 --- */
-    $wp_customize->add_setting('expoTim_home_credit_img_4', array(
-        'default'           => '',
-        'sanitize_callback' => 'esc_url_raw',
-    ));
-
-    $wp_customize->add_control(new WP_Customize_Image_Control(
-        $wp_customize,
-        'expoTim_home_credit_img_4_control',
-        array(
-            'label'    => __('Image crédit 4', 'expoTim'),
-            'section'  => 'expoTim_home_section',
-            'settings' => 'expoTim_home_credit_img_4',
-        )
-    ));
-
-    /* --- Image Crédit 5 --- */
-    $wp_customize->add_setting('expoTim_home_credit_img_5', array(
-        'default'           => '',
-        'sanitize_callback' => 'esc_url_raw',
-    ));
-
-    $wp_customize->add_control(new WP_Customize_Image_Control(
-        $wp_customize,
-        'expoTim_home_credit_img_5_control',
-        array(
-            'label'    => __('Image crédit 5', 'expoTim'),
-            'section'  => 'expoTim_home_section',
-            'settings' => 'expoTim_home_credit_img_5',
-        )
-
-    ));
 
     /* -----------------------------
     SECTION FOOTER
@@ -525,12 +482,12 @@ $wp_customize->add_control('expoTim_graphisme_title_control', array(
     ));
 
    $wp_customize->add_section('expoTim_carrousel_section', array(
-    'title'       => __('Carrousel Images', 'expotim'),
+    'title'       => __('Carrousel', 'expotim'),
     'priority'    => 30,
     'description' => __('Ajoutez les 3 images du carrousel et leurs descriptions.', 'expotim'),
-));
+    ));
 
-for ($i = 1; $i <= 3; $i++) {
+    for ($i = 1; $i <= 3; $i++) {
 
     // =======================
     // IMAGE
@@ -567,7 +524,263 @@ for ($i = 1; $i <= 3; $i++) {
         'section'  => 'expoTim_carrousel_section',
         'type'     => 'textarea',
     ));
+    /* =======================
+   TITRE FINISSANTS
+======================= */
+$wp_customize->add_setting('expotim_carrousel_title_finissants', array(
+    'default'           => '',
+    'sanitize_callback' => 'sanitize_text_field',
+));
+
+$wp_customize->add_control('expotim_carrousel_title_finissants_control', array(
+    'label'    => __('Titre Finissants', 'expotim'),
+    'section'  => 'expoTim_carrousel_section',
+    'settings' => 'expotim_carrousel_title_finissants',
+    'type'     => 'text',
+));
+
+
+/* =======================
+   TITRE ARCADE
+======================= */
+$wp_customize->add_setting('expotim_carrousel_title_arcade', array(
+    'default'           => '',
+    'sanitize_callback' => 'sanitize_text_field',
+));
+
+$wp_customize->add_control('expotim_carrousel_title_arcade_control', array(
+    'label'    => __('Titre Arcade', 'expotim'),
+    'section'  => 'expoTim_carrousel_section',
+    'settings' => 'expotim_carrousel_title_arcade',
+    'type'     => 'text',
+));
+
+
+/* =======================
+   TITRE GRAPHISME
+======================= */
+$wp_customize->add_setting('expotim_carrousel_title_graphisme', array(
+    'default'           => '',
+    'sanitize_callback' => 'sanitize_text_field',
+));
+
+$wp_customize->add_control('expotim_carrousel_title_graphisme_control', array(
+    'label'    => __('Titre Graphisme', 'expotim'),
+    'section'  => 'expoTim_carrousel_section',
+    'settings' => 'expotim_carrousel_title_graphisme',
+    'type'     => 'text',
+));
+
 }
+
+/* =======================
+   TITRE FINISSANTS
+======================= */
+$wp_customize->add_setting('expotim_carrousel_title_finissants', array(
+    'default'           => '',
+    'sanitize_callback' => 'sanitize_text_field',
+));
+
+$wp_customize->add_control('expotim_carrousel_title_finissants_control', array(
+    'label'    => __('Titre Finissants', 'expotim'),
+    'section'  => 'expoTim_carrousel_section',
+    'settings' => 'expotim_carrousel_title_finissants',
+    'type'     => 'text',
+));
+
+
+/* =======================
+   TITRE ARCADE
+======================= */
+$wp_customize->add_setting('expotim_carrousel_title_arcade', array(
+    'default'           => '',
+    'sanitize_callback' => 'sanitize_text_field',
+));
+
+$wp_customize->add_control('expotim_carrousel_title_arcade_control', array(
+    'label'    => __('Titre Arcade', 'expotim'),
+    'section'  => 'expoTim_carrousel_section',
+    'settings' => 'expotim_carrousel_title_arcade',
+    'type'     => 'text',
+));
+
+
+/* =======================
+   TITRE GRAPHISME
+======================= */
+$wp_customize->add_setting('expotim_carrousel_title_graphisme', array(
+    'default'           => '',
+    'sanitize_callback' => 'sanitize_text_field',
+));
+
+$wp_customize->add_control('expotim_carrousel_title_graphisme_control', array(
+    'label'    => __('Titre Graphisme', 'expotim'),
+    'section'  => 'expoTim_carrousel_section',
+    'settings' => 'expotim_carrousel_title_graphisme',
+    'type'     => 'text',
+));
+
+    /* -----------------------------
+        SECTION CRÉDITS
+    ------------------------------ */
+
+    $wp_customize->add_section('expoTim_credits_section', array(
+        'title'       => __('Crédits', 'expoTim'),
+        'priority'    => 200,
+        'description' => __('Section pour afficher les crédits du site.', 'expoTim'),
+    ));
+
+    /* ----------- MEMBRE 1 ----------- */
+
+    // Rôle
+    $wp_customize->add_setting('expoTim_credit1_role', array(
+        'default' => '',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('expoTim_credit1_role_control', array(
+        'label'    => __('Rôle Lina', 'expoTim'),
+        'section'  => 'expoTim_credits_section',
+        'settings' => 'expoTim_credit1_role',
+        'type'     => 'text',
+    ));
+
+    // Image
+    $wp_customize->add_setting('expoTim_credit1_image', array(
+        'default' => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control(
+        new WP_Customize_Image_Control(
+            $wp_customize,
+            'expoTim_credit1_image_control',
+            array(
+                'label'    => __('Image Lina', 'expoTim'),
+                'section'  => 'expoTim_credits_section',
+                'settings' => 'expoTim_credit1_image',
+            )
+        )
+    );
+
+
+    /* ----------- MEMBRE 2 ----------- */
+
+    $wp_customize->add_setting('expoTim_credit2_role', array(
+        'default' => '',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('expoTim_credit2_role_control', array(
+        'label'    => __('Rôle Peterson', 'expoTim'),
+        'section'  => 'expoTim_credits_section',
+        'settings' => 'expoTim_credit2_role',
+        'type'     => 'text',
+    ));
+
+    $wp_customize->add_setting('expoTim_credit2_image', array(
+        'default' => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control(
+        new WP_Customize_Image_Control(
+            $wp_customize,
+            'expoTim_credit2_image_control',
+            array(
+                'label'    => __('Image Peterson', 'expoTim'),
+                'section'  => 'expoTim_credits_section',
+                'settings' => 'expoTim_credit2_image',
+            )
+        )
+    );
+
+
+    /* ----------- MEMBRE 3 ----------- */
+
+    $wp_customize->add_setting('expoTim_credit3_role', array(
+        'default' => '',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('expoTim_credit3_role_control', array(
+        'label'    => __('Rôle Matilda', 'expoTim'),
+        'section'  => 'expoTim_credits_section',
+        'settings' => 'expoTim_credit3_role',
+        'type'     => 'text',
+    ));
+
+    $wp_customize->add_setting('expoTim_credit3_image', array(
+        'default' => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control(
+        new WP_Customize_Image_Control(
+            $wp_customize,
+            'expoTim_credit3_image_control',
+            array(
+                'label'    => __('Image Matilda', 'expoTim'),
+                'section'  => 'expoTim_credits_section',
+                'settings' => 'expoTim_credit3_image',
+            )
+        )
+    );
+
+
+    /* ----------- MEMBRE 4 ----------- */
+
+    $wp_customize->add_setting('expoTim_credit4_role', array(
+        'default' => '',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('expoTim_credit4_role_control', array(
+        'label'    => __('Rôle Remy', 'expoTim'),
+        'section'  => 'expoTim_credits_section',
+        'settings' => 'expoTim_credit4_role',
+        'type'     => 'text',
+    ));
+
+    $wp_customize->add_setting('expoTim_credit4_image', array(
+        'default' => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control(
+        new WP_Customize_Image_Control(
+            $wp_customize,
+            'expoTim_credit4_image_control',
+            array(
+                'label'    => __('Image Remy', 'expoTim'),
+                'section'  => 'expoTim_credits_section',
+                'settings' => 'expoTim_credit4_image',
+            )
+        )
+    );
+
+
+    /* ----------- MEMBRE 5 ----------- */
+
+    $wp_customize->add_setting('expoTim_credit5_role', array(
+        'default' => '',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('expoTim_credit5_role_control', array(
+        'label'    => __('Rôle Alexis', 'expoTim'),
+        'section'  => 'expoTim_credits_section',
+        'settings' => 'expoTim_credit5_role',
+        'type'     => 'text',
+    ));
+
+    $wp_customize->add_setting('expoTim_credit5_image', array(
+        'default' => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control(
+        new WP_Customize_Image_Control(
+            $wp_customize,
+            'expoTim_credit5_image_control',
+            array(
+                'label'    => __('Image Alexis', 'expoTim'),
+                'section'  => 'expoTim_credits_section',
+                'settings' => 'expoTim_credit5_image',
+            )
+        )
+    );
+
 
 
 }

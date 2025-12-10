@@ -63,7 +63,7 @@ get_header();
     <!-------------------------------- À propos -------------------------------->
     <div class="a-propos-background">
       <div class="a-propos">
-        <p class="sous-titre">À propos de TIMVision</p>
+        <p class="sous-titre"><?php echo esc_html( get_theme_mod('expoTim_home_about_title') ); ?></p>
         <div class="carroussel-apropos">
           <img class="image-a-propos" src="<?php echo get_template_directory_uri(); ?>/Images/Arcade-404.png" alt="">
           <img class="image-a-propos2" src="<?php echo get_template_directory_uri(); ?>/Images/Arcade-404-2.png" alt="">
@@ -80,7 +80,7 @@ get_header();
 
 <!-------------------------------- Projets Découvertes -------------------------------->
 <div class="projets-populaire">
-  <h1>Voici des projets à découvrir</h1>
+  <h1><?php echo esc_html( get_theme_mod('expoTim_home_random_project') ); ?></h1>
   <div class="boutonRefresh">
     <img class="refresh" src="<?php echo get_template_directory_uri(); ?>/Images/Refresh.svg" alt="">
     <span>Raffraichis les projets</span>
@@ -223,15 +223,14 @@ get_header();
 
     <!-------------------------------- Équipe -------------------------------->
     <div class="equipe">
-      <h1>Crédits</h1>
+      <h1><?php echo esc_html( get_theme_mod('expoTim_home_credits') ); ?></h1>
       <div class="cartes">
         <div class="carte-equipe">
           <span class="photo">
-            <!-- <img class="img-personne" src="<?php echo esc_url( get_theme_mod('expoTim_home_credit_img_1') ); ?>" alt="Photo de Lîna Bensenouci"> -->
-            <img class="img-personne" src="<?php echo get_template_directory_uri(); ?>/Images/ImageSimpson/Lina.png" alt="">
+            <img class="img-personne" src="<?php echo esc_url( get_theme_mod('expoTim_credit1_image') ); ?>" alt="">
           </span>
           <span class="nom">Lîna Bensenouci</span>
-          <span class="role">Chargée de projet</span>
+          <span class="role"><?php echo esc_html( get_theme_mod('expoTim_credit1_role') ); ?></span>
           <span class="petits-carre">
             <a href="https://www.behance.net/Linabens">Portfolio</a>
           </span>
@@ -241,19 +240,17 @@ get_header();
             <a href="https://www.behance.net/petersongermain">Portfolio</a>
           </span>
           <span class="nom">Peterson Germain</span>
-          <span class="role">CSS Designer</span>
+          <span class="role"><?php echo esc_html( get_theme_mod('expoTim_credit2_role') ); ?></span>
           <span class="petits-carre">
-            <!-- <img class="img-personne" src="<?php echo esc_url( get_theme_mod('expoTim_home_credit_img_2') ); ?>" alt="Photo de Peterson Germain"> -->
-             <img class="img-personne" src="<?php echo get_template_directory_uri(); ?>/Images/ImageSimpson/Peterson.jpg" alt="">
+             <img class="img-personne" src="<?php echo esc_url( get_theme_mod('expoTim_credit2_image') ); ?>" alt="">
           </span>
         </div>
         <div class="carte-equipe-3">
           <span class="photo">
-            <!-- <img class="img-personne" src="<?php echo esc_url( get_theme_mod('expoTim_home_credit_img_3') ); ?>" alt="Photo de Matilda Kang"> -->
-             <img class="img-personne" src="<?php echo get_template_directory_uri(); ?>/Images/ImageSimpson/Matilda.png" alt="">
+             <img class="img-personne" src="<?php echo esc_url( get_theme_mod('expoTim_credit3_image') ); ?>" alt="">
           </span>
           <span class="nom">Matilda Kang</span>
-          <span class="role">Cheffe Design</span>
+          <span class="role"><?php echo esc_html( get_theme_mod('expoTim_credit3_role') ); ?></span>
           <span class="petits-carre">
             <a href="https://www.behance.net/matildakang">Portfolio</a>
           </span>
@@ -263,19 +260,17 @@ get_header();
             <a href="https://www.behance.net/remyroger1">Portfolio</a>
           </span>
           <span class="nom">Rémy Roger</span>
-          <span class="role">Chef Programmation</span>
+          <span class="role"><?php echo esc_html( get_theme_mod('expoTim_credit4_role') ); ?></span>
           <span class="petits-carre">
-            <!-- <img class="img-personne" src="<?php echo esc_url( get_theme_mod('expoTim_home_credit_img_4') ); ?>" alt="Photo de Rémy Roger"> -->
-            <img class="img-personne" src="<?php echo get_template_directory_uri(); ?>/Images/ImageSimpson/Remy.jpg" alt="">
+            <img class="img-personne" src="<?php echo esc_url( get_theme_mod('expoTim_credit4_image') ); ?>" alt="">
           </span>
         </div>
         <div class="carte-equipe-5">
           <span class="photo">
-            <!-- <img class="img-personne" src="<?php echo esc_url( get_theme_mod('expoTim_home_credit_img_5') ); ?>" alt="Photo de Alexis David"> -->
-            <img class="img-personne" src="<?php echo get_template_directory_uri(); ?>/Images/ImageSimpson/Alexis.png" alt="">
+            <img class="img-personne" src="<?php echo esc_url( get_theme_mod('expoTim_credit5_image') ); ?>" alt="">
           </span>
           <span class="nom">Alexis David</span>
-          <span class="role">Assistant Designer</span>
+          <span class="role"><?php echo esc_html( get_theme_mod('expoTim_credit5_role') ); ?></span>
           <span class="petits-carre">
             <a href="https://www.behance.net/gallery/235748411/Portfolio">Portfolio</a>
           </span>

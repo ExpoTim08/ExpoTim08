@@ -389,45 +389,77 @@ function refresh_home_projects() {
 add_action('wp_ajax_refresh_projects', 'refresh_home_projects');
 add_action('wp_ajax_nopriv_refresh_projects', 'refresh_home_projects');
 
-function expotim_localize_carrousel_script() {
 
-    wp_enqueue_script(
-        'accueil',
-        get_template_directory_uri() . '/accueil.js', // note le slash avant le nom du fichier
-        array('jquery'),
-        null,
-        true
-    );
-
-    wp_localize_script('accueil', 'themeVars', array(
-        'ajaxUrl' => admin_url('admin-ajax.php'),
-
-        // Lien vers les pages (tu peux remplacer par l'URL complète si tu veux)
-        'pageFinissants' => get_permalink( get_page_by_path('finissants') ),
-        'pageArcade'      => get_permalink( get_page_by_path('arcade') ),
-        'pageJourTerre'   => get_permalink( get_page_by_path('graphisme') ),
-
-        // IMAGES DU CARROUSEL
-        'carrouselImages' => array(
-            get_theme_mod('expotim_carrousel_image_1', ''),
-            get_theme_mod('expotim_carrousel_image_2', ''),
-            get_theme_mod('expotim_carrousel_image_3', ''),
-        ),
-
-        // DESCRIPTIONS DU CARROUSEL
-        'carrouselDescriptions' => array(
-            get_theme_mod('expotim_carrousel_description_1', ''),
-            get_theme_mod('expotim_carrousel_description_2', ''),
-            get_theme_mod('expotim_carrousel_description_3', ''),
-        ),
-    ));
-}
-add_action('wp_enqueue_scripts', 'expotim_localize_carrousel_script');
 
 register_nav_menus(array(
     'main-menu' => 'Menu principal',
     'menu2-location' => 'Menu 2'
 ));
+
+
+function expotim_enqueue_accueil_script() {
+
+    // 1) Charger le script principal ACCUEIL
+    wp_enqueue_script(
+        'accueil',
+        get_template_directory_uri() . '/accueil.js',
+        array(), 
+        filemtime(get_template_directory() . '/accueil.js'),
+        true
+    );
+
+    // 2) Préparation des données du customizer
+    $carrousel_images = array(
+        get_theme_mod('expotim_carrousel_image_1', ''),
+        get_theme_mod('expotim_carrousel_image_2', ''),
+        get_theme_mod('expotim_carrousel_image_3', '')
+    );
+
+    $carrousel_descriptions = array(
+        get_theme_mod('expotim_carrousel_description_1', ''),
+        get_theme_mod('expotim_carrousel_description_2', ''),
+        get_theme_mod('expotim_carrousel_description_3', '')
+    );
+
+    // 3) Pages (via slug corrects)
+    $pageFinissants = get_permalink(get_page_by_path('finissants'));
+    $pageArcade     = get_permalink(get_page_by_path('arcade'));
+    $pageJourTerre  = get_permalink(get_page_by_path('graphisme'));
+
+    // Sécuriser au cas où une page n'existe pas
+    $pageFinissants = $pageFinissants ?: '#';
+    $pageArcade     = $pageArcade ?: '#';
+    $pageJourTerre  = $pageJourTerre ?: '#';
+
+    // 4) Titres du carrousel
+    $carrousel_titles = array(
+        get_theme_mod('expotim_carrousel_title_finissants', 'FINISSANTS'),
+        get_theme_mod('expotim_carrousel_title_arcade', 'ARCADE'),
+        get_theme_mod('expotim_carrousel_title_graphisme', 'GRAPHISME')
+    );
+
+    // 5) Envoyer toutes les variables à JavaScript
+    wp_localize_script(
+        'accueil',
+        'themeVars',
+        array(
+            'carrouselImages'       => $carrousel_images,
+            'carrouselDescriptions' => $carrousel_descriptions,
+            'carrouselTitles'       => $carrousel_titles,
+
+            'pageFinissants' => esc_url_raw($pageFinissants),
+            'pageArcade'     => esc_url_raw($pageArcade),
+            'pageJourTerre'  => esc_url_raw($pageJourTerre),
+
+            'ajaxUrl' => admin_url('admin-ajax.php')
+        )
+    );
+}
+
+add_action('wp_enqueue_scripts', 'expotim_enqueue_accueil_script');
+
+
+
 
 
 

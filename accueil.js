@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   // ================= Carrousel Images =================
   // On récupère les images et descriptions du Customizer via themeVars
+  
   const Images = themeVars.carrouselImages.map((src, index) => {
-    const Titles = ["FINISSANTS", "ARCADE", "GRAPHISME"];
+    
+    const Titles = themeVars.carrouselTitles;
     const Classes = ["finissants", "arcade", "jour-terre"];
     const Descriptions = themeVars.carrouselDescriptions; // <-- récupéré du Customizer
     const Links = [
@@ -15,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
       src: src,
       Titre: Titles[index],
       ClassName: Classes[index],
-      Description: Descriptions[index] || "", // fallback vide
+      Description: Descriptions[index] || "",
       Lien: Links[index]
     };
   });
