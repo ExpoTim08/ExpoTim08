@@ -7,6 +7,11 @@ require("global.php");
 
 <?php 
 get_header(); 
+
+
+$titre1 = get_theme_mod('expoTim_graphisme_title_1');
+
+
 ?>
 <body> 
 <div class="pattern-background">
@@ -18,10 +23,10 @@ get_header();
   <!-- ===================== Présentation Graphisme ===================== -->
   <section class="presentation-graphisme">
     <h1 class="titre-graphisme" aria-label="graphisme">
-      <span class="titre-graphisme-layer titre-graphisme--base">GRAPHISME</span>
-      <span class="titre-graphisme-layer titre-graphisme-layer--1">GRAPHISME</span>
-      <span class="titre-graphisme-layer titre-graphisme-layer--2">GRAPHISME</span>
-      <span class="titre-graphisme-layer titre-graphisme-layer--3">GRAPHISME</span>
+      <span class="titre-graphisme-layer titre-graphisme--base"><?php echo esc_html(get_theme_mod('expoTim_graphisme_title')); ?></span>
+      <span class="titre-graphisme-layer titre-graphisme-layer--1"><?php echo esc_html(get_theme_mod('expoTim_graphisme_title')); ?></span>
+      <span class="titre-graphisme-layer titre-graphisme-layer--2"><?php echo esc_html(get_theme_mod('expoTim_graphisme_title')); ?></span>
+      <span class="titre-graphisme-layer titre-graphisme-layer--3"><?php echo esc_html(get_theme_mod('expoTim_graphisme_title')); ?></span>
     </h1>
 
     <svg class="logo-graphisme" width="100" height="122" viewBox="0 0 100 122" xmlns="http://www.w3.org/2000/svg">

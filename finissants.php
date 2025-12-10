@@ -6,7 +6,7 @@ require("global.php");
 get_header();
 ?>
 <?php 
-$titre1 = get_theme_mod('expoTim_finissants_title_1');
+$titre1 = get_theme_mod('expoTim_finissants_title_1') ;
 $titre2 = get_theme_mod('expoTim_finissants_title_2');
 $titre3 = get_theme_mod('expoTim_finissants_title_3');
 $titre4 = get_theme_mod('expoTim_finissants_title_4');
@@ -23,10 +23,10 @@ $titre4 = get_theme_mod('expoTim_finissants_title_4');
   <!-- ===================== Présentation Finissant ===================== -->
   <section class="presentation-finissant">
   <h1 class="titre-finissant" aria-label="finissant">
-    <span class="titre-finissant-layer titre-finissant--base"><?php echo esc_html($titre1); ?></span>
-    <span class="titre-finissant-layer titre-finissant-layer--1"><?php echo esc_html($titre2); ?></span>
-    <span class="titre-finissant-layer titre-finissant-layer--2"><?php echo esc_html($titre3); ?></span>
-    <span class="titre-finissant-layer titre-finissant-layer--3"><?php echo esc_html($titre4); ?></span>
+    <span class="titre-finissant-layer titre-finissant--base"><?php echo esc_html(get_theme_mod('expoTim_finissants_title')); ?></span>
+    <span class="titre-finissant-layer titre-finissant-layer--1"><?php echo esc_html(get_theme_mod('expoTim_finissants_title')); ?></span>
+    <span class="titre-finissant-layer titre-finissant-layer--2"><?php echo esc_html(get_theme_mod('expoTim_finissants_title')); ?></span>
+    <span class="titre-finissant-layer titre-finissant-layer--3"><?php echo esc_html(get_theme_mod('expoTim_finissants_title')); ?> </span>
   </h1>
 
     <svg class="logo-finissant" width="181" height="177" viewBox="0 0 181 177" fill="none" xmlns="http://www.w3.org/2000/svg">

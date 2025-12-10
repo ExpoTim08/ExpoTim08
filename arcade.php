@@ -16,10 +16,10 @@ get_header();
   <!-- ===================== Présentation Arcade ===================== -->
   <section class="presentation-arcade">
     <h1 class="titre-arcade" aria-label="arcade">
-      <span class="titre-arcade-layer titre-arcade--base">ARCADE</span>
-      <span class="titre-arcade-layer titre-arcade-layer--1">ARCADE</span>
-      <span class="titre-arcade-layer titre-arcade-layer--2">ARCADE</span>
-      <span class="titre-arcade-layer titre-arcade-layer--3">ARCADE</span>
+      <span class="titre-arcade-layer titre-arcade--base"><?php echo esc_html(get_theme_mod('expoTim_arcade_title')); ?></span>
+      <span class="titre-arcade-layer titre-arcade-layer--1"><?php echo esc_html(get_theme_mod('expoTim_arcade_title')); ?></span>
+      <span class="titre-arcade-layer titre-arcade-layer--2"><?php echo esc_html(get_theme_mod('expoTim_arcade_title')); ?></span>
+      <span class="titre-arcade-layer titre-arcade-layer--3"><?php echo esc_html(get_theme_mod('expoTim_arcade_title')); ?></span>
     </h1>
   
     <svg class="logo-arcade" width="159" height="138" viewBox="0 0 159 138" fill="none" xmlns="http://www.w3.org/2000/svg">
