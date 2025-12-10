@@ -43,7 +43,7 @@
     <?php 
     $logo2 = get_theme_mod('expoTim_footer_logo_2');
     if ( $logo2 ) : ?>
-        <img src="<?php echo esc_url($logo2); ?>" alt="Logo TIM">
+        <img class="logo-tim" src="<?php echo esc_url($logo2); ?>" alt="Logo TIM">
     <?php endif; ?>
   </div>
 
@@ -51,13 +51,19 @@
   <div class="footer-bottom">
     <div class="footer-left">
       <h3>Navigation</h3>
-      <?php
+      <div class="div-logo-tim"><?php
         wp_nav_menu(array(
           'theme_location' => 'main-menu',
           'menu_class' => 'footer-menu',
           'container' => false
         ));
       ?>
+      <?php 
+    $logo2 = get_theme_mod('expoTim_footer_logo_2');
+    if ( $logo2 ) : ?>
+        <img class="logo-tim-mob" src="<?php echo esc_url($logo2); ?>" alt="Logo TIM">
+    <?php endif; ?>
+      </div>
     </div>
 
     <div class="footer-right">
