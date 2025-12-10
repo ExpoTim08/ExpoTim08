@@ -683,18 +683,15 @@
   .menu li .sub-menu li a {
     font-size: 10px;
     transition: background 0.2s ease, color 0.2s ease;
-    display: block;     /* rend la case cliquable */
-    width: 100%;        /* occupe toute la largeur */
-    padding: 10px 15px; /* augmente la zone cliquable */
+            /* occupe toute la largeur */
+    
   }
 
   .menu li a {
     font-size: clamp(10px, 0.7vw, 15.5px);
     transition: color 0.2s ease, transform 0.2s ease-out;
-    
-    display: block;       /* bouton sur toute la case */
-    width: 100%;          /* prend toute la largeur */
-    padding: 12px 18px;   /* tu peux ajuster */
+    padding-bottom: 15px;
+    padding-top: 15px;
   }
 }
 
