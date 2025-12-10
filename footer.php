@@ -40,7 +40,11 @@
 
   <!-- Image logo TIM (seuleument en tablet et desktop)-->
   <div class="footer-tim">
-    <p><?php echo esc_url(get_theme_mod('expoTim_footer_logo_2')); ?>TIM</p>
+    <?php 
+    $logo2 = get_theme_mod('expoTim_footer_logo_2');
+    if ( $logo2 ) : ?>
+        <img src="<?php echo esc_url($logo2); ?>" alt="Logo TIM">
+    <?php endif; ?>
   </div>
 
   <!-- Section bas du footer (menu + liens) -->
