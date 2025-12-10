@@ -209,7 +209,7 @@ require("global.php");
 
                 <div class="profilCamille">
                     <span class="photo">
-                        <img class="imgProf" src="<?php echo get_template_directory_uri(); ?>/Images/ImagesEnseignants/maisonneuve.png" alt="Photo Camille Lagace-Labonte">
+                        <img class="imgProf" src="<?php echo get_template_directory_uri(); ?>/Images/ImagesEnseignants/PhotoCamille.jpeg" alt="Photo Camille Lagace-Labonte">
                     </span>
                     <h3 class="nom">Camille Lagacé-Labonté</h3>
                     <p>Enseignant cadre</p>
