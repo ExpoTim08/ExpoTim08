@@ -32,10 +32,20 @@
   }
 
 @media screen and (max-width: 576px) {
-
+  
     body {
      margin: 0px;
     }
+    .logo-tim{
+      width: 100px;
+      height: 100px;
+
+  }
+   .logo-tim-mob{
+    
+    width: 100px;
+    height: 100px;
+  }
 
     footer a, footer p {
       font-size: 12px;
@@ -76,6 +86,14 @@
 
     .footer-left {
       border-bottom: solid 1px var(--font-color);
+      
+    }
+    .div-logo-tim{
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-right: 50px;
+      
     }
 
     .footer-bottom {
@@ -112,6 +130,19 @@
 
 /*--------------FOOTER TABLET/PETIT ECRAN --------------*/
 @media screen and (min-width: 576.02px) and (max-width: 1200px) {
+
+  .footer-border {
+    border-top: 1px solid var(--border-color-side);
+    margin: 0 2em;
+  }
+  .logo-tim{
+    width: 132px;
+    height: 132px;
+    padding: 15px;
+  }
+  .logo-tim-mob{
+    display: none;
+  }
   .site-footer {
     width: 85vw;
     margin: auto;
@@ -264,6 +295,13 @@
   .footer-border {
     border-top: 1px solid var(--border-color-side);
     margin: 0 3em;
+  }
+  .logo-tim{
+    width: 200px;
+    height: 200px;
+  }
+   .logo-tim-mob{
+    display: none;
   }
 
   .site-footer {

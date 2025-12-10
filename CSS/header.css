@@ -670,7 +670,7 @@
 }
 
 @media screen and (min-width: 1247px) {
-  
+
   .header-container {
     padding: 0.5em 4em;
   }
@@ -683,13 +683,16 @@
   .menu li .sub-menu li a {
     font-size: 10px;
     transition: background 0.2s ease, color 0.2s ease;
+            /* occupe toute la largeur */
+    
   }
 
   .menu li a {
     font-size: clamp(10px, 0.7vw, 15.5px);
     transition: color 0.2s ease, transform 0.2s ease-out;
+    padding-bottom: 15px;
+    padding-top: 15px;
   }
-  
 }
 
 

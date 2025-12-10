@@ -191,28 +191,4 @@ document.addEventListener("DOMContentLoaded", () => {
     updateFocus();
     setInterval(updateFocus, 3000);
   }
-
-  function equalizeProjectHeights() {
-    const cards = document.querySelectorAll('.projet-populaire');
-    let maxHeight = 0;
-
-    cards.forEach(card => {
-      card.style.height = 'auto';
-    });
-
-    cards.forEach(card => {
-      const height = card.offsetHeight;
-      if (height > maxHeight) {
-        maxHeight = height;
-      }
-    });
-
-    cards.forEach(card => {
-      card.style.height = maxHeight + 'px';
-    });
-  }
-
-  window.addEventListener('load', equalizeProjectHeights);
-  window.addEventListener('resize', equalizeProjectHeights);
-
 });

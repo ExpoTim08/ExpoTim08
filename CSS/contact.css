@@ -1,525 +1,415 @@
-
-body {
-  background: linear-gradient(180deg, #1B1B1B 0%, #2B2B2B 44.23%, #323232 77.88%, #1B1B1B 100%);
-  background-attachment: fixed;
-  background-size: cover;
-}
-
-.pattern-background {
-  background-image: linear-gradient(#4e4b4194 1px, transparent 1px), linear-gradient(to right, #4e4b4194 1px, #71718300 1px);
-  background-size: 40px 40px;
-  background-attachment: fixed;
-}
-
-h1, h2, h3 {
-  color: var(--font-color);
-  font-family: var(--title-font);
-}
-
-
-/******************* CSS Formulaire Contact Centré et Champs Uniformes **********************/
-.formulaireContact {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centre le formulaire horizontalement */
-  margin: 2rem auto 3rem auto;
-  width: 100%;
-  max-width: 600px; /* Largeur fixe pour desktop */
-  padding: 1rem;
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  width: 100%; /* Le formulaire prend toute la largeur du conteneur */
-  gap: 1rem;
-}
-
-.contact-form label {
-  color: #ffffff; /* Titres des champs en blanc */
-  font-weight: 500;
-  margin-bottom: 0.3rem;
-}
-
-.contact-form input[type="text"],
-.contact-form input[type="email"],
-.contact-form select,
-.contact-form textarea,
-.contact-form button.btn {
-  width: 100%; /* Tous les champs et le bouton ont la même largeur */
-  box-sizing: border-box; /* Inclut padding et border dans la largeur */
-  padding: 10px 12px;
-  border: 1px solid var(--border-color-side);
-  border-radius: 4px;
-  background-color: rgba(34, 34, 34, 0.5); /* Fond semi-transparent */
-  color: #ffffff;
-  font-family: var(--general-font);
-  font-size: 1rem;
-  outline: none;
-  transition: border-color 0.3s, background-color 0.3s;
-}
-
-.contact-form input[type="text"]::placeholder,
-.contact-form input[type="email"]::placeholder,
-.contact-form textarea::placeholder {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.contact-form select {
-  cursor: pointer;
-  appearance: none;
-  background-color: rgba(34, 34, 34, 0.5);
-  color: #ffffff;
-}
-
-.contact-form input[type="text"]:focus,
-.contact-form input[type="email"]:focus,
-.contact-form select:focus,
-.contact-form textarea:focus {
-  border-color: #580caa;
-  background-color: rgba(34, 34, 34, 0.7);
-}
-
-.contact-form button.btn {
-  cursor: pointer;
-  transition: background-color 0.3s, border-color 0.3s;
-}
-
-.contact-form button.btn:hover {
-  background-color: rgba(88, 12, 170, 0.7); /* Violet hover */
-  border-color: #580caa;
-}
-
-
-/******************* CSS Contact général **********************/
-.contactComplet{
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-direction: column;
-  height: 950px;
-}
-
-.conteneurProfils{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-}
-
-.messagePageContact{
-    text-align: center;
-}
-
-.messagePageContact img{
-    scale: 2;
-}
-
-.profilCaroline, .profilStephanie, .profilManon, .profilCamille{
-  text-align: center;
-  background-image: linear-gradient(177deg, #580caa 11.95%, #580caa 28.39%, #2b0553 82.04%);
-  border: 1px solid var(--border-color-side);
-  width: 100%;
-  height: 100%;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  padding-left: 4px;
-  padding-right: 4px;
-  border-radius: 3px;
-}
-
-.photo{
-  display: inline-block;
-  width: 300px;
-  height: 370px;
-  object-fit: cover;
-}
-
-.imgProf{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 4px;
-}
-
-input[type="button"] {
-  border: 1px solid var(--border-color-side);
-  color: var(--font-color);
-  font-family: var(--general-font);
-  background-color: rgb(34, 34, 34, 0);
-  padding: 12px;
-  border-radius: 3px;
-}
-
-/********************* Section @Media ********************/
-@media screen and (max-width: 576px) {
-  
-  .border {
+/* =========================================================
+   BACKGROUND FIXE ULTRA COMPATIBLE (Mobile + Tablette + iOS)
+   ========================================================= */
+   body::before {
+    content: "";
     position: fixed;
-    background: var(--border-color-side);
-    z-index: 9999;
-  }
-
-  .border.gauche {
     top: 0;
-    left: 1em;
-    width: 1px;
-    height: 100%;
-  }
-
-  .border.droite {
-    top: 0;
-    right: 1em;
-    width: 1px;
-    height: 100%;
-  }
-
-  .contact-section {
-    background-image: linear-gradient(177deg, #580caa 11.95%, #580caa 28.39%, #21212100 82.04%);
-    border: solid 1px var(--border-color-side);
-    margin-left: 1em;
-    margin-right: 1em;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    gap: 15px; /* Réduction de l'espacement */
-    flex-direction: column; /* Pour que les éléments s'empilent sur petit écran */
-    padding: 10px;
-  }
-
-  .titre-contact {
-    color: transparent;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: clamp(16px, 8vw, 28px); /* Taille adaptée aux mobiles */
-    text-transform: uppercase;
-    margin: 0;
-    -webkit-text-stroke-width: 0.6px;
-    -webkit-text-stroke-color: #fff;
-    line-height: 0.7;
-    letter-spacing: 1px;
-    height: auto; /* Ajusté pour mobile */
-    font-weight: lighter;
-    text-align: center;
-    margin-top: 30px;
-  }
-  .titre-contact-base {
-  -webkit-text-fill-color: var(--title-color);
-  }
-  .titre-contact-layer--1 {
-    opacity: 0.8;
-  }
-
-  .titre-contact-layer--2 {
-    opacity: 0.5;
-  }
-
-  .titre-contact-layer--3 {
-    opacity: 0.3;
-  }
-
-  /************ Section pour Forum Contact ************/
-  .formulaireContact{
-    max-width: 370px;
-  }
-
-
-  /********* Section pour profilProf **********/
-  .contactComplet{
-    padding-bottom: 6rem;
-  }
-  
-  .messagePageContact{
-    width: 22rem;
-    padding-bottom: 3rem;
-  }
-
-  .contactComplet{
-    height: 2400px;
-  }
-
-  .conteneurProfils{
-    flex-direction: column;
-    gap: 3rem;
-  }
-}
-
-@media screen and (min-width: 576.02px) and (max-width: 751px){
-  .border {
-    position: fixed;
-    background: var(--border-color-side);
-    z-index: 9999;
-  }
-
-  .border.gauche {
-    top: 0;
-    left: 2em;
-    width: 1px;
-    height: 100%;
-  }
-
-  .border.droite {
-    top: 0;
-    right: 2em;
-    width: 1px;
-    height: 100%;
-  }
-
-  .contact-section {
-    background-image: linear-gradient(177deg, #580caa 11.95%, #580caa 28.39%, #21212100 82.04%);
-    border: solid 1px var(--border-color-side);
-    margin-left: 2em;
-    margin-right: 2em;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    gap: 20px; /* Réduction intermédiaire du gap */
-    flex-direction: column; /* Empilement pour tablette */
-    padding: 15px;
-  }
-
-  /* Titres recherche */
-  .titre-contact {
-    color: transparent;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: clamp(18px, 10vw, 40px); /* taille adaptée pour tablette */
-    text-transform: uppercase;
-    margin: 0;
-    -webkit-text-stroke-width: 0.7px;
-    -webkit-text-stroke-color: #fff;
-    line-height: 0.65;
-    letter-spacing: 1px;
-    height: auto;
-    font-weight: lighter;
-    text-align: center;
-    margin-top: 30px;
-  }
-
-  .titre-contact-base {
-  -webkit-text-fill-color: var(--title-color);
-  }
-  .titre-contact-layer--1 {
-    opacity: 0.8;
-  }
-
-  .titre-contact-layer--2 {
-    opacity: 0.5;
-  }
-
-  .titre-contact-layer--3 {
-    opacity: 0.3;
-  }
-
-  .contactComplet{
-    height: 2400px;
-  }
-
-  .messagePageContact{
-    width: 32rem;
-    padding-bottom: 2rem;
-  }
-
-  .conteneurProfils{
-    flex-wrap: wrap;
-  }
-
-  .profilCaroline, .profilStephanie, .profilManon, .profilCamille{
-    max-width: 350px;
-    min-width: 290px;
-    height: 500px;
-  }
-}
-
-@media screen and (min-width: 751.02px) {
-  .border {
-    position: fixed;
-    background: var(--border-color-side);
-    z-index: 9999;
-  }
-
-  .border.gauche {
-    top: 0;
-    left: 2em;
-    width: 1px;
-    height: 100%;
-  }
-
-  .border.droite {
-    top: 0;
-    right: 2em;
-    width: 1px;
-    height: 100%;
-  }
-
-  .contact-section {
-    background-image: linear-gradient(177deg, #580caa 11.95%, #580caa 28.39%, #21212100 82.04%);
-    border: solid 1px var(--border-color-side);
-    margin-left: 2em;
-    margin-right: 2em;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    gap: 20px; /* Réduction intermédiaire du gap */
-    flex-direction: column; /* Empilement pour tablette */
-    padding: 15px;
-  }
-
-  /* Titres recherche */
-  .titre-contact {
-    color: transparent;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: clamp(18px, 10vw, 40px); /* taille adaptée pour tablette */
-    text-transform: uppercase;
-    margin: 0;
-    -webkit-text-stroke-width: 0.7px;
-    -webkit-text-stroke-color: #fff;
-    line-height: 0.65;
-    letter-spacing: 1px;
-    height: auto;
-    font-weight: lighter;
-    text-align: center;
-    margin-top: 30px;
-  }
-
-  .titre-contact-base {
-  -webkit-text-fill-color: var(--title-color);
-  }
-  .titre-contact-layer--1 {
-    opacity: 0.8;
-  }
-
-  .titre-contact-layer--2 {
-    opacity: 0.5;
-  }
-
-  .titre-contact-layer--3 {
-    opacity: 0.3;
-  }
-
-  .contactComplet{
-    height: 1500px;
-  }
-
-  .messagePageContact{
-    width: 32rem;
-    padding-bottom: 2rem;
-  }
-
-  .conteneurProfils{
-    flex-wrap: wrap;
-  }
-
-  .profilCaroline, .profilStephanie, .profilManon, .profilCamille{
-    max-width: 350px;
-    min-width: 290px;
-    height: 500px;
-  }
-}
-
-@media screen and (min-width: 1367px){
-  .border {
-    position: fixed;
-    background: var(--border-color-side);
-    z-index: 9999;
-  }
-
-  .border.gauche {
-    top: 0;
-    left: 3em;
-    width: 1px;
-    height: 100%;
-  } 
-
-  .border.droite {
-    top: 0;
-    right: 3em;
-    width: 1px;
-    height: 100%;
-  }
-  .border.gauche { left: 3em; }
-  .border.droite { right: 3em; }
-
-  .search-section{
-    display: flex;
-    justify-content: center;
-  }
-
-  .titre-contact-base {
-    -webkit-text-fill-color: var(--title-color);
-  }
-
-  .titre-contact {
-    color: transparent;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: clamp(20px, 12vw, 50px);
-    text-transform: uppercase;
-    margin: 0;
-    -webkit-text-stroke-width: 0.8px;
-    -webkit-text-stroke-color: #fff;
-    line-height: 0.6;
-    letter-spacing: 1px;
-    height: 220px;
-    font-weight: lighter;
-  }
-
-  .titre-contact-layer--1 {
-    opacity: 0.8;
-  }
-
-  .titre-contact-layer--2 {
-    opacity: 0.5;
-  }
-
-  .titre-contact-layer--3 {
-    opacity: 0.3;
-  }
-
-  .contact-section{
-    background-image: linear-gradient(177deg, #580caa 11.95%, #580caa 28.39%, #21212100 82.04%);
-    border: solid 1px var(--border-color-side);
-    margin-left: 3em;
-    margin-right: 3em;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    gap: 30px;
-  }
-/********** Section contactComplet ***********/
-
-  .contactComplet{
-    height: 950px;
-  }
-
-  input[type="button"]:hover {
-    background-color: rgb(34, 34, 34);
-    transition: background-color 0.5s;
-  }
-
-  .messagePageContact{
-    width: auto;
-    padding-bottom: 0;
-  }
-
-  .conteneurProfils{
-    flex-wrap: nowrap;
-  }
-
-  .profilCaroline, .profilStephanie, .profilManon, .profilCamille{
+    left: 0;
     width: 100%;
     height: 100%;
-    min-width: none;
-    max-width: none;
+    z-index: -2;
+    pointer-events: none;
+  
+    background: linear-gradient(180deg, #1B1B1B 0%, #2B2B2B 44.23%, #323232 77.88%, #1B1B1B 100%);
+    background-size: cover;
   }
   
-}
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+  
+    background-image:
+      linear-gradient(#4e4b4194 1px, transparent 1px),
+      linear-gradient(to right, #4e4b4194 1px, #71718300 1px);
+    background-size: 40px 40px;
+  }
+  
+  /* On supprime le background-attachment fixed qui ne fonctionne pas sur iOS */
+  body {
+    background: none !important;
+  }
+  
+  .pattern-background {
+    background: none !important;
+  }
+  
+  
+  /******************* TITRES **********************/
+  h1, h2, h3 {
+    color: var(--font-color);
+    font-family: var(--title-font);
+  }
+  
+  
+  /******************* CSS Formulaire Contact Centré et Champs Uniformes **********************/
+  .formulaireContact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem auto 3rem auto;
+    width: 100%;
+    max-width: 600px;
+    padding: 1rem;
+  }
+  
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+  }
+  
+  .contact-form label {
+    color: #ffffff;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+  }
+  
+  .contact-form input[type="text"],
+  .contact-form input[type="email"],
+  .contact-form select,
+  .contact-form textarea,
+  .contact-form button.btn {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    border: 1px solid var(--border-color-side);
+    border-radius: 4px;
+    background-color: rgba(34, 34, 34, 0.5);
+    color: #ffffff;
+    font-family: var(--general-font);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s, background-color 0.3s;
+  }
+  
+  .contact-form input[type="text"]::placeholder,
+  .contact-form input[type="email"]::placeholder,
+  .contact-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .contact-form select {
+    cursor: pointer;
+    appearance: none;
+    background-color: rgba(34, 34, 34, 0.5);
+    color: #ffffff;
+  }
+  
+  .contact-form input[type="text"]:focus,
+  .contact-form input[type="email"]:focus,
+  .contact-form select:focus,
+  .contact-form textarea:focus {
+    border-color: #580caa;
+    background-color: rgba(34, 34, 34, 0.7);
+  }
+  
+  .contact-form button.btn {
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  
+  .contact-form button.btn:hover {
+    background-color: rgba(88, 12, 170, 0.7);
+    border-color: #580caa;
+  }
+  
+  
+  /******************* CSS Contact général **********************/
+  .contactComplet{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    height: 950px;
+  }
+  
+  .conteneurProfils{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  .messagePageContact{
+    text-align: center;
+  }
+  
+  .messagePageContact img{
+    scale: 2;
+  }
+  
+  .profilCaroline, .profilStephanie, .profilManon, .profilCamille{
+    text-align: center;
+    background-image: linear-gradient(177deg, #580caa 11.95%, #580caa 28.39%, #2b0553 82.04%);
+    border: 1px solid var(--border-color-side);
+    width: 100%;
+    height: 100%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 4px;
+    padding-right: 4px;
+    border-radius: 3px;
+  }
+  
+  .photo{
+    display: inline-block;
+    width: 300px;
+    height: 370px;
+    object-fit: cover;
+  }
+  
+  .imgProf{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+  
+  input[type="button"] {
+    border: 1px solid var(--border-color-side);
+    color: var(--font-color);
+    font-family: var(--general-font);
+    background-color: rgb(34, 34, 34, 0);
+    padding: 12px;
+    border-radius: 3px;
+  }
+  
+  
+  /********************* Section @Media ********************/
+  @media screen and (max-width: 576px) {
+    .border {
+      position: fixed;
+      background: var(--border-color-side);
+      z-index: 9999;
+    }
+  
+    .border.gauche {
+      top: 0;
+      left: 1em;
+      width: 1px;
+      height: 100%;
+    }
+  
+    .border.droite {
+      top: 0;
+      right: 1em;
+      width: 1px;
+      height: 100%;
+    }
+  
+    .contact-section {
+      background-image: linear-gradient(177deg, #580caa 11.95%, #580caa 28.39%, #21212100 82.04%);
+      border: solid 1px var(--border-color-side);
+      margin-left: 1em;
+      margin-right: 1em;
+      justify-content: center;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-direction: column;
+      padding: 10px;
+    }
+  
+    .titre-contact {
+      color: transparent;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: clamp(16px, 8vw, 28px);
+      text-transform: uppercase;
+      margin: 0;
+      -webkit-text-stroke-width: 0.6px;
+      -webkit-text-stroke-color: #fff;
+      line-height: 0.7;
+      letter-spacing: 1px;
+      margin-top: 30px;
+    }
+  
+    .titre-contact-base {
+      -webkit-text-fill-color: var(--title-color);
+    }
+  
+    .titre-contact-layer--1 { opacity: 0.8; }
+    .titre-contact-layer--2 { opacity: 0.5; }
+    .titre-contact-layer--3 { opacity: 0.3; }
+  
+    .contactComplet{
+      padding-bottom: 6rem;
+      height: 2400px;
+    }
+    
+    .messagePageContact{
+      width: 22rem;
+      padding-bottom: 3rem;
+    }
+  
+    .conteneurProfils{
+      flex-direction: column;
+      gap: 3rem;
+    }
+  }
+  
+  @media screen and (min-width: 576.02px) {
+    .border {
+      position: fixed;
+      background: var(--border-color-side);
+      z-index: 9999;
+    }
+  
+    .border.gauche {
+      top: 0;
+      left: 2em;
+      width: 1px;
+      height: 100%;
+    }
+  
+    .border.droite {
+      top: 0;
+      right: 2em;
+      width: 1px;
+      height: 100%;
+    }
+  
+    .contact-section {
+      background-image: linear-gradient(177deg, #580caa 11.95%, #580caa 28.39%, #21212100 82.04%);
+      border: solid 1px var(--border-color-side);
+      margin-left: 2em;
+      margin-right: 2em;
+      justify-content: center;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-direction: column;
+      padding: 15px;
+    }
+  
+    .titre-contact {
+      color: transparent;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: clamp(18px, 10vw, 40px);
+      text-transform: uppercase;
+      margin: 0;
+      -webkit-text-stroke-width: 0.7px;
+      -webkit-text-stroke-color: #fff;
+      line-height: 0.65;
+      letter-spacing: 1px;
+      margin-top: 30px;
+    }
+  
+    .titre-contact-base {
+      -webkit-text-fill-color: var(--title-color);
+    }
+  
+    .titre-contact-layer--1 { opacity: 0.8; }
+    .titre-contact-layer--2 { opacity: 0.5; }
+    .titre-contact-layer--3 { opacity: 0.3; }
+  
+    .contactComplet{
+      height: 1500px;
+    }
+  
+    .messagePageContact{
+      width: 32rem;
+      padding-bottom: 2rem;
+    }
+  
+    .conteneurProfils{
+      flex-wrap: wrap;
+    }
+  
+    .profilCaroline, .profilStephanie, .profilManon, .profilCamille{
+      max-width: 350px;
+      min-width: 290px;
+      height: 500px;
+    }
+  }
+  
+  @media screen and (min-width: 1024px){
+    .border {
+      position: fixed;
+      background: var(--border-color-side);
+      z-index: 9999;
+    }
+  
+    .border.gauche { top: 0; left: 3em; width: 1px; height: 100%; }
+    .border.droite { top: 0; right: 3em; width: 1px; height: 100%; }
+  
+    .search-section{
+      display: flex;
+      justify-content: center;
+    }
+  
+    .titre-contact-base {
+      -webkit-text-fill-color: var(--title-color);
+    }
+  
+    .titre-contact {
+      color: transparent;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: clamp(20px, 12vw, 50px);
+      text-transform: uppercase;
+      margin: 0;
+      -webkit-text-stroke-width: 0.8px;
+      -webkit-text-stroke-color: #fff;
+      line-height: 0.6;
+      letter-spacing: 1px;
+      height: 220px;
+      font-weight: lighter;
+    }
+  
+    .titre-contact-layer--1 { opacity: 0.8; }
+    .titre-contact-layer--2 { opacity: 0.5; }
+    .titre-contact-layer--3 { opacity: 0.3; }
+  
+    .contact-section{
+      background-image: linear-gradient(177deg, #580caa 11.95%, #580caa 28.39%, #21212100 82.04%);
+      border: solid 1px var(--border-color-side);
+      margin-left: 3em;
+      margin-right: 3em;
+      justify-content: center;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+  
+    .contactComplet{
+      height: 950px;
+    }
+  
+    input[type="button"]:hover {
+      background-color: rgb(34, 34, 34);
+      transition: background-color 0.5s;
+    }
+  
+    .messagePageContact{
+      width: auto;
+      padding-bottom: 0;
+    }
+  
+    .conteneurProfils{
+      flex-wrap: nowrap;
+    }
+  
+    .profilCaroline, .profilStephanie, .profilManon, .profilCamille{
+      width: 100%;
+      height: 100%;
+      min-width: none;
+      max-width: none;
+    }
+  }
+  
