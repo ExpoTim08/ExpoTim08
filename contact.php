@@ -126,6 +126,53 @@ require("global.php");
                 <img class="footer-logo-img" src="<?php echo get_template_directory_uri(); ?>/Images/Texte.png" alt="Logo de l'expo TIM">
             </div>
 
+            <div class="conteneurMembres">
+                <div class="profilRemy">
+                    <span class="photo">
+                        <img class="imgProf" src="<?php echo get_template_directory_uri(); ?>/Images/ImageSimpson/Remy.jpg" alt="Photo Rémy Roger">
+                    </span>
+                    <h3 class="nom">Rémy Roger</h3>
+                    <p>Chef Programmation</p>
+                    <p class="email">e2364643@cmaisonneuve.qc.ca</p>
+                </div>
+
+                <div class="profilLina">
+                    <span class="photo">
+                        <img class="imgProf" src="<?php echo get_template_directory_uri(); ?>/Images/ImageSimpson/Lina.png" alt="Photo Lîna Bensenouci">
+                    </span>
+                    <h3 class="nom">Lîna Bensenouci</h3>
+                    <p>Chargée de Projet</p>
+                    <p class="email">e2177336@cmaisonneuve.qc.ca</p>
+                </div>
+
+                <div class="profilPeterson">
+                    <span class="photo">
+                        <img class="imgProf" src="<?php echo get_template_directory_uri(); ?>/Images/ImageSimpson/Peterson.jpg" alt="Photo Peterson Germain">
+                    </span>
+                    <h3 class="nom">Peterson Germain</h3>
+                    <p>CSS Designer</p>
+                    <p class="email">e2124621@cmaisonneuve.qc.ca</p>
+                </div>
+
+                <div class="profilMatilda">
+                    <span class="photo">
+                        <img class="imgProf" src="<?php echo get_template_directory_uri(); ?>/Images/ImageSimpson/Matilda.png" alt="Photo Matilda Kang">
+                    </span>
+                    <h3 class="nom">Matilda Kang</h3>
+                    <p>Cheffe Design</p>
+                    <p class="email">e2294300@cmaisonneuve.qc.ca</p>
+                </div>
+
+                <div class="profilAlexis">
+                    <span class="photo">
+                        <img class="imgProf" src="<?php echo get_template_directory_uri(); ?>/Images/ImageSimpson/Alexis.webp" alt="Photo Alexis David">
+                    </span>
+                    <h3 class="nom">Alexis David</h3>
+                    <p>Assistant Designer</p>
+                    <p class="email">e1924984@cmaisonneuve.qc.ca</p>
+                </div>
+            </div> 
+
             <div class="conteneurProfils">
                 <div class="profilCaroline">
                     <span class="photo">
@@ -143,6 +190,7 @@ require("global.php");
                         <img class="imgProf" src="<?php echo get_template_directory_uri(); ?>/Images/ImagesEnseignants/PhotoStephanieReframe.png" alt="Photo Stéphanie Pouliot">
                     </span>
                     <h3 class="nom">Stéphanie Pouliot</h3>
+                    <p>Enseignant cadre</p>
                     <span class="conteneurBouton">
                         <input type="button" onclick="window.open('https://teams.microsoft.com/v2/');" target="blank" value="Rejoindre par Teams">
                     </span>
@@ -153,6 +201,7 @@ require("global.php");
                         <img class="imgProf" src="<?php echo get_template_directory_uri(); ?>/Images/ImagesEnseignants/PhotoManonReframe.png" alt="Photo Manon Bertrand">
                     </span>
                     <h3 class="nom">Manon Bertrand</h3>
+                    <p>Enseignant cadre</p>
                     <span class="conteneurBouton">
                         <input type="button" onclick="window.open('https://teams.microsoft.com/v2/');" target="blank" value="Rejoindre par Teams">
                     </span>
@@ -160,9 +209,10 @@ require("global.php");
 
                 <div class="profilCamille">
                     <span class="photo">
-                        <img class="imgProf" src="<?php echo get_template_directory_uri(); ?>/Images/ImagesEnseignants/Camille.png" alt="Photo Camille Lagace-Labonte">
+                        <img class="imgProf" src="<?php echo get_template_directory_uri(); ?>/Images/ImagesEnseignants/maisonneuve.png" alt="Photo Camille Lagace-Labonte">
                     </span>
                     <h3 class="nom">Camille Lagacé-Labonté</h3>
+                    <p>Enseignant cadre</p>
                     <span class="conteneurBouton">
                         <input type="button" onclick="window.open('https://teams.microsoft.com/v2/');" target="blank" value="Rejoindre par Teams">
                     </span>

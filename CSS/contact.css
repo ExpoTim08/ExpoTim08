@@ -47,6 +47,10 @@
     font-family: var(--title-font);
   }
   
+  p{
+    color: var(--font-color);
+    font-family: var(--general-font);
+  }
   
   /******************* CSS Formulaire Contact Centré et Champs Uniformes **********************/
   .formulaireContact {
@@ -128,10 +132,10 @@
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
-    height: 950px;
+    height: 1550px;
   }
-  
-  .conteneurProfils{
+
+  .conteneurProfils, .conteneurMembres{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -146,7 +150,15 @@
     scale: 2;
   }
   
-  .profilCaroline, .profilStephanie, .profilManon, .profilCamille{
+  .profilRemy,
+  .profilLina,
+  .profilPeterson,
+  .profilMatilda, 
+  .profilAlexis,
+  .profilCaroline, 
+  .profilStephanie, 
+  .profilManon, 
+  .profilCamille{
     text-align: center;
     background-image: linear-gradient(177deg, #580caa 11.95%, #580caa 28.39%, #2b0553 82.04%);
     border: 1px solid var(--border-color-side);
@@ -157,6 +169,10 @@
     padding-left: 4px;
     padding-right: 4px;
     border-radius: 3px;
+  }
+
+  .profilCamille h3{
+    font-size: 14px;
   }
   
   .photo{
@@ -242,9 +258,13 @@
     .titre-contact-layer--2 { opacity: 0.5; }
     .titre-contact-layer--3 { opacity: 0.3; }
   
+    .formulaireContact{
+      max-width: 370px;
+    }
+
     .contactComplet{
       padding-bottom: 6rem;
-      height: 2400px;
+      height: 5500px;
     }
     
     .messagePageContact{
@@ -252,13 +272,17 @@
       padding-bottom: 3rem;
     }
   
-    .conteneurProfils{
+    .conteneurProfils, .conteneurMembres{
       flex-direction: column;
       gap: 3rem;
     }
+
+    .conteneurMembres{
+      padding-bottom: 3rem;
+    }
   }
   
-  @media screen and (min-width: 576.02px) {
+  @media screen and (min-width: 576.02px) and (max-width: 751px){
     .border {
       position: fixed;
       background: var(--border-color-side);
@@ -317,7 +341,7 @@
     .titre-contact-layer--3 { opacity: 0.3; }
   
     .contactComplet{
-      height: 1500px;
+      height: 5650px;
     }
   
     .messagePageContact{
@@ -325,18 +349,112 @@
       padding-bottom: 2rem;
     }
   
-    .conteneurProfils{
+    .conteneurProfils, .conteneurMembres{
       flex-wrap: wrap;
     }
   
-    .profilCaroline, .profilStephanie, .profilManon, .profilCamille{
+   .profilRemy,
+    .profilLina,
+    .profilPeterson,
+    .profilMatilda, 
+    .profilAlexis,
+    .profilCaroline, 
+    .profilStephanie, 
+    .profilManon, 
+    .profilCamille{
       max-width: 350px;
       min-width: 290px;
       height: 500px;
     }
   }
   
-  @media screen and (min-width: 1024px){
+  @media screen and (min-width: 751.02px){
+       .border {
+      position: fixed;
+      background: var(--border-color-side);
+      z-index: 9999;
+    }
+  
+    .border.gauche {
+      top: 0;
+      left: 2em;
+      width: 1px;
+      height: 100%;
+    }
+  
+    .border.droite {
+      top: 0;
+      right: 2em;
+      width: 1px;
+      height: 100%;
+    }
+  
+    .contact-section {
+      background-image: linear-gradient(177deg, #580caa 11.95%, #580caa 28.39%, #21212100 82.04%);
+      border: solid 1px var(--border-color-side);
+      margin-left: 2em;
+      margin-right: 2em;
+      justify-content: center;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-direction: column;
+      padding: 15px;
+    }
+  
+    .titre-contact {
+      color: transparent;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: clamp(18px, 10vw, 40px);
+      text-transform: uppercase;
+      margin: 0;
+      -webkit-text-stroke-width: 0.7px;
+      -webkit-text-stroke-color: #fff;
+      line-height: 0.65;
+      letter-spacing: 1px;
+      margin-top: 30px;
+    }
+  
+    .titre-contact-base {
+      -webkit-text-fill-color: var(--title-color);
+    }
+  
+    .titre-contact-layer--1 { opacity: 0.8; }
+    .titre-contact-layer--2 { opacity: 0.5; }
+    .titre-contact-layer--3 { opacity: 0.3; }
+  
+    .contactComplet{
+      height: 3500px;
+    }
+  
+    .messagePageContact{
+      width: 32rem;
+      padding-bottom: 2rem;
+    }
+  
+    .conteneurProfils, .conteneurMembres{
+      flex-wrap: wrap;
+    }
+  
+    .profilRemy,
+    .profilLina,
+    .profilPeterson,
+    .profilMatilda, 
+    .profilAlexis,
+    .profilCaroline, 
+    .profilStephanie, 
+    .profilManon, 
+    .profilCamille{
+      max-width: 350px;
+      min-width: 290px;
+      height: 500px;
+    }
+  }
+
+  @media screen and (min-width: 1368px){
     .border {
       position: fixed;
       background: var(--border-color-side);
@@ -388,7 +506,7 @@
     }
   
     .contactComplet{
-      height: 950px;
+      height: 1550px;
     }
   
     input[type="button"]:hover {
@@ -401,11 +519,19 @@
       padding-bottom: 0;
     }
   
-    .conteneurProfils{
+    .conteneurProfils, .conteneurMembres{
       flex-wrap: nowrap;
     }
   
-    .profilCaroline, .profilStephanie, .profilManon, .profilCamille{
+    .profilRemy,
+    .profilLina,
+    .profilPeterson,
+    .profilMatilda, 
+    .profilAlexis,
+    .profilCaroline, 
+    .profilStephanie, 
+    .profilManon, 
+    .profilCamille{
       width: 100%;
       height: 100%;
       min-width: none;
