@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setTimeout(() => {
       if (logo) logo.classList.add('active');         // Logo / manette / student glisse
-      if (description) description.classList.add('active'); // Description
+      if (description) description.classList.add('active'); // Description ou message
       if (retour) retour.classList.add('active');     // Bouton retour
     }, delay);
   }
@@ -67,5 +67,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- Page Erreur 404 ---
   animateSection('.titre-erreur-layer', null, '.message');
+
+  // --- Page Recherche ---
+  animateSection('.titre-recherche-layer', null, '.recherche-resultats');
 
 });

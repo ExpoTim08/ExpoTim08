@@ -37,6 +37,41 @@ p, .recherche-resultats, .aucun-projet {
   font-family: var(--general-font);
 }
 
+/* ================== Titre Recherche par lettres ================== */
+.titre-recherche-layer {
+  visibility: hidden; /* caché au départ */
+}
+
+.titre-recherche-layer .letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateX(-20px); /* part de la gauche */
+  transition: opacity 1s ease, transform 1s ease;
+
+  font-family: var(--title-font);
+  color: inherit;
+  -webkit-text-stroke-width: inherit;
+  -webkit-text-stroke-color: inherit;
+}
+
+.titre-recherche-layer .letter.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ================== Résultats de recherche ================== */
+.recherche-resultats {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.recherche-resultats.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
 
 .titre-recherche-base { -webkit-text-fill-color: var(--title-color); }
 .titre-recherche-layer--1 { opacity: 0.8; }
