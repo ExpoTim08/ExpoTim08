@@ -188,11 +188,15 @@ h1, h2 {
     width: 40px;
   }
 
+  .projet-aléatoire {
+    align-content: stretch;
+  }
+
   .projet-populaire-arcade,
   .projet-populaire-finissant,
   .projet-populaire-jour-terre {
     display: grid;
-	  grid-template-rows: auto 1fr auto;
+	  grid-template-rows: auto auto 1fr;
 	  grid-template-columns: repeat(3, 1fr);
     width: 335px;
     margin: 0 auto;
@@ -216,7 +220,7 @@ h1, h2 {
   .projet-populaire-finissant > .titre {
     grid-area: 1 / 1 / 2 / 3;
     font-size: 6.2vw;
-    height: 2rem;
+    height: auto;
     border-bottom: 2px solid var(--border-color-side);
   }
 
@@ -233,6 +237,10 @@ h1, h2 {
   .projet-populaire-finissant > .bouton a {
     color: white;
     text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
   }
 
   .projet-populaire-arcade > .categorie,
@@ -258,6 +266,10 @@ h1, h2 {
     display: block;
     justify-self: center;
     grid-area: 3 / 1 / 4 / 4;
+    width: 100%;
+    height: 100%;
+    align-self: stretch; /* ✅ CRITICAL */
+    object-fit: cover;
   }
 
   .description-populaire-arcade,
@@ -284,12 +296,6 @@ h1, h2 {
     width: 45px;
     text-align: end;
     border-left: 1px solid var(--border-color);
-  }
-
-  .image-populaire-arcade, .image-populaire-jour-terre,  .image-populaire-finissants{
-    width: 335px;
-    height: 478px;
-    border: 1px solid var(--border-color-side);
   }
 
 /* ----------------------------- */
@@ -415,6 +421,10 @@ h1, h2 {
     align-self: center;
   }
 
+  .projet-aléatoire {
+    align-content: stretch;
+  }
+
   .boutonRefresh.loading {
     opacity: 0.5;
     pointer-events: none;
@@ -422,6 +432,10 @@ h1, h2 {
 
   .refresh {
     width: 40px;
+  }
+
+  .projets {
+    gap: 4vw;
   }
 }
 

@@ -651,6 +651,10 @@
     width: 90%;
   }
 
+  .cartes a {
+    color: white;
+  }
+
 
   .carte-equipe,
   .carte-equipe-2,
@@ -699,11 +703,17 @@
   .carte-equipe > .petits-carre,
   .carte-equipe-3 > .petits-carre,
   .carte-equipe-5 > .petits-carre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     grid-area: 3 / 2 / 5 / 3;
     border: 1px var(--border-color-special) solid;
   }
   .carte-equipe-2 > .photo,
   .carte-equipe-4 > .photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     grid-area: 3 / 1 / 5 / 2;
     border: 1px var(--border-color-special) solid;
   }
@@ -1352,8 +1362,7 @@
   }
 
   .projets-populaire > h1, .projets-populaire p, .boutonRefresh {
-    justify-self: end;
-    margin-right: 10%;
+    justify-self:  center;
   }
 
   .projets-populaire > p {
