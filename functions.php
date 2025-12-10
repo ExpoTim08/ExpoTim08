@@ -25,6 +25,9 @@ function expo_enqueue_assets() {
     // --- Script ajusteTitre.js ---
     wp_enqueue_script('ajuste-titre', $theme_uri . '/ajusteTitre.js', array(), null, true);
 
+    // --- Script animationTitre.js ---
+    wp_enqueue_script('animation-titre', $theme_uri . '/animationTitre.js', array(), null, true);
+
     // --- Passage des variables JS depuis WordPress ---
     // wp_localize_script('accueil-js', 'themeVars', array(
     //     'themeUrl' => $theme_uri,

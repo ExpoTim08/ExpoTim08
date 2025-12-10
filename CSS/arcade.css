@@ -28,6 +28,50 @@ h1, h2 {
   height: 2vw;
 }
 
+/* ================== Titre par lettres ================== */
+.titre-arcade-layer {
+  visibility: hidden; /* layer caché au départ */
+}
+
+.titre-arcade-layer .letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.titre-arcade-layer .letter.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ================== Logo et description ================== */
+.logo-arcade {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 1s ease, transform 1s ease; /* logo 1s */
+}
+
+.logo-arcade.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ================== Description ================== */
+.conteneur-description-arcade {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 3s ease, transform 3s ease; /* beaucoup plus lent */
+}
+
+.conteneur-description-arcade.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+
+
 /*------------- Section description + titre --------------*/
 .presentation-arcade {
   background-image: var(--background-color-arcade);

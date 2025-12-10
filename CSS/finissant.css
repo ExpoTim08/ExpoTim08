@@ -22,6 +22,50 @@ h1, h2 {
   color: var(--font-color);
 }
 
+/* ================== Titre par lettres ================== */
+.titre-finissant-layer {
+  visibility: hidden; /* layer caché au départ */
+}
+
+.titre-finissant-layer .letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.titre-finissant-layer .letter.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ================== Logo et description ================== */
+.logo-finissant {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 1s ease, transform 1s ease; /* logo 1s */
+}
+
+.logo-finissant.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ================== Description ================== */
+.conteneur-description-finissant {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 3s ease, transform 3s ease; /* beaucoup plus lent */
+}
+
+.conteneur-description-finissant.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+
+
 /*------------- Section description + titre --------------*/
 .presentation-finissant {
   background-image: var(--background-color-finissant);
