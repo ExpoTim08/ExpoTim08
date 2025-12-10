@@ -294,8 +294,8 @@ function expoTim_customize_register($wp_customize) {
         'sanitize_callback' => 'esc_url_raw',
     ));
 
-    /* -----------------------------
-    SECTION FINISSANTS
+        /* -----------------------------
+        SECTION FINISSANTS
     ------------------------------ */
 
     $wp_customize->add_section('expoTim_finissants_section', array(
@@ -316,6 +316,63 @@ function expoTim_customize_register($wp_customize) {
         'settings'    => 'expoTim_finissants_description',
         'type'        => 'textarea',
     ));
+
+    /* -----------------------------
+        4 CHAMPS TITRES
+    ------------------------------ */
+
+    /* --- Titre 1 --- */
+    $wp_customize->add_setting('expoTim_finissants_title_1', array(
+        'default'           => '',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control('expoTim_finissants_title_1_control', array(
+        'label'       => __('Titre 1', 'expoTim'),
+        'section'     => 'expoTim_finissants_section',
+        'settings'    => 'expoTim_finissants_title_1',
+        'type'        => 'text',
+    ));
+
+    /* --- Titre 2 --- */
+    $wp_customize->add_setting('expoTim_finissants_title_2', array(
+        'default'           => '',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control('expoTim_finissants_title_2_control', array(
+        'label'       => __('Titre 2', 'expoTim'),
+        'section'     => 'expoTim_finissants_section',
+        'settings'    => 'expoTim_finissants_title_2',
+        'type'        => 'text',
+    ));
+
+    /* --- Titre 3 --- */
+    $wp_customize->add_setting('expoTim_finissants_title_3', array(
+        'default'           => '',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control('expoTim_finissants_title_3_control', array(
+        'label'       => __('Titre 3', 'expoTim'),
+        'section'     => 'expoTim_finissants_section',
+        'settings'    => 'expoTim_finissants_title_3',
+        'type'        => 'text',
+    ));
+
+    /* --- Titre 4 --- */
+    $wp_customize->add_setting('expoTim_finissants_title_4', array(
+        'default'           => '',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control('expoTim_finissants_title_4_control', array(
+        'label'       => __('Titre 4', 'expoTim'),
+        'section'     => 'expoTim_finissants_section',
+        'settings'    => 'expoTim_finissants_title_4',
+        'type'        => 'text',
+    ));
+
 
     /* -----------------------------
    SECTION ARCADE
@@ -523,6 +580,7 @@ for ($i = 1; $i <= 3; $i++) {
         'type'     => 'textarea',
     ));
 }
+
 
 }
 add_action('customize_register', 'expoTim_customize_register');

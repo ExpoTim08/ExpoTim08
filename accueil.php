@@ -33,7 +33,7 @@ get_header();
   <!-- Choix des catégories -->
   <div class="carroussel-choix">
     <div class="bouton-finissants">
-      <p class="finissants">FINISSANTS</p>
+      <p class="finissants">Finissant·e·s</p>
       <img class="student" src="<?php echo get_template_directory_uri(); ?>/Images/Student.svg" alt="">
     </div>
 
