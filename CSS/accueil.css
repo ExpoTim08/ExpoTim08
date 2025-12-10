@@ -42,7 +42,6 @@
 
 /**************************************** CSS Section Carroussel **************************************************/
   .carroussel {
-    border-top: 1px solid var(--border-color);
     position: relative;
     width: 100%;
     display: flex;
@@ -73,8 +72,10 @@
     justify-self: center;
     height: 75vh; 
     width: 100%;
-    opacity: 0.5;
+    opacity: 1;
     border-bottom: 2px solid var(--border-color-special);
+    object-fit: cover;
+    filter: brightness(0.5);
   }
 
   .image-titre {
@@ -90,32 +91,31 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-    justify-content: center;
-    align-items: center;
     font-family: var(--general-font);
     left: 0%;
-    top: 35%;
+    bottom: 10vh;
     background-color: #2b2b2bc1;
     min-width: 80%;
-    text-align: center;
+    text-align: left;
+    width: 80vw;
+    justify-self: anchor-center;
   }
 
   .arcade-details > .sous-titre {
-    width: 65%;
-    font-size: 35px;
+    font-size: clamp(20px, 4vw, 35px);
     font-family: var(--title-font);
-    text-align: center;
-    margin-left: 0.2rem;
+    text-align: left;
+    margin: 0;
+    margin-left: 4vw;
   }
 
 
   .arcade-details .description {
-
-    font-weight: bold;
-    width: 75%;
-    padding: 1em;
-    font-size: 3vw;
-    line-height: 20px;
+    font-weight: 500;
+    padding: 2vh 5vw;
+    font-size: clamp(12px, 2.2vw, 18px);
+    line-height: clamp(0.8rem, 2.2vw, 2.4rem);
+    padding-top: 0;
   }
 
   .sous-titre-carroussel {
@@ -126,68 +126,117 @@
   .carroussel-choix {
     display: flex;
     position: absolute;
-    top: 100%;
+    top: 90%;
     left: 50%;
     transform: translate(-50%, -50%);
     justify-self: center;
     font-size: 2vw;
-    gap: 2rem;
+    padding: 0.5em;
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    gap: 0.9vw;
+  }
+
+  .carroussel-choix div p {
+    margin: 0;
+    display: inline-block;
+    width: 27vw;
+    height: 5vh;
+    white-space: nowrap;
+  }
+
+  .carroussel-choix div {
+    flex-grow: 1;
   }
 
   .bouton-finissants > p, .bouton-arcade > p, .bouton-graphisme > p {
-    padding: 0.3em;
     border: 1px solid var(--border-color);
     width: 100%;
-    height: 30px;
     text-align: center;
     align-content: center;
     font-family: var(--title-font);
-  }
+   }
 
   .bouton-arcade > .arcade {
-    margin-right: 2em;
-    background-color: var(--carrousel-bouton-background-color);
-    opacity: 0.8;
-    letter-spacing: var(--title-letter-spacing);
-  }
-
-  .bouton-arcade > .arcade-click {
-    border: 2px solid rgb(67, 8, 144);
+    /*background-color: var(--carrousel-bouton-background-color);*/
     opacity: 1;
     letter-spacing: var(--title-letter-spacing);
-    z-index: 200;
-  }
-
-  .bouton-graphisme > .jour-terre {
-    margin-right: 2em;
-    background-color: var(--bouton-projet-jt-color);
-    opacity: 0.8;
-    letter-spacing: var(--title-letter-spacing);
-  }
-
-  .bouton-graphisme > .jour-terre-click {
-    opacity: 1;
-    border: 2px solid rgb(44, 146, 9);
-    z-index: 1;
+    border: none;
   }
 
   .bouton-finissants > .finissants {
-    background-color: var(--bouton-projet-finissant-color);
-    opacity: 0.8;
+    /*background-color: var(--bouton-projet-finissant-color);*/
+    opacity: 1;
     letter-spacing: var(--title-letter-spacing);
+    border: none;
+  }
+
+  .bouton-graphisme > .jour-terre {
+    /*background-color: var(--bouton-projet-jt-color);*/
+    opacity: 1;
+    letter-spacing: var(--title-letter-spacing);
+    border: none;
+  }
+
+  /* Glow animations for clicked states (pulsing effect) */
+  @keyframes glow-arcade {
+    0% { box-shadow: 0 0 5px rgba(0,0,0,0.0), 0 0 0px rgba(0,0,0,0); }
+    50% { box-shadow: 0 0 12px rgba(255,255,255,0.06), 0 0 28px var(--bouton-projet-arcade-color); }
+    100% { box-shadow: 0 0 5px rgba(0,0,0,0.0), 0 0 0px rgba(0,0,0,0); }
+  }
+
+  @keyframes glow-jt {
+    0% { box-shadow: 0 0 5px rgba(0,0,0,0.0); }
+    50% { box-shadow: 0 0 12px rgba(255,255,255,0.06), 0 0 28px var(--bouton-projet-jt-color); }
+    100% { box-shadow: 0 0 5px rgba(0,0,0,0.0); }
+  }
+
+  @keyframes glow-finissants {
+    0% { box-shadow: 0 0 5px rgba(0,0,0,0.0); }
+    50% { box-shadow: 0 0 1px rgba(255,255,255,0.06), 0 0 28px var(--bouton-projet-finissant-color); }
+    100% { box-shadow: 0 0 5px rgba(0,0,0,0.0); }
+  }
+
+  .bouton-arcade > .arcade-click {
+    border: 1px solid rgb(5, 5, 115);
+    opacity: 1;
+    letter-spacing: var(--title-letter-spacing);
+    z-index: 200;
+    background-color: var(--bouton-projet-arcade-color);
+    border-radius: 5px;
+    transition: all 0.5s ease;
+    animation: glow-arcade 1.8s ease-in-out infinite;
+  }
+
+  .bouton-graphisme > .jour-terre-click {
+    border: 1px solid rgb(6, 51, 49);
+    opacity: 1;
+    letter-spacing: var(--title-letter-spacing);
+    z-index: 200;
+    background-color: var(--bouton-projet-jt-color);
+    border-radius: 5px;
+    transition: all 0.5s ease;
+    animation: glow-jt 1.8s ease-in-out infinite;
   }
 
   .bouton-finissants > .finissants-click {
-    border: 2px solid rgb(182, 158, 0);
+    border: 1px solid rgb(88, 67, 6);
     opacity: 1;
+    letter-spacing: var(--title-letter-spacing);
+    background-color: var(--bouton-projet-finissant-color);
+    border-radius: 5px;
+    transition: all 0.5s ease;
+    /* subtle pulsing glow */
+    animation: glow-finissants 1.8s ease-in-out infinite;
   }
+
 
   .finissants.finissants-click ~ .student, .arcade.arcade-click ~ .manette, .jour-terre.jour-terre-click ~ .tree {
     display: block;
     position: absolute;
     width: 5vw;
-    top: 0;
-    right: 35%;
+    bottom: -2vh;
+    right: 40%;
   }
 
   .bouton-arcade, .bouton-graphisme, .bouton-finissants {
@@ -205,6 +254,26 @@
     color: var(--font-color);
     text-decoration: none;
     font-family: var(--general-font);
+  }
+
+  .manette, .tree, .student {
+    transform-origin: center center;
+    will-change: transform, opacity;
+    transform: translateY(19px) rotate(0deg) scale(1);
+    transition: transform 220ms cubic-bezier(.2,.9,.2,1), opacity 200ms;
+    opacity: 0.9;
+  }
+
+  @keyframes icon-hover-rotate {
+    0%   { transform: translateY(19px) rotate(0deg)    scale(1);   }
+    100% { transform: translateY(19px) rotate(25deg)   scale(1.03);} /* final rotated state */
+  }
+
+  .bouton-arcade:hover .manette,
+  .bouton-graphisme:hover .tree,
+  .bouton-finissants:hover .student {
+    animation: icon-hover-rotate 320ms cubic-bezier(.2,.9,.2,1) forwards;
+    opacity: 1;
   }
 
   .manette, .tree, .student {
@@ -797,7 +866,7 @@
 
 /*************************************** CSS Tablette*************************************************/
 
-@media screen and (min-width: 576px) and (max-width: 1366px) {
+@media screen and (min-width: 576px) and (max-width: 1366.98px) {
 
   .border {
     position: fixed;
@@ -821,20 +890,183 @@
 
   /******************************** CSS Section Carroussel Tablette **************************************************/
 
-  .carroussel {
-      margin-top: 0px;
+/* ================== ARCADE DETAILS ================== */
+
+.arcade-details {
+  position: absolute;
+  bottom: 56vh;
+  left: 12vw;
+  width: 40vw;
+  min-width: 400px;
+  height: 22vh;
+  background-color: rgba(26, 26, 26, 0.687);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+  transform: translateY(160%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  overflow: hidden;
+  z-index: 2;
+  opacity: 1;
+  /* transform: translateY(42%); */
+  justify-self: auto;
+  justify-content: center;
+}
+
+.bouton-arcade:hover .arcade-details{
+  background: linear-gradient(1deg, #086ec2 10%, transparent 90%);
+}
+
+.bouton-graphisme:hover .arcade-details{
+  background: linear-gradient(1deg, #3dc208 10%, transparent 90%);
+}
+
+.bouton-finissants:hover .arcade-details{
+  background: linear-gradient(1deg, #c28708 10%, transparent 90%);
+}
+
+.arcade-details > .sous-titre-carroussel {
+  width: 50%;
+  margin: 0;
+  font-size: 2.8vw;
+  width: auto;
+  padding: 3vh 0 0 2vw;
+}
+
+.arcade-details > .description {
+  width: auto;
+  margin: 0;
+  line-height: 1.1;
+  font-size: clamp(0.5rem, 2vw, 0.95rem);
+  white-space: normal;
+  text-align: left;
+  padding: 0 2vw 30px 2vw;
+  font-weight: 400;
+}
+
+
+/* Affichage uniquement quand on survole les boutons */
+.carroussel-choix:hover + .arcade-details {
+  display: flex !important;
+}
+
+
+
+/******************************************* Carroussel Choix *********************************** */
+#image-carroussel {
+  clip-path: none;
+  border-bottom: none;
+}
+
+.carroussel {
+  padding: 0;
+}
+
+  .carroussel-choix {
+    display: flex;
+    border-radius: 10px;
+    padding: 0.3em 0.4em;
+    z-index: 10000;
+    transform-origin: right;
+    justify-content: flex-start;
+    translate: -18vw;
+    top: 58vh;
   }
 
-  .arcade-details > .description {
-    font-weight: bold;
-    width: 75%;
-    padding: 1em;
-    font-size: clamp(13px, 2vw, 24px);
+  @media screen and (min-width:576px) and (max-width: 650px) {
+    .carroussel-choix {
+        translate: -2vw;
+    }
+  }
+  
+  @media screen and (min-width:650.02px) and (max-width: 800px) {
+    .carroussel-choix {
+        translate: -12vw;
+    }
   }
 
-  .finissants.finissants-click ~ .student, .arcade.arcade-click ~ .manette, .jour-terre.jour-terre-click ~ .tree {
-    top: -22%;
+  @media screen and (min-width:800.02px) and (max-width: 1024px) {
+    .carroussel-choix {
+        translate: -15vw;
+        gap: 10px;
+    }
   }
+
+
+.bouton-arcade,
+.bouton-graphisme,
+.bouton-finissants {
+  position: relative; /* conteneur pour que les icônes absolues se réfèrent à lui */
+  height: auto;
+  cursor: pointer;
+  text-align: center;
+}
+
+.bouton-arcade > .arcade,
+.bouton-graphisme > .jour-terre,
+.bouton-finissants > .finissants {
+  font-size: clamp(0.6rem, 1vw, 1.44rem); /* taille min 1rem, idéale 2vw, max x-large */
+  margin: 0;
+  padding: 0.2vh 2vw;
+}
+
+.carroussel-choix div p {
+  margin: 0;
+  display: inline-block;
+  width: -webkit-fill-available;
+  height: 5vh;
+  white-space: nowrap;
+}
+
+
+/* Icônes devant le bouton et descendues (par défaut pour manette et student) */
+.bouton-finissants .student {
+  position: absolute;
+  top: 1%;
+  left: -10%;
+  transform: translateY(19px);
+  z-index: 2;
+
+  width: 40px;      /* taille fixe beaucoup plus petite */
+  max-width: 40px;  /* limite vraiment la grandeur */
+  height: auto;
+  object-fit: contain;
+}
+
+.bouton-arcade .manette {
+  position: absolute;
+  top: -3%;
+  left: -5%;
+  transform: translateY(19px);
+  z-index: 2;
+
+  width: 40px;      /* taille fixe beaucoup plus petite */
+  max-width: 40px;  /* limite vraiment la grandeur */
+  height: auto;
+  object-fit: contain;
+}
+
+.bouton-graphisme .tree {
+  position: absolute;
+  top: 1%;
+  left: -9%;
+  transform: translateY(19px);
+  z-index: 2;
+
+  width: 40px;      /* taille fixe beaucoup plus petite */
+  max-width: 40px;  /* limite vraiment la grandeur */
+  height: auto;
+  object-fit: contain;
+}
+
+.image-wrap {
+  filter: brightness(0.9), drop-shadow(0px 0px 0 rgba(0, 0, 0, 0));
+}
+
     
   /****************************************** CSS Section Accroche Tablette ***************************************************/
 
@@ -1015,9 +1247,9 @@
   position: relative;
   width: 100%;
   height: 70vh;
-  filter: drop-shadow(15px -15px 0 var(--bouton-projet-arcade-color)) 
-          drop-shadow(15px -15px 0 var(--bouton-projet-jt-color)) 
-          drop-shadow(15px -15px 0 var(--bouton-projet-finissant-color));
+  filter: drop-shadow(15px -15px 0 rgba(64, 50, 255, 0.9)) 
+          drop-shadow(15px -15px 0 rgba(0, 151, 143, 0.9)) 
+          drop-shadow(15px -15px 0 rgba(194, 135, 8, 0.9));
   width: 80vw;
   margin: 45px 0 0 0;
   align-self: center;
@@ -1045,28 +1277,27 @@
   width: 100%;
   height: auto;
   object-fit: cover;
-  filter: drop-shadow(15px -15px 0 var(--bouton-projet-arcade-color)) 
-          drop-shadow(15px -15px 0 var(--bouton-projet-jt-color)) 
-          drop-shadow(15px -15px 0 var(--bouton-projet-finissant-color));
+  /* base colored drop-shadows with slightly reduced opacity */
+  filter: drop-shadow(15px -15px 0 rgba(64, 50, 255, 0.8)) 
+          drop-shadow(15px -15px 0 rgba(0, 151, 143, 0.8)) 
+          drop-shadow(15px -15px 0 rgba(194, 135, 8, 0.8));
   position: relative;
   z-index: 1; /* l'image derrière */
 }
-/* ================== ARCADE DETAILS ================== */
 
 .arcade-details {
   position: absolute;
   bottom: 0;
   top: 40%;
-  left: 12%;
-  width: 100%;
-  max-width: 900px;
+  left: 13%;
+  width: 40vw;
   min-width: 180px;
-  height: 120px;
+  height: 20vh;
   background-color: rgba(26, 26, 26, 0.687);
-  border-radius: 15px;
+  border-radius: 10px;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: space-between;
   padding: 10px;
   transform: translateY(160%);
@@ -1075,29 +1306,39 @@
   transition: opacity 0.4s ease, transform 0.4s ease;
   overflow: hidden;
   z-index: 2;
-}
-
-.arcade-details.show {
   opacity: 1;
-  transform: translateY(100%);
+  transform: translateY(13vh);
+  justify-self: auto;
 }
 
+.bouton-arcade:hover .arcade-details{
+  background: linear-gradient(1deg, #086ec2 10%, transparent 90%);
+}
 
+.bouton-graphisme:hover .arcade-details{
+  background: linear-gradient(1deg, #3dc208 10%, transparent 90%);
+}
+
+.bouton-finissants:hover .arcade-details{
+  background: linear-gradient(1deg, #c28708 10%, transparent 90%);
+}
 
 .arcade-details > .sous-titre-carroussel {
   width: 50%;
   margin: 0;
   font-size: 2.8vw;
-  -webkit-text-stroke: 1px #fff;
-  text-shadow: 0px 25px 0px rgba(255, 255, 255, 0.5);
+  width: auto;
+  padding: 3vh 0 0 2vw;
 }
 
 .arcade-details > .description {
   width: 80%;
   margin: 0;
   line-height: 1.1;
-  font-size: 0.9rem;
+  font-size: clamp(0.6rem, 0.9vw, 300px);
   white-space: normal;
+  text-align: left;
+  padding: 0 0 10vh 2vw;
 }
 
 
@@ -1109,66 +1350,89 @@
 
 
 /******************************************* Carroussel Choix *********************************** */
+#image-carroussel {
+  clip-path: polygon(84% 0, 100% 33%, 100% 100%, 0 100%, 0 0);
+  border-bottom: none;
+}
+
+.carroussel {
+  padding: 5vh 0;
+}
+
+
 .carroussel-choix {
   display: flex;
   justify-content: center;
-  gap: 4rem; /* espace entre les boutons */
+  width: 40vw;
+  top: 83%;
+  left: 34%;
+  border-radius: 10px;
+  padding: 0.3em 0.4em;
+  z-index: 10000;
 }
 
 .bouton-arcade,
 .bouton-graphisme,
 .bouton-finissants {
   position: relative; /* conteneur pour que les icônes absolues se réfèrent à lui */
-  width: 22vw;        /* boutons un peu plus larges */
   height: auto;
   cursor: pointer;
   text-align: center;
-  padding: 1.5rem 0;
 }
 
 .bouton-arcade > .arcade,
 .bouton-graphisme > .jour-terre,
 .bouton-finissants > .finissants {
-  font-size: clamp(1rem, 2vw, 1.44rem); /* taille min 1rem, idéale 2vw, max x-large */
+  font-size: clamp(0.6rem, 1vw, 1.44rem); /* taille min 1rem, idéale 2vw, max x-large */
   margin: 0;
+  padding: 0.2vh 2vw;
 }
+
+.carroussel-choix div p {
+  margin: 0;
+  display: inline-block;
+  width: -webkit-fill-available;
+  height: 5vh;
+  white-space: nowrap;
+}
+
 
 /* Icônes devant le bouton et descendues (par défaut pour manette et student) */
 .bouton-finissants .student {
   position: absolute;
-  top: 50%;
+  top: 10%;
   left: -10%;
   transform: translateY(19px);
   z-index: 2;
 
-  width: 68px;      /* taille fixe beaucoup plus petite */
-  max-width: 68px;  /* limite vraiment la grandeur */
+  width: 50px;      /* taille fixe beaucoup plus petite */
+  max-width: 50px;  /* limite vraiment la grandeur */
   height: auto;
   object-fit: contain;
 }
 
 .bouton-arcade .manette {
   position: absolute;
-  top: 50%;
+  top: 10%;
   left: -5%;
   transform: translateY(19px);
   z-index: 2;
 
-  width: 68px;      /* taille fixe beaucoup plus petite */
-  max-width: 68px;  /* limite vraiment la grandeur */
+  width: 50px;      /* taille fixe beaucoup plus petite */
+  max-width: 50px;  /* limite vraiment la grandeur */
   height: auto;
   object-fit: contain;
 }
 
 .bouton-graphisme .tree {
   position: absolute;
-  top: 50%;
+  top: 10%;
   left: -9%;
   transform: translateY(19px);
   z-index: 2;
 
-  width: 60px;      /* taille fixe beaucoup plus petite */
-  max-width: 60px;  /* limite vraiment la grandeur */
+  width: 50px;      /* taille fixe beaucoup plus petite */
+  max-width: 50px;  /* limite vraiment la grandeur */
   height: auto;
   object-fit: contain;
 }
@@ -1424,12 +1688,8 @@
   .equipe {
     margin-top: 3rem;
   }
-  .finissants.finissants-click ~ .student, .arcade.arcade-click ~ .manette, .jour-terre.jour-terre-click ~ .tree {
-    top: -5%;
-  }
-    
 }
-@media screen and (min-width: 1921px) {
+/*@media screen and (min-width: 1921px) {
 
   .arcade-details {
     left: 15%;
@@ -1437,6 +1697,6 @@
     width: 100%;
     top: 67%;
   }
-}
+}*/
   
 

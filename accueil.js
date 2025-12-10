@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let hoverTimeout = null;
 
   const Image = document.getElementById("image-carroussel");
+  const ImageWrap = document.querySelector('.image-wrap');
   const Subtitle = document.querySelector(".sous-titre-carroussel");
   const DescriptionCategorie = document.querySelector(".description");
   const ChoixElements = document.querySelectorAll(".carroussel-choix p");
@@ -32,6 +33,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const container = document.getElementById('projets-container');
   const refreshBtn = document.querySelector('.boutonRefresh');
+  const detailsPlus = Details ? Details.querySelector('.plus, .Plus') : null;
+
+  // Helper to apply or clear the decorative filter on the image wrap immediately
+  function updateImageWrapFilter() {
+    if (!ImageWrap) return;
+    // clear on small screens immediately
+    if (window.innerWidth <= 1366) {
+      ImageWrap.style.filter = '';
+      return;
+    }
+    // apply based on the currently active index
+    const active = Images[CurrentIndex] && Images[CurrentIndex].ClassName;
+    if (active === 'arcade') {
+      ImageWrap.style.filter = 'drop-shadow(15px -15px 0 rgba(75, 51, 235, 0.9)) drop-shadow(15px -15px 0 rgba(0, 151, 143, 0.8)) drop-shadow(15px -15px 0 rgba(194, 135, 8, 0.8))';
+    } else if (active === 'jour-terre') {
+      ImageWrap.style.filter = 'drop-shadow(15px -15px 0 rgba(49, 37, 219, 0.8)) drop-shadow(15px -15px 0 rgba(27, 176, 169, 1)) drop-shadow(15px -15px 0 rgba(194, 135, 8, 0.8))';
+    } else if (active === 'finissants') {
+      ImageWrap.style.filter = 'drop-shadow(15px -15px 0 rgba(49, 37, 219, 0.8)) drop-shadow(15px -15px 0 rgba(0, 151, 143, 0.8)) drop-shadow(15px -15px 0 rgba(255, 173, 32, 1))';
+    } else {
+      ImageWrap.style.filter = '';
+    }
+  }
 
   if (!Image || !Subtitle || !DescriptionCategorie || ChoixElements.length === 0 || !container) return;
 
@@ -48,6 +71,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const currentChoice = document.querySelector(`.${ClassName}`);
     if (currentChoice) currentChoice.classList.add(`${ClassName}-click`);
+
+    // Replace the <p> content for the active button and restore the others.
+    // Save originals in a data attribute so we can restore them later.
+    ChoixElements.forEach((pElm, i) => {
+      if (!pElm.dataset.original) pElm.dataset.original = pElm.innerText;
+      if (i === index) {
+        pElm.innerText = 'voir plus';
+      } else {
+        pElm.innerText = pElm.dataset.original;
+      }
+    });
+
+    // Update the arcade-details background to match the active choice.
+    if (Details) {
+      Details.classList.remove('bg-arcade','bg-graphisme','bg-finissants');
+      // Map class name to bg class + inline gradient fallback
+      if (ClassName === 'arcade') {
+        Details.classList.add('bg-arcade');
+        Details.style.background = 'linear-gradient(1deg, #462ae3ff 15%, #210d90ff 35%, transparent 90%)';
+      } else if (ClassName === 'jour-terre') {
+        Details.classList.add('bg-graphisme');
+        Details.style.background = 'linear-gradient(1deg, #05beb5ff 15%, #0a847eff 35%, transparent 90%)';
+      } else if (ClassName === 'finissants') {
+        Details.classList.add('bg-finissants');
+        Details.style.background = 'linear-gradient(1deg, #e5a009ff 15%, #a77408ff 35%, transparent 90%)';
+      } else {
+        Details.style.background = '';
+      }
+
+      // Update the 'voir plus' text inside the details box (supports .plus and .Plus)
+      const voirPlus = Details.querySelector('.plus, .Plus');
+      if (voirPlus) {
+        voirPlus.innerText = `Voir plus — ${Titre}`;
+      }
+    }
+
+    // Update image-wrap filter (use helper to ensure immediate effect on resize)
+    updateImageWrapFilter();
+
   }
 
   // ================= Auto rotation =================
@@ -91,7 +153,16 @@ document.addEventListener("DOMContentLoaded", () => {
     elm.addEventListener("mouseleave", leave);
 
     elm.addEventListener("click", () => {
-      window.location.href = Images[i].Lien;
+      // On small screens activate the choice instead of navigating (no hover there)
+      if (window.innerWidth <= 1366) {
+        stopAuto();
+        CurrentIndex = i;
+        ChangeImage(CurrentIndex);
+        if (Details) Details.classList.add('show');
+      } else {
+        // Desktop: follow link immediately
+        window.location.href = Images[i].Lien;
+      }
     });
   });
 
@@ -103,6 +174,8 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       Details.classList.remove('show');
     }
+    // ensure image-wrap filter updates immediately when resizing
+    updateImageWrapFilter();
   }
 
   handleResponsiveDetails();
