@@ -25,11 +25,47 @@ h1, h2 {
   color: var(--font-color);
 }
 
-/*------------- Section description + titre --------------*/
-.presentation-graphisme {
-  background-image: var(--background-color-graphisme); /* conserve le vert Graphisme */
-  margin-bottom: 5vh;
+/* ================== Titre par lettres ================== */
+.titre-graphisme-layer {
+  visibility: hidden; /* layer caché au départ */
 }
+
+.titre-graphisme-layer .letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.titre-graphisme-layer .letter.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ================== Logo et description ================== */
+.logo-graphisme {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 1s ease, transform 1s ease; /* logo 1s */
+}
+
+.logo-graphisme.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ================== Description ================== */
+.conteneur-description-graphisme {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 3s ease, transform 3s ease; /* beaucoup plus lent */
+}
+
+.conteneur-description-graphisme.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 
 /*-------------- MOBILE GRAPHISME --------------*/
 @media screen and (max-width: 576px) {

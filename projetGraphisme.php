@@ -56,7 +56,10 @@ $nom_affiche = $nom ?: get_the_title($projet_id);
         </a>
       </p>
       
-      <img class="tree" src="<?php echo get_template_directory_uri(); ?>/Images/Tree.svg" alt="">
+      <div class="tree-wrapper">
+  <img class="tree" src="<?php echo get_template_directory_uri(); ?>/Images/Tree.svg" alt="">
+</div>
+
     </h1>
 
     <!-- Description -->

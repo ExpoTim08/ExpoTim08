@@ -41,6 +41,53 @@ h1 {
   margin: 0 auto;
   }
 
+  /* ================== Titre par lettres ================== */
+.titre-graphisme-layer {
+  visibility: hidden; /* layer caché au départ */
+}
+
+.titre-graphisme-layer .letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateX(-20px); /* part de la gauche */
+  transition: opacity 1s ease, transform 1s ease;
+
+  font-family: var(--title-font);
+  color: inherit;
+  -webkit-text-stroke-width: inherit;
+  -webkit-text-stroke-color: inherit;
+}
+
+.titre-graphisme-layer .letter.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ================== Student ================== */
+.tree-wrapper {
+  opacity: 0;
+  transform: translateX(-50px); /* glisse depuis la gauche */
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.tree-wrapper.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ================== Bouton retour ================== */
+.retour-finissant {
+  opacity: 0;
+  transform: translateX(-20px); /* part de gauche */
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.retour-finissant.active {
+  opacity: 1;
+  transform: translateX(0); /* reste à sa position */
+}
+
+
 /************************* Motif *******************************************/
   .student {
   position: absolute;

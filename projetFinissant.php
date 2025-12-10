@@ -58,7 +58,9 @@ $nom_affiche = $nom ?: get_the_title($projet_id);
   </p>
 
     <!-- Student image positionnée en absolute -->
+    <div class="tree-wrapper">
     <img class="student" src="<?php echo get_template_directory_uri(); ?>/Images/Student.svg" alt="">
+    </div>
   </h1>
 
 
