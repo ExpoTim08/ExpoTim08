@@ -836,44 +836,44 @@
   }
 
 
-  /*.carte-equipe {
-    box-shadow: 5px 5px 17px 5px rgb(1, 1, 125);
-  }*/
+  .carte-equipe {
+    box-shadow: 0 0 17px 5px rgba(7, 7, 106, 0.7);
+  }
   .carte-equipe .nom {
     background-color: rgb(18, 18, 104);
     color: white;
   }
 
-  /*.carte-equipe-2 {
-    box-shadow: 5px 5px 17px 5px rgb(124, 0, 124);
-  }*/
+  .carte-equipe-2 {
+    box-shadow: 0 0 17px 5px rgb(124, 0, 124, 0.7);
+  }
 
   .carte-equipe-2 .nom {
     background-color: rgb(130, 28, 130);
     color: white;
   }
 
-  /*.carte-equipe-3 {
-    box-shadow: 5px 5px 17px 5px rgb(244, 75, 213);
-  }*/
+  .carte-equipe-3 {
+    box-shadow: 0 0 17px 5px rgba(203, 94, 158, 0.7);
+  }
 
   .carte-equipe-3 .nom {
     background-color: rgb(227, 154, 208);
     color: white;
   }
 
-  /*.carte-equipe-4 {
-    box-shadow: 5px 5px 17px 5px red;
-  }*/
+  .carte-equipe-4 {
+    box-shadow: 0 0 17px 5px rgba(151, 21, 21, 0.7);
+  }
 
   .carte-equipe-4 .nom {
     background-color: rgb(194, 46, 46);
     color: white;
   }
 
-  /*.carte-equipe-5 {
-    box-shadow: 5px 5px 17px 5px rgb(180, 180, 0);
-  }*/
+  .carte-equipe-5 {
+    box-shadow: 0 0 17px 5px rgba(108, 195, 9, 0.532);
+  }
 
   .carte-equipe-5 .nom {
     background-color: rgb(135, 163, 51);
