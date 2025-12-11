@@ -42,18 +42,23 @@ h1, h2 {
   transform: translateX(0);
 }
 
-/* ================== Logo et description ================== */
+/* ================== Logo Graphisme ================== */
+/* Mobile par défaut */
 .logo-graphisme {
   opacity: 0;
   transform: translateX(-20px);
-  transition: opacity 1s ease, transform 1s ease; /* logo 1s */
+  transition: opacity 1s ease, transform 1s ease;
+
+  position: absolute;
+  right: 3%;      /* ajuster pour mobile */
+  top: 20%;   /* ajuster pour mobile */
+  z-index: 10;
 }
 
 .logo-graphisme.active {
   opacity: 1;
   transform: translateX(0);
 }
-
 /* ================== Description ================== */
 .conteneur-description-graphisme {
   opacity: 0;
@@ -134,16 +139,7 @@ h1, h2 {
     
   }
   
-  .logo-graphisme {
-    position: absolute;
-    right: -5px;
-    top: 110px;
-    z-index: 10;
-    mix-blend-mode: normal;
-    width: 90px;
-    height: auto;
-    max-width: 150px;
-  }
+
 
   /* -------------- Version mobile des cartes -------------- */
 
@@ -273,6 +269,8 @@ h1, h2 {
 /*-------------- TABLET / PETIT ECRAN graphisme --------------*/
 @media screen and (min-width: 576.02px) {
 
+  
+
   .filtres-container {
     display: flex;
     align-items: center;
@@ -325,16 +323,28 @@ h1, h2 {
 
   /* deco titre graphisme */
   .presentation-graphisme {
-  background-image: var(--background-color-graphisme); /* conserve le vert Graphisme */
-  margin-bottom: 5vh;
+    position: relative;
+    background-image: var(--background-color-graphisme); /* conserve le vert Graphisme */
+    margin-bottom: 5vh;
   }
 
   .logo-graphisme {
     position: absolute;
-    left: -20px;
-    bottom: 35%;
+    left: -15px;   /* position mobile / tablette */
+    top: 180px;    /* position mobile / tablette */
+    width: 90px;
+    height: auto;
+    max-width: 150px;
     z-index: 10;
     mix-blend-mode: normal;
+    opacity: 0;
+    transform: translateX(-20px); /* animation slide */
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  
+  .logo-graphisme.active {
+    opacity: 1;
+    transform: translateX(0);
   }
 
   @media screen and (min-width: 650px) and (max-width: 1024px) {
@@ -461,6 +471,7 @@ h1, h2 {
 /*-------------- DESKTOP GRAPHISME --------------*/
 @media screen and (min-width: 1024px) {
 
+
   .filtres-container {
     display: flex;
     align-items: center;
@@ -500,8 +511,8 @@ h1, h2 {
   /* deco titre graphisme */
   .logo-graphisme {
     position: absolute;
-    left: -40px;
-    bottom: -25%;
+    left: -35px;
+    top: 220px;
     z-index: 10;
     mix-blend-mode: normal;
     height: auto;
