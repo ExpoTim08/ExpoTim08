@@ -51,7 +51,7 @@ require("global.php");
                   
             </section>
             <section class="section-projets-decouverte">
-                <h2 class="projet-decouvrir">Voici des projets à découvrir</h2>
+                <h2 class="projet-decouvrir"><?php echo esc_html( get_theme_mod('expoTim_home_random_project') ); ?></h2>
                 <div class="boutonRefresh">
                     <img class="refresh" src="<?php echo get_template_directory_uri(); ?>/Images/Refresh.svg" alt="">
                     <span>Raffraichis les projets</span>
