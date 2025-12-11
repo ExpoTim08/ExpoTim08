@@ -163,7 +163,7 @@ h1, h2 {
   align-items: center;
   flex-direction: column;
   position: relative;
-  margin-top: 5vh;
+  margin-top: 10vh;
 }
 
 .logo-arcade {
@@ -596,6 +596,9 @@ h1, h2 {
     justify-content: center;
     gap: 5vw;
     margin-top: 5vh;
+    flex-wrap: wrap;
+    margin-bottom: 10vh;
+    padding: 0 15vh;
   }
 
   .projets > p {
