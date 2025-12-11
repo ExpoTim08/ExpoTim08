@@ -152,6 +152,9 @@
   .formulaireContact >  h2 {
     text-align: center;
   }
+  label{
+    font-family: var(--general-font);
+  }
 
   .messagePageContact {
     display: flex;
