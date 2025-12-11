@@ -1,64 +1,58 @@
 function ajusteTousLesTitres() {
-  // Tous les conteneurs de titres : titre-arcade, titre-graphisme, etc.
   const titres = document.querySelectorAll("[class^='titre-']:not(.titre-arcade-layer):not(.titre-graphisme-layer)");
 
   titres.forEach(titre => {
-    // Tous les layers internes (la logique est la même partout)
     const layers = titre.querySelectorAll("[class*='layer']");
+    if (!layers.length) return;
 
     const style = window.getComputedStyle(titre);
-    const containerWidth =
-      titre.clientWidth -
-      parseFloat(style.paddingLeft) -
-      parseFloat(style.paddingRight);
+    const containerWidth = titre.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
 
     layers.forEach(layer => {
-      // Reset
+      // On supprime toute taille inline pour repartir du clamp CSS
       layer.style.fontSize = "";
 
-      // Clone invisible pour mesurer la vraie largeur du texte
+      // Taille calculée par clamp
+      const computedStyle = window.getComputedStyle(layer);
+      const fontSize = parseFloat(computedStyle.fontSize);
+
+      // Clone invisible pour mesurer
       const clone = document.createElement("span");
       clone.style.position = "absolute";
       clone.style.visibility = "hidden";
       clone.style.whiteSpace = "nowrap";
-      clone.style.fontSize = window.getComputedStyle(layer).fontSize;
-      clone.style.fontFamily = window.getComputedStyle(layer).fontFamily;
-      clone.style.fontWeight = window.getComputedStyle(layer).fontWeight;
-      clone.style.letterSpacing = window.getComputedStyle(layer).letterSpacing;
+      clone.style.fontSize = fontSize + "px";
+      clone.style.fontFamily = computedStyle.fontFamily;
+      clone.style.fontWeight = computedStyle.fontWeight;
+      clone.style.letterSpacing = computedStyle.letterSpacing;
       clone.textContent = layer.textContent;
       document.body.appendChild(clone);
 
-      let fontSize = parseFloat(window.getComputedStyle(layer).fontSize);
-      const minFont = 10;
-      const maxFont = 90;
+      const textWidth = clone.getBoundingClientRect().width;
 
-      // Largeur réelle du texte
-      let textWidth = clone.getBoundingClientRect().width;
-
-      // Si ça dépasse, on réduit proportionnellement
       if (textWidth > containerWidth) {
-        const ratio = containerWidth / textWidth;
-        fontSize *= ratio;
+        // Réduction seulement si ça dépasse
+        let newFontSize = fontSize * (containerWidth / textWidth) * 0.92;
+        const minFont = 10;
+        if (newFontSize < minFont) newFontSize = minFont;
+        layer.style.fontSize = newFontSize + "px";
+      } else {
+        // Si le texte tient, supprimer l'inline pour que clamp reprenne
+        layer.style.fontSize = "";
       }
-
-      // Petite réduction préventive (anti-2-lignes)
-      fontSize *= 0.92;
-
-      // Limites
-      if (fontSize < minFont) fontSize = minFont;
-      if (fontSize > maxFont) fontSize = maxFont;
-
-      layer.style.fontSize = fontSize + "px";
 
       clone.remove();
     });
   });
 }
 
-// Événements
+// Déclenchement sur toutes les pages
 document.addEventListener("DOMContentLoaded", ajusteTousLesTitres);
 window.addEventListener("resize", ajusteTousLesTitres);
-
-// Pour navigation AJAX / Barba (si tu l’utilises)
 document.addEventListener("pjax:end", ajusteTousLesTitres);
 document.addEventListener("barba:afterEnter", ajusteTousLesTitres);
+
+// Page 404 spécifique si nécessaire
+if (document.body.classList.contains('page-404')) {
+  ajusteTousLesTitres();
+}
