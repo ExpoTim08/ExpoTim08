@@ -212,7 +212,7 @@ function truncate_no_cut($text, $max_chars = 200) {
                             </a>
                         </figure>
                         <div class="projet-actions">
-                            <button class="button-voir-projet" onclick="window.location.href='<?php echo esc_url($lien_projet); ?>'">&gt;&gt;</button>
+                            <button class="button-voir-projet" onclick="window.location.href='<?php echo esc_url($lien_projet); ?>'">➜</button>
                         </div>
                     <?php endif; ?>
                     <section class="projet-section">

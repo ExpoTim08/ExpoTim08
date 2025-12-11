@@ -58,7 +58,7 @@ if ($video) {
       <!-- Bouton retour vers Arcade -->
       <p class="retour-arcade">
       <a href="<?php echo esc_url(get_permalink(get_page_by_path('arcade'))); ?>" class="lien-retour">
-        &lt; Arcade
+        &lt; <?php echo esc_html(get_theme_mod('expoTim_arcade_title')); ?>
       </a>
       </p>
       <div class="manette-wrapper">

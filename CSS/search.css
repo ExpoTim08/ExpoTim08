@@ -466,6 +466,7 @@ p, .recherche-resultats, .aucun-projet {
     width: 40px;
     height: 40px;
     background-color: var(--bouton-recherche-color);
+    color: var(--font-color);
   }
 
   .projet-title, .projet-description {
@@ -597,6 +598,7 @@ p, .recherche-resultats, .aucun-projet {
     border-right: none;
     border-bottom: none;
     background: var(--bouton-recherche-color);
+    color: var(--font-color);
   }
 
   .projet-figure {

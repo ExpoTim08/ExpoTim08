@@ -6,10 +6,7 @@ require("global.php");
 get_header();
 ?>
 <?php 
-$titre1 = get_theme_mod('expoTim_finissants_title_1') ;
-$titre2 = get_theme_mod('expoTim_finissants_title_2');
-$titre3 = get_theme_mod('expoTim_finissants_title_3');
-$titre4 = get_theme_mod('expoTim_finissants_title_4');
+
 ?>
 
 
