@@ -22,14 +22,14 @@ if (get_post_status($projet_id) === false) {
     exit;
 }
 
-// Champs ACF
-$nom         = get_field('nom_du_projet', $projet_id);
-$description = get_field('description', $projet_id);
-$image       = get_field('affiche', $projet_id);
-$etudiants   = get_field('etudiants_associes', $projet_id);
-$annee       = get_field('annee', $projet_id);
-$numeroCours = get_field('numero_du_cours', $projet_id);
-$behance     = get_field('liens_behance', $projet_id);
+// Champs ACF (guardés au cas où ACF n'est pas actif)
+$nom         = function_exists('get_field') ? get_field('nom_du_projet', $projet_id) : '';
+$description = function_exists('get_field') ? get_field('description', $projet_id) : '';
+$image       = function_exists('get_field') ? get_field('affiche', $projet_id) : null;
+$etudiants   = function_exists('get_field') ? get_field('etudiants_associes', $projet_id) : null;
+$annee       = function_exists('get_field') ? get_field('annee', $projet_id) : '';
+$numeroCours = function_exists('get_field') ? get_field('numero_du_cours', $projet_id) : '';
+$behance     = function_exists('get_field') ? get_field('liens_behance', $projet_id) : '';
 
 // Sécurité : si $nom est vide, récupérer le titre du post
 $nom_affiche = $nom ?: get_the_title($projet_id);
@@ -52,7 +52,7 @@ $nom_affiche = $nom ?: get_the_title($projet_id);
       <!-- Bouton retour vers la page Graphisme -->
       <p class="retour-graphisme">
         <a href="<?php echo esc_url(get_permalink(get_page_by_path('graphisme'))); ?>" class="lien-retour">
-          &lt; <?php echo esc_html(get_theme_mod('expoTim_graphisme_title'));
+          &lt; <?php echo esc_html(get_theme_mod('expoTim_graphisme_title')); ?>
         </a>
       </p>
       
@@ -79,12 +79,13 @@ $nom_affiche = $nom ?: get_the_title($projet_id);
           <?php
           $liste = [];
           foreach ($etudiants as $etudiant) {
-            $prenom = get_field('prenom', $etudiant->ID);
-            $nomEtu = get_field('nom_etudiant', $etudiant->ID);
+            $etudiant_id = is_object($etudiant) ? $etudiant->ID : intval($etudiant);
+            $prenom = function_exists('get_field') ? get_field('prenom', $etudiant_id) : '';
+            $nomEtu = function_exists('get_field') ? get_field('nom_etudiant', $etudiant_id) : '';
             $fullName = trim("$prenom $nomEtu");
             $liste[] = '<span class="nom-etudiant">' . esc_html($fullName) . '</span>';
           }
-          echo implode($liste);
+          echo implode('', $liste);
           ?>
         </div>
       <?php endif; ?>
