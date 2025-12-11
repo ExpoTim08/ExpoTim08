@@ -953,6 +953,7 @@
 /* Affichage uniquement quand on survole les boutons */
 .carroussel-choix:hover + .arcade-details {
   display: flex !important;
+  z-index: 10;
 }
 
 
@@ -1689,6 +1690,7 @@
   .equipe {
     margin-top: 3rem;
   }
+
 }
 /*@media screen and (min-width: 1921px) {
 
@@ -1699,5 +1701,6 @@
     top: 67%;
   }
 }*/
-  
+
+
 
