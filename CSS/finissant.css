@@ -836,23 +836,26 @@ h1, h2 {
   cursor: pointer;
   box-shadow: none;
   font-family: var(--general-font);
-  border: 3px solid var(--bouton-projet-finissant-color);
-  box-shadow: var(--bouton-projet-finissant-color) 4px 4px 10px; 
+  border: 2px solid var(--bouton-projet-finissant-color);
+  box-shadow: var(--bouton-projet-finissant-color) 2px 2px 6px; 
   animation: pulseBorder 5s infinite ease-in-out;
+  border-radius: 5px;
+  animation: scaleDown 0.25s forwards;
+  
   
 }
 @keyframes pulseBorder {
   0% {
-    border-width: 3px;
-    box-shadow: var(--bouton-projet-finissant-color) 4px 4px 10px;
+    border-width: 2px;
+    box-shadow: var(--bouton-projet-finissant-color) 2px 2px 6px;
   }
   50% {
-    border-width: 3px; /* épaissit un peu le contour */
-    box-shadow: var(--bouton-projet-finissant-color) 0px 0px 15px; /* effet pulsation */
+    border-width: 2px; /* épaissit un peu le contour */
+    box-shadow: var(--bouton-projet-finissant-color) 0px 0px 6px; /* effet pulsation */
   }
   100% {
-    border-width: 3px;
-    box-shadow: var(--bouton-projet-finissant-color) 4px 4px 10px;
+    border-width: 2px;
+    box-shadow: var(--bouton-projet-finissant-color) 2px 2px 6px;
   }
 }
 
@@ -879,6 +882,10 @@ h1, h2 {
   to {
     transform: scale(1.05);
   }
+}
+@keyframes scaleDown {
+  from { transform: scale(1.05); }
+  to   { transform: scale(1); }
 }
 
 /* pour petit ecran */
