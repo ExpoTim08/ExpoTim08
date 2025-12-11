@@ -2249,12 +2249,12 @@
 .carte-wrapper-2:hover .carte-equipe-2,
 .carte-wrapper-3:hover .carte-equipe-3,
 .carte-wrapper-4:hover .carte-equipe-4 {
-    transform: translateY(-200px) scale(1.35);
+    transform: translateY(-100px) scale(1.2);
     z-index: 9999;      /* floats above everything */
 }
 
 .carte-wrapper-5:hover .carte-equipe-5 {
-  transform: translateY(-450px) scale(1.35);
+  transform: translateY(-100px) scale(1.2);
     z-index: 9999;      /* floats above everything */
 }
 
