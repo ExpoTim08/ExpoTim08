@@ -350,6 +350,7 @@ h1, h2 {
   @media screen and (min-width: 650px) and (max-width: 1024px) {
     .description-titre { font-size: 9px; }
   }
+  
 
   .conteneur-description-graphisme .description-texte {
     padding: 20px 16vw;
@@ -465,6 +466,13 @@ h1, h2 {
     justify-content: end;
     max-width: 600px;
   }
+  .logo-graphisme {
+    position: absolute;
+    left: -20px;
+    bottom: 35%;
+    z-index: 10;
+    mix-blend-mode: normal;
+  }
 }
 
 
@@ -546,10 +554,10 @@ h1, h2 {
   }
 
   .carte-projet-graphisme--desktop .image-projet-graphisme {
-    width: 45%;
-    height: auto;
-    object-fit: cover;
-  }
+        width: auto;
+        height: auto;
+        object-fit: cover;
+    } 
 
   .carte-projet-graphisme--desktop .conteneur-carte-bas { width: max-content; }
 

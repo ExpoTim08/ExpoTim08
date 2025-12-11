@@ -53,7 +53,7 @@ $nom_affiche = $nom ?: get_the_title($projet_id);
       <!-- Bouton retour (en dehors du titre) -->
   <p class="retour-finissant">
     <a href="<?php echo esc_url(get_permalink(get_page_by_path('finissants'))); ?>" class="lien-retour">
-      &lt; Finissants
+      &lt; <?php echo esc_html(get_theme_mod('expoTim_finissants_title')); ?>
     </a>
   </p>
 

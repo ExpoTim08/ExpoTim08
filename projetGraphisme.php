@@ -52,7 +52,7 @@ $nom_affiche = $nom ?: get_the_title($projet_id);
       <!-- Bouton retour vers la page Graphisme -->
       <p class="retour-graphisme">
         <a href="<?php echo esc_url(get_permalink(get_page_by_path('graphisme'))); ?>" class="lien-retour">
-          &lt; Graphisme
+          &lt; <?php echo esc_html(get_theme_mod('expoTim_graphisme_title'));
         </a>
       </p>
       

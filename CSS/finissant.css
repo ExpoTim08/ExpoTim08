@@ -324,10 +324,16 @@ h1, h2 {
 
   .logo-finissant {
     position: absolute;
-    left: -50px;
-    bottom: 30%;
+    left: -50px;   /* position mobile / tablette */
+    top: 150px;    /* position mobile / tablette */
+    width: 140px;
+    height: auto;
+    max-width: 150px;
     z-index: 10;
     mix-blend-mode: normal;
+    opacity: 0;
+    transform: translateX(-20px); /* animation slide */
+    transition: opacity 1s ease, transform 1s ease;
   }
 
   @media screen and (min-width: 650px) and (max-width: 1024px) {
@@ -492,15 +498,14 @@ h1, h2 {
 
   .logo-finissant {
     position: absolute;
-    left: -85px;
-    bottom: -40%;
+    left: -80px;
+    top: 180px;
     z-index: 10;
     mix-blend-mode: normal;
-
     height: auto;
-    width: 10vw;
+    width: 13vw;
     max-width: 250px;
-    min-width: 200px;
+    min-width: 70px;
   }
 
   .conteneur-description-finissant { background-color: transparent; border: none; }

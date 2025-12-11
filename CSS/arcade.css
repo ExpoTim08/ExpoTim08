@@ -353,10 +353,16 @@ h1, h2 {
 
   .logo-arcade {
     position: absolute;
-    left: -40px;
-    top: 45%;
+    left: -25px;   /* position mobile / tablette */
+    top: 150px;    /* position mobile / tablette */
+    width: 140px;
+    height: auto;
+    max-width: 150px;
     z-index: 10;
     mix-blend-mode: normal;
+    opacity: 0;
+    transform: translateX(-20px); /* animation slide */
+    transition: opacity 1s ease, transform 1s ease;
   }
 
   @media screen and (min-width: 650px) and (max-width: 1024px) {
@@ -512,14 +518,14 @@ h1, h2 {
   /* logo Arcade */
   .logo-arcade {
     position: absolute;
-    left: -50px;
-    top: 190px;
+    left: -40px;
+    top: 200px;
     z-index: 10;
     mix-blend-mode: normal;
     height: auto;
-    width: 150px;
-    max-width: 500px;
-    min-width: 20px;
+    width: 11vw;
+    max-width: 250px;
+    min-width: 70px;
   }
 
   .conteneur-description-arcade { background-color: transparent; border: none; }
