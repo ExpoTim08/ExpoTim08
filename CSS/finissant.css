@@ -836,16 +836,49 @@ h1, h2 {
   cursor: pointer;
   box-shadow: none;
   font-family: var(--general-font);
+  border: 3px solid var(--bouton-projet-finissant-color);
+  box-shadow: var(--bouton-projet-finissant-color) 4px 4px 10px; 
+  animation: pulseBorder 5s infinite ease-in-out;
+  
+}
+@keyframes pulseBorder {
+  0% {
+    border-width: 3px;
+    box-shadow: var(--bouton-projet-finissant-color) 4px 4px 10px;
+  }
+  50% {
+    border-width: 3px; /* épaissit un peu le contour */
+    box-shadow: var(--bouton-projet-finissant-color) 0px 0px 15px; /* effet pulsation */
+  }
+  100% {
+    border-width: 3px;
+    box-shadow: var(--bouton-projet-finissant-color) 4px 4px 10px;
+  }
 }
 
 #tri-select:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
+#filtre-categorie-select:hover{
+  animation: scaleUp 0.3s forwards;
+}
 
 #filtre-categorie-select:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+#tri-select:hover{
+  animation: scaleUp 0.3s forwards;
+}
+@keyframes scaleUp {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
 }
 
 /* pour petit ecran */
