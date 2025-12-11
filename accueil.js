@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // ================= Carrousel Images =================
+  // =================== Initialisation ===================
   const Images = themeVars.carrouselImages.map((src, index) => {
     const Titles = themeVars.carrouselTitles;
     const Classes = ["finissants", "arcade", "jour-terre"];
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     return {
-      src: src,
+      src,
       Titre: Titles[index],
       ClassName: Classes[index],
       Description: Descriptions[index] || "",
@@ -22,6 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let CurrentIndex = 0;
   let intervalID = null;
   let hoverTimeout = null;
+  let clickTimeout = null;
+  const MOBILE_TIMEOUT = 2000; // 2 secondes pour mobile
+  let mobileClickedIndex = null; // mémorise le bouton cliqué en attente du deuxième clic
 
   const Image = document.getElementById("image-carroussel");
   const ImageWrap = document.querySelector('.image-wrap');
@@ -29,7 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const DescriptionCategorie = document.querySelector(".description");
   const ChoixElements = document.querySelectorAll(".carroussel-choix p");
   const Details = document.querySelector(".arcade-details");
-
   const container = document.getElementById('projets-container');
   const refreshBtn = document.querySelector('.boutonRefresh');
 
@@ -42,7 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
       ImageWrap.style.filter = '';
       return;
     }
-
     const active = Images[CurrentIndex].ClassName;
     let filter = '';
     if (active === 'arcade') {
@@ -55,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ImageWrap.style.filter = filter;
   }
 
-  // ================= Fonction pour changer l'image =================
+  // ================= Change image =================
   function ChangeImage(index) {
     const { src, Titre, ClassName, Description } = Images[index];
     Image.src = src;
@@ -98,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ================= Auto rotation =================
   function startAuto() {
-    clearInterval(intervalID);
+    stopAuto();
     intervalID = setInterval(() => {
       CurrentIndex = (CurrentIndex + 1) % Images.length;
       ChangeImage(CurrentIndex);
@@ -106,7 +107,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function stopAuto() {
-    clearInterval(intervalID);
+    if(intervalID) clearInterval(intervalID);
+  }
+
+  function startAutoFromCurrent() {
+    stopAuto();
+    intervalID = setInterval(() => {
+      CurrentIndex = (CurrentIndex + 1) % Images.length;
+      ChangeImage(CurrentIndex);
+    }, 4000);
   }
 
   ChangeImage(CurrentIndex);
@@ -114,8 +123,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ================= Hover & Click =================
   ChoixElements.forEach((elm, i) => {
+    elm.addEventListener("click", () => {
+      const { Lien } = Images[i];
 
-    // Hover uniquement sur desktop
+      if (window.innerWidth <= 1366) { // MOBILE
+        if (mobileClickedIndex === i || CurrentIndex === i) {
+          // Deuxième clic ou déjà sur la catégorie → redirection
+          window.location.href = Lien;
+        } else {
+          // Premier clic → arrêt carrousel
+          stopAuto();
+          CurrentIndex = i;
+          ChangeImage(CurrentIndex);
+
+          mobileClickedIndex = i; // mémorise ce bouton
+          if (clickTimeout) clearTimeout(clickTimeout);
+
+          clickTimeout = setTimeout(() => {
+            startAutoFromCurrent();
+            clickTimeout = null;
+            mobileClickedIndex = null; // réinitialise après reprise
+          }, MOBILE_TIMEOUT);
+        }
+      } else {
+        // DESKTOP → redirection immédiate
+        window.location.href = Lien;
+      }
+    });
+
+    // ================= Desktop hover =================
     if (window.innerWidth > 1366) {
       const enter = () => {
         stopAuto();
@@ -136,34 +172,20 @@ document.addEventListener("DOMContentLoaded", () => {
       };
       elm.addEventListener("mouseenter", enter);
       elm.addEventListener("mouseleave", leave);
-      
     }
-
-    // Click fonctionne partout
-    elm.addEventListener("click", () => {
-      stopAuto();
-      CurrentIndex = i;
-      ChangeImage(CurrentIndex);
-      window.location.href = Images[i].Lien; // toujours rediriger
-    });
-
   });
 
-  // ================= Responsiveness arcade-details =================
+  // ================= Responsive Details =================
   function handleResponsiveDetails() {
     if (!Details) return;
-    if (window.innerWidth <= 1366) {
-      Details.classList.remove('show'); // ne bloque pas les boutons
-    }
+    if (window.innerWidth <= 1366) Details.classList.remove('show');
     updateImageWrapFilter();
   }
-
   handleResponsiveDetails();
   window.addEventListener("resize", handleResponsiveDetails);
 
-  // ================= Animation PCA Projets =================
+  // ================= Animation PCA projets =================
   function isMobileOrTablet() { return window.innerWidth <= 1366; }
-
   let observer;
   function animateProjets() {
     const projets = container.querySelectorAll(":scope > div");
@@ -183,7 +205,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     projets.forEach(projet => observer.observe(projet));
   }
-
   animateProjets();
 
   // ================= Bouton Rafraîchir =================
@@ -229,19 +250,5 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(console.error)
         .finally(() => refreshBtn.classList.remove('loading'));
     });
-  }
-
-  // ================= Carroussel Apropos =================
-  const aproposImages = document.querySelectorAll('.carroussel-apropos img');
-  if (aproposImages.length > 0) {
-    let index = 0;
-    function updateFocus() {
-      aproposImages.forEach(img => img.classList.remove("active"));
-      if (!aproposImages[index]) return;
-      aproposImages[index].classList.add("active");
-      index = (index + 1) % aproposImages.length;
-    }
-    updateFocus();
-    setInterval(updateFocus, 3000);
   }
 });
