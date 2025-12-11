@@ -127,6 +127,7 @@ h1, h2 {
   .page-graphisme section { width: 100%; }
 
   .presentation-graphisme {
+    background-image: var(--background-color-graphisme); /* conserve le vert Graphisme */
     position: relative;
     z-index: 1;
     overflow: visible;
@@ -324,8 +325,8 @@ h1, h2 {
 
   /* deco titre graphisme */
   .presentation-graphisme {
-    position: relative;
-    margin-bottom: 5vh;
+  background-image: var(--background-color-graphisme); /* conserve le vert Graphisme */
+  margin-bottom: 5vh;
   }
 
   .logo-graphisme {
