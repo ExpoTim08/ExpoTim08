@@ -63,17 +63,23 @@ h1 {
   transform: translateX(0);
 }
 
-/* ================== Student ================== */
 .tree-wrapper {
   opacity: 0;
-  transition: opacity 1s ease;
-  position: relative; /* juste pour le parent, si nécessaire */
+  transform: translateX(-50px); /* animation slide */
+  transition: opacity 1s ease, transform 1s ease;
+
+  position: absolute;
+  bottom: 17%;   /* même que la manette */
+  right: 6%;   /* plus à gauche que 8%, ajuste si nécessaire */
+  width: 10vw;  /* largeur desktop */
 }
 
 .tree-wrapper.active {
   opacity: 1;
   transform: translateX(0);
 }
+
+
 
 /* ================== Bouton retour ================== */
 .retour-finissant {
@@ -91,12 +97,11 @@ h1 {
 /************************* Motif *******************************************/
   .student {
   position: absolute;
-  right: 15%;
   width: 20vw;
-  bottom: 20vw;
+
   transform: rotateZ(-20deg);
   bottom: 17%;
-  right: 8%;
+  right: 20%;
 }
 
 /************************* Présentation Graphisme - Mobile First *******************************************/
@@ -236,6 +241,16 @@ h1 {
 
 @media screen and (min-width: 576px) {
 
+
+
+  .student {
+    width: 17vw;
+    right: 30%;
+    bottom: 7%;
+    top: auto;
+  }
+
+
   main {
   padding: 0 2em;
   background-attachment: fixed;
@@ -258,26 +273,22 @@ h1 {
   @media screen and (min-width: 1024px) and (max-width: 1399.98px) {
 
     .tree-wrapper {
-      position: relative; /* conteneur */
-    }
-    
-    .student {
-      position: absolute;    /* position exacte en desktop */
-      width: 10vw;
-      right: 30%;
-      bottom: 7%;
-      top: auto;
-    
-      /* animation de gauche à droite */
       opacity: 0;
-      transform: translateX(-50px);
-      transition: transform 1s ease, opacity 1s ease;
+      transform: translateX(-50px); /* animation slide */
+      transition: opacity 1s ease, transform 1s ease;
+    
+      position: absolute;
+      bottom: 7%;   /* même que la manette */
+      right: 25%;   /* logo plus à gauche, ajuste si nécessaire */
+      width: 10vw;  /* largeur desktop */
     }
     
     .tree-wrapper.active {
       opacity: 1;
-      transform: translateX(0); /* arrive à sa position normale */
+      transform: translateX(0);
     }
+  
+  
     main {
       max-width: none;
       margin: 0 auto;
@@ -328,6 +339,23 @@ h1 {
 
 /********************************************** CSS Desktop ********************************************************/
 @media screen and (min-width: 1400px) {
+
+  .tree-wrapper {
+    opacity: 0;
+    transform: translateX(-50px); /* animation slide */
+    transition: opacity 1s ease, transform 1s ease;
+  
+    position: absolute;
+    bottom: 7%;   /* même que la manette */
+    right: 25%;   /* logo plus à gauche, ajuste si nécessaire */
+    width: 10vw;  /* largeur desktop */
+  }
+  
+  .tree-wrapper.active {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
   main {
     max-width: none;
     margin: 0 auto;

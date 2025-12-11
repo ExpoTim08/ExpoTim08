@@ -26,7 +26,7 @@ $titre4 = get_theme_mod('expoTim_finissants_title_4');
     <span class="titre-finissant-layer titre-finissant--base"><?php echo esc_html(get_theme_mod('expoTim_finissants_title')); ?></span>
     <span class="titre-finissant-layer titre-finissant-layer--1"><?php echo esc_html(get_theme_mod('expoTim_finissants_title')); ?></span>
     <span class="titre-finissant-layer titre-finissant-layer--2"><?php echo esc_html(get_theme_mod('expoTim_finissants_title')); ?></span>
-    <span class="titre-finissant-layer titre-finissant-layer--3"><?php echo esc_html(get_theme_mod('expoTim_finissants_title')); ?></span>
+    <span class="titre-finissant-layer titre-finissant-layer--3"><?php echo esc_html(get_theme_mod('expoTim_finissants_title')); ?> </span>
   </h1>
 
     <svg class="logo-finissant" width="181" height="177" viewBox="0 0 181 177" fill="none" xmlns="http://www.w3.org/2000/svg">

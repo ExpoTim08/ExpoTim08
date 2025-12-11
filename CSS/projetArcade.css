@@ -317,28 +317,22 @@ main {
 ====================================================== */
 @media screen and (min-width: 1024px) {
 
-  /* ================== Student / Tree ================== */
-.tree-wrapper {
-  position: absolute;   /* comme la manette */
-  right: 30%;
-  bottom: 7%;
-  width: 10vw;          /* taille du student */
-  opacity: 0;
-  transform: translateX(-50px); /* animation slide */
-  transition: opacity 1s ease, transform 1s ease;
-}
-
-.tree-wrapper.active {
-  opacity: 1;
-  transform: translateX(0); /* arrive à sa place */
-}
-
-.tree-wrapper img.student {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
+  .manette-wrapper {
+    opacity: 0;
+    transform: translateX(-50px); /* animation slide */
+    transition: opacity 1s ease, transform 1s ease;
+  
+    /* Position initiale exacte */
+    position: absolute;
+    bottom: 7%;   /* ajuster si besoin */
+    right: 30%;   /* idem pour horizontal */
+  }
+  
+  .manette-wrapper.active {
+    opacity: 1;
+    transform: translateX(0); /* glisse de gauche à droite à sa place */
+  }
+  
 
   main {
   padding: 0 3em;
