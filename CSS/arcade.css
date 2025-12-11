@@ -753,6 +753,40 @@ h1, h2 {
   font-family: var(--general-font);
   background-color: #2f2f2f;
   -webkit-text-fill-color: var(--font-color);
+  border: 2px solid var(--bouton-projet-arcade-color);
+  box-shadow: var(--bouton-projet-arcade-color) 2px 2px 4px; 
+  animation: pulseBorder 5s infinite ease-in-out, scaleDown 0.25s forwards;
+  border-radius: 5px;
+}
+
+@keyframes pulseBorder {
+  0% {
+    
+    box-shadow: var(--bouton-projet-arcade-color) 2px 2px 4px;
+  }
+  50% {
+    
+    box-shadow: var(--bouton-projet-arcade-color) 4px 4px 4px; /* effet pulsation */
+  }
+  100% {
+    
+    box-shadow: var(--bouton-projet-arcade-color) 2px 2px 4px;
+  }
+}
+@keyframes scaleUp {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+@keyframes scaleDown {
+  from { transform: scale(1.05); }
+  to   { transform: scale(1); }
+}
+#tri-select:hover{
+  animation: scaleUp 0.25s forwards;
 }
 
 .filtre-categorie select option,

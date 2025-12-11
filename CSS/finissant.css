@@ -837,25 +837,25 @@ h1, h2 {
   box-shadow: none;
   font-family: var(--general-font);
   border: 2px solid var(--bouton-projet-finissant-color);
-  box-shadow: var(--bouton-projet-finissant-color) 2px 2px 6px; 
-  animation: pulseBorder 5s infinite ease-in-out;
+  box-shadow: var(--bouton-projet-finissant-color) 2px 2px 4px; 
+  animation: pulseBorder 5s infinite ease-in-out, scaleDown 0.25s forwards;
   border-radius: 5px;
-  animation: scaleDown 0.25s forwards;
+  
   
   
 }
 @keyframes pulseBorder {
   0% {
     border-width: 2px;
-    box-shadow: var(--bouton-projet-finissant-color) 2px 2px 6px;
+    box-shadow: var(--bouton-projet-finissant-color) 2px 2px 4px;
   }
   50% {
     border-width: 2px; /* épaissit un peu le contour */
-    box-shadow: var(--bouton-projet-finissant-color) 0px 0px 6px; /* effet pulsation */
+    box-shadow: var(--bouton-projet-finissant-color) 4px 4px 4px; /* effet pulsation */
   }
   100% {
     border-width: 2px;
-    box-shadow: var(--bouton-projet-finissant-color) 2px 2px 6px;
+    box-shadow: var(--bouton-projet-finissant-color) 2px 2px 4px;
   }
 }
 
