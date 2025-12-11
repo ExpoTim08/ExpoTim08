@@ -714,6 +714,8 @@ h1, h2 {
     letter-spacing: 1px;
     height: 220px;
     font-weight: lighter;
+    min-width: fit-content;
+    justify-self: center;
   }
 
   .titre-finissant-layer--1 {
