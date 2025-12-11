@@ -47,6 +47,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (count > maxAnimLetters) maxAnimLetters = count;
     });
 
+    const letterSpeed = 80; // vitesse d'animation par lettre en ms
+
     // Animation lettres : uniquement les .letter qui ont data-anim-index
     titreLayers.forEach(layer => {
       const letters = layer.querySelectorAll('.letter');
@@ -55,14 +57,14 @@ document.addEventListener("DOMContentLoaded", () => {
         if (typeof idx !== 'undefined') {
           // parseInt pour être sûr
           const n = parseInt(idx, 10);
-          setTimeout(() => letter.classList.add('active'), n * 150);
+          setTimeout(() => letter.classList.add('active'), n * letterSpeed);
         }
         // les .space restent invisibles/occupent la place mais ne s'animent pas
       });
     });
 
     // Calcul du délai avant animation logo / description / bouton
-    const delay = maxAnimLetters * 150 + 200;
+    const delay = maxAnimLetters * letterSpeed + 200;
 
     setTimeout(() => {
       if (logo) logo.classList.add('active');         // Logo / manette / student glisse
