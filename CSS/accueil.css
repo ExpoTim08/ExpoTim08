@@ -535,6 +535,11 @@
   }
 
 /********************************** CSS Section Projets Populaire **********************************/
+.projets {
+  padding: 0 15vw;
+  padding-top: 7vh;
+}
+
 .projets .projet-populaire-finissant,
 .projets .projet-populaire-arcade,
 .projets .projet-populaire-jour-terre {
@@ -568,7 +573,7 @@
 
   .projets-populaire > p {
     font-family: var(--general-font);
-    width: 335px;
+    width: auto;
     margin: auto;
   }
 
@@ -584,6 +589,7 @@
     justify-content: center;
     width: 200px;
     place-self: center;
+    margin: 0 auto;
   }
 
   .boutonRefresh > .span {
@@ -614,7 +620,7 @@
     display: grid;
 	  grid-template-rows: auto auto 1fr;
 	  grid-template-columns: repeat(3, 1fr);
-    width: 335px;
+    width: auto;
     margin: 0 auto;
     margin-top: 1rem;
   }
@@ -636,8 +642,9 @@
   .projet-populaire-finissant > .titre {
     grid-area: 1 / 1 / 2 / 4;
     font-family: var(--title-font);
-    font-size: 6.2vw;
+    font-size: 5vw;
     height: auto;
+    padding-left: 10px;
   }
 
   .projet-populaire-arcade > .bouton,
@@ -694,7 +701,7 @@
     display: grid;
     grid-template-columns: 3fr 1fr; 
     grid-template-rows: 1fr;       
-    width: 335px; 
+    width: auto; 
     margin: auto;
     border: 1px solid var(--border-color);
     margin-bottom: 1rem;
@@ -712,6 +719,123 @@
     width: 45px;
     text-align: end;
     border-left: 1px solid var(--border-color);
+  }
+
+   .projet-populaire-arcade,
+  .projet-populaire-finissant,
+  .projet-populaire-jour-terre {
+    display: grid;
+	  grid-template-rows: auto auto 1fr;
+	  grid-template-columns: repeat(3, 1fr);
+    min-width: auto;
+    margin: 0;
+    margin-top: 0;
+    border: 2px solid var(--font-color);
+    max-width: none;
+    max-height: none;
+    height: 60vh;
+  }
+
+  .projet-populaire-arcade {
+    box-shadow: 12px 12px 0px rgb(14, 11, 72);
+    animation: cardFloat 3s ease-in-out infinite;
+  }
+
+  .projet-populaire-jour-terre {
+    box-shadow: 12px 12px 0px rgb(9, 45, 50);
+    animation: cardFloat 5s ease-in-out infinite;
+  }
+
+  .projet-populaire-finissant {
+    box-shadow: 12px 12px 0px rgb(68, 56, 7);
+    animation: cardFloat2 4s ease-in-out infinite;
+  }
+
+  .projet-populaire-arcade:hover,
+  .projet-populaire-finissant:hover,
+  .projet-populaire-jour-terre:hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease, border-radius 0.3s ease;
+  }
+
+  .projet-populaire-arcade > .titre,
+  .projet-populaire-jour-terre > .titre,
+  .projet-populaire-finissant > .titre {
+    align-content: center;
+    text-align: justify;
+  }
+
+  .image-populaire-arcade, .image-populaire-jour-terre, .image-populaire-finissants, .partenaires > img {
+    overflow: hidden;
+    height: auto;
+    border-top: 2px solid var(--font-color);
+  }
+
+  .projet-populaire-arcade:hover {
+    transform: translateY(-10px);
+    box-shadow: 16px 16px 0px rgb(74, 66, 222);
+    color: thistle;
+    border-radius: 15px;
+  }
+
+  .projet-populaire-arcade:hover img, 
+  .projet-populaire-jour-terre:hover img, 
+  .projet-populaire-finissant:hover img {
+    border-bottom-right-radius: 13px;
+    border-bottom-left-radius: 13px;
+  }
+
+  .projet-populaire-arcade:hover > .titre,
+  .projet-populaire-jour-terre:hover > .titre,
+  .projet-populaire-finissant:hover > .titre {
+    border-top-left-radius: 13px;
+  }
+
+  .projet-populaire-arcade:hover > .bouton, 
+  .projet-populaire-jour-terre:hover > .bouton, 
+  .projet-populaire-finissant:hover > .bouton {
+    border-top-right-radius: 13px;
+  }
+
+  .projet-populaire-jour-terre:hover {
+    transform: translateY(-10px);
+    box-shadow: 16px 16px 0px rgb(31, 173, 195);
+    color: thistle;
+    border-radius: 15px;
+  }
+
+  .projet-populaire-finissant:hover {
+    transform: translateY(-10px);
+    box-shadow: 16px 16px 0px rgb(197, 158, 6);
+    color: thistle;
+    border-radius: 15px;
+  }
+
+  .projet-populaire-arcade, 
+  .projet-populaire-jour-terre,
+  .projet-populaire-finissant {
+    margin-bottom: 2rem;
+  }
+
+  .projets-populaire h1 {
+    padding: 0 5vw;
+  }
+
+  .boutonRefresh {
+    margin: 0 auto;
+  }
+
+  .boutonRefresh.loading {
+    animation: none;
+  }
+
+  .boutonRefresh:hover {
+    cursor: pointer;
+  }
+
+  .boutonRefresh img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
   }
 
 /******************************************* CSS Section Équipe ************************************/
@@ -884,6 +1008,25 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  @media screen and (max-width: 360px) {
+    .carte-equipe,
+    .carte-equipe-2,
+    .carte-equipe-3,
+    .carte-equipe-4,
+    .carte-equipe-5 {
+      transform: scale(0.8);
+      margin: 0;
+    }
+
+    .carte-wrapper,
+    .carte-wrapper-2,
+    .carte-wrapper-3,
+    .carte-wrapper-4,
+    .carte-wrapper-5 {
+      height: min-content;
+    }
   }
 
 /*************************************** CSS Tablette*************************************************/
@@ -1116,6 +1259,7 @@
   }
 
   .numeration {
+
     color: #606060;
     font-family: var(--title-font);
 
@@ -1207,6 +1351,161 @@
     justify-content: center;
   }
 
+/******************************** CSS Section Projets Populaire Desktop ********************************************/
+
+  .projets-populaire {
+    margin-top: 5rem;
+    padding-top: 0;
+    position: relative;
+  }
+
+  .projets-populaire > h1, .projets-populaire p, .boutonRefresh {
+    justify-self:  center;
+  }
+
+  .projets-populaire > p {
+    width: 40%;
+  }
+
+  .boutonRefresh.loading {
+    animation: rotate 1s infinite linear;
+  }
+
+  .boutonRefresh:hover {
+    cursor: pointer;
+  }
+
+  .projets {
+    display: flex;
+    justify-content: center;
+    gap: 5vw;
+    margin-top: 5vh;
+    flex-wrap: wrap;
+    padding: 0 5vw;
+  }
+
+  .projets > p {
+    width: 25%;
+    font-size: small;
+  }
+
+  .projets-populaire h1 {
+    margin-bottom: 8vh ;
+  }
+
+  .projet-populaire-arcade,
+  .projet-populaire-finissant,
+  .projet-populaire-jour-terre {
+    display: grid;
+	  grid-template-rows: auto auto 1fr;
+	  grid-template-columns: repeat(3, 1fr);
+    min-width: auto;
+    width: 18vw;
+    min-width: 250px;
+    max-width: 600px;
+    margin: 0;
+    margin-top: 0;
+    border: 2px solid var(--font-color);
+    max-width: none;
+    max-height: none;
+    height: 60vh;
+  }
+
+  .projet-populaire-arcade {
+    box-shadow: 12px 12px 0px rgb(14, 11, 72);
+    animation: cardFloat 3s ease-in-out infinite;
+  }
+
+  .projet-populaire-jour-terre {
+    box-shadow: 12px 12px 0px rgb(9, 45, 50);
+    animation: cardFloat 5s ease-in-out infinite;
+  }
+
+  .projet-populaire-finissant {
+    box-shadow: 12px 12px 0px rgb(68, 56, 7);
+    animation: cardFloat2 4s ease-in-out infinite;
+  }
+
+  .projet-populaire-arcade:hover,
+  .projet-populaire-finissant:hover,
+  .projet-populaire-jour-terre:hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease, border-radius 0.3s ease;
+  }
+
+  .projet-populaire-arcade > .titre,
+  .projet-populaire-jour-terre > .titre,
+  .projet-populaire-finissant > .titre {
+    font-size: 1vw;
+    align-content: center;
+    text-align: justify;
+    padding-left: 1vw;
+  }
+
+  .image-populaire-arcade, .image-populaire-jour-terre, .image-populaire-finissants, .partenaires > img {
+    overflow: hidden;
+    height: auto;
+    border-top: 2px solid var(--font-color);
+  }
+
+  .projet-populaire-arcade:hover {
+    transform: translateY(-10px);
+    box-shadow: 16px 16px 0px rgb(74, 66, 222);
+    color: thistle;
+    border-radius: 15px;
+  }
+
+  .projet-populaire-arcade:hover img, 
+  .projet-populaire-jour-terre:hover img, 
+  .projet-populaire-finissant:hover img {
+    border-bottom-right-radius: 13px;
+    border-bottom-left-radius: 13px;
+  }
+
+  .projet-populaire-arcade:hover > .titre,
+  .projet-populaire-jour-terre:hover > .titre,
+  .projet-populaire-finissant:hover > .titre {
+    border-top-left-radius: 13px;
+  }
+
+  .projet-populaire-arcade:hover > .bouton, 
+  .projet-populaire-jour-terre:hover > .bouton, 
+  .projet-populaire-finissant:hover > .bouton {
+    border-top-right-radius: 13px;
+  }
+
+  .projet-populaire-jour-terre:hover {
+    transform: translateY(-10px);
+    box-shadow: 16px 16px 0px rgb(31, 173, 195);
+    color: thistle;
+    border-radius: 15px;
+  }
+
+  .projet-populaire-finissant:hover {
+    transform: translateY(-10px);
+    box-shadow: 16px 16px 0px rgb(197, 158, 6);
+    color: thistle;
+    border-radius: 15px;
+  }
+
+  .boutonRefresh {
+    margin: 0 auto;
+  }
+
+  .boutonRefresh.loading {
+    animation: none;
+  }
+
+  .boutonRefresh:hover {
+    cursor: pointer;
+  }
+
+  .boutonRefresh img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+  }
+
+
 
   /*************************************** CSS Section À Propos Tablette ******************************************************/
 
@@ -1219,6 +1518,8 @@
   .infos-a-propos > * {
     width: 30%;
   }
+
+  
 
   /**************************** CSS Section Projets Aléatoire Tablette ********************************/
   .projets .titre {
@@ -1756,7 +2057,7 @@
     display: grid;
 	  grid-template-rows: auto auto 1fr;
 	  grid-template-columns: repeat(3, 1fr);
-    min-width: 335px;
+    min-width: auto;
     width: 18vw;
     max-width: 600px;
     margin: 0;
