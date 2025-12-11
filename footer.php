@@ -69,9 +69,10 @@
     <div class="footer-right">
       <h3>Liens</h3>
       <ul>
-        <li><a href="#">Politique de confidentialité</a></li>
-        <li><a href="#">Conditions d’utilisation</a></li>
-        <li><a href="#">Accessibilité</a></li>
+        <li><a href="https://www.cmaisonneuve.qc.ca/">Collège Maisonneuve</a></li>
+        <li><a href="https://www.cmaisonneuve.qc.ca/programme/integration-multimedia/">À propos du programme</a></li>
+        <li><a href="https://gftnth00.mywhc.ca/audiovisuel/site/application/site/index.php">Audiovisuel du TIM</a></li>
+        <li><a href="https://www.behance.net/departement_tim">Behance du TIM</a></li>
       </ul>
     </div>
   </div>

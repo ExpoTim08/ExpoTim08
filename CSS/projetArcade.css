@@ -67,6 +67,9 @@ h1 {
   transform: translateX(0);
 }
 
+.infos-cours-annee {
+  display: none;
+}
 
 /* ======================================================
    Bordures fixes
