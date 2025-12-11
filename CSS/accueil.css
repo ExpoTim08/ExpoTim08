@@ -592,6 +592,15 @@
     pointer-events: none;
   }
 
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
   .refresh {
     width: 40px;
   }
@@ -1712,6 +1721,9 @@
     width: 40%;
   }
 
+  .boutonRefresh.loading {
+    animation: rotate 1s infinite linear;
+  }
 
   .boutonRefresh:hover {
     cursor: pointer;
@@ -1857,7 +1869,7 @@
     padding: 0.5em;
     border-radius: 40px;
     width: 30px;
-    translate: 580%;
+    translate: 900%;
   }
 
   .boutonRefresh:hover {

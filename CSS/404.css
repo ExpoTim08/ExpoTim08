@@ -162,7 +162,8 @@ h1, h2 {
   display: flex;
   align-items: center;
   flex-direction: column;
-
+  position: relative;
+  margin-top: 5vh;
 }
 
 .logo-arcade {
@@ -195,11 +196,7 @@ h1, h2 {
   max-width: 150px;
 }
 
-/*************************  CSS Projet Découverte ****************************/
-.projets {
-  margin-bottom: 5%;
-}
-
+/********************************** CSS Section Projets Populaire **********************************/
 .projets .projet-populaire-finissant,
 .projets .projet-populaire-arcade,
 .projets .projet-populaire-jour-terre {
@@ -212,11 +209,17 @@ h1, h2 {
   opacity: 1;
   transform: scale(1) rotate(0deg);
 }
-.projets-populaire {
+
+
+ .projets-populaire {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' viewBox='0 0 800 800' opacity='0.38' width='800' height='800'%3E%3Cg stroke-width='3' stroke='hsla(0, 0%25, 100%25, 1.00)' fill='none'%3E%3Ccircle r='3.6578947368421053' cx='0' cy='0' fill='hsla(0, 0%25, 100%25, 1.00)' stroke='none'%3E%3C/circle%3E%3Ccircle r='3.6578947368421053' cx='400' cy='0' fill='hsla(0, 0%25, 100%25, 1.00)' stroke='none'%3E%3C/circle%3E%3Ccircle r='3.6578947368421053' cx='800' cy='0' fill='hsla(0, 0%25, 100%25, 1.00)' stroke='none'%3E%3C/circle%3E%3Ccircle r='3.6578947368421053' cx='0' cy='400' fill='hsla(0, 0%25, 100%25, 1.00)' stroke='none'%3E%3C/circle%3E%3Ccircle r='3.6578947368421053' cx='400' cy='400' fill='hsla(0, 0%25, 100%25, 1.00)' stroke='none'%3E%3C/circle%3E%3Ccircle r='3.6578947368421053' cx='800' cy='400' fill='hsla(0, 0%25, 100%25, 1.00)' stroke='none'%3E%3C/circle%3E%3Ccircle r='3.6578947368421053' cx='0' cy='800' fill='hsla(0, 0%25, 100%25, 1.00)' stroke='none'%3E%3C/circle%3E%3Ccircle r='3.6578947368421053' cx='400' cy='800' fill='hsla(0, 0%25, 100%25, 1.00)' stroke='none'%3E%3C/circle%3E%3Ccircle r='3.6578947368421053' cx='800' cy='800' fill='hsla(0, 0%25, 100%25, 1.00)' stroke='none'%3E%3C/circle%3E%3C/g%3E%3C/svg%3E");
     background-repeat: repeat;
     background-size: 100px;
     padding: 98px 0;
+ }
+
+ .projet-aléatoire {
+  align-content: stretch;
  }
 
   .projets-populaire > h1,
@@ -231,17 +234,40 @@ h1, h2 {
     margin: auto;
   }
 
+  .boutonRefresh {
+    display: flex;
+    align-items: center;
+    background: var(--background-color);
+    padding: 0.5em;
+    border-radius: 10px;
+    padding-right: 1em;
+    border: 2px solid #8b7b7b;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    place-self: center;
+  }
+
+  .boutonRefresh > .span {
+    align-items: center;
+  }
+
   .boutonRefresh.loading {
     opacity: 0.5;
     pointer-events: none;
   }
 
-  .refresh {
-    width: 40px;
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
   }
 
-  .projet-aléatoire {
-    align-content: stretch;
+  .refresh {
+    width: 40px;
   }
 
   .projet-populaire-arcade,
@@ -270,16 +296,16 @@ h1, h2 {
   .projet-populaire-arcade > .titre,
   .projet-populaire-jour-terre > .titre,
   .projet-populaire-finissant > .titre {
-    grid-area: 1 / 1 / 2 / 3;
+    grid-area: 1 / 1 / 2 / 4;
+    font-family: var(--title-font);
     font-size: 6.2vw;
     height: auto;
-    border-bottom: 2px solid var(--border-color-side);
   }
 
   .projet-populaire-arcade > .bouton,
   .projet-populaire-jour-terre > .bouton,
   .projet-populaire-finissant > .bouton {
-    grid-area: 1/3/2/4;
+    grid-area: 1 / 4 / 1 / 4;
     font-size: x-large;
     height: auto;
   }
@@ -306,7 +332,7 @@ h1, h2 {
   .projet-populaire-arcade > .categorie-nom,
   .projet-populaire-jour-terre > .categorie-nom,
   .projet-populaire-finissant > .categorie-nom {
-    grid-area: 2 / 2 / 3 / 4;
+    grid-area: 2 / 2 / 4 / 5;
     height: 2rem;
     align-content: center;
   }
@@ -317,7 +343,7 @@ h1, h2 {
   .partenaires > img {
     display: block;
     justify-self: center;
-    grid-area: 3 / 1 / 4 / 4;
+    grid-area: 3 / 1 / 4 / 5;
     width: 100%;
     height: 100%;
     align-self: stretch; /* ✅ CRITICAL */
@@ -349,6 +375,7 @@ h1, h2 {
     text-align: end;
     border-left: 1px solid var(--border-color);
   }
+
 
 /* ----------------------------- */
 /* MOBILE (max-width: 576px) */
@@ -540,43 +567,35 @@ h1, h2 {
   
   }
 
-  /******************  CSS PROJET DÉCOUVERTE DESKTOP  ********************/
+ /******************************** CSS Section Projets Populaire Desktop ********************************************/
 
   .projets-populaire {
     margin-top: 5rem;
     padding-top: 0;
+    position: relative;
   }
 
   .projets-populaire > h1, .projets-populaire p, .boutonRefresh {
-    justify-self: end;
-    
+    justify-self:  center;
   }
 
   .projets-populaire > p {
     width: 40%;
   }
 
-  
+  .boutonRefresh.loading {
+    animation: rotate 1s infinite linear;
+  }
 
   .boutonRefresh:hover {
     cursor: pointer;
   }
 
-  .boutonRefresh > .span {
-    align-self: center;
-  }
-
-  .boutonRefresh.loading {
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-  .refresh {
-    width: 40px;
-  }
-
   .projets {
     display: flex;
+    justify-content: center;
+    gap: 5vw;
+    margin-top: 5vh;
   }
 
   .projets > p {
@@ -584,30 +603,151 @@ h1, h2 {
     font-size: small;
   }
 
+  .projets-populaire h1 {
+    margin-bottom: 8vh ;
+  }
+
+  .projet-populaire-arcade,
+  .projet-populaire-finissant,
+  .projet-populaire-jour-terre {
+    display: grid;
+	  grid-template-rows: auto auto 1fr;
+	  grid-template-columns: repeat(3, 1fr);
+    min-width: 335px;
+    width: 18vw;
+    max-width: 600px;
+    margin: 0;
+    margin-top: 0;
+    border: 2px solid var(--font-color);
+    max-width: none;
+    max-height: none;
+    height: 60vh;
+  }
+
+  .projet-populaire-arcade {
+    box-shadow: 12px 12px 0px rgb(14, 11, 72);
+    animation: cardFloat 3s ease-in-out infinite;
+  }
+
+  .projet-populaire-jour-terre {
+    box-shadow: 12px 12px 0px rgb(9, 45, 50);
+    animation: cardFloat 5s ease-in-out infinite;
+  }
+
+  .projet-populaire-finissant {
+    box-shadow: 12px 12px 0px rgb(68, 56, 7);
+    animation: cardFloat2 4s ease-in-out infinite;
+  }
+
+  .projet-populaire-arcade:hover,
+  .projet-populaire-finissant:hover,
+  .projet-populaire-jour-terre:hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease, border-radius 0.3s ease;
+  }
+
   .projet-populaire-arcade > .titre,
   .projet-populaire-jour-terre > .titre,
   .projet-populaire-finissant > .titre {
-    font-size: 1.5vw;
+    font-size: 1vw;
+    align-content: center;
+    text-align: justify;
+    padding-left: 1vw;
+  }
+
+  .image-populaire-arcade, .image-populaire-jour-terre, .image-populaire-finissants, .partenaires > img {
+    overflow: hidden;
+    height: auto;
+    border-top: 2px solid var(--font-color);
   }
 
   .projet-populaire-arcade:hover {
     transform: translateY(-10px);
-    box-shadow: 16px 16px 0px rgb(15, 13, 50);
+    box-shadow: 16px 16px 0px rgb(74, 66, 222);
     color: thistle;
+    border-radius: 15px;
+  }
+
+  .projet-populaire-arcade:hover img, 
+  .projet-populaire-jour-terre:hover img, 
+  .projet-populaire-finissant:hover img {
+    border-bottom-right-radius: 13px;
+    border-bottom-left-radius: 13px;
+  }
+
+  .projet-populaire-arcade:hover > .titre,
+  .projet-populaire-jour-terre:hover > .titre,
+  .projet-populaire-finissant:hover > .titre {
+    border-top-left-radius: 13px;
+  }
+
+  .projet-populaire-arcade:hover > .bouton, 
+  .projet-populaire-jour-terre:hover > .bouton, 
+  .projet-populaire-finissant:hover > .bouton {
+    border-top-right-radius: 13px;
   }
 
   .projet-populaire-jour-terre:hover {
     transform: translateY(-10px);
-    box-shadow: 16px 16px 0px rgb(5, 25, 28);
+    box-shadow: 16px 16px 0px rgb(31, 173, 195);
     color: thistle;
+    border-radius: 15px;
   }
 
   .projet-populaire-finissant:hover {
     transform: translateY(-10px);
-    box-shadow: 16px 16px 0px rgb(61, 68, 7);
+    box-shadow: 16px 16px 0px rgb(197, 158, 6);
     color: thistle;
+    border-radius: 15px;
+  }
+
+  @keyframes cardFloat {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes cardFloat2 {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  .boutonRefresh {
+      position: absolute;
+      padding: 0.5em;
+      border-radius: 40px;
+      width: 30px;
+      translate: 650%;
+      top: 0;
+  }
+
+  .boutonRefresh:hover {
+    cursor: pointer;
+  }
+
+  .boutonRefresh img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+  }
+
+  .boutonRefresh span {
+    display: none;
   }
 }
+
 .boutonRefresh {
     display: flex;
     align-items: center ;
