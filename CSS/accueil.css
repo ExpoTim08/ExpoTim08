@@ -97,8 +97,10 @@
     background-color: #2b2b2bc1;
     min-width: 80%;
     text-align: left;
-    width: 80vw;
+    width: auto;
     justify-self: anchor-center;
+    justify-content: center;
+    margin: 0 9vw;
   }
 
   .arcade-details > .sous-titre {
@@ -116,6 +118,7 @@
     font-size: clamp(12px, 2.2vw, 18px);
     line-height: clamp(0.8rem, 2.2vw, 2.4rem);
     padding-top: 0;
+    justify-self: anchor-center;
   }
 
   .sous-titre-carroussel {
@@ -934,6 +937,7 @@
   /* transform: translateY(42%); */
   justify-self: auto;
   justify-content: center;
+  margin: 0;
 }
 
 .bouton-arcade:hover .arcade-details{
@@ -1330,6 +1334,7 @@
   opacity: 1;
   transform: translateY(13vh);
   justify-self: auto;
+  margin: 0;
 }
 
 .bouton-arcade:hover .arcade-details{
