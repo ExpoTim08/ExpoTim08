@@ -20,6 +20,8 @@ h1 {
 }
 
 /* ================== Titre par lettres ================== */
+
+
 .titre-arcade-layer {
   visibility: hidden; /* caché au départ */
 }

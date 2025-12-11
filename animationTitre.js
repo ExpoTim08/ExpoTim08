@@ -8,31 +8,61 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!titreLayers.length) return;
 
-    // Split lettres en spans
+    // Split lettres en spans en conservant les espaces (non animés)
     function splitLetters(span) {
       const text = span.textContent;
       span.textContent = '';
       span.style.visibility = 'visible';
-      text.split('').forEach(char => {
+
+      let animIndex = 0; // index d'animation seulement pour les caractères non-espace
+
+      for (const char of text) {
         const letter = document.createElement('span');
         letter.classList.add('letter');
-        letter.textContent = char;
+
+        if (char === ' ') {
+          // espace : utiliser un espace insécable pour conserver la largeur
+          letter.classList.add('space');
+          letter.textContent = '\u00A0';
+          // ne pas assigner d'index d'animation
+        } else {
+          // caractère normal
+          letter.textContent = char;
+          // stocke l'index d'animation pour ordonner correctement les setTimeout
+          letter.dataset.animIndex = animIndex;
+          animIndex++;
+        }
+
         span.appendChild(letter);
-      });
+      }
+
+      // retourne le nombre de caractères animables (sans les espaces)
+      return animIndex;
     }
 
-    titreLayers.forEach(layer => splitLetters(layer));
+    // on split chaque layer et on récupère le plus grand nombre de lettres animables (utile pour le delay global)
+    let maxAnimLetters = 0;
+    titreLayers.forEach(layer => {
+      const count = splitLetters(layer);
+      if (count > maxAnimLetters) maxAnimLetters = count;
+    });
 
-    // Animation lettres de gauche à droite
+    // Animation lettres : uniquement les .letter qui ont data-anim-index
     titreLayers.forEach(layer => {
       const letters = layer.querySelectorAll('.letter');
-      letters.forEach((letter, index) => {
-        setTimeout(() => letter.classList.add('active'), index * 150);
+      letters.forEach(letter => {
+        const idx = letter.dataset.animIndex;
+        if (typeof idx !== 'undefined') {
+          // parseInt pour être sûr
+          const n = parseInt(idx, 10);
+          setTimeout(() => letter.classList.add('active'), n * 150);
+        }
+        // les .space restent invisibles/occupent la place mais ne s'animent pas
       });
     });
 
     // Calcul du délai avant animation logo / description / bouton
-    const delay = titreLayers[0].textContent.length * 150 + 200;
+    const delay = maxAnimLetters * 150 + 200;
 
     setTimeout(() => {
       if (logo) logo.classList.add('active');         // Logo / manette / student glisse
