@@ -1,52 +1,64 @@
-// Fonction principale pour ajuster la taille des titres arcade
-function ajusteTitresArcade() {
-  const titres = document.querySelectorAll(".titre-arcade");
+function ajusteTousLesTitres() {
+  // Tous les conteneurs de titres : titre-arcade, titre-graphisme, etc.
+  const titres = document.querySelectorAll("[class^='titre-']:not(.titre-arcade-layer):not(.titre-graphisme-layer)");
 
   titres.forEach(titre => {
-    const layers = Array.from(titre.querySelectorAll(".titre-arcade-layer"));
+    // Tous les layers internes (la logique est la même partout)
+    const layers = titre.querySelectorAll("[class*='layer']");
 
-    // Largeur du conteneur réel (padding inclus)
     const style = window.getComputedStyle(titre);
-    const containerWidth = titre.clientWidth
-                         - parseFloat(style.paddingLeft)
-                         - parseFloat(style.paddingRight);
+    const containerWidth =
+      titre.clientWidth -
+      parseFloat(style.paddingLeft) -
+      parseFloat(style.paddingRight);
 
     layers.forEach(layer => {
-      // Reset pour prendre la taille CSS d'origine
+      // Reset
       layer.style.fontSize = "";
-      let computedFontSize = parseFloat(window.getComputedStyle(layer).fontSize);
-      let textWidth = layer.scrollWidth;
 
-      // Limites de la taille de police
-      const minFontSize = 12;  // px
-      const maxFontSize = 72;  // px pour desktop / titre court
+      // Clone invisible pour mesurer la vraie largeur du texte
+      const clone = document.createElement("span");
+      clone.style.position = "absolute";
+      clone.style.visibility = "hidden";
+      clone.style.whiteSpace = "nowrap";
+      clone.style.fontSize = window.getComputedStyle(layer).fontSize;
+      clone.style.fontFamily = window.getComputedStyle(layer).fontFamily;
+      clone.style.fontWeight = window.getComputedStyle(layer).fontWeight;
+      clone.style.letterSpacing = window.getComputedStyle(layer).letterSpacing;
+      clone.textContent = layer.textContent;
+      document.body.appendChild(clone);
 
-      let newFontSize = computedFontSize;
+      let fontSize = parseFloat(window.getComputedStyle(layer).fontSize);
+      const minFont = 10;
+      const maxFont = 90;
 
-      // Réduction proportionnelle si le texte dépasse le conteneur
-      if(textWidth > containerWidth){
-        const scaleFactor = containerWidth / textWidth;
-        newFontSize = computedFontSize * scaleFactor;
+      // Largeur réelle du texte
+      let textWidth = clone.getBoundingClientRect().width;
+
+      // Si ça dépasse, on réduit proportionnellement
+      if (textWidth > containerWidth) {
+        const ratio = containerWidth / textWidth;
+        fontSize *= ratio;
       }
 
-      // Appliquer les limites
-      if(newFontSize < minFontSize) newFontSize = minFontSize;
-      if(newFontSize > maxFontSize) newFontSize = maxFontSize;
+      // Petite réduction préventive (anti-2-lignes)
+      fontSize *= 0.92;
 
-      layer.style.fontSize = `${newFontSize}px`;
+      // Limites
+      if (fontSize < minFont) fontSize = minFont;
+      if (fontSize > maxFont) fontSize = maxFont;
+
+      layer.style.fontSize = fontSize + "px";
+
+      clone.remove();
     });
   });
 }
 
-// Exécution au chargement normal
-document.addEventListener("DOMContentLoaded", ajusteTitresArcade);
+// Événements
+document.addEventListener("DOMContentLoaded", ajusteTousLesTitres);
+window.addEventListener("resize", ajusteTousLesTitres);
 
-// Exécution si navigation AJAX / PJAX / Barba.js
-// Décommenter les lignes suivantes si ton site utilise un de ces systèmes :
-document.addEventListener("pjax:end", ajusteTitresArcade);          // PJAX
-document.addEventListener("barba:afterEnter", ajusteTitresArcade);  // Barba.js
-
-// Optionnel : réajuster les titres si la fenêtre change de taille
-window.addEventListener("resize", () => {
-  ajusteTitresArcade();
-});
+// Pour navigation AJAX / Barba (si tu l’utilises)
+document.addEventListener("pjax:end", ajusteTousLesTitres);
+document.addEventListener("barba:afterEnter", ajusteTousLesTitres);
