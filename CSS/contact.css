@@ -150,67 +150,86 @@
   
   
   /******************* CSS Contact général **********************/
-  .contactComplet{
+  .formulaireContact >  h2 {
+    text-align: center;
+  }
+
+  .messagePageContact {
     display: flex;
-    justify-content: space-evenly;
-    align-items: center;
     flex-direction: column;
-    height: 1550px;
+    justify-items: center;
   }
 
-  .conteneurProfils, .conteneurMembres{
+  .messagePageContact h1 {
+    font-size: medium;
+    text-align: center;
+  }
+
+  .footer-logo-img {
+    width: 60vw;
+    margin: 0 auto;
+  }
+
+  .messagePageContact p, .conteneurMembres + p{
+    text-align: center;
+    font-size: xx-large;
+    font-family: var(--title-font);
+  }
+
+  .conteneurMembres {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-  }
-  
-  .messagePageContact{
-    text-align: center;
-  }
-  
-  .messagePageContact img{
-    scale: 2;
-  }
-  
-  .profilRemy,
-  .profilLina,
-  .profilPeterson,
-  .profilMatilda, 
-  .profilAlexis,
-  .profilCaroline, 
-  .profilStephanie, 
-  .profilManon, 
-  .profilCamille{
-    text-align: center;
-    background-image: linear-gradient(177deg, #580caa 11.95%, #580caa 28.39%, #2b0553 82.04%);
-    border: 1px solid var(--border-color-side);
-    width: 100%;
-    height: 100%;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    padding-left: 4px;
-    padding-right: 4px;
-    border-radius: 3px;
+    justify-self: center;
   }
 
-  .profilCamille h3{
-    font-size: 14px;
+  .profilAlexis, 
+  .profilLina, 
+  .profilMatilda, 
+  .profilRemy, 
+  .profilPeterson,
+  .profilCamille,
+  .profilCaroline,
+  .profilManon,
+  .profilStephanie {
+    background-image: linear-gradient(177deg, #580caa 11.95%, #580caa 28.39%, #21212100 100%);
+    border: 1px solid var(--border-color-side);
   }
-  
-  .photo{
-    display: inline-block;
+
+  .profilRemy .imgProf {
     width: 300px;
-    height: 370px;
-    object-fit: cover;
+    height: 300px;
   }
-  
-  .imgProf{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 4px;
+
+  .profilRemy h3,
+  .profilRemy p,
+  .profilAlexis h3,
+  .profilAlexis ,
+  .profilLina h3,
+  .profilLina p,
+  .profilPeterson h3,
+  .profilPeterson p,
+  .profilMatilda h3,
+  .profilMatilda p {
+    text-align: center;
   }
+
+  .conteneurProfils {
+    display: flex;
+    justify-self: center;
+  }
+
+  .conteneurProfils img {
+    width: 300px;
+    height: 300px;
+  }
+
+  .profilCaroline, 
+  .profilCamille, 
+  .profilManon, 
+  .profilStephanie {
+    max-width: 300px;
+    text-align: center;
+  }
+ 
   
   input[type="button"] {
     border: 1px solid var(--border-color-side);
@@ -222,7 +241,7 @@
   }
   
   
-  /********************* Section @Media ********************/
+  /********************* Section @Media  Mobile********************/
   @media screen and (max-width: 576px) {
     .border {
       position: fixed;
@@ -249,12 +268,11 @@
       border: solid 1px var(--border-color-side);
       margin-left: 1em;
       margin-right: 1em;
-      justify-content: center;
+      text-align: center;
       display: flex;
       align-items: center;
-      gap: 15px;
       flex-direction: column;
-      padding: 10px;
+      height: 263.93px;
     }
   
     .titre-contact {
@@ -287,25 +305,15 @@
 
     .contactComplet{
       padding-bottom: 6rem;
-      height: 5500px;
-    }
-    
-    .messagePageContact{
-      width: 22rem;
-      padding-bottom: 3rem;
     }
   
     .conteneurProfils, .conteneurMembres{
       flex-direction: column;
       gap: 3rem;
     }
-
-    .conteneurMembres{
-      padding-bottom: 3rem;
-    }
   }
-  
-  @media screen and (min-width: 576.02px) and (max-width: 751px){
+  /********************* Section @Media  Tablette********************/
+  @media screen and (min-width: 576.02px) and (max-width: 1024px){
     .border {
       position: fixed;
       background: var(--border-color-side);
@@ -331,12 +339,11 @@
       border: solid 1px var(--border-color-side);
       margin-left: 2em;
       margin-right: 2em;
-      justify-content: center;
       display: flex;
       align-items: center;
-      gap: 20px;
       flex-direction: column;
       padding: 15px;
+      height: 263.93px;
     }
   
     .titre-contact {
@@ -345,7 +352,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      font-size: clamp(18px, 10vw, 40px);
+      font-size: 6vw;
       text-transform: uppercase;
       margin: 0;
       -webkit-text-stroke-width: 0.7px;
@@ -362,36 +369,37 @@
     .titre-contact-layer--1 { opacity: 0.8; }
     .titre-contact-layer--2 { opacity: 0.5; }
     .titre-contact-layer--3 { opacity: 0.3; }
-  
-    .contactComplet{
-      height: 5650px;
+
+    .contactComplet {
+      display: flex;
+      flex-direction: column;
     }
   
     .messagePageContact{
-      width: 32rem;
       padding-bottom: 2rem;
     }
+
+    .messagePageContact h1 {
+      font-size: xx-large;
+    }
   
-    .conteneurProfils, .conteneurMembres{
+    .conteneurMembres{
       flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
     }
-  
-   .profilRemy,
-    .profilLina,
-    .profilPeterson,
-    .profilMatilda, 
-    .profilAlexis,
-    .profilCaroline, 
-    .profilStephanie, 
-    .profilManon, 
-    .profilCamille{
-      max-width: 350px;
-      min-width: 290px;
-      height: 500px;
+
+    .conteneurProfils  {
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
     }
+
+    
   }
   
-  @media screen and (min-width: 751.02px){
+  /********************* Section @Media  Desktop********************/
+  @media screen and (min-width: 1025px){
        .border {
       position: fixed;
       background: var(--border-color-side);
@@ -448,32 +456,20 @@
     .titre-contact-layer--1 { opacity: 0.8; }
     .titre-contact-layer--2 { opacity: 0.5; }
     .titre-contact-layer--3 { opacity: 0.3; }
-  
-    .contactComplet{
-      height: 3500px;
+
+    .messagePageContact h1 {
+      font-size: 2vw;
     }
-  
-    .messagePageContact{
-      width: 32rem;
-      padding-bottom: 2rem;
-    }
-  
-    .conteneurProfils, .conteneurMembres{
+
+    .conteneurMembres {
+      gap: 20px;
       flex-wrap: wrap;
+      justify-content: center;
     }
-  
-    .profilRemy,
-    .profilLina,
-    .profilPeterson,
-    .profilMatilda, 
-    .profilAlexis,
-    .profilCaroline, 
-    .profilStephanie, 
-    .profilManon, 
-    .profilCamille{
-      max-width: 350px;
-      min-width: 290px;
-      height: 500px;
+
+    .conteneurProfils {
+      margin-bottom: 4vw;
+      gap: 20px;
     }
   }
 
@@ -528,37 +524,10 @@
       gap: 30px;
     }
   
-    .contactComplet{
-      height: 1550px;
-    }
-  
     input[type="button"]:hover {
       background-color: rgb(34, 34, 34);
       transition: background-color 0.5s;
     }
-  
-    .messagePageContact{
-      width: auto;
-      padding-bottom: 0;
-    }
-  
-    .conteneurProfils, .conteneurMembres{
-      flex-wrap: nowrap;
-    }
-  
-    .profilRemy,
-    .profilLina,
-    .profilPeterson,
-    .profilMatilda, 
-    .profilAlexis,
-    .profilCaroline, 
-    .profilStephanie, 
-    .profilManon, 
-    .profilCamille{
-      width: 100%;
-      height: 100%;
-      min-width: none;
-      max-width: none;
-    }
+
   }
   

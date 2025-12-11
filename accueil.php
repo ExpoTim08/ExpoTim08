@@ -225,55 +225,65 @@ get_header();
     <div class="equipe">
       <h1><?php echo esc_html( get_theme_mod('expoTim_home_credits') ); ?></h1>
       <div class="cartes">
-        <div class="carte-equipe">
-          <span class="photo">
-            <img class="img-personne" src="<?php echo esc_url( get_theme_mod('expoTim_credit1_image') ); ?>" alt="">
-          </span>
-          <span class="nom">Lîna Bensenouci</span>
-          <span class="role"><?php echo esc_html( get_theme_mod('expoTim_credit1_role') ); ?></span>
-          <span class="petits-carre">
-            <a href="https://www.behance.net/Linabens">Portfolio</a>
-          </span>
+        <div class="carte-wrapper">
+          <div class="carte-equipe">
+            <span class="photo">
+              <img class="img-personne" src="<?php echo esc_url( get_theme_mod('expoTim_credit1_image') ); ?>" alt="">
+            </span>
+            <span class="nom">Lîna Bensenouci</span>
+            <span class="role"><?php echo esc_html( get_theme_mod('expoTim_credit1_role') ); ?></span>
+            <span class="petits-carre">
+              <a href="https://www.behance.net/Linabens">Portfolio</a>
+            </span>
+          </div>
         </div>
-        <div class="carte-equipe-2">
-          <span class="photo">
-            <a href="https://www.behance.net/petersongermain">Portfolio</a>
-          </span>
-          <span class="nom">Peterson Germain</span>
-          <span class="role"><?php echo esc_html( get_theme_mod('expoTim_credit2_role') ); ?></span>
-          <span class="petits-carre">
-             <img class="img-personne" src="<?php echo esc_url( get_theme_mod('expoTim_credit2_image') ); ?>" alt="">
-          </span>
+        <div class="carte-wrapper-2">
+          <div class="carte-equipe-2">
+            <span class="photo">
+              <a href="https://www.behance.net/petersongermain">Portfolio</a>
+            </span>
+            <span class="nom">Peterson Germain</span>
+            <span class="role"><?php echo esc_html( get_theme_mod('expoTim_credit2_role') ); ?></span>
+            <span class="petits-carre">
+               <img class="img-personne" src="<?php echo esc_url( get_theme_mod('expoTim_credit2_image') ); ?>" alt="">
+            </span>
+          </div>
         </div>
-        <div class="carte-equipe-3">
-          <span class="photo">
-             <img class="img-personne" src="<?php echo esc_url( get_theme_mod('expoTim_credit3_image') ); ?>" alt="">
-          </span>
-          <span class="nom">Matilda Kang</span>
-          <span class="role"><?php echo esc_html( get_theme_mod('expoTim_credit3_role') ); ?></span>
-          <span class="petits-carre">
-            <a href="https://www.behance.net/matildakang">Portfolio</a>
-          </span>
+        <div class="carte-wrapper-3">
+          <div class="carte-equipe-3">
+            <span class="photo">
+               <img class="img-personne" src="<?php echo esc_url( get_theme_mod('expoTim_credit3_image') ); ?>" alt="">
+            </span>
+            <span class="nom">Matilda Kang</span>
+            <span class="role"><?php echo esc_html( get_theme_mod('expoTim_credit3_role') ); ?></span>
+            <span class="petits-carre">
+              <a href="https://www.behance.net/matildakang">Portfolio</a>
+            </span>
+          </div>
         </div>
-        <div class="carte-equipe-4">
-          <span class="photo">
-            <a href="https://www.behance.net/remyroger1">Portfolio</a>
-          </span>
-          <span class="nom">Rémy Roger</span>
-          <span class="role"><?php echo esc_html( get_theme_mod('expoTim_credit4_role') ); ?></span>
-          <span class="petits-carre">
-            <img class="img-personne" src="<?php echo esc_url( get_theme_mod('expoTim_credit4_image') ); ?>" alt="">
-          </span>
+        <div class="carte-wrapper-4">
+          <div class="carte-equipe-4">
+            <span class="photo">
+              <a href="https://www.behance.net/remyroger1">Portfolio</a>
+            </span>
+            <span class="nom">Rémy Roger</span>
+            <span class="role"><?php echo esc_html( get_theme_mod('expoTim_credit4_role') ); ?></span>
+            <span class="petits-carre">
+              <img class="img-personne" src="<?php echo esc_url( get_theme_mod('expoTim_credit4_image') ); ?>" alt="">
+            </span>
+          </div>
         </div>
-        <div class="carte-equipe-5">
-          <span class="photo">
-            <img class="img-personne" src="<?php echo esc_url( get_theme_mod('expoTim_credit5_image') ); ?>" alt="">
-          </span>
-          <span class="nom">Alexis David</span>
-          <span class="role"><?php echo esc_html( get_theme_mod('expoTim_credit5_role') ); ?></span>
-          <span class="petits-carre">
-            <a href="https://www.behance.net/gallery/235748411/Portfolio">Portfolio</a>
-          </span>
+        <div class="carte-wrapper-5">
+          <div class="carte-equipe-5">
+            <span class="photo">
+              <img class="img-personne" src="<?php echo esc_url( get_theme_mod('expoTim_credit5_image') ); ?>" alt="">
+            </span>
+            <span class="nom">Alexis David</span>
+            <span class="role"><?php echo esc_html( get_theme_mod('expoTim_credit5_role') ); ?></span>
+            <span class="petits-carre">
+              <a href="https://www.behance.net/gallery/235748411/Portfolio">Portfolio</a>
+            </span>
+          </div>
         </div>
       </div>
     </div>

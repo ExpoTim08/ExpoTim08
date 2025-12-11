@@ -1908,6 +1908,50 @@
     margin-right: 3em;
     width: auto;
   }
+
+  .cartes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
+}
+
+.carte-wrapper, 
+.carte-wrapper-2, 
+.carte-wrapper-3, 
+.carte-wrapper-4, 
+.carte-wrapper-5 {
+    position: relative;      /* anchor for the hover movement */
+    width: 250px;
+    height: auto;
+}
+
+.carte-equipe,
+.carte-equipe-2,
+.carte-equipe-3,
+.carte-equipe-4,
+.carte-equipe-5 {
+    position: relative;
+    z-index: 1;
+    transition: 
+        transform 0.4s ease,
+        z-index 0s;
+    transform-origin: center;
+}
+
+/* Smooth hover transformation */
+.carte-wrapper:hover .carte-equipe,
+.carte-wrapper-2:hover .carte-equipe-2,
+.carte-wrapper-3:hover .carte-equipe-3,
+.carte-wrapper-4:hover .carte-equipe-4 {
+    transform: translateY(-200px) scale(1.35);
+    z-index: 9999;      /* floats above everything */
+}
+
+.carte-wrapper-5:hover .carte-equipe-5 {
+  transform: translateY(-450px) scale(1.35);
+    z-index: 9999;      /* floats above everything */
+}
+
 }
 /*@media screen and (min-width: 1921px) {
 

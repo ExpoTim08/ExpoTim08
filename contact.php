@@ -124,6 +124,7 @@ require("global.php");
             <div class="messagePageContact">
                 <h1>Contactez les membres ainsi que les gens en charge de</h1>
                 <img class="footer-logo-img" src="<?php echo get_template_directory_uri(); ?>/Images/Texte.png" alt="Logo de l'expo TIM">
+                <p>Étudiants :</p>
             </div>
 
             <div class="conteneurMembres">
@@ -165,13 +166,15 @@ require("global.php");
 
                 <div class="profilAlexis">
                     <span class="photo">
-                        <img class="imgProf" src="<?php echo get_template_directory_uri(); ?>/Images/ImageSimpson/Alexis.webp" alt="Photo Alexis David">
+                        <img class="imgProf" src="<?php echo get_template_directory_uri(); ?>/Images/ImageSimpson/Alexis.png" alt="Photo Alexis David">
                     </span>
                     <h3 class="nom">Alexis David</h3>
                     <p>Assistant Designer</p>
                     <p class="email">e1924984@cmaisonneuve.qc.ca</p>
                 </div>
             </div> 
+
+            <p>Enseignants :</p>
 
             <div class="conteneurProfils">
                 <div class="profilCaroline">
