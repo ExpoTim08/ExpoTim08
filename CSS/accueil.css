@@ -1701,6 +1701,10 @@
     top: 67%;
   }
 }*/
-
+.boutonRefresh {
+    display: flex;
+    align-items: center ;
+    justify-content: center ;
+  }
 
 

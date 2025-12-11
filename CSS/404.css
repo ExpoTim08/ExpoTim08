@@ -549,16 +549,14 @@ h1, h2 {
 
   .projets-populaire > h1, .projets-populaire p, .boutonRefresh {
     justify-self: end;
-    margin-right: 10%;
+    
   }
 
   .projets-populaire > p {
     width: 40%;
   }
 
-  .boutonRefresh {
-    justify-self: center;
-  }
+  
 
   .boutonRefresh:hover {
     cursor: pointer;
@@ -610,3 +608,8 @@ h1, h2 {
     color: thistle;
   }
 }
+.boutonRefresh {
+    display: flex;
+    align-items: center ;
+    justify-content: center ;
+  }
