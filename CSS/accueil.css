@@ -235,7 +235,7 @@
     display: block;
     position: absolute;
     width: 5vw;
-    bottom: -2vh;
+    bottom: 0;
     right: 40%;
   }
 
@@ -572,6 +572,15 @@
   .boutonRefresh {
     display: flex;
     align-items: center;
+    background: var(--background-color);
+    padding: 0.5em;
+    border-radius: 10px;
+    padding-right: 1em;
+    border: 2px solid #8b7b7b;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    place-self: center;
   }
 
   .boutonRefresh > .span {
@@ -613,16 +622,16 @@
   .projet-populaire-arcade > .titre,
   .projet-populaire-jour-terre > .titre,
   .projet-populaire-finissant > .titre {
-    grid-area: 1 / 1 / 2 / 3;
+    grid-area: 1 / 1 / 2 / 4;
+    font-family: var(--title-font);
     font-size: 6.2vw;
     height: auto;
-    border-bottom: 2px solid var(--border-color-side);
   }
 
   .projet-populaire-arcade > .bouton,
   .projet-populaire-jour-terre > .bouton,
   .projet-populaire-finissant > .bouton {
-    grid-area: 1/3/2/4;
+    grid-area: 1 / 4 / 1 / 4;
     font-size: x-large;
     height: auto;
   }
@@ -649,7 +658,7 @@
   .projet-populaire-arcade > .categorie-nom,
   .projet-populaire-jour-terre > .categorie-nom,
   .projet-populaire-finissant > .categorie-nom {
-    grid-area: 2 / 2 / 3 / 4;
+    grid-area: 2 / 2 / 4 / 5;
     height: 2rem;
     align-content: center;
   }
@@ -660,7 +669,7 @@
   .partenaires > img {
     display: block;
     justify-self: center;
-    grid-area: 3 / 1 / 4 / 4;
+    grid-area: 3 / 1 / 4 / 5;
     width: 100%;
     height: 100%;
     align-self: stretch; /* ✅ CRITICAL */
@@ -815,47 +824,47 @@
   }
 
 
-  .carte-equipe {
+  /*.carte-equipe {
     box-shadow: 5px 5px 17px 5px rgb(1, 1, 125);
-  }
+  }*/
   .carte-equipe .nom {
-    background-color: rgb(1, 1, 125);
+    background-color: rgb(18, 18, 104);
     color: white;
   }
 
-  .carte-equipe-2 {
+  /*.carte-equipe-2 {
     box-shadow: 5px 5px 17px 5px rgb(124, 0, 124);
-  }
+  }*/
 
   .carte-equipe-2 .nom {
-    background-color: rgb(124, 0, 124);
+    background-color: rgb(130, 28, 130);
     color: white;
   }
 
-  .carte-equipe-3 {
+  /*.carte-equipe-3 {
     box-shadow: 5px 5px 17px 5px rgb(244, 75, 213);
-  }
+  }*/
 
   .carte-equipe-3 .nom {
-    background-color: rgb(244, 75, 213);
+    background-color: rgb(227, 154, 208);
     color: white;
   }
 
-  .carte-equipe-4 {
+  /*.carte-equipe-4 {
     box-shadow: 5px 5px 17px 5px red;
-  }
+  }*/
 
   .carte-equipe-4 .nom {
-    background-color: red;
+    background-color: rgb(194, 46, 46);
     color: white;
   }
 
-  .carte-equipe-5 {
+  /*.carte-equipe-5 {
     box-shadow: 5px 5px 17px 5px rgb(180, 180, 0);
-  }
+  }*/
 
   .carte-equipe-5 .nom {
-    background-color: rgb(180, 180, 0);
+    background-color: rgb(135, 163, 51);
     color: white;
   }
 
@@ -955,6 +964,7 @@
   display: flex !important;
   z-index: 10;
 }
+
 
 
 
@@ -1556,11 +1566,25 @@
 
 /********************************* CSS Section À Propos Desktop ****************************************************/
 
+.a-propos-background {
+    display: flex;
+    justify-content: center;
+    padding: 2em 0em;
+    /* width: 100%; */
+    border-bottom: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-color);
+    margin: 0 3em;
+    width: auto;
+  }
+
 .a-propos {
     justify-items: center;
     padding: 2rem;
     height: 300px;
     max-height: 600px;
+    display: flex;
+    justify-content: center;
+    max-width: none;
   }
 
 .carroussel-apropos {
@@ -1572,6 +1596,32 @@
   transform: scale(var(--scale));
 }
 
+  .carroussel-apropos {
+    position: relative;
+    /* width: 300px; */
+    height: 300px;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    margin-right: 0;
+    transform-origin: center center;
+    /* transform: translate(11vw, clamp(1px, 4vh, 300px)); */
+    transform: scale(1.3);
+    /* top: 0; */
+    translate: 29vw 2vh;
+  }
+
+  @media screen and (min-width: 1367px) and (max-width: 1400px) {
+    .carroussel-apropos {
+        transform: scale(1.2);    
+    }
+  }
+
+  @media screen and (min-width: 1400.02px) and (max-width: 1600px) {
+    .carroussel-apropos {
+        transform: scale(1.3);    
+    }
+    
+  }
 
   .carroussel-apropos img {
     height: 40vh;
@@ -1583,21 +1633,38 @@
   }
 
   .a-propos > .sous-titre {
-    font-size: 40px;
+    font-size: 3.7vw;
     font-family: var(--title-font);
+    margin: 0;
+    white-space: nowrap;
+    align-self: center;
+    text-align: center;
+    translate: 0 2vh;
   }
 
   .a-propos > .description {
-    width: 30vw;
-    font-size: clamp(17px, 1.3vw, 1.24vw);
-    justify-items: end;
-    text-align: left;
-    /*margin-left: 33vw;*/
-    margin-top: -16rem;
-    padding-left: 40vw;
-    border: none;
-    background-color: #1b1b1b8c;
-  }
+    width: 33vw;
+      font-size: clamp(15px, 1vw, 25px);
+      justify-items: end;
+      text-align: left;
+      /* margin-left: 33vw; */
+      margin-top: -16rem;
+      padding-left: none;
+      border: none;
+      background-color: #191717a1;
+      padding-right: 34vw;
+      height: 30vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* padding-left: 10vh; */
+      /* margin: 10vh; */
+      padding-left: 5vh;
+      font-style: italic;
+      height: 220px;
+      border-radius: 15px;
+      /*background-image: linear-gradient(11deg, #1b1818, transparent 70%);*/
+    }
 
   .carroussel-apropos img {
     position: absolute;
@@ -1614,9 +1681,19 @@
   }
 
   .infos-a-propos > * {
-    background-color: #f1e2cccc;
+    background-color: #1e1e1e7a;
+    color: var(--font-color);
     margin-top: 20px;
+    width: 17.4vw;
   }
+
+  .infos-a-propos {
+    display: flex;
+    justify-content: center;
+    gap: 1vw;
+  }
+
+
 
 
   /******************************** CSS Section Projets Populaire Desktop ********************************************/
@@ -1624,6 +1701,7 @@
   .projets-populaire {
     margin-top: 5rem;
     padding-top: 0;
+    position: relative;
   }
 
   .projets-populaire > h1, .projets-populaire p, .boutonRefresh {
@@ -1634,12 +1712,16 @@
     width: 40%;
   }
 
+
   .boutonRefresh:hover {
     cursor: pointer;
   }
 
   .projets {
     display: flex;
+    justify-content: center;
+    gap: 5vw;
+    margin-top: 5vh;
   }
 
   .projets > p {
@@ -1647,28 +1729,149 @@
     font-size: small;
   }
 
+  .projets-populaire h1 {
+    margin-bottom: 8vh ;
+  }
+
+  .projet-populaire-arcade,
+  .projet-populaire-finissant,
+  .projet-populaire-jour-terre {
+    display: grid;
+	  grid-template-rows: auto auto 1fr;
+	  grid-template-columns: repeat(3, 1fr);
+    min-width: 335px;
+    width: 18vw;
+    max-width: 600px;
+    margin: 0;
+    margin-top: 0;
+    border: 2px solid var(--font-color);
+    max-width: none;
+    max-height: none;
+    height: 60vh;
+  }
+
+  .projet-populaire-arcade {
+    box-shadow: 12px 12px 0px rgb(14, 11, 72);
+    animation: cardFloat 3s ease-in-out infinite;
+  }
+
+  .projet-populaire-jour-terre {
+    box-shadow: 12px 12px 0px rgb(9, 45, 50);
+    animation: cardFloat 5s ease-in-out infinite;
+  }
+
+  .projet-populaire-finissant {
+    box-shadow: 12px 12px 0px rgb(68, 56, 7);
+    animation: cardFloat2 4s ease-in-out infinite;
+  }
+
+  .projet-populaire-arcade:hover,
+  .projet-populaire-finissant:hover,
+  .projet-populaire-jour-terre:hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease, border-radius 0.3s ease;
+  }
+
   .projet-populaire-arcade > .titre,
   .projet-populaire-jour-terre > .titre,
   .projet-populaire-finissant > .titre {
-    font-size: 1.5vw;
+    font-size: 1vw;
+    align-content: center;
+    text-align: justify;
+    padding-left: 1vw;
+  }
+
+  .image-populaire-arcade, .image-populaire-jour-terre, .image-populaire-finissants, .partenaires > img {
+    overflow: hidden;
+    height: auto;
+    border-top: 2px solid var(--font-color);
   }
 
   .projet-populaire-arcade:hover {
     transform: translateY(-10px);
-    box-shadow: 16px 16px 0px rgb(15, 13, 50);
+    box-shadow: 16px 16px 0px rgb(74, 66, 222);
     color: thistle;
+    border-radius: 15px;
+  }
+
+  .projet-populaire-arcade:hover img, 
+  .projet-populaire-jour-terre:hover img, 
+  .projet-populaire-finissant:hover img {
+    border-bottom-right-radius: 13px;
+    border-bottom-left-radius: 13px;
+  }
+
+  .projet-populaire-arcade:hover > .titre,
+  .projet-populaire-jour-terre:hover > .titre,
+  .projet-populaire-finissant:hover > .titre {
+    border-top-left-radius: 13px;
+  }
+
+  .projet-populaire-arcade:hover > .bouton, 
+  .projet-populaire-jour-terre:hover > .bouton, 
+  .projet-populaire-finissant:hover > .bouton {
+    border-top-right-radius: 13px;
   }
 
   .projet-populaire-jour-terre:hover {
     transform: translateY(-10px);
-    box-shadow: 16px 16px 0px rgb(5, 25, 28);
+    box-shadow: 16px 16px 0px rgb(31, 173, 195);
     color: thistle;
+    border-radius: 15px;
   }
 
   .projet-populaire-finissant:hover {
     transform: translateY(-10px);
-    box-shadow: 16px 16px 0px rgb(61, 68, 7);
+    box-shadow: 16px 16px 0px rgb(197, 158, 6);
     color: thistle;
+    border-radius: 15px;
+  }
+
+  @keyframes cardFloat {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes cardFloat2 {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  .boutonRefresh {
+    position: absolute;
+    top: -1vh;
+    top: -1vh;
+    padding: 0.5em;
+    border-radius: 40px;
+    width: 30px;
+    translate: 580%;
+  }
+
+  .boutonRefresh:hover {
+    cursor: pointer;
+  }
+
+  .boutonRefresh img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+  }
+
+  .boutonRefresh span {
+    display: none;
   }
 
   /*************************** CSS Section Partenaires Desktop***************************************/
@@ -1690,7 +1893,6 @@
   .equipe {
     margin-top: 3rem;
   }
-
 }
 /*@media screen and (min-width: 1921px) {
 
@@ -1701,10 +1903,10 @@
     top: 67%;
   }
 }*/
+  
 .boutonRefresh {
     display: flex;
     align-items: center ;
     justify-content: center ;
   }
-
 
