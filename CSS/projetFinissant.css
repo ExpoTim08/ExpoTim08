@@ -66,8 +66,8 @@ h1 {
 /* ================== Student ================== */
 .tree-wrapper {
   opacity: 0;
-  transform: translateX(-50px); /* glisse depuis la gauche */
-  transition: opacity 1s ease, transform 1s ease;
+  transition: opacity 1s ease;
+  position: relative; /* juste pour le parent, si nécessaire */
 }
 
 .tree-wrapper.active {
@@ -256,6 +256,28 @@ h1 {
 }
 
   @media screen and (min-width: 1024px) and (max-width: 1399.98px) {
+
+    .tree-wrapper {
+      position: relative; /* conteneur */
+    }
+    
+    .student {
+      position: absolute;    /* position exacte en desktop */
+      width: 10vw;
+      right: 30%;
+      bottom: 7%;
+      top: auto;
+    
+      /* animation de gauche à droite */
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: transform 1s ease, opacity 1s ease;
+    }
+    
+    .tree-wrapper.active {
+      opacity: 1;
+      transform: translateX(0); /* arrive à sa position normale */
+    }
     main {
       max-width: none;
       margin: 0 auto;
