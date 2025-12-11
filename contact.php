@@ -122,8 +122,7 @@ require("global.php");
         <!-- ==================== Section Profils ==================== -->
         <section class="contactComplet">
             <div class="messagePageContact">
-                <h1>Contactez les membres ainsi que les gens en charge de</h1>
-                <img class="footer-logo-img" src="<?php echo get_template_directory_uri(); ?>/Images/Texte.png" alt="Logo de l'expo TIM">
+                <h1>Contactez les membres ainsi que les gens en charge de l'expotim</h1>
                 <p>Étudiants :</p>
             </div>
 
@@ -222,8 +221,6 @@ require("global.php");
                 </div>
             </div>
         </section>
-    </div> <!-- /.pattern-background -->
-
-    <?php get_footer(); // Appelle le footer ?>
+    </div>
 </body>
-</html>
+<?php get_footer(); // Appelle le footer ?>

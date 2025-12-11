@@ -25,10 +25,7 @@
     z-index: -1;
     pointer-events: none;
   
-    background-image:
-      linear-gradient(#4e4b4194 1px, transparent 1px),
-      linear-gradient(to right, #4e4b4194 1px, #71718300 1px);
-    background-size: 40px 40px;
+   
   }
   
   /* On supprime le background-attachment fixed qui ne fonctionne pas sur iOS */
@@ -36,10 +33,12 @@
     background: none !important;
   }
   
-  .pattern-background {
-    background: none !important;
+  body .pattern-background {
+  background-image: linear-gradient(#4e4b4194 1px, transparent 1px),
+                    linear-gradient(to right, #4e4b4194 1px, #71718300 1px);
+  background-size: 40px 40px;
+  background-attachment: fixed;
   }
-  
   
   /******************* TITRES **********************/
   h1, h2, h3 {
@@ -165,10 +164,7 @@
     text-align: center;
   }
 
-  .footer-logo-img {
-    width: 60vw;
-    margin: 0 auto;
-  }
+ 
 
   .messagePageContact p, .conteneurMembres + p{
     text-align: center;
@@ -271,6 +267,7 @@
       text-align: center;
       display: flex;
       align-items: center;
+      justify-content: center;
       flex-direction: column;
       height: 263.93px;
     }
@@ -340,6 +337,7 @@
       margin-left: 2em;
       margin-right: 2em;
       display: flex;
+      justify-content: center;
       align-items: center;
       flex-direction: column;
       padding: 15px;
