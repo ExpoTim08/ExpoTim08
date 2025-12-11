@@ -30,7 +30,7 @@ h1 {
   display: inline-block;
   opacity: 0;
   transform: translateX(-20px); /* part de la gauche */
-  transition: opacity 1s ease, transform 1s ease;
+  transition: opacity 0.7s ease, transform 0.7s ease;
 
   font-family: var(--title-font);
   color: inherit;
@@ -47,7 +47,7 @@ h1 {
 .manette-wrapper {
   opacity: 0;
   transform: translateX(-50px);
-  transition: opacity 1s ease, transform 1s ease;
+  transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
 .manette-wrapper.active {
@@ -59,7 +59,7 @@ h1 {
 .retour-arcade {
   opacity: 0;
   transform: translateX(-20px);
-  transition: opacity 1s ease, transform 1s ease;
+  transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
 .retour-arcade.active {

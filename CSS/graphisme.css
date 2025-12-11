@@ -34,7 +34,7 @@ h1, h2 {
   display: inline-block;
   opacity: 0;
   transform: translateX(-20px);
-  transition: opacity 1s ease, transform 1s ease;
+  transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
 .titre-graphisme-layer .letter.active {
@@ -47,7 +47,7 @@ h1, h2 {
 .logo-graphisme {
   opacity: 0;
   transform: translateX(-20px);
-  transition: opacity 1s ease, transform 1s ease;
+  transition: opacity 0.7s ease, transform 0.7s ease;
 
   position: absolute;
   right: 3%;      /* ajuster pour mobile */
@@ -63,7 +63,7 @@ h1, h2 {
 .conteneur-description-graphisme {
   opacity: 0;
   transform: translateX(-20px);
-  transition: opacity 3s ease, transform 3s ease; /* beaucoup plus lent */
+  transition: opacity 2s ease, transform 2s ease; /* beaucoup plus lent */
 }
 
 .conteneur-description-graphisme.active {
